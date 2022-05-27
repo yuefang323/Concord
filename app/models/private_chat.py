@@ -8,7 +8,7 @@ class PrivateChat(db.Model):
     pc_id = db.Column(db.Integer, db.ForeignKey('private_channels.id'), nullable=False)
     user_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False)
     message = db.Column(db.String(2000), nullable=False)
-    created_at = db.Column(db.Date, default=datetime.now())
+    created_at = db.Column(db.DateTime, default=datetime.now(), nullable=False)
 
     def to_dict(self):
         return {
