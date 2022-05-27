@@ -1,21 +1,37 @@
-// Todo
+import { useEffect } from "react";
+import { useDispatch } from "react-redux";
 
-// seed database
-// Redux store, normalization
-// backend to process routing
-// sidebar that loads everything
+import * as serversActions from "../../store/servers";
+import * as channelsActions from "../../store/channels";
+import * as chatsActions from "../../store/chats";
+import * as prvChannelsActions from "../../store/prvChannels";
+import * as prvChatsActions from "../../store/prvChats";
+import * as otherServersActions from "../../store/otherServers";
+import * as usersActions from "../../store/users";
 
-// What do we need to load
-// user - id, username, avatar
-// user: {}
-// user - all servers user joined
-// user - all channels under joined server
-// user - all chats under joined server
-// user - all private channals
-// user - all private chats
+const SideBar = () => {
+	const dispatch = useDispatch();
 
-// all servers not joined - so user can jon
-// not_joined_servers: { byId: {}, allIds:{}}
-
-// all users in joined server - so user can setup private channel
-// users: { byId: {}, allIds: {}}
+	useEffect(() => {
+		// const response = fetch("/api/users/all");
+		// const data = response.json();
+		// const {
+		// 	servers,
+		// 	channels,
+		// 	chats,
+		// 	prvChannels,
+		// 	prvChats,
+		// 	otherServers,
+		// 	users,
+		// } = data;
+		// dispatch(serversActions.getServers(servers));
+		// dispatch(channelsActions.getChannels(channels));
+		// dispatch(chatsActions.getChats(chats));
+		// dispatch(prvChannelsActions.getPrvChannels(prvChannels));
+		// dispatch(prvChatsActions.getPrvChats(prvChats));
+		// dispatch(otherServersActions.getOtherServers(otherServers));
+		// dispatch(usersActions.getUsers(users));
+	}, []);
+	return <div>sidebar</div>;
+};
+export default SideBar;
