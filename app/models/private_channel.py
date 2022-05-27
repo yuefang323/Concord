@@ -15,4 +15,4 @@ class PrivateChannel(db.Model):
         }
 
     # one to many prv channel -> prv chats
-    private_chats = db.relationship("PrivateChat", back_populates='private_channel')
+    private_chats = db.relationship("PrivateChat", back_populates='private_channel', cascade="all, delete")
