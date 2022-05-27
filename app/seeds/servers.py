@@ -25,7 +25,11 @@ def seed_servers():
         description='server for guests.',
     )
 
-
+    db.session.add(demo_server)
+    db.session.add(anon_server)
+    db.session.add(guest_server)
+    db.session.commit()
 
 def undo_servers():
     db.session.execute('TRUNCATE servers RESTART IDENTITY CASCADE;')
+    db.session.commit()
