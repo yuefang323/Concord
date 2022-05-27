@@ -19,9 +19,11 @@ class User(db.Model, UserMixin):
     channels = db.relationship("Channel", back_populates="user")
 
     # joined servers
-    joined_servers = db.relationship("Server", \
-        secondary="join(JoinServerUser, Server, JoinServerUser.server_id == Server.id)", \
-        primaryjoin="User.id==JoinServerUser.user_id", viewonly=True)
+    # joined_servers = db.relationship("Server", \
+    #     secondary="join(JoinServerUser, Server, JoinServerUser.server_id == Server.id)", \
+    #     primaryjoin="User.id==JoinServerUser.user_id", viewonly=True)
+
+    joined_servers = db.relationship("JoinServerUser", primaryjoin="User.id==JoinServerUser.user_id", viewonly=True)
 
     # joined channels
     joined_channels = db.relationship("Channel", \
