@@ -13,7 +13,7 @@ class User(db.Model, UserMixin):
     avatar = db.Column(db.Text())
 
     # created servers
-    servers = db.relationship("Server", back_populates="user", cascade="all, delete")
+    servers = db.relationship("Server", back_populates="user")
 
     # created channels
     channels = db.relationship("Channel", back_populates="user")
@@ -42,11 +42,18 @@ class User(db.Model, UserMixin):
     chats = db.relationship("Chat", back_populates="user")
 
     # private channels
-    private_channels = db.relationship("PrivateChannel", primaryjoin="or_(User.id==PrivateChannel.user_id, User.id==PrivateChannel.friend_id)", viewonly=True)
+    private_channels = db.relationship("PrivateChannel", \
+        primaryjoin="or_(User.id==PrivateChannel.user_id, User.id==PrivateChannel.friend_id)", \
+        viewonly=True)
 
-    # private chats
+    # private chats - user is the speaker
     private_chats = db.relationship("PrivateChat", back_populates="user")
 
+    # private chats - all chat
+    all_direct_messages = db.relationship("PrivateChat", \
+        secondary="join(PrivateChannel, PrivateChat, PrivateChannel.id == PrivateChat.pc_id)", \
+        primaryjoin="or_(User.id == PrivateChannel.user_id, User.id == PrivateChannel.friend_id)", \
+        viewonly=True)
 
     @property
     def password(self):
