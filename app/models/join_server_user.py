@@ -1,11 +1,12 @@
 from .db import db
+from datetime import datetime
 
 class JoinServerUser(db.Model):
     __tablename__ = "join_servers_users"
 
     server_id = db.Column(db.Integer, db.ForeignKey("servers.id"), primary_key=True)
     user_id = db.Column(db.Integer, db.ForeignKey("user.id"), primary_key=True)
-    joined_date = db.Column(db.DateTime, nullable=False)
+    joined_date = db.Column(db.DateTime, default=datetime.now() nullable=False)
 
 
 
