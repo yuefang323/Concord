@@ -16,13 +16,13 @@ const SideBar = () => {
 		// const response = fetch("/api/users/all");
 		// const data = response.json();
 		// const {
-		// 	servers,
-		// 	channels,
-		// 	chats,
-		// 	prvChannels,
-		// 	prvChats,
-		// 	otherServers,
-		// 	users,
+		// servers,
+		// channels,
+		// chats,
+		// prvChannels,
+		// prvChats,
+		// otherServers,
+		// users,
 		// } = data;
 		// dispatch(serversActions.getServers(servers));
 		// dispatch(channelsActions.getChannels(channels));
