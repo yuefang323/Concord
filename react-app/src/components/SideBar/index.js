@@ -7,30 +7,23 @@ import * as chatsActions from "../../store/chats";
 import * as prvChannelsActions from "../../store/prvChannels";
 import * as prvChatsActions from "../../store/prvChats";
 import * as otherServersActions from "../../store/otherServers";
-import * as usersActions from "../../store/users";
+// import * as usersActions from "../../store/users";
 
 const SideBar = () => {
 	const dispatch = useDispatch();
 
 	useEffect(() => {
-		// const response = fetch("/api/users/all");
-		// const data = response.json();
-		// const {
-		// 	servers,
-		// 	channels,
-		// 	chats,
-		// 	prvChannels,
-		// 	prvChats,
-		// 	otherServers,
-		// 	users,
-		// } = data;
-		// dispatch(serversActions.getServers(servers));
-		// dispatch(channelsActions.getChannels(channels));
-		// dispatch(chatsActions.getChats(chats));
-		// dispatch(prvChannelsActions.getPrvChannels(prvChannels));
-		// dispatch(prvChatsActions.getPrvChats(prvChats));
-		// dispatch(otherServersActions.getOtherServers(otherServers));
-		// dispatch(usersActions.getUsers(users));
+		fetch("/api/users/all")
+			.then((res) => res.json())
+			.then((data) => {
+				dispatch(serversActions.getServers(data.servers));
+				dispatch(channelsActions.getChannels(data.channels));
+				dispatch(chatsActions.getChats(data.chats));
+				dispatch(prvChannelsActions.getPrvChannels(data.prvChannels));
+				dispatch(prvChatsActions.getPrvChats(data.prvChats));
+				dispatch(otherServersActions.getOtherServers(data.otherServers));
+				// dispatch(usersActions.getUsers(users));
+			});
 	}, []);
 	return <div>sidebar</div>;
 };
