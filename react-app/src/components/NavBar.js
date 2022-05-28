@@ -1,14 +1,16 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
 import LogoutButton from "./auth/LogoutButton";
+import SplashPage from "./Splash";
 
 const NavBar = () => {
 	return (
-		<nav>
+		<nav className="nav-container">
 			<ul>
 				<li>
 					<NavLink to="/" exact={true} activeClassName="active">
 						Home
+						{/* <SplashPage /> */}
 					</NavLink>
 				</li>
 				<li>

@@ -2,18 +2,41 @@
 @import url("https://fonts.googleapis.com/css2?family=Bungee&display=swap");
 
 :root {
-	--yellow: #ffca3a;
-	--red: #f40004;
-	--gray1: #ededed;
-	--gray2: #bababa;
-	--gray3: #4f4f4f;
-	--gray4: #353535;
+  --yellow: #ffca3a;
+  --red: #f40004;
+  --gray1: #ededed;
+  --gray2: #bababa;
+  --gray3: #4f4f4f;
+  --gray4: #353535;
 }
 
-body {
-	background-color: var(--gray1);
+body, 
+html {
+  background-color: var(--gray1);
 }
 
 h1 {
-	font-family: "Bungee", cursive;
+  font-family: "Bungee", cursive;
 }
+
+h2 {
+  /* --common-font: "ginto-normal", "Whitney", "Helvetica Neue", Helvetica, Arial,
+  "Lucida Grande", sans-serif; */
+  --title-font: "Poppins", "Arial", "Helvetica", sans-serif;
+}
+
+button {
+  cursor: pointer;
+  border: none;
+  text-decoration: none;
+}
+
+ul,
+li {
+  list-style-type: none;
+}
+
+a {
+  text-decoration: none;
+}
+

@@ -1,0 +1,20 @@
+.splash-nav-bar {
+    display: flex;
+	justify-content: space-between;
+	align-items: center;
+	width: 80%;
+	margin: 0 auto;
+	max-width: 1350px;
+}
+
+.splash-session-links {
+    display: flex;
+    gap: 15px;
+    word-spacing: 0;
+}
+
+.splash-session-links {
+    display: flex;
+    gap: 15px;
+    word-spacing: 0;
+}
