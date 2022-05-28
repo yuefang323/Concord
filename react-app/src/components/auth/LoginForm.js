@@ -2,19 +2,24 @@ import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { Redirect, Link } from 'react-router-dom';
 import { login } from '../../store/session';
-import NavBar from '../NavBar'
+import NavBar from '../NavBar';
+import './LoginForm.css';
 
 const LoginForm = () => {
   const [errors, setErrors] = useState([]);
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const [demo, setDemo] = useState(false); 
   const user = useSelector(state => state.session.user);
   const dispatch = useDispatch();
 
-  const demoLogin = () => {
-    dispatch(login("demo@aa.io", "password"))
-    setDemo(true)
+  const demoLogin = (e) => {
+    e.preventDefault()
+    return dispatch(login("demo@aa.io", "password")).catch(
+      async (res) => {
+        const data = await res.json()
+        if (data && data.errors) setErrors(data.errors)
+      }
+    )
   }
 
   const onLogin = async (e) => {
@@ -38,43 +43,48 @@ const LoginForm = () => {
   }
 
   return (
-    <div className='login-form-container'>
-      <NavBar />
-      {/* {demo && user ? <Redirect to="/" /> : null} */}
-      <form onSubmit={onLogin}>
-        <h3>Welcome back!</h3>
-        <h5>We're so excited to see you again!</h5>
-        <div>
-          {errors.map((error, ind) => (
-            <div key={ind}>{error}</div>
-          ))}
+    <div className='login-wrapper'>
+      <div className='login-form-container'>
+        {/* <NavBar /> */}
+        <form onSubmit={onLogin}>
+          <div className='form-header'>
+            <h3>Welcome back!</h3>
+            <p>We're so excited to see you again!</p>
+          </div>
+          <div className='error-list'>
+            {errors.map((error, ind) => (
+              <div key={ind}>{error}</div>
+            ))}
+          </div>
+          <div className='login-input'>
+            <label htmlFor='email'>EMAIL</label>
+            <input
+              name='email'
+              type='text'
+              placeholder='Email'
+              value={email}
+              onChange={updateEmail}
+            />
+          </div>
+          <div className='login-input'>
+            <label htmlFor='password'>PASSWORD</label>
+            <input
+              name='password'
+              type='password'
+              placeholder='Password'
+              value={password}
+              onChange={updatePassword}
+            />
+          </div>
+          <div className='form-buttons'>
+            <button type='submit'>Login</button>
+            <button onClick={demoLogin}>Demo User</button>
+          </div>
+        </form>
+        <div className='register-link'>
+          Need an account?
+          <Link to="/sign-up">Register</Link>
         </div>
-        <div>
-          <label htmlFor='email'>Email</label>
-          <input
-            name='email'
-            type='text'
-            placeholder='Email'
-            value={email}
-            onChange={updateEmail}
-          />
-        </div>
-        <div>
-          <label htmlFor='password'>Password</label>
-          <input
-            name='password'
-            type='password'
-            placeholder='Password'
-            value={password}
-            onChange={updatePassword}
-          />
-          <button type='submit'>Login</button>
-          <button onClick={() => demoLogin()}>Demo User</button>
-        </div>
-      </form>
-      <div>
-        Need an account?
-        <Link to="/sign-up">Register</Link>
       </div>
     </div>
   );

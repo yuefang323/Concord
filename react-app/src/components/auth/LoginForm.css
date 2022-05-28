@@ -1,0 +1,87 @@
+.login-wrapper {
+  background-image: url("https://smilegallerydental.com.au/wp-content/uploads/2019/10/SMile-Gallery-Purple-background.jpg");
+  width: 100vw;
+  height: 100vh;
+  position: absolute;
+  top: 0;
+  z-index: -100;
+}
+
+.login-form-container {
+  background-color: var(--gray4);
+  color: var(--gray1);
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border-radius: 10px;
+  box-shadow: 0 2px 10px 0 rgb(0 0 0 0.2);
+  width: 480px;
+  padding: 32px;
+  box-sizing: border-box;  
+}
+
+.form-header {
+  color: white;
+  text-align: center;
+}
+
+.form-header h3 {
+    font-family: "ginto-normal", "Whitney", "Helvetica Neue", Helvetica, Arial,
+    "Lucida Grande", sans-serif;
+}
+.form-header p {
+    color: var(--gray2);
+}
+
+.login-input {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.login-input input {
+    border: 0.1rem solid #000;
+    background-color: #313339;
+    border-radius: 5px;
+    height: 40px;
+    padding: 0 10px 0 10px;
+    caret-color: #fff;
+    color: #fff;
+}
+
+.form-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.form-buttons button {
+    background-color: #5865f2;
+    color: #fff;
+    border: none;
+    height: 40px;
+    width: 100%;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.register-link {
+    margin-top: 20px;
+    color: var(--gray2);
+}
+
+.register-link a {
+    margin-left: 10px;
+    color: #02aaec;
+    text-decoration: none;
+}
+
+.error-list div {
+    padding: 5px;
+    color: var(--red)
+}
