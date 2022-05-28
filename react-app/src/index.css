@@ -22,3 +22,24 @@ body {
 h1 {
 	font-family: "Bungee", cursive;
 }
+
+h2 {
+	/* --common-font: "ginto-normal", "Whitney", "Helvetica Neue", Helvetica, Arial,
+  "Lucida Grande", sans-serif; */
+	--title-font: "Poppins", "Arial", "Helvetica", sans-serif;
+}
+
+button {
+	cursor: pointer;
+	border: none;
+	text-decoration: none;
+}
+
+ul,
+li {
+	list-style-type: none;
+}
+
+a {
+	text-decoration: none;
+}
