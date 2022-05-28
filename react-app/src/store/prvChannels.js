@@ -12,7 +12,7 @@ export const getPrvChannels = (prv_channels) => {
 // Thunks
 
 // Reducer
-const initialState = { byId: null, allIds: [] };
+const initialState = { byId: {}, allIds: [] };
 
 export default function reducer(state = initialState, action) {
 	let newState;
@@ -20,7 +20,7 @@ export default function reducer(state = initialState, action) {
 		case GET_PRV_CHANNELS:
 			newState = { ...state };
 			action.prv_channels.forEach((prv_channel) => {
-				newState.byId[prv_channel.id] = prv_channel.id;
+				newState.byId[prv_channel.id] = prv_channel;
 				newState.allIds.push(prv_channel.id);
 			});
 			return newState;

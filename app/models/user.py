@@ -1,6 +1,10 @@
 from .db import db
+from .server import Server
+from .join_server_user import JoinServerUser
+from .channel import Channel
 from werkzeug.security import generate_password_hash, check_password_hash
 from flask_login import UserMixin
+
 
 
 class User(db.Model, UserMixin):
@@ -18,12 +22,23 @@ class User(db.Model, UserMixin):
     # created channels
     channels = db.relationship("Channel", back_populates="user")
 
-    # joined servers
-    # joined_servers = db.relationship("Server", \
-    #     secondary="join(JoinServerUser, Server, JoinServerUser.server_id == Server.id)", \
-    #     primaryjoin="User.id==JoinServerUser.user_id", viewonly=True)
+    @property
+    def joined_servers(self):
+        joined_servers = [server.to_dict() for server in Server.query.join(JoinServerUser).filter(JoinServerUser.user_id == self.id).all()]
+        joined_server_user = { server.server_id: server.to_dict() for server in JoinServerUser.query.filter(JoinServerUser.user_id == self.id).all()}
+        return [ { **server ,\
+            "joined_date": joined_server_user[server["id"]]["joined_date"], \
+            "channels": [channel.to_dict()["id"] for channel in Channel.query.filter(Channel.server_id == server["id"]).all()], \
+            "users": [user.to_dict()["user_id"] for user in JoinServerUser.query.filter(JoinServerUser.server_id == server["id"]).all()], \
+             } for server in joined_servers]
 
-    joined_servers = db.relationship("JoinServerUser", primaryjoin="User.id==JoinServerUser.user_id", viewonly=True)
+
+    @property
+    def other_servers(self):
+        joined_servers = [server.server_id for server in JoinServerUser.query.filter(JoinServerUser.user_id == self.id).all()]
+        other_servers = Server.query.filter(Server.id.notin_(joined_servers)).all()
+        return [server.to_dict() for server in other_servers]
+
 
     # joined channels
     joined_channels = db.relationship("Channel", \

@@ -12,7 +12,7 @@ export const getChannels = (channels) => {
 // Thunks
 
 // Reducer
-const initialState = { byId: null, allIds: [] };
+const initialState = { byId: {}, allIds: [] };
 
 export default function reducer(state = initialState, action) {
 	let newState;
