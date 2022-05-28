@@ -1,5 +1,6 @@
 /* TODO Add site wide styles */
 @import url("https://fonts.googleapis.com/css2?family=Bungee&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Poppins&display=swap");
 @import url("./css/mainPage.css");
 @import url("./css/sideBar.css");
 
@@ -19,14 +20,8 @@ body {
 	overflow: hidden;
 }
 
-h1 {
-	font-family: "Bungee", cursive;
-}
-
-h2 {
-	/* --common-font: "ginto-normal", "Whitney", "Helvetica Neue", Helvetica, Arial,
-  "Lucida Grande", sans-serif; */
-	--title-font: "Poppins", "Arial", "Helvetica", sans-serif;
+* {
+	font-family: "Poppins", "Arial", "Helvetica", sans-serif;
 }
 
 button {
