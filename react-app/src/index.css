@@ -1,5 +1,6 @@
 /* TODO Add site wide styles */
 @import url("https://fonts.googleapis.com/css2?family=Bungee&display=swap");
+@import url("./css/mainPage.css");
 
 :root {
 	--yellow: #ffca3a;
@@ -12,6 +13,9 @@
 
 body {
 	background-color: var(--gray1);
+	padding: 0;
+	margin: 0;
+	overflow: hidden;
 }
 
 h1 {

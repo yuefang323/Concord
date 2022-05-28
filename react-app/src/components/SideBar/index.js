@@ -1,13 +1,15 @@
 import { useEffect } from "react";
 import { useDispatch } from "react-redux";
 
+import LogoutButton from "../auth/LogoutButton";
+
 import * as serversActions from "../../store/servers";
 import * as channelsActions from "../../store/channels";
 import * as chatsActions from "../../store/chats";
 import * as prvChannelsActions from "../../store/prvChannels";
 import * as prvChatsActions from "../../store/prvChats";
 import * as otherServersActions from "../../store/otherServers";
-// import * as usersActions from "../../store/users";
+import * as usersActions from "../../store/users";
 
 const SideBar = () => {
 	const dispatch = useDispatch();
@@ -22,9 +24,14 @@ const SideBar = () => {
 				dispatch(prvChannelsActions.getPrvChannels(data.prvChannels));
 				dispatch(prvChatsActions.getPrvChats(data.prvChats));
 				dispatch(otherServersActions.getOtherServers(data.otherServers));
-				// dispatch(usersActions.getUsers(users));
+				dispatch(usersActions.getUsers(data.users));
 			});
 	}, []);
-	return <div>sidebar</div>;
+	return (
+		<div className="sidebar-ctrl">
+			sidebar
+			<LogoutButton />
+		</div>
+	);
 };
 export default SideBar;

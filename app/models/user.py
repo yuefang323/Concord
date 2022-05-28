@@ -2,6 +2,7 @@ from .db import db
 from .server import Server
 from .join_server_user import JoinServerUser
 from .channel import Channel
+from .chat import Chat
 from werkzeug.security import generate_password_hash, check_password_hash
 from flask_login import UserMixin
 
@@ -29,7 +30,7 @@ class User(db.Model, UserMixin):
         return [ { **server ,\
             "joined_date": joined_server_user[server["id"]]["joined_date"], \
             "channels": [channel.to_dict()["id"] for channel in Channel.query.filter(Channel.server_id == server["id"]).all()], \
-            "users": [user.to_dict()["user_id"] for user in JoinServerUser.query.filter(JoinServerUser.server_id == server["id"]).all()], \
+            "users": [user.to_dict()["user_id"] for user in JoinServerUser.query.filter(JoinServerUser.server_id == server["id"], JoinServerUser.user_id != self.id).all()], \
              } for server in joined_servers]
 
 
@@ -41,11 +42,19 @@ class User(db.Model, UserMixin):
 
 
     # joined channels
-    joined_channels = db.relationship("Channel", \
-        secondary="join(JoinServerUser, Server, JoinServerUser.server_id == Server.id)." \
-                "join(Channel, Channel.server_id == Server.id)",\
-        primaryjoin="and_(User.id == JoinServerUser.user_id)", \
-        secondaryjoin="JoinServerUser.server_id == Server.id", viewonly=True)
+    # joined_channels = db.relationship("Channel", \
+    #     secondary="join(JoinServerUser, Server, JoinServerUser.server_id == Server.id)." \
+    #             "join(Channel, Channel.server_id == Server.id)",\
+    #     primaryjoin="and_(User.id == JoinServerUser.user_id)", \
+    #     secondaryjoin="JoinServerUser.server_id == Server.id", viewonly=True)
+
+    @property
+    def joined_channels(self):
+        joined_servers = [server.to_dict()["id"] for server in Server.query.join(JoinServerUser).filter(JoinServerUser.user_id == self.id).all()]
+        joined_channels = [channel.to_dict() for channel in Channel.query.filter(Channel.server_id.in_(joined_servers)).all()]
+        return [{**channel, \
+            "chats" :[ chat.to_dict()["id"] for chat in Chat.query.filter(Chat.channel_id == channel["id"]).all()],\
+                } for channel in joined_channels]
 
     # joined chats
     joined_chats = db.relationship("Chat", \
@@ -72,6 +81,20 @@ class User(db.Model, UserMixin):
         primaryjoin="or_(User.id == PrivateChannel.user_id, User.id == PrivateChannel.friend_id)", \
         viewonly=True)
 
+    # Other users in same servers
+    @property
+    def users(self):
+        # Get all the server user joined
+        join_server_ids = [server.server_id for server in JoinServerUser.query.filter(JoinServerUser.user_id == self.id).all()]
+
+        # Get ids of all other users
+        other_users = [user.user_id for user in JoinServerUser.query.filter(JoinServerUser.user_id != self.id, JoinServerUser.server_id.in_(join_server_ids)).all()]
+
+        users = User.query.filter(User.id.in_(other_users)).all()
+        return [user.to_dict_limited() for user in users]
+
+
+
     @property
     def password(self):
         return self.hashed_password
@@ -88,5 +111,12 @@ class User(db.Model, UserMixin):
             'id': self.id,
             'username': self.username,
             'email': self.email,
+            'avatar': self.avatar,
+        }
+
+    def to_dict_limited(self):
+        return {
+            'id': self.id,
+            'username': self.username,
             'avatar': self.avatar,
         }
