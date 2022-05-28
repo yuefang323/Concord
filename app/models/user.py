@@ -41,13 +41,6 @@ class User(db.Model, UserMixin):
         return [server.to_dict() for server in other_servers]
 
 
-    # joined channels
-    # joined_channels = db.relationship("Channel", \
-    #     secondary="join(JoinServerUser, Server, JoinServerUser.server_id == Server.id)." \
-    #             "join(Channel, Channel.server_id == Server.id)",\
-    #     primaryjoin="and_(User.id == JoinServerUser.user_id)", \
-    #     secondaryjoin="JoinServerUser.server_id == Server.id", viewonly=True)
-
     @property
     def joined_channels(self):
         joined_servers = [server.to_dict()["id"] for server in Server.query.join(JoinServerUser).filter(JoinServerUser.user_id == self.id).all()]

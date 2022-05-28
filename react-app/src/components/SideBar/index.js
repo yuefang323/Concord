@@ -1,5 +1,7 @@
 import { useEffect } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+
+import Home from "./Home";
 
 import LogoutButton from "../auth/LogoutButton";
 
@@ -14,6 +16,8 @@ import * as usersActions from "../../store/users";
 const SideBar = () => {
 	const dispatch = useDispatch();
 
+	const servers = useSelector((state) => state.servers);
+
 	useEffect(() => {
 		fetch("/api/users/all")
 			.then((res) => res.json())
@@ -27,11 +31,20 @@ const SideBar = () => {
 				dispatch(usersActions.getUsers(data.users));
 			});
 	}, []);
+
 	return (
 		<div className="sidebar-ctrl">
-			sidebar
-			<LogoutButton />
+			<div>
+				<Home />
+				{servers?.allIds?.map((id) => (
+					<div>{servers.byId[id].name}</div>
+				))}
+			</div>
+			<div>
+				<LogoutButton />
+			</div>
 		</div>
 	);
 };
+
 export default SideBar;
