@@ -28,12 +28,12 @@
   text-align: center;
 }
 
-.form-header h3 {
-    font-family: "ginto-normal", "Whitney", "Helvetica Neue", Helvetica, Arial,
-    "Lucida Grande", sans-serif;
+.form-header h2 {
+    font-family: var(--title-font);
 }
 .form-header p {
     color: var(--gray2);
+    font-size: 18px;
 }
 
 .login-input {
@@ -42,6 +42,12 @@
     gap: 10px;
     margin-top: 20px;
     margin-bottom: 20px;
+    color: var(--gray2);
+}
+
+.login-input label {
+    font-size: 15px;
+    font-family: var(--title-font);
 }
 
 .login-input input {
@@ -84,4 +90,17 @@
 .error-list div {
     padding: 5px;
     color: var(--red)
+}
+
+#logout {
+    cursor: pointer;
+    justify-content: flex-start;
+    padding: 10px 10px 10px 5px;
+    align-items: center;
+    display: flex;
+    gap: 5px; 
+}
+
+#logout div {
+    font-family: "Poppins";
 }

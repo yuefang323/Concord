@@ -3,7 +3,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { Redirect, Link } from 'react-router-dom';
 import { login } from '../../store/session';
 import NavBar from '../NavBar';
-import './LoginForm.css';
+import './auth.css';
 
 const LoginForm = () => {
   const [errors, setErrors] = useState([]);
@@ -48,7 +48,7 @@ const LoginForm = () => {
         {/* <NavBar /> */}
         <form onSubmit={onLogin}>
           <div className='form-header'>
-            <h3>Welcome back!</h3>
+            <h2>Welcome back!</h2>
             <p>We're so excited to see you again!</p>
           </div>
           <div className='error-list'>
