@@ -13,7 +13,7 @@ const LogoutButton = () => {
 	};
 
 	return (
-		<div className="sidebar-btn-ctrl">
+		<div className="sidebar-btn-ctrl tooltip">
 			<div
 				id="logout"
 				onClick={onLogout}
@@ -21,6 +21,7 @@ const LogoutButton = () => {
 			>
 				<i className="fa-solid fa-right-from-bracket sidebar-icon"></i>
 			</div>
+			<div className="tooltiptext">Logout</div>
 		</div>
 	);
 };

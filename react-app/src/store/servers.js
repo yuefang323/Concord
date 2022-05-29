@@ -19,10 +19,12 @@ export default function reducer(state = initialState, action) {
 	switch (action.type) {
 		case GET_SERVERS:
 			newState = { ...state };
+			let set = new Set(state.allIds);
 			action.servers.forEach((server) => {
 				newState.byId[server.id] = server;
-				newState.allIds.push(server.id);
+				set.add(server.id);
 			});
+			newState.allIds = Array.from(set);
 			return newState;
 		default:
 			return state;

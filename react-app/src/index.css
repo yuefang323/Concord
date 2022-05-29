@@ -3,6 +3,8 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins&display=swap");
 @import url("./css/mainPage.css");
 @import url("./css/sideBar.css");
+@import url("./css/tooltip.css");
+@import url("./css/modal.css");
 
 :root {
 	--yellow: #ffca3a;
@@ -50,4 +52,25 @@ a {
 	opacity: 0;
 	display: none;
 	visibility: hidden;
+}
+
+/* Background colors */
+.color-red {
+	background-color: var(--red);
+}
+
+.color-yellow {
+	background-color: var(--yellow);
+}
+
+.color-green {
+	background-color: var(--green);
+}
+
+.color-blue {
+	background-color: var(--blue);
+}
+
+.color-purple {
+	background-color: var(--purple);
 }
