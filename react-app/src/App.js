@@ -37,7 +37,10 @@ function App() {
 				<Route path="/sign-up" exact={true}>
 					<SignUpForm />
 				</Route>
-				<ProtectedRoute path={["/", "/channels/:serverId"]} exact={true}>
+				<ProtectedRoute
+					path={["/", "/channels/:serverId", "/channels/:serverId/:channelId"]}
+					exact={true}
+				>
 					<MainPage />
 				</ProtectedRoute>
 			</Switch>
