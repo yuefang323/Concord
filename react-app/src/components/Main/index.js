@@ -1,7 +1,7 @@
-import SideBar from "../SideBar";
-import ChannelBar from "../ChannelBar";
-import Chat from "../Chat";
-import Users from "../Users";
+import SideBar from "./SideBar";
+import ChannelBar from "./ChannelBar";
+import Chat from "./Chat";
+import Users from "./Users";
 
 const MainPage = () => {
 	return (

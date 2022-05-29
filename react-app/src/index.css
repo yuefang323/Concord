@@ -11,6 +11,11 @@
 	--gray2: #bababa;
 	--gray3: #4f4f4f;
 	--gray4: #353535;
+
+	/* Button colors */
+	--green: #8ac926;
+	--blue: #1982c4;
+	--purple: #6a4c93;
 }
 
 body {
@@ -22,6 +27,7 @@ body {
 
 * {
 	font-family: "Poppins", "Arial", "Helvetica", sans-serif;
+	box-sizing: border-box;
 }
 
 button {
@@ -37,4 +43,11 @@ li {
 
 a {
 	text-decoration: none;
+	color: unset;
+}
+
+.hidden {
+	opacity: 0;
+	display: none;
+	visibility: hidden;
 }
