@@ -3,51 +3,63 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins&display=swap");
 @import url("./css/mainPage.css");
 @import url("./css/sideBar.css");
+@import url("./css/auth.css");
+@import url("./css/navbar.css");
+@import url("./css/SplashPage.css");
+@import url("./css/buttons.css");
 
 :root {
-	--yellow: #ffca3a;
-	--red: #f40004;
-	--gray1: #ededed;
-	--gray2: #bababa;
-	--gray3: #4f4f4f;
-	--gray4: #353535;
+  --yellow1: #ffca3a;
+  --yellow2: #feef7b;
+  --yellow3: #fea004;
+  --red1: #f40004;
+  --red2: #fe662b;
+  --gray1: #ededed;
+  --gray2: #bababa;
+  --gray3: #4f4f4f;
+  --gray4: #353535;
 
-	/* Button colors */
-	--green: #8ac926;
-	--blue: #1982c4;
-	--purple: #6a4c93;
+  /* Button colors */
+  --green: #8ac926;
+  --blue: #1982c4;
+  --purple: #6a4c93;
 }
 
 body {
-	background-color: var(--gray1);
-	padding: 0;
-	margin: 0;
-	overflow: hidden;
+  background-color: var(--gray1);
+  padding: 0;
+  margin: 0;
+  overflow: hidden;
 }
 
 * {
-	font-family: "Poppins", "Arial", "Helvetica", sans-serif;
-	box-sizing: border-box;
+  font-family: "Poppins", "Arial", "Helvetica", sans-serif;
+  box-sizing: border-box;
 }
 
 button {
-	cursor: pointer;
-	border: none;
-	text-decoration: none;
+  cursor: pointer;
+  border: none;
+  text-decoration: none;
+}
+
+h1 {
+  font-family: "Bungee", cursive;
 }
 
 ul,
 li {
-	list-style-type: none;
+  list-style-type: none;
 }
 
-a {
-	text-decoration: none;
-	color: unset;
+a,
+a:hover {
+  text-decoration: none;
+  color: unset;
 }
 
 .hidden {
-	opacity: 0;
-	display: none;
-	visibility: hidden;
+  opacity: 0;
+  display: none;
+  visibility: hidden;
 }

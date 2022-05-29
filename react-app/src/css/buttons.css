@@ -1,0 +1,26 @@
+button {
+	cursor: pointer;
+	border: none;
+	text-decoration: none;
+}
+
+button:hover {
+    background-color: var(--gray1);
+    color:black;
+    border-color: black;
+    transform: scale(1.01);
+    cursor: pointer;
+}
+
+/* Login form buttons */
+.form-buttons button {
+    background-color: var(--yellow1);
+    color: var(--gray4);
+    border: none;
+    height: 40px;
+    width: 100%;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold; 
+}
+
