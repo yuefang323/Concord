@@ -7,8 +7,6 @@
 }
 
 .sidebar-top-ctrl {
-	/* overflow-x: visible !important;
-	overflow-y: scroll; */
 	white-space: nowrap;
 	height: 100%;
 	padding-top: 10px;
@@ -50,7 +48,7 @@
 
 .sidebar-btn-dark:hover,
 .sidebar-btn-dark:hover .sidebar-icon {
-	background-color: var(--red);
+	background-color: var(--red1);
 	color: white;
 }
 
@@ -67,7 +65,7 @@
 }
 
 .sidebar-icon {
-	color: var(--red);
+	color: var(--red1);
 	transition: all 1s;
 }
 
