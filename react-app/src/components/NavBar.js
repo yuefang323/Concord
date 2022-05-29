@@ -10,7 +10,6 @@ const NavBar = () => {
 				<li>
 					<NavLink to="/" exact={true} activeClassName="active">
 						Home
-						{/* <SplashPage /> */}
 					</NavLink>
 				</li>
 				<li>
@@ -23,9 +22,6 @@ const NavBar = () => {
 						Sign Up
 					</NavLink>
 				</li>
-				{/* <NavLink to='/users' exact={true} activeClassName='active'>
-            Users
-          </NavLink> */}
 				<li></li>
 			</ul>
 		</nav>

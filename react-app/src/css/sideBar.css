@@ -1,9 +1,15 @@
 .sidebar-btn-ctrl {
 	width: 72px;
-	height: 72px;
+	height: 60px;
 	display: flex;
 	justify-content: center;
 	align-items: center;
+}
+
+.sidebar-top-ctrl {
+	overflow-x: hidden;
+	white-space: nowrap;
+	height: 100%;
 }
 
 .sidebar-btn {
@@ -14,8 +20,77 @@
 	display: flex;
 	justify-content: center;
 	align-items: center;
+	transition: all 0.5s;
+	font-size: 24px;
+	color: white;
+	font-weight: bold;
+	text-shadow: 0px 0px 1px rgba(0, 0, 0, 0.3);
+	background-size: cover;
+	background-position: center;
+}
+
+.sidebar-btn:hover {
+	border-radius: 15px;
+}
+
+.sidebar-btn-active {
+	border-radius: 15px;
+}
+
+.sidebar-btn-dark {
+	background-color: var(--gray3);
+}
+
+.sidebar-btn-dark:hover,
+.sidebar-btn-dark:hover .sidebar-icon {
+	background-color: var(--red);
+	color: white;
+}
+
+.sidebar-btn-ctrl:hover .sidebar-highlight {
+	height: 25px;
 }
 
 .sidebar-btn-logo {
 	width: 36px;
+}
+
+.sidebar-icon {
+	color: var(--red);
+	transition: all 1s;
+}
+
+.sidebar-highlight {
+	position: absolute;
+	left: 0px;
+	background-color: white;
+	height: 10px;
+	width: 4px;
+	border-radius: 0px 5px 5px 0px;
+	transition: all 0.5s;
+}
+
+.sb-hl-active {
+	height: 40px;
+}
+
+/* Background colors */
+.color-red {
+	background-color: var(--red);
+}
+
+.color-yellow {
+	background-color: var(--yellow);
+}
+
+.color-green {
+	background-color: var(--green);
+}
+
+.color-blue {
+	background-color: var(--blue);
+}
+
+.color-purple {
+	background-color: var(--purple);
 }

@@ -1,0 +1,29 @@
+.tooltip {
+	position: relative;
+}
+
+.tooltip .tooltiptext {
+	width: fit-content;
+	background-color: var(--gray4);
+	color: black;
+	text-align: center;
+	padding: 5px 10px;
+	border-radius: 6px;
+	position: absolute;
+	font-size: 12px;
+	z-index: 1;
+	top: 120%;
+	left: 0px;
+	transition: all 0.25s;
+}
+
+.tooltip .tooltiptext::after {
+	content: " ";
+	position: absolute;
+	bottom: 100%;
+	left: 50%;
+	margin-left: -5px;
+	border-width: 5px;
+	border-style: solid;
+	border-color: transparent transparent var(--gray4) transparent;
+}
