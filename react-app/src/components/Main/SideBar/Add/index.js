@@ -4,12 +4,12 @@ import ReactTooltip from "react-tooltip";
 import { Modal } from "../../../../context/Modal";
 
 import CreateJoin from "./CreateJoin";
-
 import AddServer from "../../Modal/Server/AddServer";
 import JoinServer from "../../Modal/Server/JoinServer";
 
 const Add = () => {
 	const [showModal, setShowModal] = useState(false);
+	const [choose, setChoose] = useState("create-join");
 
 	return (
 		<div
@@ -26,10 +26,15 @@ const Add = () => {
 					onClose={() => {
 						setTimeout(() => {
 							setShowModal(false);
+							setChoose("create-join");
 						}, 1);
 					}}
 				>
-					<CreateJoin />
+					<div className="form-ctrl form-sm">
+						{choose === "create-join" && <CreateJoin setChoose={setChoose} />}
+						{choose === "add-server" && <AddServer setChoose={setChoose} />}
+						{choose === "join-server" && <JoinServer setChoose={setChoose} />}
+					</div>
 				</Modal>
 			)}
 			<ReactTooltip place="right" type="dark" effect="solid" />

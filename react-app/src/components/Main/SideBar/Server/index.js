@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import { useSelector } from "react-redux";
 import { Link, useParams } from "react-router-dom";
 import ReactTooltip from "react-tooltip";
@@ -9,20 +10,10 @@ const Server = ({ server }) => {
 	const serverParam = useParams().serverId;
 	const serverId =
 		serverParam === "@me" ? serverParam : parseInt(serverParam, 10);
-	const servers = useSelector((state) => state.servers);
-	const prvChannels = useSelector((state) => state.prvChannels);
-
-	let firstChannelId;
-
-	if (serverId === "@me") {
-		firstChannelId = prvChannels.allIds[0];
-	} else {
-		firstChannelId = servers.byId[serverId].channels[0];
-	}
 
 	return (
 		<Link
-			to={`/channels/${server.id}/${firstChannelId}`}
+			to={`/channels/${server.id}/`}
 			className="sidebar-btn-ctrl"
 			data-tip={server?.name}
 		>

@@ -1,5 +1,6 @@
 // Actions
 const GET_SERVERS = "servers/GET_SERVERS";
+const JOIN_SERVER = "servers/JOIN_SERVER";
 
 // Action Creator
 export const getServers = (servers) => {
@@ -9,7 +10,23 @@ export const getServers = (servers) => {
 	};
 };
 
+const joinServer = (server) => {
+	return {
+		type: JOIN_SERVER,
+		server,
+	};
+};
+
 // Thunks
+export const joinServerUser = (serverToJoin) => async (dispatch) => {
+	const response = await fetch("/api/servers/join", {
+		method: "POST",
+		body: JSON.stringify(serverToJoin),
+	});
+	const data = await response.json();
+	dispatch(joinServer(data.server));
+	return data;
+};
 
 // Reducer
 const initialState = { byId: {}, allIds: [] };
