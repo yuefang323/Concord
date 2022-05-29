@@ -12,7 +12,7 @@ const Home = () => {
 	return (
 		<Link
 			to={`/channels/@me/${firstPrivateChannelId}`}
-			className="sidebar-btn-ctrl tooltip"
+			className="sidebar-btn-ctrl"
 		>
 			{serverId === "@me" ? (
 				<>
@@ -29,8 +29,6 @@ const Home = () => {
 					</div>
 				</>
 			)}
-
-			<div className="tooltiptext">Home</div>
 		</Link>
 	);
 };
