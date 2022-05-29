@@ -14,7 +14,7 @@ import SplashPage from "./components/Splash";
 function App() {
 	const [loaded, setLoaded] = useState(false);
 	const dispatch = useDispatch();
-	const user = useSelector(state => state.session.user);
+	const user = useSelector((state) => state.session.user);
 
 	useEffect(() => {
 		(async () => {
@@ -29,23 +29,18 @@ function App() {
 
 	return (
 		<BrowserRouter>
-			{/* <NavBar /> */}
 			<Switch>
 				<Route exact path="/">
-					{user? <MainPage /> : <SplashPage />}
+					{user ? <MainPage /> : <SplashPage />}
 				</Route>
 				<Route path="/login" exact={true}>
+					<NavBar />
 					<LoginForm />
 				</Route>
 				<Route path="/sign-up" exact={true}>
+					<NavBar />
 					<SignUpForm />
 				</Route>
-				{/* <ProtectedRoute path='/users' exact={true} >
-          <UsersList/>
-        </ProtectedRoute>
-        <ProtectedRoute path='/users/:userId' exact={true} >
-          <User />
-        </ProtectedRoute> */}
 				<ProtectedRoute path="/" exact={true}>
 					<MainPage />
 				</ProtectedRoute>

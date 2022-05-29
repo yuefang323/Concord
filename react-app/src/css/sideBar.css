@@ -1,0 +1,21 @@
+.sidebar-btn-ctrl {
+	width: 72px;
+	height: 72px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.sidebar-btn {
+	width: 48px;
+	height: 48px;
+	border-radius: 48px;
+	background-color: white;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.sidebar-btn-logo {
+	width: 36px;
+}

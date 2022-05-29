@@ -1,0 +1,38 @@
+.main-ctrl {
+	width: 100vw;
+	height: 100vh;
+	display: flex;
+	flex-direction: row;
+	flex-wrap: nowrap;
+}
+
+.sidebar-ctrl {
+	width: 72px;
+	display: flex;
+	flex-direction: column;
+	background-color: var(--gray4);
+	justify-content: space-between;
+}
+
+.channel-ctrl {
+	width: 240px;
+	display: flex;
+	flex-direction: column;
+	background-color: var(--gray2);
+}
+
+.chat-ctrl {
+	width: 100%;
+	display: flex;
+	flex-direction: column;
+	background-color: var(--gray1);
+}
+
+.users-ctrl {
+	width: 240px;
+	height: 100vh;
+	display: flex;
+	flex-direction: column;
+	background-color: var(--gray2);
+	right: 0px;
+}

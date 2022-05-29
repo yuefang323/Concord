@@ -1,11 +1,15 @@
 import SideBar from "../SideBar";
-import NavBar from "../NavBar";
+import ChannelBar from "../ChannelBar";
+import Chat from "../Chat";
+import Users from "../Users";
 
 const MainPage = () => {
 	return (
-		<div>
-			<NavBar />
+		<div className="main-ctrl">
 			<SideBar />
+			<ChannelBar />
+			<Chat />
+			<Users />
 		</div>
 	);
 };

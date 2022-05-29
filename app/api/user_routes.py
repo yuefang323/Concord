@@ -29,7 +29,7 @@ def get_user_all_info():
     # getting all servers class user joined
     joined_servers = user.joined_servers
 
-    joined_channels = [channel.to_dict() for channel in user.joined_channels]
+    joined_channels = user.joined_channels
 
     joined_chats = [chat.to_dict() for chat in user.joined_chats]
 
@@ -39,7 +39,7 @@ def get_user_all_info():
 
     other_servers = user.other_servers
 
-    # joined_server_memebers = User.query.join(JoinServerUser).filter(JoinServerUser.server_id in joined_servers_id).all()
+    joined_server_memebers = user.users
 
     return {
         "servers": joined_servers,
@@ -48,5 +48,5 @@ def get_user_all_info():
         "prvChannels": joined_private_channels,
         "prvChats": joined_private_chats,
         "otherServers": other_servers,
-        # "users": joined_server_memebers
+        "users": joined_server_memebers
         }
