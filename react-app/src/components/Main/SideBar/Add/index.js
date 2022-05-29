@@ -1,4 +1,5 @@
 import { useState } from "react";
+import ReactTooltip from "react-tooltip";
 
 import { Modal } from "../../../../context/Modal";
 
@@ -12,14 +13,14 @@ const Add = () => {
 
 	return (
 		<div
-			className="sidebar-btn-ctrl tooltip"
+			className="sidebar-btn-ctrl"
 			onClick={() => setShowModal(true)}
+			data-tip="Create / Join Server"
 		>
 			<div className="sidebar-highlight"></div>
 			<div className="sidebar-btn sidebar-btn-dark">
 				<i className="fa-solid fa-plus sidebar-icon"></i>
 			</div>
-			<div className="tooltiptext">Create / Join Server</div>
 			{showModal && (
 				<Modal
 					onClose={() => {
@@ -31,6 +32,7 @@ const Add = () => {
 					<CreateJoin />
 				</Modal>
 			)}
+			<ReactTooltip place="right" type="dark" effect="solid" />
 		</div>
 	);
 };

@@ -1,6 +1,6 @@
-import { useEffect } from "react";
 import { useSelector } from "react-redux";
 import { Link, useParams } from "react-router-dom";
+import ReactTooltip from "react-tooltip";
 
 import WithLogo from "./WithLogo";
 import NoLogo from "./NoLogo";
@@ -23,7 +23,8 @@ const Server = ({ server }) => {
 	return (
 		<Link
 			to={`/channels/${server.id}/${firstChannelId}`}
-			className="sidebar-btn-ctrl tooltip"
+			className="sidebar-btn-ctrl"
+			data-tip={server?.name}
 		>
 			{serverId === server?.id ? (
 				<div className="sidebar-highlight sb-hl-active"></div>
@@ -31,7 +32,7 @@ const Server = ({ server }) => {
 				<div className="sidebar-highlight"></div>
 			)}
 			{server.logo ? <WithLogo server={server} /> : <NoLogo server={server} />}
-			<div className="tooltiptext">{server?.name}</div>
+			<ReactTooltip place="right" type="dark" effect="solid" />
 		</Link>
 	);
 };
