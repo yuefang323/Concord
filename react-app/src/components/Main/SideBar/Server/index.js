@@ -14,7 +14,7 @@ const Server = ({ server }) => {
 				<div className="sidebar-highlight"></div>
 			)}
 			{server.logo ? <WithLogo server={server} /> : <NoLogo server={server} />}
-			{/* <div className="tooltiptext">{server?.name}</div> */}
+			<div className="tooltiptext">{server?.name}</div>
 		</Link>
 	);
 };

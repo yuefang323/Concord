@@ -23,8 +23,10 @@ const NoLogo = ({ server }) => {
 
 		if (serverId === server.id) {
 			divRef.current.classList.add("sidebar-btn-active");
+		} else {
+			divRef.current.classList.remove("sidebar-btn-active");
 		}
-	}, [server.id]);
+	}, [server.id, serverId]);
 
 	return (
 		<div className="sidebar-btn" ref={divRef}>

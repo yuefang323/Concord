@@ -1,5 +1,5 @@
 .splash-nav-bar {
-    display: flex;
+	display: flex;
 	justify-content: space-between;
 	align-items: center;
 	width: 80%;
@@ -8,8 +8,11 @@
 }
 
 .splash-session-links {
-    display: flex;
-    gap: 15px;
-    word-spacing: 0;
+	display: flex;
+	gap: 15px;
+	word-spacing: 0;
 }
 
+.logo {
+	width: 200px;
+}
