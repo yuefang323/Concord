@@ -1,0 +1,9 @@
+.select {
+	padding: 10px;
+	width: 100%;
+	border: 1px solid lightgray;
+	border-radius: 5px;
+	font-size: 14px;
+	font-weight: bold;
+	font-family: "Open Sans", sans-serif;
+}

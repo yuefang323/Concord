@@ -2,6 +2,7 @@ import React from "react";
 import { useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom";
 import { logout } from "../../store/session";
+import ReactTooltip from "react-tooltip";
 
 const LogoutButton = () => {
 	const dispatch = useDispatch();
@@ -12,7 +13,7 @@ const LogoutButton = () => {
 	};
 
 	return (
-		<div className="sidebar-btn-ctrl tooltip">
+		<div className="sidebar-btn-ctrl" data-tip="Logout">
 			<div
 				id="logout"
 				onClick={onLogout}
@@ -20,7 +21,7 @@ const LogoutButton = () => {
 			>
 				<i className="fa-solid fa-right-from-bracket sidebar-icon"></i>
 			</div>
-			<div className="tooltiptext">Logout</div>
+			<ReactTooltip place="right" type="dark" effect="solid" />
 		</div>
 	);
 };

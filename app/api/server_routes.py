@@ -10,5 +10,5 @@ server_routes = Blueprint("servers", __name__)
 def get_all_servers():
     servers = Server.query.all()
     data = [server.to_dict() for server in servers]
-    
+
     return {"servers": data}

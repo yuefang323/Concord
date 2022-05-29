@@ -1,19 +1,136 @@
 .form-ctrl {
 	display: flex;
 	flex-direction: column;
-	padding: 5px;
+	align-items: center;
 	border-radius: 5px;
 	background-color: white;
 	box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+	transition: all 0.5s;
 }
 
 .form-sm {
 	max-width: 425px;
 }
 
+.form-ctrl-wrap {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	padding: 20px 15px 15px 15px;
+	gap: 10px;
+}
+
 .form-h2 {
 	font-family: "Open Sans", sans-serif;
 	font-weight: bold;
-	font-size: 1.5rem;
+	font-size: 24px;
 	padding: 0;
+}
+
+.form-description {
+	font-size: 13px;
+	text-align: center;
+}
+
+.form-create-server-btn-wrap {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	border: 1px solid lightgray;
+	border-radius: 5px;
+	width: 100%;
+	padding: 10px 20px 10px 20px;
+	cursor: pointer;
+	background-color: white;
+	transition: all 0.25s;
+}
+
+.form-create-server-btn-wrap:hover {
+	background-color: var(--gray1);
+}
+
+.form-create-server-btn-flx {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	gap: 10px;
+}
+
+.form-create-server-btn-title {
+	font-weight: bold;
+	font-family: "Open Sans", sans-serif;
+}
+
+.form-create-btm-wrap,
+.form-create-btm-wrap-row {
+	background-color: var(--gray1);
+	width: 100%;
+	border-radius: 0px 0px 5px 5px;
+	padding: 15px;
+	display: flex;
+	align-items: center;
+	gap: 15px;
+}
+
+.form-create-btm-wrap {
+	flex-direction: column;
+}
+
+.form-create-btm-wrap-row {
+	flex-direction: row;
+	justify-content: space-between;
+}
+
+.form-create-btn-title {
+	font-size: 18px;
+	font-weight: bold;
+	font-family: "Open Sans", sans-serif;
+}
+
+.form-create-btm-wrap button {
+	background-color: var(--yellow1);
+	color: var(--gray4);
+	border: none;
+	height: 40px;
+	width: 100%;
+	border-radius: 5px;
+	cursor: pointer;
+	font-weight: bold;
+	font-size: 15px;
+}
+
+.form-create-btm-wrap button:hover {
+	background-color: var(--red2);
+	color: white;
+}
+
+.form-create-btm-btn {
+	background-color: var(--yellow1);
+	color: var(--gray4);
+	border: none;
+	height: 40px;
+	border-radius: 5px;
+	cursor: pointer;
+	font-weight: bold;
+	width: fit-content;
+	padding: 0px 15px 0px 15px;
+	font-size: 13px;
+}
+
+.form-create-btm-btn:hover {
+	background-color: var(--red2);
+	color: white;
+	font-size: 13px;
+}
+
+.form-create-btm-clear-btn {
+	background-color: unset;
+	font-size: 13px;
+	border-bottom: 1px solid transparent;
+}
+
+.form-create-btm-clear-btn:hover {
+	background-color: unset;
+	color: var(--red1);
+	border-bottom: 1px solid var(--red1);
 }

@@ -1,5 +1,6 @@
 import { useSelector } from "react-redux";
 import { Link, useParams } from "react-router-dom";
+import ReactTooltip from "react-tooltip";
 
 import logo from "../../../../assets/logo-red.svg";
 
@@ -12,7 +13,8 @@ const Home = () => {
 	return (
 		<Link
 			to={`/channels/@me/${firstPrivateChannelId}`}
-			className="sidebar-btn-ctrl tooltip"
+			className="sidebar-btn-ctrl"
+			data-tip="Home"
 		>
 			{serverId === "@me" ? (
 				<>
@@ -29,8 +31,7 @@ const Home = () => {
 					</div>
 				</>
 			)}
-
-			<div className="tooltiptext">Home</div>
+			<ReactTooltip place="right" type="dark" effect="solid" />
 		</Link>
 	);
 };
