@@ -2,7 +2,12 @@ import { useState } from "react";
 
 import { Modal } from "../../../../context/Modal";
 
-const JoinServer = () => {
+import CreateJoin from "./CreateJoin";
+
+import AddServer from "../../Modal/Server/AddServer";
+import JoinServer from "../../Modal/Server/JoinServer";
+
+const Add = () => {
 	const [showModal, setShowModal] = useState(false);
 
 	return (
@@ -23,11 +28,11 @@ const JoinServer = () => {
 						}, 1);
 					}}
 				>
-					<div>Form</div>
+					<CreateJoin />
 				</Modal>
 			)}
 		</div>
 	);
 };
 
-export default JoinServer;
+export default Add;

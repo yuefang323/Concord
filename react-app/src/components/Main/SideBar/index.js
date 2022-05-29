@@ -2,7 +2,7 @@ import { useSelector } from "react-redux";
 
 import Home from "./Home";
 import Server from "./Server";
-import JoinServer from "./JoinServer";
+import Add from "./Add";
 // import Explore from "./Explore";
 
 import LogoutButton from "../../auth/LogoutButton";
@@ -20,7 +20,7 @@ const SideBar = () => {
 				{servers?.allIds?.map((id) => (
 					<Server key={id} server={servers.byId[id]} />
 				))}
-				<JoinServer />
+				<Add />
 				{/* <Explore /> */}
 			</div>
 			<div className="sidebar-btm-ctrl">

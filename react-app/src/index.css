@@ -1,10 +1,12 @@
 /* TODO Add site wide styles */
 @import url("https://fonts.googleapis.com/css2?family=Bungee&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Poppins&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@700&display=swap");
 @import url("./css/mainPage.css");
 @import url("./css/sideBar.css");
 @import url("./css/tooltip.css");
 @import url("./css/modal.css");
+@import url("./css/form.css");
 
 :root {
 	--yellow: #ffca3a;
