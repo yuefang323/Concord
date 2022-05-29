@@ -3,7 +3,6 @@ import { useSelector, useDispatch } from "react-redux";
 import { NavLink, Redirect } from "react-router-dom";
 import { login } from '../../store/session';
 
-import "./SplashPage.css";
 import logo from "../../assets/favicon.ico"
 
 const SplashPage = () => {
