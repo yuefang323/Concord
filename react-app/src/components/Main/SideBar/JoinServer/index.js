@@ -5,11 +5,6 @@ import { Modal } from "../../../../context/Modal";
 const JoinServer = () => {
 	const [showModal, setShowModal] = useState(false);
 
-	const close = () => {
-		console.log("click");
-		setShowModal(false);
-	};
-
 	return (
 		<div
 			className="sidebar-btn-ctrl tooltip"
@@ -21,7 +16,13 @@ const JoinServer = () => {
 			</div>
 			<div className="tooltiptext">Create / Join Server</div>
 			{showModal && (
-				<Modal onClose={close}>
+				<Modal
+					onClose={() => {
+						setTimeout(() => {
+							setShowModal(false);
+						}, 1);
+					}}
+				>
 					<div>Form</div>
 				</Modal>
 			)}
