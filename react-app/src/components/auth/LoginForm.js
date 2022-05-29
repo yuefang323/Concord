@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { Redirect, Link } from 'react-router-dom';
 import { login } from '../../store/session';
-import NavBar from '../NavBar';
 
 const LoginForm = () => {
   const [errors, setErrors] = useState([]);
@@ -44,7 +43,6 @@ const LoginForm = () => {
   return (
     <div className='login-wrapper'>
       <div className='login-form-container'>
-        {/* <NavBar /> */}
         <form onSubmit={onLogin}>
           <div className='form-header'>
             <h2>Welcome back!</h2>
@@ -83,6 +81,10 @@ const LoginForm = () => {
         <div className='register-link'>
           Need an account?
           <Link to="/sign-up">Register</Link>
+        </div>
+        <div className='home-link'>
+          Return to Concord 
+          <Link to="/">Home</Link>
         </div>
       </div>
     </div>

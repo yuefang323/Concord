@@ -68,15 +68,16 @@ input:focus {
 .form-buttons {
   display: flex;
   flex-direction: column;
-  gap: 20px;
+  gap: 25px;
+  margin: 0, 20px; 
 }
 
-.register-link {
+.register-link, .home-link {
   margin-top: 20px;
   color: var(--gray2);
 }
 
-.register-link a {
+.register-link a, .home-link a {
   margin-left: 10px;
   color: #02aaec;
   text-decoration: none;
