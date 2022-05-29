@@ -3,7 +3,6 @@ import { BrowserRouter, Route, Switch } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import LoginForm from "./components/auth/LoginForm";
 import SignUpForm from "./components/auth/SignUpForm";
-import NavBar from "./components/NavBar";
 import ProtectedRoute from "./components/auth/ProtectedRoute";
 
 import MainPage from "./components/Main";
@@ -33,11 +32,9 @@ function App() {
 					{user ? <MainPage /> : <SplashPage />}
 				</Route>
 				<Route path="/login" exact={true}>
-					<NavBar />
 					<LoginForm />
 				</Route>
 				<Route path="/sign-up" exact={true}>
-					<NavBar />
 					<SignUpForm />
 				</Route>
 				<ProtectedRoute path={["/", "/channels/:serverId"]} exact={true}>

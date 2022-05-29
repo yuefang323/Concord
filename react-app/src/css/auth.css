@@ -1,0 +1,113 @@
+.login-wrapper,
+.signup-wrapper {
+  background-image: url("https://wallpaperaccess.com/full/2959068.jpg");
+  /* background-color: var(--red2); */
+  width: 100vw;
+  height: 100vh;
+  position: absolute;
+  top: 0;
+  z-index: -100;
+}
+
+.login-form-container,
+.singup-form-container {
+  background-color: var(--gray3);
+  color: var(--gray1);
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border-radius: 10px;
+  box-shadow: 0 2px 10px 0 rgb(0 0 0 0.2);
+  width: 480px;
+  padding: 32px;
+  box-sizing: border-box;
+}
+
+.form-header {
+  color: white;
+  text-align: center;
+}
+
+.form-header h2 {
+  font-family: var(--title-font);
+}
+.form-header p {
+  color: var(--gray2);
+  font-size: 18px;
+}
+
+.login-input,
+.signup-input {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  color: var(--gray2);
+}
+
+.login-input label,
+.signup-input label {
+  font-size: 15px;
+  font-family: var(--title-font);
+}
+
+.login-input input,
+.signup-input input {
+  background-color: var(--gray4);
+  border-radius: 5px;
+  height: 40px;
+  padding: 0 10px 0 10px;
+  caret-color: #fff;
+  color: #fff;
+  border: none;
+}
+
+input:focus {
+  outline: none;
+}
+
+.form-buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+  margin-top: 30px;
+  margin-bottom: 10px;
+}
+
+.register-link,
+.home-link,
+.login-link {
+  margin-top: 10px;
+  color: var(--gray2);
+}
+
+.register-link a,
+.home-link a,
+.login-link a {
+  margin-left: 10px;
+  color: #02aaec;
+  text-decoration: none;
+}
+
+.error-list div {
+  padding: 5px;
+  color: var(--red1);
+  font-weight: bold;
+}
+
+#logout {
+  cursor: pointer;
+  justify-content: flex-start;
+  padding: 10px 10px 10px 5px;
+  align-items: center;
+  display: flex;
+  gap: 5px;
+}
+
+#logout div {
+  font-family: "Poppins";
+}

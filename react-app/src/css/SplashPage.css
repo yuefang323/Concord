@@ -13,6 +13,7 @@
 	word-spacing: 0;
 }
 
+<<<<<<< HEAD:react-app/src/components/Splash/SplashPage.css
 .splash-session-links {
 	display: flex;
 	gap: 15px;
@@ -22,3 +23,5 @@
 .logo {
 	width: 200px;
 }
+=======
+>>>>>>> main:react-app/src/css/SplashPage.css

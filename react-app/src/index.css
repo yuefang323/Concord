@@ -7,10 +7,17 @@
 @import url("./css/tooltip.css");
 @import url("./css/modal.css");
 @import url("./css/form.css");
+@import url("./css/auth.css");
+@import url("./css/navbar.css");
+@import url("./css/SplashPage.css");
+@import url("./css/buttons.css");
 
 :root {
-	--yellow: #ffca3a;
-	--red: #f40004;
+	--yellow1: #ffca3a;
+	--yellow2: #feef7b;
+	--yellow3: #fea004;
+	--red1: #f40004;
+	--red2: #fe662b;
 	--gray1: #ededed;
 	--gray2: #bababa;
 	--gray3: #4f4f4f;
@@ -40,14 +47,22 @@ button {
 	text-decoration: none;
 }
 
+h1 {
+	font-family: "Bungee", cursive;
+}
+
 ul,
 li {
 	list-style-type: none;
 }
 
-a {
+a,
+a:hover {
 	text-decoration: none;
-	color: unset;
+}
+
+a:hover {
+	color: var(--red2);
 }
 
 .hidden {
@@ -62,7 +77,7 @@ a {
 }
 
 .color-yellow {
-	background-color: var(--yellow);
+	background-color: var(--yellow1);
 }
 
 .color-green {
