@@ -33,6 +33,7 @@ def seed_private_chats():
     db.session.add(prv_msg2)
     db.session.add(prv_msg3)
     db.session.add(prv_msg4)
+    
     db.session.commit()
 
 def undo_private_chats():

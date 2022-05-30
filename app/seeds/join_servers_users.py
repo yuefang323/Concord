@@ -97,6 +97,7 @@ def seed_join_servers_users():
     db.session.add(fang2)
     db.session.add(lincoln)
     db.session.add(lincoln2)
+    
     db.session.commit()
 
 def undo_join_servers_users():

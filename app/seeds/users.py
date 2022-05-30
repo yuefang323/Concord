@@ -10,11 +10,11 @@ def seed_users():
     bobbie = User(
         username='bobbie', email='bobbie@aa.io', password='password', avatar='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR0XNTnjezNRbpXlCmfQG_VzEBWB3brmJ7hyQ&usqp=CAU')
     frances = User(
-        username='fang', email='frances@aa.io', password='password', avatar='')
+        username='frances', email='frances@aa.io', password='password', avatar='')
     fang = User(
         username='fang', email='fang@aa.io', password='password', avatar='')
     lincoln = User(
-        username='fang', email='lincoln@aa.io', password='password', avatar='')
+        username='lincoln', email='lincoln@aa.io', password='password', avatar='')
 
     db.session.add(demo)
     db.session.add(marnie)
