@@ -31,9 +31,15 @@ const Add = () => {
 					}}
 				>
 					<div className="form-ctrl form-sm">
-						{choose === "create-join" && <CreateJoin setChoose={setChoose} />}
-						{choose === "add-server" && <AddServer setChoose={setChoose} />}
-						{choose === "join-server" && <JoinServer setChoose={setChoose} />}
+						{choose === "create-join" && (
+							<CreateJoin setChoose={setChoose} setShowModal={setShowModal} />
+						)}
+						{choose === "add-server" && (
+							<AddServer setChoose={setChoose} setShowModal={setShowModal} />
+						)}
+						{choose === "join-server" && (
+							<JoinServer setChoose={setChoose} setShowModal={setShowModal} />
+						)}
 					</div>
 				</Modal>
 			)}

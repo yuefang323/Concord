@@ -45,6 +45,7 @@ const SplashPage = () => {
 					</NavLink>
 				</div>
 			</nav>
+			{errors && errors.map((error) => <div>{error}</div>)}
 			<main>
 				<div
 					className="splash-bg-wrap"
@@ -103,7 +104,11 @@ const SplashPage = () => {
 					<div>
 						<div className="footer-list-title">Technologies Used</div>
 						<li>
-							<a href="https://www.python.org/" target="_blank">
+							<a
+								href="https://www.python.org/"
+								target="_blank"
+								rel="noreferrer"
+							>
 								Python
 							</a>
 						</li>
@@ -111,17 +116,26 @@ const SplashPage = () => {
 							<a
 								href="https://flask.palletsprojects.com/en/2.1.x/"
 								target="_blank"
+								rel="noreferrer"
 							>
 								Flask
 							</a>
 						</li>
 						<li>
-							<a href="https://www.postgresql.org/" target="_blank">
+							<a
+								href="https://www.postgresql.org/"
+								target="_blank"
+								rel="noreferrer"
+							>
 								Postgres SQL
 							</a>
 						</li>
 						<li>
-							<a href="https://www.sqlalchemy.org/" target="_blank">
+							<a
+								href="https://www.sqlalchemy.org/"
+								target="_blank"
+								rel="noreferrer"
+							>
 								SQL ALchemy
 							</a>
 						</li>
@@ -129,22 +143,23 @@ const SplashPage = () => {
 							<a
 								href="https://alembic.sqlalchemy.org/en/latest/"
 								target="_blank"
+								rel="noreferrer"
 							>
 								Alembic
 							</a>
 						</li>
 						<li>
-							<a href="https://reactjs.org/" target="_blank">
+							<a href="https://reactjs.org/" target="_blank" rel="noreferrer">
 								React JS
 							</a>
 						</li>
 						<li>
-							<a href="https://redux.js.org/" target="_blank">
+							<a href="https://redux.js.org/" target="_blank" rel="noreferrer">
 								Redux
 							</a>
 						</li>
 						<li>
-							<a href="https://socket.io/" target="_blank">
+							<a href="https://socket.io/" target="_blank" rel="noreferrer">
 								Socket io
 							</a>
 						</li>
