@@ -1,13 +1,29 @@
 import { useState, useEffect } from "react";
-import { useSelector } from "react-redux";
+import { useHistory } from "react-router-dom";
+import { useSelector, useDispatch } from "react-redux";
+
+import * as serversActions from "../../../../../store/servers";
+import * as joinServersActions from "../../../../../store/joinServers";
 
 const AddServer = ({ setChoose, setShowModal }) => {
+	const dispatch = useDispatch();
+	const history = useHistory();
+
 	const username = useSelector((state) => state.session.user).username;
 	const [name, setName] = useState("");
+	const [errors, setErrors] = useState([]);
 
-	const handleSubmit = (e) => {
+	const handleSubmit = async (e) => {
 		e.preventDefault();
-		console.log(name);
+		const newServer = { name };
+		const data = await dispatch(serversActions.addNewServer(newServer));
+		if (data.joinServer) {
+			await dispatch(joinServersActions.joinServer(data.joinServer));
+			setShowModal(false);
+			history.push(`/channels/${data.server.id}`);
+		} else {
+			setErrors(data);
+		}
 	};
 
 	useEffect(() => {
@@ -15,7 +31,7 @@ const AddServer = ({ setChoose, setShowModal }) => {
 	}, []);
 
 	return (
-		<form onSubmit={handleSubmit} handleSubmit>
+		<form onSubmit={handleSubmit}>
 			<div className="form-ctrl-wrap">
 				<div className="form-h2">Customize your server</div>
 				<div className="form-description">
@@ -35,6 +51,11 @@ const AddServer = ({ setChoose, setShowModal }) => {
 						By creating a server, you agree to Concord's Community Guidelines
 					</div>
 				</label>
+				<div className="error-list">
+					{errors.map((error, ind) => (
+						<div key={ind}>{error}</div>
+					))}
+				</div>
 			</div>
 			<div className="form-create-btm-wrap-row">
 				<button

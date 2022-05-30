@@ -18,19 +18,18 @@ def validation_errors_to_error_messages(validation_errors):
 
 
 # Join new server
-@join_server_routes.route("/new", methods=["GET","POST"])
-# @login_required
+@join_server_routes.route("/new", methods=["POST"])
+@login_required
 def join_server():
     """
     Current user join a serer
     """
     form = JoinServerForm()
     form['csrf_token'].data = request.cookies['csrf_token']
-    print(form.data)
-    print(request.cookies)
     if form.validate_on_submit():
         user_id = current_user.id
         server_id = form.data["server_id"]
+
         newJoin = JoinServerUser(user_id=user_id, server_id=server_id)
         db.session.add(newJoin)
         db.session.commit()
