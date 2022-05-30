@@ -4,6 +4,7 @@ import { useSelector, useDispatch } from "react-redux";
 import * as joinServersActions from "../../../../../store/joinServers";
 import * as channelsActions from "../../../../../store/channels";
 import * as chatsActions from "../../../../../store/chats";
+import * as usersActions from "../../../../../store/users";
 
 const JoinServer = ({ setChoose, setShowModal }) => {
 	const dispatch = useDispatch();
@@ -25,6 +26,8 @@ const JoinServer = ({ setChoose, setShowModal }) => {
 			await dispatch(channelsActions.getChannels(data.channels));
 			// Dispatch chats
 			await dispatch(chatsActions.getChats(data.chats));
+			// Dispatch users
+			await dispatch(usersActions.getUsers(data.users));
 			setShowModal(false);
 		} else {
 			setErrors(["Please select a server"]);

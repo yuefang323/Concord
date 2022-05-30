@@ -10,15 +10,6 @@ export const getChannels = (channels) => {
 	};
 };
 
-// Thunks
-// export const getNewChannel =
-// 	({ serverId }) =>
-// 	async (dispatch) => {
-// 		const response = await fetch(`/api/servers/${serverId}/channels`);
-// 		const data = await response.json();
-// 		dispatch();
-// 	};
-
 // Reducer
 const initialState = { byId: {}, allIds: [] };
 
