@@ -7,6 +7,7 @@ import logo from "../../assets/logo-long.svg";
 import mountain from "../../assets/splash-mountain.svg";
 import monster1 from "../../assets/splash-monster1.svg";
 import monster2 from "../../assets/splash-monster2.svg";
+import sample from "../../assets/splash-sample.svg";
 
 const SplashPage = () => {
 	const [errors, setErrors] = useState([]);
@@ -44,6 +45,7 @@ const SplashPage = () => {
 					</NavLink>
 				</div>
 			</nav>
+			{errors && errors.map((error) => <div>{error}</div>)}
 			<main>
 				<div
 					className="splash-bg-wrap"
@@ -67,7 +69,113 @@ const SplashPage = () => {
 						</button>
 					</div>
 				</div>
+				<div className="splash-sample-wrap">
+					<img src={sample} alt="sample" />
+					<div className="splash-sample-title-wrap">
+						<div className="splash-sample-title">
+							Create an invite- <br />
+							only place where
+							<br /> you belong
+						</div>
+						<p className="splash-sample-desc">
+							Discord servers are organized into
+							<br />
+							topic-based channels where you
+							<br />
+							can collaborate, share, and just <br />
+							talk about your day without
+							<br />
+							clogging up a group chat.
+						</p>
+					</div>
+				</div>
 			</main>
+			<footer className="splash-footer-wrap">
+				<div className="splash-footer-top">
+					<div className="splash-footer-title">
+						IMAGINE A<br /> PLACE
+					</div>
+					<div>
+						<div className="footer-list-title">Team Members</div>
+						<li>Fang Yue</li>
+						<li>Frances (Huang) Lau</li>
+						<li>Lincoln Her</li>
+					</div>
+					<div>
+						<div className="footer-list-title">Technologies Used</div>
+						<li>
+							<a
+								href="https://www.python.org/"
+								target="_blank"
+								rel="noreferrer"
+							>
+								Python
+							</a>
+						</li>
+						<li>
+							<a
+								href="https://flask.palletsprojects.com/en/2.1.x/"
+								target="_blank"
+								rel="noreferrer"
+							>
+								Flask
+							</a>
+						</li>
+						<li>
+							<a
+								href="https://www.postgresql.org/"
+								target="_blank"
+								rel="noreferrer"
+							>
+								Postgres SQL
+							</a>
+						</li>
+						<li>
+							<a
+								href="https://www.sqlalchemy.org/"
+								target="_blank"
+								rel="noreferrer"
+							>
+								SQL ALchemy
+							</a>
+						</li>
+						<li>
+							<a
+								href="https://alembic.sqlalchemy.org/en/latest/"
+								target="_blank"
+								rel="noreferrer"
+							>
+								Alembic
+							</a>
+						</li>
+						<li>
+							<a href="https://reactjs.org/" target="_blank" rel="noreferrer">
+								React JS
+							</a>
+						</li>
+						<li>
+							<a href="https://redux.js.org/" target="_blank" rel="noreferrer">
+								Redux
+							</a>
+						</li>
+						<li>
+							<a href="https://socket.io/" target="_blank" rel="noreferrer">
+								Socket io
+							</a>
+						</li>
+					</div>
+				</div>
+				<div className="splash-footer-bottom">
+					<div className="logo">
+						<img src={logo} alt="Concord" />
+					</div>
+					<div>
+						<NavLink className="btn btn-yellow" exact to="/sign-up">
+							Sign Up
+						</NavLink>
+					</div>
+				</div>
+			</footer>
 		</div>
 	);
 };

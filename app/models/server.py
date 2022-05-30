@@ -1,5 +1,7 @@
 from .db import db
 from .chat import Chat
+# from .user import User
+from .join_server_user import JoinServerUser
 
 class Server(db.Model):
     __tablename__ = 'servers'
@@ -23,6 +25,7 @@ class Server(db.Model):
 
     def to_dict(self):
         channel_ids = [channel.id for channel in self.channels]
+
         return {
             'id': self.id,
             'user_id': self.user_id,
@@ -31,4 +34,5 @@ class Server(db.Model):
             'background': self.background,
             'description': self.description,
             'channels': channel_ids,
+            "users": [user.to_dict()["id"] for user in self.joined_users]
         }
