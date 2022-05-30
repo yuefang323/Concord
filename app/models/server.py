@@ -1,4 +1,5 @@
 from .db import db
+from .chat import Chat
 
 class Server(db.Model):
     __tablename__ = 'servers'
@@ -21,6 +22,7 @@ class Server(db.Model):
     user = db.relationship("User", back_populates="servers")
 
     def to_dict(self):
+        channel_ids = [channel.id for channel in self.channels]
         return {
             'id': self.id,
             'user_id': self.user_id,
@@ -28,4 +30,5 @@ class Server(db.Model):
             'logo': self.logo,
             'background': self.background,
             'description': self.description,
+            'channels': channel_ids,
         }

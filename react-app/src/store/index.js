@@ -6,7 +6,7 @@ import channels from "./channels";
 import chats from "./chats";
 import prvChannels from "./prvChannels";
 import prvChats from "./prvChats";
-import otherServers from "./otherServers";
+import joinServers from "./joinServers";
 import users from "./users";
 
 const rootReducer = combineReducers({
@@ -16,7 +16,7 @@ const rootReducer = combineReducers({
 	chats,
 	prvChannels,
 	prvChats,
-	otherServers,
+	joinServers,
 	users,
 });
 

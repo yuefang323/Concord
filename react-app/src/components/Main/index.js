@@ -11,7 +11,7 @@ import * as channelsActions from "../../store/channels";
 import * as chatsActions from "../../store/chats";
 import * as prvChannelsActions from "../../store/prvChannels";
 import * as prvChatsActions from "../../store/prvChats";
-import * as otherServersActions from "../../store/otherServers";
+import * as joinServersActions from "../../store/joinServers";
 import * as usersActions from "../../store/users";
 
 const MainPage = () => {
@@ -26,7 +26,7 @@ const MainPage = () => {
 				dispatch(chatsActions.getChats(data.chats));
 				dispatch(prvChannelsActions.getPrvChannels(data.prvChannels));
 				dispatch(prvChatsActions.getPrvChats(data.prvChats));
-				dispatch(otherServersActions.getOtherServers(data.otherServers));
+				dispatch(joinServersActions.getJoinServers(data.joinServers));
 				dispatch(usersActions.getUsers(data.users));
 			});
 	}, [dispatch]);

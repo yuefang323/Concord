@@ -1,11 +1,11 @@
 // Actions
-const GET_CHATS = "chats/GET_CHATS";
+const GET_JOIN_SERVERS = "joinServers/GET_JOIN_SERVERS";
 
 // Action Creator
-export const getChats = (chats) => {
+export const getJoinServers = (joinServers) => {
 	return {
-		type: GET_CHATS,
-		chats,
+		type: GET_JOIN_SERVERS,
+		joinServers,
 	};
 };
 
@@ -17,12 +17,12 @@ const initialState = { byId: {}, allIds: [] };
 export default function reducer(state = initialState, action) {
 	let newState;
 	switch (action.type) {
-		case GET_CHATS:
+		case GET_JOIN_SERVERS:
 			newState = { ...state };
 			let set = new Set(state.allIds);
-			action.chats.forEach((chat) => {
-				newState.byId[chat.id] = chat;
-				set.add(chat.id);
+			action.joinServers.forEach((join) => {
+				newState.byId[join.server_id] = join;
+				set.add(join.server_id);
 			});
 			newState.allIds = Array.from(set);
 			return newState;

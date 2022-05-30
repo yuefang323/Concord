@@ -19,10 +19,12 @@ export default function reducer(state = initialState, action) {
 	switch (action.type) {
 		case GET_CHANNELS:
 			newState = { ...state };
+			let set = new Set(state.allIds);
 			action.channels.forEach((channel) => {
 				newState.byId[channel.id] = channel;
-				newState.allIds.push(channel.id);
+				set.add(channel.id);
 			});
+			newState.allIds = Array.from(set);
 			return newState;
 		default:
 			return state;
