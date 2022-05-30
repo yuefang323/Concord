@@ -7,3 +7,25 @@
 	font-weight: bold;
 	font-family: "Open Sans", sans-serif;
 }
+
+.input-label {
+	display: flex;
+	flex-direction: column;
+	width: 100%;
+	font-size: 13px;
+	font-weight: bold;
+	gap: 5px;
+}
+
+.input {
+	border: none;
+	background-color: var(--gray1);
+	padding: 10px;
+	border-radius: 3px;
+}
+
+.input-desc {
+	font-size: 10px;
+	font-weight: normal;
+	color: var(--gray3);
+}

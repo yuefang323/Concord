@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useHistory } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 
 import * as joinServersActions from "../../../../../store/joinServers";
@@ -8,6 +9,7 @@ import * as usersActions from "../../../../../store/users";
 
 const JoinServer = ({ setChoose, setShowModal }) => {
 	const dispatch = useDispatch();
+	const history = useHistory();
 
 	const [serverId, setServerId] = useState();
 	const servers = useSelector((state) => state.servers.byId);
@@ -29,6 +31,7 @@ const JoinServer = ({ setChoose, setShowModal }) => {
 			// Dispatch users
 			await dispatch(usersActions.getUsers(data.users));
 			setShowModal(false);
+			history.push(`/channels/${serverId}`);
 		} else {
 			setErrors(["Please select a server"]);
 		}
