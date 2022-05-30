@@ -7,11 +7,14 @@ class PrivateChannel(db.Model):
     user_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False)
     friend_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False)
 
+    private_chats = db.relationship("PrivateChat", back_populates="private_channel")
+
     def to_dict(self):
         return {
             "id": self.id,
             "user_id": self.user_id,
-            "friend_id": self.friend_id
+            "friend_id": self.friend_id,
+            "prvChats": [chat.id for chat in self.private_chats]
         }
 
     # one to many prv channel -> prv chats

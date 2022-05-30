@@ -35,3 +35,21 @@ button:hover {
 	font-weight: bold;
 	font-size: 15px;
 }
+
+.btn {
+	background-color: transparent;
+	border-radius: 30px;
+	padding: 5px 20px;
+	color: black;
+	transition: all 0.5s;
+}
+
+.btn-yellow {
+	background-color: var(--yellow1);
+	color: black;
+}
+
+.btn-yellow:hover {
+	background-color: var(--red1);
+	color: white;
+}

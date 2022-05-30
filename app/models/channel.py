@@ -16,10 +16,11 @@ class Channel(db.Model):
     user = db.relationship("User", back_populates="channels")
 
     def to_dict(self):
-
+        chat_ids = [chat.id for chat in self.chats]
         return {
             'id': self.id,
             'server_id': self.server_id,
             'user_id': self.user_id,
             'name': self.name,
+            "chats": chat_ids
         }

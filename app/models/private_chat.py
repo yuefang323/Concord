@@ -20,7 +20,7 @@ class PrivateChat(db.Model):
         }
 
     # many to one Prv chats -> Prv channel
-    private_channel = db.relationship("PrivateChannel")
+    private_channel = db.relationship("PrivateChannel", back_populates="private_chats")
 
     # many to one prv chats -> user
     user = db.relationship("User", back_populates="private_chats")

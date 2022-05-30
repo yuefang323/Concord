@@ -8,6 +8,7 @@ import Add from "./Add";
 import LogoutButton from "../../auth/LogoutButton";
 
 const SideBar = () => {
+	const joinServers = useSelector((state) => state.joinServers);
 	const servers = useSelector((state) => state.servers);
 
 	return (
@@ -17,9 +18,10 @@ const SideBar = () => {
 				<div className="sidebar-div-wrap">
 					<div className="sidebar-div"></div>
 				</div>
-				{servers?.allIds?.map((id) => (
-					<Server key={id} server={servers.byId[id]} />
+				{joinServers?.allIds?.map((id) => (
+					<Server key={"join" + id} server={servers.byId[id]} />
 				))}
+
 				<Add />
 				{/* <Explore /> */}
 			</div>

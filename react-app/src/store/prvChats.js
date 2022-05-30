@@ -19,10 +19,12 @@ export default function reducer(state = initialState, action) {
 	switch (action.type) {
 		case GET_PRV_CHATS:
 			newState = { ...state };
+			let set = new Set(state.allIds);
 			action.prv_chats.forEach((prv_chat) => {
 				newState.byId[prv_chat.id] = prv_chat;
-				newState.allIds.push(prv_chat.id);
+				set.add(prv_chat.id);
 			});
+			newState.allIds = Array.from(set);
 			return newState;
 		default:
 			return state;
