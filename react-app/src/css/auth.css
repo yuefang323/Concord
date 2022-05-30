@@ -1,12 +1,14 @@
 .login-wrapper,
 .signup-wrapper {
-	background-image: url("https://wallpaperaccess.com/full/2959068.jpg");
-	/* background-color: var(--red2); */
 	width: 100vw;
 	height: 100vh;
 	position: absolute;
 	top: 0;
 	z-index: -100;
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: 100vw;
+	background-color: var(--yellow2);
 }
 
 .login-form-container,

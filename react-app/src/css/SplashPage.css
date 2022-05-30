@@ -130,6 +130,19 @@
 	width: 200px;
 }
 
+.footer-list-title {
+	color: var(--yellow1);
+}
+
+.splash-footer-top li {
+	font-size: 14px;
+	padding: 3px 0px;
+}
+
+.splash-footer-top a {
+	color: var(--gray1);
+}
+
 @media screen and (max-width: 850px) {
 	.splash-nav-bar {
 		width: 100%;

@@ -95,10 +95,60 @@ const SplashPage = () => {
 						IMAGINE A<br /> PLACE
 					</div>
 					<div>
-						Technologies Used
-						<ul></ul>
+						<div className="footer-list-title">Team Members</div>
+						<li>Fang Yue</li>
+						<li>Frances (Huang) Lau</li>
+						<li>Lincoln Her</li>
 					</div>
-					<div>Team Members</div>
+					<div>
+						<div className="footer-list-title">Technologies Used</div>
+						<li>
+							<a href="https://www.python.org/" target="_blank">
+								Python
+							</a>
+						</li>
+						<li>
+							<a
+								href="https://flask.palletsprojects.com/en/2.1.x/"
+								target="_blank"
+							>
+								Flask
+							</a>
+						</li>
+						<li>
+							<a href="https://www.postgresql.org/" target="_blank">
+								Postgres SQL
+							</a>
+						</li>
+						<li>
+							<a href="https://www.sqlalchemy.org/" target="_blank">
+								SQL ALchemy
+							</a>
+						</li>
+						<li>
+							<a
+								href="https://alembic.sqlalchemy.org/en/latest/"
+								target="_blank"
+							>
+								Alembic
+							</a>
+						</li>
+						<li>
+							<a href="https://reactjs.org/" target="_blank">
+								React JS
+							</a>
+						</li>
+						<li>
+							<a href="https://redux.js.org/" target="_blank">
+								Redux
+							</a>
+						</li>
+						<li>
+							<a href="https://socket.io/" target="_blank">
+								Socket io
+							</a>
+						</li>
+					</div>
 				</div>
 				<div className="splash-footer-bottom">
 					<div className="logo">
