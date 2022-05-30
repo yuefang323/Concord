@@ -7,6 +7,8 @@ import * as channelsActions from "../../../../../store/channels";
 import * as chatsActions from "../../../../../store/chats";
 import * as usersActions from "../../../../../store/users";
 
+import { socket } from "../../../../../context/Socket";
+
 const JoinServer = ({ setChoose, setShowModal }) => {
 	const dispatch = useDispatch();
 	const history = useHistory();
@@ -26,6 +28,9 @@ const JoinServer = ({ setChoose, setShowModal }) => {
 			const data = await dispatch(joinServersActions.joinNewServer(joinServer));
 			// Dispatch channels
 			await dispatch(channelsActions.getChannels(data.channels));
+			// Socket join channels
+			const channelArr = data.channels.map((channel) => channel.id);
+			socket.emit("join_channels", channelArr);
 			// Dispatch chats
 			await dispatch(chatsActions.getChats(data.chats));
 			// Dispatch users

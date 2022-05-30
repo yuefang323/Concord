@@ -20,6 +20,7 @@ const AddServer = ({ setChoose, setShowModal }) => {
 		if (data.joinServer) {
 			await dispatch(joinServersActions.joinServer(data.joinServer));
 			setShowModal(false);
+			setChoose("create-join");
 			history.push(`/channels/${data.server.id}`);
 		} else {
 			setErrors(data);
@@ -28,7 +29,7 @@ const AddServer = ({ setChoose, setShowModal }) => {
 
 	useEffect(() => {
 		setName(`${username}'s server`);
-	}, []);
+	}, [username]);
 
 	return (
 		<form onSubmit={handleSubmit}>
