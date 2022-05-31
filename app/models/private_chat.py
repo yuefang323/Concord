@@ -10,6 +10,12 @@ class PrivateChat(db.Model):
     message = db.Column(db.String(2000), nullable=False)
     created_at = db.Column(db.DateTime, default=datetime.now(), nullable=False)
 
+    # many to one Prv chats -> Prv channel
+    private_channel = db.relationship("PrivateChannel", back_populates="private_chats")
+
+    # many to one prv chats -> user
+    user = db.relationship("User", back_populates="private_chats")
+
     def to_dict(self):
         return {
             "id": self.id,
@@ -19,8 +25,4 @@ class PrivateChat(db.Model):
             "created_at": self.created_at.isoformat()
         }
 
-    # many to one Prv chats -> Prv channel
-    private_channel = db.relationship("PrivateChannel", back_populates="private_chats")
 
-    # many to one prv chats -> user
-    user = db.relationship("User", back_populates="private_chats")
