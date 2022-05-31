@@ -5,6 +5,8 @@ import { useSelector, useDispatch } from "react-redux";
 import * as serversActions from "../../../../../store/servers";
 import * as joinServersActions from "../../../../../store/joinServers";
 
+import { socket } from "../../../../../context/Socket";
+
 const AddServer = ({ setChoose, setShowModal }) => {
 	const dispatch = useDispatch();
 	const history = useHistory();
@@ -21,6 +23,11 @@ const AddServer = ({ setChoose, setShowModal }) => {
 			await dispatch(joinServersActions.joinServer(data.joinServer));
 			setShowModal(false);
 			setChoose("create-join");
+
+			// Web socket join channel
+			const channelArr = data.server.channels;
+			socket.emit("join_channels", channelArr);
+
 			history.push(`/channels/${data.server.id}`);
 		} else {
 			setErrors(data);

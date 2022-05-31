@@ -2,8 +2,6 @@ import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Switch, Route } from "react-router-dom";
 
-// import io from "socket.io-client";
-
 import SideBar from "./SideBar";
 import ChannelBar from "./ChannelBar";
 import Chat from "./Chat";
@@ -18,8 +16,6 @@ import * as prvChannelsActions from "../../store/prvChannels";
 import * as prvChatsActions from "../../store/prvChats";
 import * as joinServersActions from "../../store/joinServers";
 import * as usersActions from "../../store/users";
-
-// let socket = io.connect("/");
 
 import { socket } from "../../context/Socket";
 
