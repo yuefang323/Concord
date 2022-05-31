@@ -10,7 +10,7 @@ export const getJoinServers = (joinServers) => {
 	};
 };
 
-const joinServer = (joinServer) => {
+export const joinServer = (joinServer) => {
 	return {
 		type: JOIN_SERVER,
 		joinServer,

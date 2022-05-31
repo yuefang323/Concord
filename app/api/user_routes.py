@@ -5,18 +5,6 @@ from app.models import User, Server, JoinServerUser
 user_routes = Blueprint('users', __name__)
 
 
-# @user_routes.route('/')
-# @login_required
-# def users():
-#     users = User.query.all()
-#     return {'users': [user.to_dict() for user in users]}
-
-
-# @user_routes.route('/<int:id>')
-# @login_required
-# def user(id):
-#     user = User.query.get(id)
-#     return user.to_dict()
 
 # Get current login user's all servers, channels and chats and private chats
 @user_routes.route('/all')
@@ -37,7 +25,7 @@ def get_user_all_info():
 
     joined_private_chats = [pv_chat.to_dict() for pv_chat in user.all_direct_messages]
 
-    join_server_user = [join.to_dict() for join in JoinServerUser.query.filter(JoinServerUser.user_id == user.id).all()]
+    join_server_user = [join.to_dict() for join in JoinServerUser.query.filter(JoinServerUser.user_id == user.id).order_by(JoinServerUser.joined_date.desc()).all()]
 
     joined_server_memebers = user.users
 

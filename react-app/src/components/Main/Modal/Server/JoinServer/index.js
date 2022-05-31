@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useHistory } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 
 import * as joinServersActions from "../../../../../store/joinServers";
@@ -6,8 +7,11 @@ import * as channelsActions from "../../../../../store/channels";
 import * as chatsActions from "../../../../../store/chats";
 import * as usersActions from "../../../../../store/users";
 
+import { socket } from "../../../../../context/Socket";
+
 const JoinServer = ({ setChoose, setShowModal }) => {
 	const dispatch = useDispatch();
+	const history = useHistory();
 
 	const [serverId, setServerId] = useState();
 	const servers = useSelector((state) => state.servers.byId);
@@ -24,11 +28,15 @@ const JoinServer = ({ setChoose, setShowModal }) => {
 			const data = await dispatch(joinServersActions.joinNewServer(joinServer));
 			// Dispatch channels
 			await dispatch(channelsActions.getChannels(data.channels));
+			// Socket join channels
+			const channelArr = data.channels.map((channel) => channel.id);
+			socket.emit("join_channels", channelArr);
 			// Dispatch chats
 			await dispatch(chatsActions.getChats(data.chats));
 			// Dispatch users
 			await dispatch(usersActions.getUsers(data.users));
 			setShowModal(false);
+			history.push(`/channels/${serverId}`);
 		} else {
 			setErrors(["Please select a server"]);
 		}

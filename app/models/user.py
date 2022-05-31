@@ -25,7 +25,7 @@ class User(db.Model, UserMixin):
 
     @property
     def joined_servers(self):
-        joined_servers = [server.to_dict() for server in Server.query.join(JoinServerUser).filter(JoinServerUser.user_id == self.id).all()]
+        joined_servers = [server.to_dict() for server in Server.query.join(JoinServerUser).filter(JoinServerUser.user_id == self.id).order_by(JoinServerUser.joined_date.desc()).all()]
         return joined_servers
 
 
@@ -74,7 +74,7 @@ class User(db.Model, UserMixin):
         join_server_ids = [server.server_id for server in JoinServerUser.query.filter(JoinServerUser.user_id == self.id).all()]
 
         # Get ids of all other users
-        other_users = [user.user_id for user in JoinServerUser.query.filter(JoinServerUser.user_id != self.id, JoinServerUser.server_id.in_(join_server_ids)).all()]
+        other_users = [user.user_id for user in JoinServerUser.query.filter( JoinServerUser.server_id.in_(join_server_ids)).all()]
 
         users = User.query.filter(User.id.in_(other_users)).all()
         return [user.to_dict_limited() for user in users]

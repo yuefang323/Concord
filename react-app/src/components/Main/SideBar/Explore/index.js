@@ -1,12 +1,15 @@
+import { Link } from "react-router-dom";
+import ReactTooltip from "react-tooltip";
+
 const Explore = () => {
 	return (
-		<div className="sidebar-btn-ctrl tooltip">
+		<Link className="sidebar-btn-ctrl" data-tip="Explore" to="/guild-discovery">
 			<div className="sidebar-highlight"></div>
 			<div className="sidebar-btn sidebar-btn-dark">
 				<i className="fa-solid fa-compass sidebar-icon"></i>
 			</div>
-			<div className="tooltiptext">Create / Join Server</div>
-		</div>
+			<ReactTooltip place="right" type="dark" effect="solid" />
+		</Link>
 	);
 };
 

@@ -12,6 +12,7 @@
 @import url("./css/SplashPage.css");
 @import url("./css/buttons.css");
 @import url("./css/inputs.css");
+@import url("./css/users.css");
 
 :root {
 	--yellow1: #ffca3a;
@@ -20,7 +21,7 @@
 	--red1: #f40004;
 	--red2: #fe662b;
 	--gray1: #ededed;
-	--gray2: #bababa;
+	--gray2: #d8d8d8;
 	--gray3: #4f4f4f;
 	--gray4: #353535;
 

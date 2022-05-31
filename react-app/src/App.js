@@ -5,9 +5,9 @@ import LoginForm from "./components/auth/LoginForm";
 import SignUpForm from "./components/auth/SignUpForm";
 import ProtectedRoute from "./components/auth/ProtectedRoute";
 
-import MainPage from "./components/Main";
 import { authenticate } from "./store/session";
 import SplashPage from "./components/Splash";
+import MainPage from "./components/Main";
 
 function App() {
 	const [loaded, setLoaded] = useState(false);
@@ -38,7 +38,12 @@ function App() {
 					<SignUpForm />
 				</Route>
 				<ProtectedRoute
-					path={["/", "/channels/:serverId", "/channels/:serverId/:channelId"]}
+					path={[
+						"/",
+						"/channels/:serverId",
+						"/channels/:serverId/:channelId",
+						"/guild-discovery",
+					]}
 					exact={true}
 				>
 					<MainPage />
