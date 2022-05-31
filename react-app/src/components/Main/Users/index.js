@@ -12,7 +12,7 @@ const Users = () => {
 		<div className="users-ctrl">
 			<div className="users-title">MEMBERS-{server?.users?.length}</div>
 			{server?.users.map((userId) => (
-				<EachUser key={userId} user={users[userId]} />
+				<EachUser key={userId} user={users[userId]} server={server} />
 			))}
 		</div>
 	);

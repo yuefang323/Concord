@@ -1,9 +1,13 @@
 import { useRef, useEffect } from "react";
+import ReactTooltip from "react-tooltip";
 
 import logo from "../../../../assets/logo-white.svg";
+import crown from "../../../../assets/crown.svg";
 
-const EachUser = ({ user }) => {
+const EachUser = ({ user, server }) => {
 	const divRef = useRef();
+
+	const owner = user?.id === server?.user_id;
 
 	useEffect(() => {
 		const lastNum = user?.id.toString()[user?.id.toString().length - 1];
@@ -34,7 +38,15 @@ const EachUser = ({ user }) => {
 					<img src={logo} alt="Avatar" className="user-logo" />
 				</div>
 			)}
-			<div className="user-username">{user?.username}</div>
+			<div className="user-username">
+				{user?.username}
+				{owner && (
+					<>
+						<i className="fa-solid fa-crown" data-tip="Server Owner"></i>
+					</>
+				)}
+				<ReactTooltip type="dark" effect="solid" />
+			</div>
 		</div>
 	);
 };
