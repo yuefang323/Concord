@@ -3,14 +3,16 @@ import { Link, useParams } from "react-router-dom";
 
 const ServerChannel = () => {
 	const { serverId, channelId } = useParams()
-	console.log("////", serverId, "......", channelId)
 	const user = useSelector((state) => state.session.user)
-	const allServers = useSelector((state) => state.servers)
-	// const currServer = allServers?.find(res => res.id === serverId)
-		
+    const servers = useSelector((state) => state.servers);
+    const currServer = servers.byId[serverId]
+    const currServerName = currServer.name
+    console.log("currServer", currServer)
+
 	return (
 		<>
-			<div>hello, channel</div>
+			<div>{currServer.name}</div>
+            {/* <div>hello</div> */}
 		</>
 	);
 };
