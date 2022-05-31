@@ -4,6 +4,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@800&display=swap");
 @import url("./css/mainPage.css");
 @import url("./css/sideBar.css");
+@import url("./css/topBar.css");
 @import url("./css/tooltip.css");
 @import url("./css/modal.css");
 @import url("./css/form.css");
@@ -22,7 +23,7 @@
 	--red2: #fe662b;
 	--gray1: #ededed;
 	--gray2: #d8d8d8;
-	--gray3: #4f4f4f;
+	--gray3: rgb(202, 202, 202);
 	--gray4: #353535;
 
 	--crown: #ffd754;

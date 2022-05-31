@@ -1,0 +1,42 @@
+.top-name-wrap {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	padding: 10px;
+	min-width: 200px;
+	cursor: pointer;
+}
+
+.top-server-name {
+	width: 180px;
+	overflow: hidden;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+}
+
+.top-other-wrap {
+	background-color: rgb(219, 219, 219);
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	padding: 10px;
+}
+
+.top-other-left,
+.top-other-right {
+	display: flex;
+	align-items: center;
+	gap: 10px;
+}
+
+.top-other-right {
+	padding-right: 10px;
+}
+
+.top-other-right i {
+	cursor: pointer;
+}
+
+.fa-thumbtack {
+	transform: rotate(45deg);
+}

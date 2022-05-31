@@ -37,7 +37,7 @@
 .user-username {
 	overflow: hidden;
 	white-space: nowrap;
-	text-overflow: ellipsis ellipsis;
+	text-overflow: ellipsis;
 	display: flex;
 	gap: 5px;
 	align-items: center;

@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { Switch, Route } from "react-router-dom";
 
 import SideBar from "./SideBar";
+import TopBar from "./TopBar";
 import ChannelBar from "./ChannelBar";
 import Chat from "./Chat";
 import Users from "./Users";
@@ -62,16 +63,26 @@ const MainPage = () => {
 			<SideBar socket={socket} />
 			<Switch>
 				<Route path={["/channels/@me", "/channels/@me/:channelId"]} exact>
-					<ChannelBar />
-					<Chat />
+					<div className="channel-chat-top-wrap">
+						<TopBar />
+						<div className="channel-chat-wrap">
+							<ChannelBar />
+							<Chat />
+						</div>
+					</div>
 				</Route>
 				<Route
 					path={["/", "/channels/:serverId", "/channels/:serverId/:channelId"]}
 					exact
 				>
-					<ChannelBar />
-					<Chat />
-					<Users />
+					<div className="channel-chat-top-wrap">
+						<TopBar />
+						<div className="channel-chat-wrap">
+							<ChannelBar />
+							<Chat />
+							<Users />
+						</div>
+					</div>
 				</Route>
 				<Route path="/guild-discovery" exact>
 					<ExplorePage />
