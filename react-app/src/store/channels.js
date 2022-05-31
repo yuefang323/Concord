@@ -2,6 +2,7 @@
 const GET_CHANNELS = "channels/GET_CHANNELS";
 const GET_CHANNEL = "channels/GET_CHANNEL";
 const DELETE_CHANNEL = "channels/DELETE_CHANNEL";
+const CLEAR_CHANNELS = "channels/CLEAR_CHANNELS"
 
 // Action Creator
 export const getChannels = (channels) => {
@@ -17,6 +18,13 @@ export const deleteChannels = (channelId) => {
 		channelId,
 	};
 };
+export const clearChannels = () => ({
+	type: CLEAR_CHANNELS, 
+}); 
+
+// Thunks 
+
+
 
 // Reducer
 const initialState = { byId: {}, allIds: [] };
@@ -54,6 +62,8 @@ export default function reducer(state = initialState, action) {
 
 			newState.allIds = Array.from(set);
 			return newState;
+		case CLEAR_CHANNELS:
+			return { byId: {}, allIds: [] }; 
 		default:
 			return state;
 	}

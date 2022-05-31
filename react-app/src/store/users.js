@@ -1,5 +1,6 @@
 // Actions
 const GET_USERS = "users/GET_USERS";
+const CLEAR_USERS = "users/CLEAR_USERS"
 
 // Action Creator
 export const getUsers = (users) => {
@@ -9,7 +10,16 @@ export const getUsers = (users) => {
 	};
 };
 
+export const clearUsers = () => ({
+	type: CLEAR_USERS, 
+}); 
+
 // Thunks
+
+export const clearUsersThunk = () => async (dispatch) => {
+	dispatch(clearUsers());
+	return null;
+  };
 
 // Reducer
 const initialState = { byId: {}, allIds: [] };
@@ -24,6 +34,8 @@ export default function reducer(state = initialState, action) {
 				newState.allIds.push(user.id);
 			});
 			return newState;
+		case CLEAR_USERS:
+			return initialState; 
 		default:
 			return state;
 	}

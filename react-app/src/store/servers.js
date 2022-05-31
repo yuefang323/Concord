@@ -1,6 +1,7 @@
 // Actions
 const GET_SERVERS = "servers/GET_SERVERS";
 const ADD_EDIT_SERVER = "servers/ADD_EDIT_SERVER";
+const CLEAR_SERVERS = "servers/CLEAR_SERVERS"
 
 // Action Creator
 export const getServers = (servers) => {
@@ -16,6 +17,10 @@ export const addEditServer = (server) => {
 		server,
 	};
 };
+
+export const clearServers = () => ({
+	type: CLEAR_SERVERS, 
+}); 
 
 // Thunks
 
@@ -41,6 +46,7 @@ export const addNewServer = (newServer) => async (dispatch) => {
 	}
 };
 
+
 // Reducer
 const initialState = { byId: {}, allIds: [] };
 
@@ -63,6 +69,8 @@ export default function reducer(state = initialState, action) {
 			newState.byId[action.server.id] = action.server;
 			newState.allIds = Array.from(set);
 			return newState;
+		case CLEAR_SERVERS:
+			return { byId: {}, allIds: [] }; 
 		default:
 			return state;
 	}
