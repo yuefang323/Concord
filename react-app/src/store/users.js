@@ -16,10 +16,6 @@ export const clearUsers = () => ({
 
 // Thunks
 
-export const clearUsersThunk = () => async (dispatch) => {
-	dispatch(clearUsers());
-	return null;
-  };
 
 // Reducer
 const initialState = { byId: {}, allIds: [] };
@@ -35,7 +31,7 @@ export default function reducer(state = initialState, action) {
 			});
 			return newState;
 		case CLEAR_USERS:
-			return initialState; 
+			return { byId: {}, allIds: [] }; 
 		default:
 			return state;
 	}
