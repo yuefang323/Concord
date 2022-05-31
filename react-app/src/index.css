@@ -25,6 +25,8 @@
 	--gray3: #4f4f4f;
 	--gray4: #353535;
 
+	--crown: #ffd754;
+
 	/* Button colors */
 	--green: #8ac926;
 	--blue: #1982c4;
@@ -75,7 +77,7 @@ a:hover {
 
 /* Background colors */
 .color-red {
-	background-color: var(--red);
+	background-color: var(--red1);
 }
 
 .color-yellow {
