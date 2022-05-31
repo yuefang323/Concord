@@ -10,7 +10,7 @@ export const getServers = (servers) => {
 	};
 };
 
-const addEditServer = (server) => {
+export const addEditServer = (server) => {
 	return {
 		type: ADD_EDIT_SERVER,
 		server,

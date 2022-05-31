@@ -52,3 +52,18 @@ def join_server():
             "users": [user.to_dict_limited() for user in users]
         }
     return {'errors': validation_errors_to_error_messages(form.errors)}, 401
+
+
+# Leave server
+@join_server_routes.route("/<int:server_id>", methods=["DELETE"])
+@login_required
+def leave_server(server_id):
+    join = JoinServerUser.query.filter(JoinServerUser.server_id == server_id, JoinServerUser.user_id == current_user.id).one()
+    db.session.delete(join)
+    db.session.commit()
+
+    server = Server.query.filter(Server.id == server_id).one()
+
+    return {
+        "server": server.to_dict(),
+    }

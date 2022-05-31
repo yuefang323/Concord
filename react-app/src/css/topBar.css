@@ -1,10 +1,14 @@
+.top-ctrl i {
+	color: var(--gray4);
+}
+
 .top-name-wrap {
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
 	padding: 10px;
 	min-width: 200px;
-	cursor: pointer;
+	position: relative;
 }
 
 .top-server-name {
@@ -12,6 +16,11 @@
 	overflow: hidden;
 	white-space: nowrap;
 	text-overflow: ellipsis;
+	cursor: pointer;
+}
+
+.top-server-wrap i {
+	cursor: pointer;
 }
 
 .top-other-wrap {
@@ -39,4 +48,31 @@
 
 .fa-thumbtack {
 	transform: rotate(45deg);
+}
+
+/* Dropdown menu */
+
+.top-dropdown {
+	position: absolute;
+	top: 100%;
+	background-color: white;
+	border-radius: 5px;
+	padding: 5px;
+	width: 180px;
+	box-shadow: 0px 0px 3px rgba(0, 0, 0, 0.3);
+	display: flex;
+	flex-direction: column;
+	z-index: 1;
+}
+
+.top-dd-wrap {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	padding: 5px;
+	cursor: pointer;
+}
+
+.top-dd-wrap:hover {
+	background-color: var(--gray1);
 }
