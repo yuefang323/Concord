@@ -1,7 +1,10 @@
-// constants
+// ------------Constants------------
 const SET_USER = 'session/SET_USER';
 const REMOVE_USER = 'session/REMOVE_USER';
+// clear all state
+// const CLEAR_ALL_STATES = 'session/CLEAR_ALL_STATES'
 
+// -------------Actions-------------
 const setUser = (user) => ({
   type: SET_USER,
   payload: user
@@ -11,8 +14,11 @@ const removeUser = () => ({
   type: REMOVE_USER,
 })
 
-const initialState = { user: null };
+// const clearAllStates = () => {
+        // type: CLEAR_ALL_STATES, 
+// }
 
+// -------------Thunks-------------
 export const authenticate = () => async (dispatch) => {
   const response = await fetch('/api/auth/', {
     headers: {
@@ -96,6 +102,9 @@ export const signUp = (username, email, password) => async (dispatch) => {
     return ['An error occurred. Please try again.']
   }
 }
+
+// -------------Reducer-------------
+const initialState = { user: null };
 
 export default function reducer(state = initialState, action) {
   switch (action.type) {
