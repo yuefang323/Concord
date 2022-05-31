@@ -1,6 +1,6 @@
 from flask import Blueprint, jsonify, session, request
 from flask_login import current_user, login_required
-from app.models import db, Server, JoinServerUser
+from app.models import db, Server, JoinServerUser, Channel
 from app.forms import NewServerForm
 
 server_routes = Blueprint("servers", __name__)
@@ -28,12 +28,21 @@ def new_server():
         user_id = current_user.id
         name = form.data["name"]
 
+        # Created new server
         new_server = Server(user_id=user_id, name=name)
         db.session.add(new_server)
         db.session.commit()
+
+        # Server owner automatically join server
         new_join = JoinServerUser(user_id=user_id, server_id=new_server.id)
         db.session.add(new_join)
         db.session.commit()
+
+        # add default channel channel
+        new_channel = Channel(server_id=new_server.id, user_id=user_id, name="general")
+        db.session.add(new_channel)
+        db.session.commit()
+
         return {
             "server": new_server.to_dict(),
             "joinServer": new_join.to_dict(),

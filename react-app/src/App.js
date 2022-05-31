@@ -5,6 +5,8 @@ import LoginForm from "./components/auth/LoginForm";
 import SignUpForm from "./components/auth/SignUpForm";
 import ProtectedRoute from "./components/auth/ProtectedRoute";
 
+import ToolsProvider from "./context/Tools";
+
 import { authenticate } from "./store/session";
 import SplashPage from "./components/Splash";
 import MainPage from "./components/Main";
@@ -29,7 +31,13 @@ function App() {
 		<BrowserRouter>
 			<Switch>
 				<Route exact path="/">
-					{user ? <MainPage /> : <SplashPage />}
+					{user ? (
+						<ToolsProvider>
+							<MainPage />
+						</ToolsProvider>
+					) : (
+						<SplashPage />
+					)}
 				</Route>
 				<Route path="/login" exact={true}>
 					<LoginForm />
@@ -46,7 +54,9 @@ function App() {
 					]}
 					exact={true}
 				>
-					<MainPage />
+					<ToolsProvider>
+						<MainPage />
+					</ToolsProvider>
 				</ProtectedRoute>
 			</Switch>
 		</BrowserRouter>

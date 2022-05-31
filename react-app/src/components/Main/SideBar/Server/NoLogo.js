@@ -4,8 +4,7 @@ import { useParams } from "react-router-dom";
 const NoLogo = ({ server }) => {
 	const divRef = useRef();
 	const serverParam = useParams().serverId;
-	const serverId =
-		serverParam === "@me" ? serverParam : parseInt(serverParam, 10);
+	const serverId = serverParam ? parseInt(serverParam, 10) : "@me";
 
 	useEffect(() => {
 		const lastNum = server.id.toString()[server.id.toString().length - 1];

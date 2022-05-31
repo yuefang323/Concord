@@ -22,11 +22,16 @@ socketio = SocketIO(cors_allowed_origins=origins)
 
 # User join room as soons as they click on the channel tab
 @socketio.on("join_channels")
-def join_channel(channel_id_list):
+def join_channels(channel_id_list):
     for channel_id in channel_id_list:
         join_room(channel_id)
         print("*************joined channel", channel_id)
-    # emit("user has entered the room", to=channel_id)
+
+@socketio.on("leave_channels")
+def leave_channels(channel_id_list):
+    for channel_id in channel_id_list:
+        leave_room(channel_id)
+        print("*************left channel", channel_id)
 
 
 # receive any message with event "send_message"
