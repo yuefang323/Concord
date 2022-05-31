@@ -7,7 +7,8 @@ class PrivateChannel(db.Model):
     user_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False)
     friend_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False)
 
-    private_chats = db.relationship("PrivateChat", back_populates="private_channel")
+    # one to many prv channel -> prv chats
+    private_chats = db.relationship("PrivateChat", back_populates="private_channel", cascade="all, delete")
 
     def to_dict(self):
         return {
@@ -17,5 +18,3 @@ class PrivateChannel(db.Model):
             "prvChats": [chat.id for chat in self.private_chats]
         }
 
-    # one to many prv channel -> prv chats
-    private_chats = db.relationship("PrivateChat", back_populates='private_channel', cascade="all, delete")

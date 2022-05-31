@@ -1,27 +1,41 @@
 from app.models import db, Channel
 
 def seed_channels():
-    general = Channel(
-        server_id=1,
-        user_id=1,
-        name='general',
-    )
+    
+    channel_list = []
+    
+    for i in range(1, 10):
+        if i < 4:
+            user_id = 1
+        elif i < 6:
+            user_id = 2
+        else: user_id = i - 3
+        
+        general = Channel(
+            server_id=i,
+            user_id=user_id,
+            name='general',
+        )
 
-    music = Channel(
-        server_id=1,
-        user_id=1,
-        name='music',
-    )
+        music = Channel(
+            server_id=i,
+            user_id=user_id,
+            name='music',
+        )
 
-    games = Channel(
-        server_id=3,
-        user_id=1,
-        name='games',
-    )
-
-    db.session.add(general)
-    db.session.add(music)
-    db.session.add(games)
+        games = Channel(
+            server_id=i,
+            user_id=user_id,
+            name='games',
+        )
+        channel_list.append(general)
+        channel_list.append(music)
+        channel_list.append(games)
+    
+    
+    for c in channel_list:
+        db.session.add(c)
+    
     db.session.commit()
 
 def undo_channels():
