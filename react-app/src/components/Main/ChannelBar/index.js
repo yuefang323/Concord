@@ -3,16 +3,21 @@ import HomeChannel from "./HomeChannel";
 import ServerChannel from "./ServerChannel";
 
 const ChannelBar = () => {
-	const { serverId, channelId } = useParams();
 
-	return (
-		<>
-			<div className="channel-ctrl">
-				{serverId === "@me" ? <HomeChannel /> : <ServerChannel />}
-			</div>
-		</>
-	);
+
+  return (
+    <>
+      <div className="channel-ctrl">
+        <div className="text-channels-title">
+          <h4>TEXT CHANNELS</h4>
+          <div>
+            <i className="fa-solid fa-plus"></i>
+          </div>
+        </div>
+        {<ServerChannel />}
+      </div>
+    </>
+  );
 };
 
 export default ChannelBar;
-

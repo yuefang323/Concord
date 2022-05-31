@@ -2,20 +2,28 @@ import { useSelector } from "react-redux";
 import { Link, useParams } from "react-router-dom";
 
 const ServerChannel = () => {
-	const { serverId, channelId } = useParams()
-	// const user = useSelector((state) => state.session.user)
-    const servers = useSelector((state) => state.servers);
-    const currServer = servers?.byId[serverId]
-    console.log(".......", currServer)
-    const currServerName = currServer?.name
-    console.log("currServer", currServer)
+  const { serverId } = useParams();
+  const servers = useSelector((state) => state.servers);
+  const currServerChannels = servers?.byId[serverId]?.channels;
+  const channels = useSelector((state) => state.channels);
 
-	return (
-		<>
-			<div>{currServer?.name}</div>
-            <div>hello</div>
-		</>
-	);
+
+  return (
+    <>
+      <div>hello</div>
+      <div>
+        {currServerChannels?.map((id) => (
+          <li>
+            {
+              <Link to={`/channels/${serverId}/${id}`}>
+                {channels?.byId[id]?.name}
+              </Link>
+            }
+          </li>
+        ))}
+      </div>
+    </>
+  );
 };
 
 export default ServerChannel;
