@@ -15,6 +15,25 @@
 	justify-content: space-between;
 }
 
+.channel-chat-top-wrap {
+	display: grid;
+	grid-template-rows: 40px auto;
+	width: 100%;
+}
+
+.channel-chat-wrap {
+	display: flex;
+	flex-direction: row;
+	height: 100%;
+}
+
+.top-ctrl {
+	display: grid;
+	grid-template-columns: 200px auto;
+	background-color: var(--gray3);
+	border-bottom: 1px solid rgb(188, 188, 188);
+}
+
 .channel-ctrl {
 	min-width: 200px;
 	display: flex;
@@ -26,6 +45,7 @@
 
 .chat-ctrl {
 	width: 100%;
+	height: 100%;
 	display: flex;
 	flex-direction: column;
 	background-color: var(--gray1);

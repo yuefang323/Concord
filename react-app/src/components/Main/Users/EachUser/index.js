@@ -2,7 +2,6 @@ import { useRef, useEffect } from "react";
 import ReactTooltip from "react-tooltip";
 
 import logo from "../../../../assets/logo-white.svg";
-import crown from "../../../../assets/crown.svg";
 
 const EachUser = ({ user, server }) => {
 	const divRef = useRef();

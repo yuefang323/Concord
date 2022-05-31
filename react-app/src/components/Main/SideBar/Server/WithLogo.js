@@ -4,8 +4,7 @@ import { useParams } from "react-router-dom";
 const WithLogo = ({ server }) => {
 	const divRef = useRef();
 	const serverParam = useParams().serverId;
-	const serverId =
-		serverParam === "@me" ? serverParam : parseInt(serverParam, 10);
+	const serverId = serverParam ? parseInt(serverParam, 10) : "@me";
 
 	useEffect(() => {
 		if (serverId === server.id) {

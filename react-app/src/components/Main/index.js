@@ -2,9 +2,8 @@ import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Switch, Route } from "react-router-dom";
 
-// import io from "socket.io-client";
-
 import SideBar from "./SideBar";
+import TopBar from "./TopBar";
 import ChannelBar from "./ChannelBar";
 import Chat from "./Chat";
 import Users from "./Users";
@@ -18,8 +17,6 @@ import * as prvChannelsActions from "../../store/prvChannels";
 import * as prvChatsActions from "../../store/prvChats";
 import * as joinServersActions from "../../store/joinServers";
 import * as usersActions from "../../store/users";
-
-// let socket = io.connect("/");
 
 import { socket } from "../../context/Socket";
 
@@ -66,16 +63,26 @@ const MainPage = () => {
 			<SideBar socket={socket} />
 			<Switch>
 				<Route path={["/channels/@me", "/channels/@me/:channelId"]} exact>
-					<ChannelBar />
-					<Chat />
+					<div className="channel-chat-top-wrap">
+						<TopBar />
+						<div className="channel-chat-wrap">
+							<ChannelBar />
+							<Chat />
+						</div>
+					</div>
 				</Route>
 				<Route
 					path={["/", "/channels/:serverId", "/channels/:serverId/:channelId"]}
 					exact
 				>
-					<ChannelBar />
-					<Chat />
-					<Users />
+					<div className="channel-chat-top-wrap">
+						<TopBar />
+						<div className="channel-chat-wrap">
+							<ChannelBar />
+							<Chat />
+							<Users />
+						</div>
+					</div>
 				</Route>
 				<Route path="/guild-discovery" exact>
 					<ExplorePage />
