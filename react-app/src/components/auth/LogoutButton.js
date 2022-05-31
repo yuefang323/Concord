@@ -3,12 +3,12 @@ import { useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom";
 import { clearChannels } from "../../store/channels";
 import { clearChats } from "../../store/chats";
-import { clearJoinServers} from "../../store/joinServers";
+import { clearJoinServers } from "../../store/joinServers";
 import { clearPrvChannels } from "../../store/prvChannels";
 import { clearPrvChats } from "../../store/prvChats";
-import { clearServers} from "../../store/servers";
+import { clearServers } from "../../store/servers";
 import { logout } from "../../store/session";
-import { clearUsers} from "../../store/users"
+import { clearUsers } from "../../store/users"
 import ReactTooltip from "react-tooltip";
 
 const LogoutButton = () => {
