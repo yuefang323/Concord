@@ -1,0 +1,37 @@
+.user_profile {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 5px;
+    /* border-top: 1px solid gray; */
+    min-width: 200px;
+    background-color: var(--gray3);
+    height: 60px;
+}
+
+.user_profileInfo {
+    flex: 1;
+    padding: 10px;
+    height: 60px;
+}
+
+.user_icons {
+    display: flex;
+    justify-content: center;
+    padding: 7px;
+    height: 32px;
+    width: 32px;
+    margin-left: 5px;
+}
+
+.user_icons:hover {
+  background-color: rgb(100, 100, 100);
+  border: 1px solid rgb(100, 100, 100);
+  border-radius: 3px;
+}
+
+.text {
+    font-size: 10pt;
+    color: white;
+    margin: 0px;
+}
