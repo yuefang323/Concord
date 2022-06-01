@@ -1,6 +1,6 @@
 // Actions
 const GET_PRV_CHATS = "prv_chats/GET_PRV_CHATS";
-
+const CLEAR_PRV_CHATS = "prv_chats/CLEAR_PRV_CHATS"
 // Action Creator
 export const getPrvChats = (prv_chats) => {
 	return {
@@ -9,7 +9,13 @@ export const getPrvChats = (prv_chats) => {
 	};
 };
 
+export const clearPrvChats = () => ({
+	type: CLEAR_PRV_CHATS, 
+}); 
+
 // Thunks
+
+
 
 // Reducer
 const initialState = { byId: {}, allIds: [] };
@@ -26,6 +32,8 @@ export default function reducer(state = initialState, action) {
 			});
 			newState.allIds = Array.from(set);
 			return newState;
+        case CLEAR_PRV_CHATS:
+            return { byId: {}, allIds: [] }; 
 		default:
 			return state;
 	}
