@@ -71,3 +71,8 @@
     border-radius: 0px;
     object-fit: revert;
 }
+
+.user-avatar.logo {
+    width: 32px;
+    height: 32px;
+}
