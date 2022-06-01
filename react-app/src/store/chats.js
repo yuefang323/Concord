@@ -1,6 +1,7 @@
 // Actions
 const GET_CHATS = "chats/GET_CHATS";
 const DELETE_CHAT = "chats/DELETE_CHAT";
+const CLEAR_CHATS = "chats/CLEAR_CHATS"
 
 // Action Creator
 export const getChats = (chats) => {
@@ -17,7 +18,12 @@ export const deleteChat = (chatId) => {
 	};
 };
 
+export const clearChats = () => ({
+	type: CLEAR_CHATS, 
+}); 
 // Thunks
+
+
 
 // Reducer
 const initialState = { byId: {}, allIds: [] };
@@ -46,6 +52,8 @@ export default function reducer(state = initialState, action) {
 
 			newState.allIds = Array.from(set);
 			return newState;
+        case CLEAR_CHATS:
+            return { byId: {}, allIds: [] }; 
 		default:
 			return state;
 	}

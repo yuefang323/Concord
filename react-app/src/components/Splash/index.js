@@ -35,7 +35,7 @@ const SplashPage = () => {
 						About Us
 					</NavLink>
 					<button className="btn btn-yellow" onClick={demoLogin}>
-						Demo User
+						Demo Login
 					</button>
 					<NavLink className="btn btn-yellow" exact to="/login">
 						Login
