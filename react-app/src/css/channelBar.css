@@ -88,8 +88,12 @@
 .channel-list {
     display: flex;
     flex-direction: column;
-    gap: 10px; 
-    overflow: hidden;
+    gap: 5px; 
+    overflow-x: hidden;
+    white-space: nowrap;
+    height: calc(100vh - 180px);
+    margin-left: 10px;
+    
 }
 
 .input-field {
@@ -100,4 +104,24 @@
     align-items: center;
     width: 100%;
     box-sizing: border-box;
+}
+
+.add-new-channel-wrapper {
+    display: inline-flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    margin: 0 0 0 10px;
+}
+
+.add-new-channel-wrapper button {
+    background-color: var(--gray2);
+    margin-left: 10%;
+    /* margin-right: 50px; */
+}
+
+.add-new-channel-wrapper button:hover {
+    background-color: var(--red1);
+	color: white;
+    border-radius: 15px;
 }
