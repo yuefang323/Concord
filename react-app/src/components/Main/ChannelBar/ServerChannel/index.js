@@ -1,19 +1,10 @@
 import { useState } from "react";
-import { useSelector } from "react-redux";
-import { useParams, Link } from "react-router-dom";
+
 import { Modal } from "../../../../context/Modal";
-
-import AddChannel from "../../Modal/Channel/AddChannel"
-
+import AddChannel from "../../Modal/Channel/AddChannel";
 
 const AddChannelModal = () => {
-
   const [showModal, setShowModal] = useState(false);
-  const { serverId } = useParams();
-  const servers = useSelector((state) => state.servers);
-  const currServerChannels = servers?.byId[serverId]?.channels;
-  const channels = useSelector((state) => state.channels);
- 
 
   return (
     <>
@@ -30,18 +21,6 @@ const AddChannelModal = () => {
           </div>
         </Modal>
       )}
-      <div className="channel-list">
-        {currServerChannels?.map((id) => (
-          <li>
-            {
-              <Link to={`/channels/${serverId}/${id}`}>
-                <i className="fa-solid fa-hashtag"></i>
-                {channels?.byId[id]?.name}
-              </Link>
-            }
-          </li>
-        ))}
-      </div>
     </>
   );
 };

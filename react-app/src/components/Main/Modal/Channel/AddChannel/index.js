@@ -20,8 +20,9 @@ const AddChannel = ({ setShowModal }) => {
   const currServerChannels = servers?.byId[serverId]?.channels;
   const channels = useSelector((state) => state.channels);
   const channelNames = currServerChannels?.map(
-    (id) => channels?.byId[id]?.name
+    (id) => channels?.byId[id]?.name.toLowerCase()
   );
+  console.log(channelNames)
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -29,7 +30,7 @@ const AddChannel = ({ setShowModal }) => {
     const validateErrors = [];
     if (name.length < 1 || name.length > 50)
       validateErrors.push("Name length must be between 1 and 50 characters.");
-    if (channelNames.includes(name))
+    if (channelNames.includes(name.toLowerCase()))
       validateErrors.push("Channel with same name already exists.");
     if (validateErrors.length > 0) {
       setErrors(validateErrors);
