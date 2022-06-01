@@ -63,7 +63,7 @@ const JoinServer = ({ setChoose, setShowModal }) => {
 				>
 					<option>Select a server</option>
 					{Object.values(servers)
-						.filter((server) => !joinedSet.has(server.id))
+						.filter((server) => !joinedSet.has(server?.id))
 						.map((server) => (
 							<option key={server?.id} value={server?.id}>
 								{server?.name}

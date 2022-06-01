@@ -13,7 +13,7 @@ const Overview = ({ server, onClose }) => {
 	const [description, setDescription] = useState("");
 	const [errors, setErrors] = useState([]);
 
-	const uploadBgRef = useRef();
+	// const uploadBgRef = useRef();
 
 	const handleSubmit = async (e) => {
 		e.preventDefault();
@@ -33,8 +33,8 @@ const Overview = ({ server, onClose }) => {
 	};
 
 	useEffect(() => {
-		setName(server.name);
-		setDescription(server.description);
+		setName(server?.name);
+		setDescription(server?.description);
 	}, [server]);
 
 	return (

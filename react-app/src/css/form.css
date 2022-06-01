@@ -104,7 +104,8 @@
 	color: white;
 }
 
-.form-create-btm-btn {
+.form-create-btm-btn,
+.form-create-btm-btn-red {
 	background-color: var(--yellow1);
 	color: var(--gray4);
 	border: none;
@@ -117,10 +118,16 @@
 	font-size: 13px;
 }
 
+.form-create-btm-btn-red:hover,
 .form-create-btm-btn:hover {
 	background-color: var(--red2);
 	color: white;
 	font-size: 13px;
+}
+
+.form-create-btm-btn-red {
+	background-color: var(--red1);
+	color: white;
 }
 
 .form-create-btm-clear-btn {

@@ -22,11 +22,11 @@ const Logo = ({ server, errors, setErrors }) => {
 		}
 	};
 
-	if (server.logo) {
+	if (server?.logo) {
 		return (
 			<div className="setting-server-overview-logo-wrap">
 				<div
-					style={{ backgroundImage: `url(${server.logo})` }}
+					style={{ backgroundImage: `url(${server?.logo})` }}
 					className="setting-server-logo"
 					onClick={uploadLogoClick}
 				>

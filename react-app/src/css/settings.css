@@ -81,6 +81,7 @@
 	flex-direction: column;
 	padding: 0px 40px;
 	width: 100%;
+	gap: 10px;
 }
 
 .setting-server-overview-title {
@@ -212,4 +213,17 @@
 .setting-remove-button:hover {
 	color: var(--red1);
 	background-color: unset;
+}
+
+/* Delete server */
+.bold {
+	font-weight: bold;
+	font-size: larger;
+}
+
+.setting-delete-server-waring {
+	padding: 10px;
+	background-color: var(--yellow1);
+	border-radius: 10px;
+	font-size: 13px;
 }
