@@ -1,6 +1,7 @@
 // ------------Constants------------
 const SET_USER = 'session/SET_USER';
 const REMOVE_USER = 'session/REMOVE_USER';
+const EDIT_USER = 'session/EDIT_USER'
 
 // -------------Actions-------------
 const setUser = (user) => ({
@@ -10,6 +11,11 @@ const setUser = (user) => ({
 
 const removeUser = () => ({
   type: REMOVE_USER,
+})
+
+const editUser = (user) => ({
+	type: EDIT_USER,
+	payload: user
 })
 
 // -------------Thunks-------------
@@ -24,7 +30,7 @@ export const authenticate = () => async (dispatch) => {
 	if (data.errors) {
 	  return;
 	}
-  
+
 	dispatch(setUser(data));
   }
 }
@@ -40,8 +46,8 @@ export const login = (email, password) => async (dispatch) => {
 	  password
 	})
   });
-  
-  
+
+
   if (response.ok) {
 	const data = await response.json();
 	dispatch(setUser(data))
@@ -82,7 +88,7 @@ export const signUp = (username, email, password) => async (dispatch) => {
 	  password,
 	}),
   });
-  
+
   if (response.ok) {
 	const data = await response.json();
 	dispatch(setUser(data))
@@ -95,6 +101,14 @@ export const signUp = (username, email, password) => async (dispatch) => {
   } else {
 	return ['An error occurred. Please try again.']
   }
+}
+
+const updateUser = (user) => async (dispatch) => {
+	const response = await fetch('', {
+		method: "PUT",
+		headers: { 'Content-Type': 'application/json' },
+		body: JSON.stringify(user)
+	})
 }
 
 // -------------Reducer-------------
