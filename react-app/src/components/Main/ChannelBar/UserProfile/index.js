@@ -17,7 +17,7 @@ const UserProfile = () => {
             {/* avatar */}
             {user?.avatar ? (
             <img
-                className='user-avatar'
+                className='user-avatar logo'
                 src={user.avatar}
                 alt='user avatar'></img>
             ) : (
