@@ -43,7 +43,7 @@ export const addNewChannel = (newChannel) => async (dispatch) => {
 	if (response.ok) {
 		const data = await response.json();
 		dispatch(addEditChannel(data.channel));
-		return data;
+		return data.server;
 	} else if (response.status < 500) {
 		const data = await response.json();
 		if (data.errors) {
@@ -91,7 +91,11 @@ export default function reducer(state = initialState, action) {
 			newState.allIds = Array.from(set);
 			return newState;
         case ADD_EDIT_CHANNEL:
-            
+            newState = { ...state };
+            set = new Set(state.allIds);
+            newState.byId[action.channel.id] = action.channel;
+            newState.allIds = Array.from(set);
+            return newState; 
 		case CLEAR_CHANNELS:
 			return { byId: {}, allIds: [] }; 
 		default:

@@ -4,6 +4,7 @@ import { useParams } from "react-router-dom";
 import { Modal } from "../../../../context/Modal";
 import { useSelector, useDispatch } from "react-redux";
 import * as channelActions from "../../../../store/channels";
+import * as severActions from "../../../../store/servers"
 
 const CreateChannelModal = () => {
   const dispatch = useDispatch();
@@ -28,8 +29,9 @@ const CreateChannelModal = () => {
 
     const newChannel = { name, serverIdnum };
     const res = await dispatch(channelActions.addNewChannel(newChannel));
+    dispatch(severActions.addEditServer(res))
     setShowModal(false);
-    history.push(`/channels/${serverIdnum}/${res.id}`);
+    history.push(`/channels/${serverIdnum}`);
   };
 
   const cancelButton = async (e) => {
