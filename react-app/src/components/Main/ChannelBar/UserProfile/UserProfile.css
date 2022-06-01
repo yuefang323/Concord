@@ -32,6 +32,42 @@
 
 .text {
     font-size: 10pt;
-    color: white;
+    color: black;
     margin: 0px;
+}
+
+.form-edit-user {
+    width: 600px;
+    height: 300px;
+    background-color: var(--gray3);
+    padding: 10px;
+    border-radius: 5px;
+}
+
+.edit-modal-title {
+    display: flex;
+    justify-content: space-between;
+    height: 44px;
+}
+
+.edit-modal-title>h1 {
+    font-size: 20px;
+    line-height: 24px;
+}
+
+.avatar-bkg {
+    width: 32px;
+    height: 32px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 32px;
+    background-color: var(--gray1);
+}
+
+.user-avatar.channel {
+    width: 20px;
+    height: 20px;
+    border-radius: 0px;
+    object-fit: revert;
 }

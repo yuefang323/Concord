@@ -1,7 +1,9 @@
 import { useState } from 'react';
 import { useSelector } from 'react-redux'
-import logo from "../../../../assets/logo-white.svg"
+import ReactTooltip from "react-tooltip";
+import logo from "../../../../assets/logo-red.svg"
 import { Modal } from "../../../../context/Modal";
+import EditUser from '../../Modal/Server/EditUser';
 import './UserProfile.css'
 
 const UserProfile = () => {
@@ -19,8 +21,8 @@ const UserProfile = () => {
                 src={user.avatar}
                 alt='user avatar'></img>
             ) : (
-                <div className='user-avatar'>
-                    <img src={logo} alt="user avatar" />
+                <div className='avatar-bkg'>
+                    <img className='user-avatar channel' src={logo} alt="user avatar" />
                 </div>
             )}
             {/* info: username */}
@@ -30,6 +32,7 @@ const UserProfile = () => {
             {/* icons: on click modal */}
             <div
                 className='user_icons'
+                data-tip data-for='editUser'
                 onClick={() => setShowModal(true)}
             >
                 <i className='fa-solid fa-gear'></i>
@@ -42,11 +45,21 @@ const UserProfile = () => {
                         }, 1);
                     }}
                 >
+                    <div className="edit-modal-title">
+                        <h1>My Account</h1>
+                    </div>
                     <div className='form-edit-user'>
-
+                        <EditUser />
                     </div>
                 </Modal>
             )}
+            <ReactTooltip
+                id="editUser"
+                place="top"
+                effect="solid"
+            >
+                User Settings
+            </ReactTooltip>
         </div>
     </>
     )
