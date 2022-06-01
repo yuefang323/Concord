@@ -13,11 +13,9 @@ const Overview = ({ server, onClose }) => {
 
 	const handleSubmit = async (e) => {
 		e.preventDefault();
-		const serverToUpdate = { server_id: server.id, name, description };
-		console.log(serverToUpdate);
+		const serverToUpdate = { id: server.id, name, description };
 		const res = await dispatch(serversActions.editServer(serverToUpdate));
-		console.log(res);
-		// onClose();
+		onClose();
 	};
 
 	const cancelEdit = () => {
