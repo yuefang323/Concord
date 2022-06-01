@@ -7,7 +7,6 @@ import * as serversActions from "../../../../../store/servers";
 
 import { socket } from "../../../../../context/Socket";
 
-
 const AddChannel = ({ setShowModal }) => {
   const dispatch = useDispatch();
   const history = useHistory();
@@ -19,10 +18,9 @@ const AddChannel = ({ setShowModal }) => {
   const servers = useSelector((state) => state.servers);
   const currServerChannels = servers?.byId[serverId]?.channels;
   const channels = useSelector((state) => state.channels);
-  const channelNames = currServerChannels?.map(
-    (id) => channels?.byId[id]?.name.toLowerCase()
+  const channelNames = currServerChannels?.map((id) =>
+    channels?.byId[id]?.name.toLowerCase()
   );
-  console.log(channelNames)
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -42,10 +40,9 @@ const AddChannel = ({ setShowModal }) => {
     setShowModal(false);
     setName("");
 
-
-	// Socket join channels
-	const channelArr = [res.channel.id]
-	socket.emit("join_channels", channelArr);
+    // Socket join channels
+    const channelArr = [res.channel.id];
+    socket.emit("join_channels", channelArr);
 
     history.push(`/channels/${serverIdnum}`);
   };
@@ -58,34 +55,33 @@ const AddChannel = ({ setShowModal }) => {
 
   return (
     <>
-          <div className="add-channel-modal">
-            <div className="add-channel-form">
-              <h2 className="form-h2">Create A Channel</h2>
-              <div className="error-list">
-                {errors &&
-                  errors.map((error) => <div key={error}>{error}</div>)}
-              </div>
-              <form className="new-channel-form" onSubmit={handleSubmit}>
-                <div className="add-channel-input">
-                  <label>CHANNEL NAME</label>
-                  <div className="input-field">
-                    <div className="input-hash-sign">#</div>
-                    <input
-                      type="text"
-                      value={name}
-                      onChange={(e) => setName(e.target.value)}
-                    />
-                  </div>
-                </div>
-                <div className="form-buttons">
-                  <button onClick={cancelButton} type="reset">
-                    Cancel
-                  </button>
-                  <button type="submit">Add</button>
-                </div>
-              </form>
-            </div>
+      <div className="add-channel-modal">
+        <div className="add-channel-form">
+          <h2 className="form-h2">Create A Channel</h2>
+          <div className="error-list">
+            {errors && errors.map((error) => <div key={error}>{error}</div>)}
           </div>
+          <form className="new-channel-form" onSubmit={handleSubmit}>
+            <div className="add-channel-input">
+              <label>CHANNEL NAME</label>
+              <div className="input-field">
+                <div className="input-hash-sign">#</div>
+                <input
+                  type="text"
+                  value={name}
+                  onChange={(e) => setName(e.target.value)}
+                />
+              </div>
+            </div>
+            <div className="form-buttons">
+              <button onClick={cancelButton} type="reset">
+                Cancel
+              </button>
+              <button type="submit">Add</button>
+            </div>
+          </form>
+        </div>
+      </div>
     </>
   );
 };

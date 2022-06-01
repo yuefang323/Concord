@@ -54,6 +54,29 @@ export const addNewChannel = (newChannel) => async (dispatch) => {
 	}
 };
 
+
+export const editChannel = (serverId, channel) => async (dispatch) => {
+	const response = await fetch(`/api/channels/${serverId}/${channel.id}`, {
+		method: "PUT",
+		headers: {
+			"Content-Type": "application/json",
+		},
+		body: JSON.stringify(channel),
+	});
+	if (response.ok) {
+		const data = await response.json();
+		dispatch(addEditChannel(data.channel));
+		return data;
+	} else if (response.status < 500) {
+		const data = await response.json();
+		if (data.errors) {
+			return data.errors;
+		}
+	} else {
+		return ["An error occurred. Please try again."];
+	}
+};
+
 // Reducer
 const initialState = { byId: {}, allIds: [] };
 
