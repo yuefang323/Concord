@@ -1,6 +1,5 @@
-import { useParams } from "react-router-dom";
-import HomeChannel from "./HomeChannel";
-import ServerChannel from "./ServerChannel";
+
+import CreateChannelModal from "./ServerChannel";
 
 const ChannelBar = () => {
 
@@ -8,8 +7,8 @@ const ChannelBar = () => {
   return (
     <>
       <div className="channel-ctrl">
-          <h4>TEXT CHANNELS</h4>
-        {<ServerChannel />}
+          <h4 className="add-new-channel">TEXT CHANNELS</h4>
+        {<CreateChannelModal />}
       </div>
     </>
   );
