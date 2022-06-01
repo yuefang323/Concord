@@ -35,7 +35,6 @@ const EditUser = () => {
             </div>
         </div>
         <div className="edit-user-btns-container">
-            <button className="edit-user-btns">delete</button>
             <button className="edit-user-btns">edit</button>
         </div>
       </>
