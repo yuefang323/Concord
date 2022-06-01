@@ -9,7 +9,7 @@ const ChannelBar = () => {
     const servers = useSelector((state) => state.servers);
     const currServerChannels = servers?.byId[serverId]?.channels;
     const channels = useSelector((state) => state.channels);
-    
+
     return (
         <>
             <div className="channel-ctrl">
@@ -17,12 +17,16 @@ const ChannelBar = () => {
                     {<AddChannelModal />}
                     <div className="channel-list">
                         {currServerChannels?.map((id) => (
-                            <li key={id}>
+                            <li key={id} className="channel-info-wrapper">
                                 {
                                     <Link to={`/channels/${serverId}/${id}`}>
-                                        <i className="fa-solid fa-hashtag"></i>
-                                        {channels?.byId[id]?.name}
-                                        <EditChannel channel={channels?.byId[id]} />
+                                        <div className="channel-name">
+                                            <i className="fa-solid fa-hashtag"></i>
+                                            {channels?.byId[id]?.name}
+                                        </div>
+                                        <EditChannel
+                                            channel={channels?.byId[id]}
+                                        />
                                     </Link>
                                 }
                             </li>

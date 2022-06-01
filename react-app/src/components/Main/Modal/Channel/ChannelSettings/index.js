@@ -3,7 +3,7 @@ import { useState } from "react";
 import ChannelOverview from "./Overview";
 import DeleteChannel from "./DeleteChannel";
 
-const ChannelSettings = ({ channel, onClose, setShowModal }) => {
+const ChannelSettings = ({ channel, onClose }) => {
 	const [show, setShow] = useState("overview");
 
 	return (
