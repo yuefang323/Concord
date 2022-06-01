@@ -4,6 +4,7 @@ import { useSelector, useDispatch } from "react-redux";
 
 import * as serversActions from "../../../../../store/servers";
 import * as joinServersActions from "../../../../../store/joinServers";
+import * as channelsActions from "../../../../../store/channels";
 
 import { socket } from "../../../../../context/Socket";
 
@@ -23,6 +24,9 @@ const AddServer = ({ setChoose, setShowModal }) => {
 			await dispatch(joinServersActions.joinServer(data.joinServer));
 			setShowModal(false);
 			setChoose("create-join");
+
+			// dispatch action to add channel to redux store
+			dispatch(channelsActions.addEditChannel(data.channel));
 
 			// Web socket join channel
 			const channelArr = data.server.channels;
@@ -54,6 +58,7 @@ const AddServer = ({ setChoose, setShowModal }) => {
 						type="text"
 						value={name}
 						onChange={(e) => setName(e.target.value)}
+						required
 					/>
 					<div className="input-desc">
 						By creating a server, you agree to Concord's Community Guidelines

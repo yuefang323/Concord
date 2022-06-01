@@ -14,6 +14,7 @@
 @import url("./css/buttons.css");
 @import url("./css/inputs.css");
 @import url("./css/users.css");
+@import url("./css/settings.css");
 @import url("./css/channelBar.css");
 
 :root {
@@ -24,7 +25,7 @@
 	--red2: #fe662b;
 	--gray1: #ededed;
 	--gray2: #e2e2e2;
-	--gray3: rgb(202, 202, 202);
+	--gray3: rgb(102, 102, 102);
 	--gray4: #353535;
 
 	--crown: #ffd754;

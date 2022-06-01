@@ -1,7 +1,9 @@
-from flask import Blueprint, jsonify, session, request
+from flask import Blueprint, jsonify, session, request, g, json
 from flask_login import current_user, login_required
-from app.models import db, Server, JoinServerUser, Channel
-from app.forms import NewServerForm
+from wtforms.fields.core import Label
+from app.models import db, Server, JoinServerUser, Channel, Chat
+from app.forms import NewServerForm, EditServerForm
+
 
 server_routes = Blueprint("servers", __name__)
 
@@ -46,6 +48,62 @@ def new_server():
         return {
             "server": new_server.to_dict(),
             "joinServer": new_join.to_dict(),
+            "channel": new_channel.to_dict(),
         }
 
     return {'errors': validation_errors_to_error_messages(form.errors)}, 401
+
+# Edit server
+@server_routes.route("/<int:server_id>", methods=["PUT"])
+@login_required
+def edit_server(server_id):
+
+    # with app.app_context():
+    #     g.server_id = server_id
+    form = EditServerForm()
+    form['csrf_token'].data = request.cookies['csrf_token']
+    if form.validate_on_submit():
+        server = Server.query.get(server_id)
+        server.name = form.data["name"]
+        server.description = form.data["description"]
+        db.session.commit()
+
+        return {"server": server.to_dict()}
+
+    return {'errors': validation_errors_to_error_messages(form.errors)}, 401
+
+
+# Delete server logo
+@server_routes.route("/<int:server_id>/logo", methods=["DELETE"])
+@login_required
+def remove_server_logo(server_id):
+
+    server = Server.query.get(server_id)
+    server.logo = ""
+    db.session.commit()
+
+    return {"server": server.to_dict()}
+
+# Delete Server
+@server_routes.route("/<int:server_id>", methods=["DELETE"])
+@login_required
+def delete_server(server_id):
+    server = Server.query.get(server_id)
+    data = json.loads(request.data)
+    name = data["name"]
+    if server.name == name:
+        channels = Channel.query.filter(Channel.server_id == server_id).all()
+        channel_ids = [channel.to_dict()["id"] for channel in channels]
+        chats = Chat.query.filter(Chat.channel_id.in_(channel_ids)).all()
+        chat_ids = [chat.to_dict()["id"] for chat in chats]
+
+        JoinServerUser.query.filter(JoinServerUser.server_id==server_id).delete()
+        db.session.delete(server)
+        db.session.commit()
+        return {
+            "serverId": server_id,
+            "channels": channel_ids,
+            "chats": chat_ids,
+        }
+
+    return {'errors': ["Server name does not match"]}, 401

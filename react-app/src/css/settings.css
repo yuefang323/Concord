@@ -1,0 +1,229 @@
+.setting-modal-bg {
+	width: 100vw;
+	height: 100vh;
+	background-color: white;
+	display: grid;
+	grid-template-columns: minmax(200px, 1fr) minmax(auto, 700px) minmax(
+			80px,
+			0.5fr
+		);
+}
+
+/* Left */
+.setting-modal-left {
+	background-color: var(--gray1);
+	padding-top: 50px;
+	display: flex;
+	justify-content: flex-end;
+}
+
+.setting-modal-left-wrap {
+	width: 200px;
+	display: flex;
+	flex-direction: column;
+	gap: 3px;
+	padding-right: 10px;
+}
+
+.setting-modal-menu-title {
+	width: 180px;
+	overflow: hidden;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+	font-family: "Open Sans";
+	font-size: 14px;
+	padding-left: 10px;
+}
+
+.setting-modal-menu {
+	padding: 5px 10px;
+	border-radius: 5px;
+	background-color: var(--gray1);
+	transition: all 0.25s;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	gap: 5px;
+	cursor: pointer;
+}
+
+.setting-modal-menu:hover {
+	filter: brightness(90%);
+}
+
+/* center */
+.setting-modal-center,
+.setting-modal-right {
+	background-color: white;
+	padding-top: 50px;
+	display: flex;
+}
+
+/* Right */
+.setting-modal-right {
+	justify-content: flex-start;
+}
+
+.setting-modal-right-wrap {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	cursor: pointer;
+}
+
+.setting-modal-right-wrap i {
+	font-size: 30px;
+}
+
+/* Server Overview */
+.setting-server-overview-wrap {
+	display: flex;
+	flex-direction: column;
+	padding: 0px 40px;
+	width: 100%;
+	gap: 10px;
+}
+
+.setting-server-overview-title {
+	font-size: 18px;
+	font-weight: bold;
+}
+
+.setting-server-overview-bg-logo {
+	position: relative;
+}
+
+.setting-server-overview-background,
+.setting-server-overview-no-background {
+	height: 150px;
+	width: 100%;
+	background-color: var(--gray2);
+	border-radius: 10px;
+	background-size: cover;
+	background-position: center;
+	color: transparent;
+	transition: all 0.25s;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	position: relative;
+}
+
+.setting-server-overview-no-background {
+	background-color: var(--yellow1);
+	color: var(--gray3);
+	font-size: 20px;
+	font-weight: bold;
+}
+
+.setting-server-overview-background:hover,
+.setting-server-overview-no-background:hover {
+	background-blend-mode: multiply;
+	background-color: var(--gray3);
+	color: white;
+}
+
+.setting-server-overview-logo-name {
+	position: absolute;
+	bottom: -75px;
+	display: grid;
+	grid-template-columns: 100px minmax(100px, 150px) auto;
+	align-items: flex-end;
+	gap: 20px;
+	width: 100%;
+}
+
+.setting-server-overview-logo-wrap {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	font-size: 14px;
+	position: relative;
+	cursor: pointer;
+}
+
+.setting-server-logo,
+.setting-server-no-logo {
+	width: 100px;
+	height: 100px;
+	border-radius: 100px;
+	background-size: cover;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	color: transparent;
+	font-weight: bold;
+	font-size: 12px;
+	border: 5px solid white;
+	transition: all 0.25s;
+}
+
+.setting-server-no-logo {
+	background-color: var(--red2);
+	color: white;
+}
+
+.setting-server-logo:hover,
+.setting-server-no-logo:hover {
+	background-blend-mode: multiply;
+	background-color: var(--gray3);
+	color: white;
+}
+
+.setting-server-logo-upload {
+	width: 30px;
+	height: 30px;
+	border-radius: 30px;
+	background-color: var(--gray2);
+	position: absolute;
+	right: 3px;
+	top: 3px;
+	box-shadow: 0 0 3px rgba(0, 0, 0, 0.3);
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.setting-server-logo-desc {
+	font-size: 12px;
+}
+
+.setting-server-form {
+	width: 100%;
+}
+
+.setting-server-overview-top-wrap {
+	height: 250px;
+}
+
+.setting-button-wrap {
+	padding: 20px;
+	display: flex;
+	justify-content: flex-end;
+	gap: 20px;
+}
+
+.setting-remove-button {
+	font-size: 12px;
+	background-color: unset;
+	font-weight: bold;
+}
+
+.setting-remove-button:hover {
+	color: var(--red1);
+	background-color: unset;
+}
+
+/* Delete server */
+.bold {
+	font-weight: bold;
+	font-size: larger;
+}
+
+.setting-delete-server-waring {
+	padding: 10px;
+	background-color: var(--yellow1);
+	border-radius: 10px;
+	font-size: 13px;
+}

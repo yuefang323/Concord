@@ -11,7 +11,7 @@ const Server = ({ server }) => {
 
 	return (
 		<Link
-			to={`/channels/${server.id}/`}
+			to={`/channels/${server?.id}/`}
 			className="sidebar-btn-ctrl"
 			data-tip={server?.name}
 		>
@@ -20,7 +20,7 @@ const Server = ({ server }) => {
 			) : (
 				<div className="sidebar-highlight"></div>
 			)}
-			{server.logo ? <WithLogo server={server} /> : <NoLogo server={server} />}
+			{server?.logo ? <WithLogo server={server} /> : <NoLogo server={server} />}
 			<ReactTooltip place="right" type="dark" effect="solid" />
 		</Link>
 	);

@@ -7,17 +7,17 @@ const WithLogo = ({ server }) => {
 	const serverId = serverParam ? parseInt(serverParam, 10) : "@me";
 
 	useEffect(() => {
-		if (serverId === server.id) {
+		if (serverId === server?.id) {
 			divRef.current.classList.add("sidebar-btn-active");
 		} else {
 			divRef.current.classList.remove("sidebar-btn-active");
 		}
-	}, [server.id, serverId]);
+	}, [server?.id, serverId]);
 
 	return (
 		<div
 			className="sidebar-btn"
-			style={{ backgroundImage: `url(${server.logo})` }}
+			style={{ backgroundImage: `url(${server?.logo})` }}
 			ref={divRef}
 		></div>
 	);

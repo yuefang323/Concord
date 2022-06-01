@@ -5,6 +5,7 @@ import { Modal } from "../../../../context/Modal";
 import Dropdown from "./Dropdown";
 
 import LeaveServerModal from "../../Modal/Server/LeaveServer";
+import ServerSettings from "../../Modal/Server/ServerSettings";
 
 const TopLeft = ({ server }) => {
 	const [showDropdown, setShowDropdown] = useState(false);
@@ -58,8 +59,10 @@ const TopLeft = ({ server }) => {
 						{modalType === "leave" && (
 							<LeaveServerModal server={server} onClose={onClose} />
 						)}
-						{modalType === "create_channel" && <div>Channel</div>}
-						{modalType === "setting" && <div>Setting</div>}
+						{modalType === "create_channel" && <div>Channels</div>}
+						{modalType === "setting" && (
+							<ServerSettings server={server} onClose={onClose} />
+						)}
 					</Modal>
 				)}
 			</div>

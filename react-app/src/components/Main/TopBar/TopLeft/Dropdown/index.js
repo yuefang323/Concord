@@ -16,7 +16,12 @@ const Dropdown = ({ server, openModal, setModalType }) => {
 					<CreateChannel server={server} openModal={openModal} />
 				</>
 			)}
-			{!owner && <LeaveServer server={server} openModal={openModal} />}
+			{!owner && (
+				<>
+					<CreateChannel server={server} openModal={openModal} />
+					<LeaveServer server={server} openModal={openModal} />
+				</>
+			)}
 		</div>
 	);
 };

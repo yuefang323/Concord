@@ -2,7 +2,7 @@
 const GET_JOIN_SERVERS = "joinServers/GET_JOIN_SERVERS";
 const JOIN_SERVER = "joinServers/JOIN_SERVER";
 const LEAVE_SERVER = "joinServers/LEAVE_SERVER";
-const CLEAR_JOIN_SERVERS = "joinServers/CLEAR_JOIN_SERVERS"
+const CLEAR_JOIN_SERVERS = "joinServers/CLEAR_JOIN_SERVERS";
 
 // Action Creator
 export const getJoinServers = (joinServers) => {
@@ -19,15 +19,15 @@ export const joinServer = (joinServer) => {
 	};
 };
 
-const leaveServer = (serverId) => {
+export const leaveServer = (serverId) => {
 	return {
 		type: LEAVE_SERVER,
 		serverId,
 	};
 };
 export const clearJoinServers = () => ({
-	type: CLEAR_JOIN_SERVERS, 
-}); 
+	type: CLEAR_JOIN_SERVERS,
+});
 
 // Thunks
 export const joinNewServer = (payload) => async (dispatch) => {
@@ -74,7 +74,6 @@ export const leaveThisServer =
 		}
 	};
 
-
 // Reducer
 const initialState = { byId: {}, allIds: [] };
 
@@ -115,7 +114,7 @@ export default function reducer(state = initialState, action) {
 			newState.allIds = Array.from(set);
 			return newState;
 		case CLEAR_JOIN_SERVERS:
-			return { byId: {}, allIds: [] }; 
+			return { byId: {}, allIds: [] };
 		default:
 			return state;
 	}

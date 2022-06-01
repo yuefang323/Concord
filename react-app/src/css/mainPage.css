@@ -30,7 +30,7 @@
 .top-ctrl {
 	display: grid;
 	grid-template-columns: 200px auto;
-	background-color: var(--gray3);
+	background-color: rgb(199, 199, 199);
 	border-bottom: 1px solid rgb(188, 188, 188);
 }
 

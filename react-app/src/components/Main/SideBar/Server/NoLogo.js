@@ -7,7 +7,7 @@ const NoLogo = ({ server }) => {
 	const serverId = serverParam ? parseInt(serverParam, 10) : "@me";
 
 	useEffect(() => {
-		const lastNum = server.id.toString()[server.id.toString().length - 1];
+		const lastNum = server?.id.toString()[server?.id.toString().length - 1];
 		if (lastNum === "0" || lastNum === "5") {
 			divRef.current.classList.add("color-red");
 		} else if (lastNum === "1" || lastNum === "6") {
@@ -20,17 +20,17 @@ const NoLogo = ({ server }) => {
 			divRef.current.classList.add("color-purple");
 		}
 
-		if (serverId === server.id) {
+		if (serverId === server?.id) {
 			divRef.current.classList.add("sidebar-btn-active");
 		} else {
 			divRef.current.classList.remove("sidebar-btn-active");
 		}
-	}, [server.id, serverId]);
+	}, [server?.id, serverId]);
 
 	return (
 		<div className="sidebar-btn" ref={divRef}>
-			{server.name[0].toUpperCase()}
-			{server.name[2].toUpperCase()}
+			{server?.name[0].toUpperCase()}
+			{server?.name[2].toUpperCase()}
 		</div>
 	);
 };
