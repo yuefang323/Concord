@@ -1,8 +1,13 @@
+import { useSelector } from "react-redux";
+import { useParams } from "react-router-dom";
 import ReactTooltip from "react-tooltip";
 
 import { useTools } from "../../../../context/Tools";
 
 const TopRight = ({ server }) => {
+	const channelId = useParams().channelId;
+	const channel = useSelector((state) => state.channels.byId)[channelId];
+
 	const { toggleUsers, setToggleUsers } = useTools();
 
 	const toggleUser = () => {
@@ -17,7 +22,7 @@ const TopRight = ({ server }) => {
 		<div className="top-other-wrap">
 			<div className="top-other-left">
 				<i className="fa-solid fa-hashtag"></i>
-				<div>Channel Name</div>
+				<div>{channel?.name}</div>
 			</div>
 			<div className="top-other-right">
 				{/* <i className="fa-solid fa-thumbtack"></i> */}

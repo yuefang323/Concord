@@ -1,0 +1,21 @@
+/* Chat input */
+
+.chat-input-ctrl {
+	width: 100%;
+	height: 100%;
+	padding: 10px;
+}
+
+.chat-input {
+	border: none;
+	padding: 10px;
+	width: 100%;
+	border-radius: 5px;
+	transition: all 0.25s;
+}
+
+.chat-input:focus::placeholder {
+	color: transparent;
+}
+
+/* Chat divs */
