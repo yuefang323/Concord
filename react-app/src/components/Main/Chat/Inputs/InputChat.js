@@ -19,7 +19,7 @@ const InputChat = () => {
 				chat,
 			};
 			console.log(chatData);
-			await socket.emit("send_chat", chatData);
+			socket.emit("send_chat", chatData);
 			// clear chat field
 			setChat("");
 		}
