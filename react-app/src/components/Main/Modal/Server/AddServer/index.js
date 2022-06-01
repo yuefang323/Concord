@@ -54,6 +54,7 @@ const AddServer = ({ setChoose, setShowModal }) => {
 						type="text"
 						value={name}
 						onChange={(e) => setName(e.target.value)}
+						required
 					/>
 					<div className="input-desc">
 						By creating a server, you agree to Concord's Community Guidelines

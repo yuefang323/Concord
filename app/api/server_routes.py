@@ -1,7 +1,8 @@
 from flask import Blueprint, jsonify, session, request
 from flask_login import current_user, login_required
+from wtforms.fields.core import Label
 from app.models import db, Server, JoinServerUser, Channel
-from app.forms import NewServerForm
+from app.forms import NewServerForm, EditServerForm
 
 server_routes = Blueprint("servers", __name__)
 
@@ -49,3 +50,14 @@ def new_server():
         }
 
     return {'errors': validation_errors_to_error_messages(form.errors)}, 401
+
+# Edit server
+@server_routes.route("/<int:server_id>", methods=["PUT"])
+@login_required
+def edit_server(server_id):
+    print("*********", request.form)
+    form = EditServerForm()
+    form['csrf_token'].data = request.cookies['csrf_token']
+    if form.validate_on_submit():
+        return {"great": "great"}
+    return {"hi": server_id}

@@ -17,11 +17,13 @@
 	gap: 5px;
 }
 
-.input {
+.input,
+.textarea {
 	border: none;
 	background-color: var(--gray1);
 	padding: 10px;
 	border-radius: 3px;
+	width: 100%;
 }
 
 .input-desc {

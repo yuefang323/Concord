@@ -18,7 +18,6 @@ export const addEditServer = (server) => {
 };
 
 // Thunks
-
 export const addNewServer = (newServer) => async (dispatch) => {
 	const response = await fetch("/api/servers/new", {
 		method: "POST",
@@ -39,6 +38,28 @@ export const addNewServer = (newServer) => async (dispatch) => {
 	} else {
 		return ["An error occurred. Please try again."];
 	}
+};
+
+export const editServer = (server) => async (dispatch) => {
+	const response = await fetch(`/api/servers/${server.server_id}`, {
+		method: "PUT",
+		headers: {
+			"Content-Type": "application/json",
+		},
+		body: JSON.stringify(server),
+	});
+	// if (response.ok) {
+	const data = await response.json();
+	// 	dispatch(addEditServer(data.server));
+	return data;
+	// } else if (response.status < 500) {
+	// 	const data = await response.json();
+	// 	if (data.errors) {
+	// 		return data.errors;
+	// 	}
+	// } else {
+	// 	return ["An error occurred. Please try again."];
+	// }
 };
 
 // Reducer
