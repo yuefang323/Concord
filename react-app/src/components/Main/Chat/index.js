@@ -19,7 +19,7 @@ const Chat = () => {
 		return (
 			<div className="chat-ctrl">
 				<PrivateChats />
-				<InputChat />
+				{/* <InputChat /> */}
 			</div>
 		);
 	}

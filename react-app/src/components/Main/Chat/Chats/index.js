@@ -1,16 +1,26 @@
+import { useEffect, useRef } from "react";
+
 import { useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 
 import ChatDivs from "../Inputs/ChatDivs";
 
 const Chats = () => {
-	const channelId = useParams().channelId;
+	const channelId = parseInt(useParams().channelId);
 	const channel = useSelector((state) => state.channels.byId)[channelId];
+	const chats = useSelector((state) => state.chats.byId);
+
+	// const lastRef = useRef();
+
+	// useEffect(() => {
+	// focus on last div
+	// 	lastRef.current.focus();
+	// }, [chats]);
 
 	return (
-		<div>
-			{channel?.chats.map((chat) => (
-				<ChatDivs chat={chat} key={chat?.id} />
+		<div className="chat-div-wrap">
+			{channel?.chats?.map((chatId) => (
+				<ChatDivs chat={chats[chatId]} key={chatId} />
 			))}
 		</div>
 	);

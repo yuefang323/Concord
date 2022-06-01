@@ -1,13 +1,21 @@
 // Actions
 const GET_CHATS = "chats/GET_CHATS";
+const ADD_EDIT_CHAT = "chats/ADD_EDIT_CHAT";
 const DELETE_CHAT = "chats/DELETE_CHAT";
-const CLEAR_CHATS = "chats/CLEAR_CHATS"
+const CLEAR_CHATS = "chats/CLEAR_CHATS";
 
 // Action Creator
 export const getChats = (chats) => {
 	return {
 		type: GET_CHATS,
 		chats,
+	};
+};
+
+export const addEditChat = (chat) => {
+	return {
+		type: ADD_EDIT_CHAT,
+		chat,
 	};
 };
 
@@ -19,11 +27,9 @@ export const deleteChat = (chatId) => {
 };
 
 export const clearChats = () => ({
-	type: CLEAR_CHATS, 
-}); 
+	type: CLEAR_CHATS,
+});
 // Thunks
-
-
 
 // Reducer
 const initialState = { byId: {}, allIds: [] };
@@ -35,11 +41,20 @@ export default function reducer(state = initialState, action) {
 		case GET_CHATS:
 			newState = { ...state };
 			set = new Set(state.allIds);
-
+			// Do the thing
 			action.chats.forEach((chat) => {
 				newState.byId[chat.id] = chat;
 				set.add(chat.id);
 			});
+
+			newState.allIds = Array.from(set);
+			return newState;
+		case ADD_EDIT_CHAT:
+			newState = { ...state };
+			set = new Set(state.allIds);
+			// Do the thing
+			newState.byId[action.chat.id] = action.chat;
+			set.add(action.chat.id);
 
 			newState.allIds = Array.from(set);
 			return newState;
@@ -52,8 +67,8 @@ export default function reducer(state = initialState, action) {
 
 			newState.allIds = Array.from(set);
 			return newState;
-        case CLEAR_CHATS:
-            return { byId: {}, allIds: [] }; 
+		case CLEAR_CHATS:
+			return { byId: {}, allIds: [] };
 		default:
 			return state;
 	}

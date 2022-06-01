@@ -24,7 +24,6 @@ const MainPage = () => {
 	const dispatch = useDispatch();
 	const user = useSelector((state) => state.session.user);
 	const channels = useSelector((state) => state.channels);
-	const channelArr = channels.allIds;
 
 	useEffect(() => {
 		fetch("/api/users/all")
@@ -37,13 +36,14 @@ const MainPage = () => {
 				dispatch(prvChatsActions.getPrvChats(data.prvChats));
 				dispatch(joinServersActions.getJoinServers(data.joinServers));
 				dispatch(usersActions.getUsers(data.users));
-			});
+			})
+			.catch((err) => console.log(err));
 
 		socket.on("receive_message", (data) => {
 			// dispatch chat with id to our redux store
+			dispatch(channelsActions.addEditChannel(data.channel));
 			// dispatch(chatActions.addChat(data));
-			// clear chat field
-			// setChat("");
+			dispatch(chatsActions.addEditChat(data.chat));
 		});
 
 		// Disconnect socket when leave page
@@ -53,14 +53,13 @@ const MainPage = () => {
 	}, [dispatch]);
 
 	useEffect(() => {
-		if (user && channelArr.length) {
-			socket.emit("join_channels", channelArr);
-		}
-	}, [user, channels, channelArr]);
+		const channelArr = channels.allIds;
+		socket.emit("join_channels", channelArr);
+	}, [user, channels]);
 
 	return (
 		<div className="main-ctrl">
-			<SideBar socket={socket} />
+			<SideBar />
 			<Switch>
 				<Route path={["/channels/@me", "/channels/@me/:channelId"]} exact>
 					<div className="channel-chat-top-wrap">
