@@ -70,3 +70,13 @@ def edit_server(server_id):
         return {"server": server.to_dict()}
 
     return {'errors': validation_errors_to_error_messages(form.errors)}, 401
+
+@server_routes.route("/<int:server_id>/logo", methods=["DELETE"])
+@login_required
+def remove_server_logo(server_id):
+
+    server = Server.query.get(server_id)
+    server.logo = ""
+    db.session.commit()
+
+    return {"server": server.to_dict()}
