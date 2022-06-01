@@ -1,7 +1,8 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { useDispatch } from "react-redux";
 
 import upload_photo from "../../../../../assets/upload_photo.svg";
+import Logo from "./Inputs/Logo";
 
 import * as serversActions from "../../../../../store/servers";
 
@@ -10,17 +11,25 @@ const Overview = ({ server, onClose }) => {
 
 	const [name, setName] = useState("");
 	const [description, setDescription] = useState("");
+	const [errors, setErrors] = useState([]);
+
+	const uploadBgRef = useRef();
 
 	const handleSubmit = async (e) => {
 		e.preventDefault();
 		const serverToUpdate = { id: server.id, name, description };
 		const res = await dispatch(serversActions.editServer(serverToUpdate));
-		onClose();
+		if (res.server) {
+			onClose();
+		} else {
+			setErrors(res);
+		}
 	};
 
 	const cancelEdit = () => {
 		setName(server.name);
 		setDescription(server.description);
+		setErrors([]);
 	};
 
 	useEffect(() => {
@@ -39,35 +48,21 @@ const Overview = ({ server, onClose }) => {
 							style={{ backgroundImage: `url(${server.background})` }}
 						>
 							<div>CHANGE IMAGE</div>
+							<div className="setting-server-logo-upload">
+								<img src={upload_photo} alt="Upload" />
+							</div>
 						</div>
 					) : (
-						<div className="setting-server-overview-background"></div>
+						<div className="setting-server-overview-no-background">
+							<div>UPLOAD BACKGROUND</div>
+							<div className="setting-server-logo-upload">
+								<img src={upload_photo} alt="Upload" />
+							</div>
+						</div>
 					)}
 
 					<div className="setting-server-overview-logo-name">
-						{server?.logo ? (
-							<div className="setting-server-overview-logo-wrap">
-								<div
-									style={{ backgroundImage: `url(${server.logo})` }}
-									className="setting-server-logo"
-								>
-									<div>CHANGE</div>
-									<div>ICON</div>
-								</div>
-								<div>Remove</div>
-								<div className="setting-server-logo-upload">
-									<img src={upload_photo} alt="Upload" />
-								</div>
-							</div>
-						) : (
-							<div className="setting-server-overview-logo-wrap">
-								<div className="setting-server-logo">
-									<div>UPLOAD</div>
-									<div>LOGO</div>
-								</div>
-								<div>Remove</div>
-							</div>
-						)}
+						<Logo server={server} errors={errors} setErrors={setErrors} />
 						<div className="setting-server-logo-desc">
 							We recommend an image of at least 512x512 for the server.
 						</div>
@@ -80,6 +75,7 @@ const Overview = ({ server, onClose }) => {
 									name="name"
 									value={name}
 									onChange={(e) => setName(e.target.value)}
+									required
 								></input>
 							</label>
 						</div>
@@ -95,6 +91,11 @@ const Overview = ({ server, onClose }) => {
 					className="textarea"
 				/>
 			</label>
+			<div className="error-list">
+				{errors.map((error, ind) => (
+					<div key={ind}>{error}</div>
+				))}
+			</div>
 			<div className="setting-button-wrap">
 				<button
 					className="form-create-btm-clear-btn"

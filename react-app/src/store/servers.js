@@ -67,6 +67,24 @@ export const editServer = (server) => async (dispatch) => {
 	}
 };
 
+export const removeServerLogo = (serverId) => async (dispatch) => {
+	const response = await fetch(`/api/servers/${serverId}/logo`, {
+		method: "DELETE",
+	});
+	if (response.ok) {
+		const data = await response.json();
+		dispatch(addEditServer(data.server));
+		return data;
+	} else if (response.status < 500) {
+		const data = await response.json();
+		if (data.errors) {
+			return data.errors;
+		}
+	} else {
+		return ["An error occurred. Please try again."];
+	}
+};
+
 // Reducer
 const initialState = { byId: {}, allIds: [] };
 
