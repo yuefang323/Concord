@@ -57,10 +57,47 @@
 
 .add-channel-input input {
     background-color: var(--gray4);
-	border-radius: 5px;
 	height: 40px;
 	padding: 0 10px 0 10px;
 	caret-color: #fff;
 	color: #fff;
 	border: none;
+    width: 87%;
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+}
+
+.input-hash-sign {
+    background-color: var(--gray4);
+	height: 40px;
+	padding: 9px 0px 0px 10px;
+	caret-color: #fff;
+	color: #fff;
+	border: none;
+    box-sizing: border-box;
+    width: 15%;
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px; 
+}
+
+.fa-solid.fa-hashtag {
+    display: inline-block;
+    margin-right: 0.3em;
+}
+
+.channel-list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px; 
+    overflow: hidden;
+}
+
+.input-field {
+    display: flex;
+    flex-direction: row;
+    color: black;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    box-sizing: border-box;
 }

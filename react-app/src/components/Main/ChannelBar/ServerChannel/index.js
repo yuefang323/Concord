@@ -65,11 +65,14 @@ const CreateChannelModal = () => {
               <form className="new-channel-form" onSubmit={handleSubmit}>
                 <div className="add-channel-input">
                   <label>CHANNEL NAME</label>
-                  <input
-                    type="text"
-                    value={name}
-                    onChange={(e) => setName(e.target.value)}
-                  />
+                  <div className="input-field">
+                    <div className="input-hash-sign">#</div>
+                    <input
+                      type="text"
+                      value={name}
+                      onChange={(e) => setName(e.target.value)}
+                    />
+                  </div>
                 </div>
                 <div className="form-buttons">
                   <button onClick={cancelButton} type="reset">
@@ -82,15 +85,18 @@ const CreateChannelModal = () => {
           </div>
         </Modal>
       )}
-      {currServerChannels?.map((id) => (
-        <li>
-          {
-            <Link to={`/channels/${serverId}/${id}`}>
-              {channels?.byId[id]?.name}
-            </Link>
-          }
-        </li>
-      ))}
+      <div className="channel-list">
+        {currServerChannels?.map((id) => (
+          <li>
+            {
+              <Link to={`/channels/${serverId}/${id}`}>
+                <i className="fa-solid fa-hashtag"></i>
+                {channels?.byId[id]?.name}
+              </Link>
+            }
+          </li>
+        ))}
+      </div>
     </>
   );
 };
