@@ -37,6 +37,7 @@ const CreateChannelModal = () => {
     const res = await dispatch(channelActions.addNewChannel(newChannel));
     dispatch(severActions.addEditServer(res));
     setShowModal(false);
+    setName("");
     history.push(`/channels/${serverIdnum}`);
   };
 
