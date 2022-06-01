@@ -15,6 +15,7 @@
 @import url("./css/inputs.css");
 @import url("./css/users.css");
 @import url("./css/settings.css");
+@import url("./css/channelBar.css");
 
 :root {
 	--yellow1: #ffca3a;
