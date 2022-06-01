@@ -16,17 +16,24 @@ def validation_errors_to_error_messages(validation_errors):
     return errorMessages
 
 # Add new channel
-@channel_routes.route("/new", method=["POST"])
+@channel_routes.route("/<int:serverId>/new", methods=["GET", "POST"])
 @login_required
-def new_channel():
+def new_channel(serverId):
     """
     Create new channel
-    """
+    # """
     form = NewChannelForm()
+ 
     form['csrf_token'].data = request.cookies['csrf_token']
-    if form.validation_on_submit():
+    if form.validate_on_submit():
         user_id = current_user.id
-        server_id = 
         name = form.data["name"]
+        new_channel = Channel(user_id=user_id, server_id=serverId, name=name)
+        db.session.add(new_channel)
+        db.session.commit()
         
-        new_channel = Channel(user_id=user_id, server_id=server_id)
+        return {
+            "channel": new_channel.to_dict()
+            };
+
+    return {'errors': validation_errors_to_error_messages(form.errors)}, 401

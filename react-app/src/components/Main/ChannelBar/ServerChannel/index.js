@@ -1,5 +1,6 @@
 import { useSelector } from "react-redux";
 import { Link, useParams } from "react-router-dom";
+import CreateChannelModal from "./addChannel"
 
 const ServerChannel = () => {
   const { serverId } = useParams();
@@ -10,8 +11,8 @@ const ServerChannel = () => {
 
   return (
     <>
-      <div>hello</div>
       <div>
+        <CreateChannelModal />
         {currServerChannels?.map((id) => (
           <li>
             {

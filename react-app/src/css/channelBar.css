@@ -24,14 +24,3 @@
     align-items: center;
     justify-content: space-between;
 }
-
-.text-channels-title {
-    display: inline-flex;
-    flex-direction: row;
-    justify-content: space-evenly;
-    align-items: center;
-    width: 90%;
-    margin: 5px; 
-    background-color: var(--gray2);
-    box-sizing: border-box;
-}
