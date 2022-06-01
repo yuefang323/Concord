@@ -49,7 +49,7 @@ const UserProfile = () => {
                         <h1>My Account</h1>
                     </div>
                     <div className='form-edit-user'>
-                        <EditUser />
+                        <EditUser modal={setShowModal} />
                     </div>
                 </Modal>
             )}
