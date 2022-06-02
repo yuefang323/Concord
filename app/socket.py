@@ -16,11 +16,6 @@ else:
 socketio = SocketIO(cors_allowed_origins=origins)
 
 
-# handle broadcase messages. It will send to all connected sockets
-# @socketio.on("chat")
-# def handle_chat(data):
-#     emit("chat", data, broadcast=True)
-
 # User join room as soons as they click on the channel tab
 @socketio.on("join_channels")
 def join_channels(channel_id_list):
@@ -38,13 +33,13 @@ def leave_channels(channel_id_list):
 # receive any message with event "send_chat"
 @socketio.on("send_chat")
 def send_chat(data):
+    # print("*************send")
     user_id = current_user.id
-    print("***************************", data["channel_id"])
     # create "created_at" and create class instance "chat"
     chat = Chat(user_id=user_id, channel_id=data["channel_id"],
                 message=data["chat"])
 
-    # # add to database
+    # add to database
     db.session.add(chat)
     db.session.commit()
 

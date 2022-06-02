@@ -12,10 +12,10 @@ const ChatDivs = ({ chatId }) => {
 	const chats = useSelector((state) => state.chats.byId);
 	const [user, setUser] = useState();
 
-	const owner = userId === chats[chatId].user_id;
+	const owner = userId === chats[chatId]?.user_id;
 
 	useEffect(() => {
-		setUser(users[chats[chatId].user_id]);
+		setUser(users[chats[chatId]?.user_id]);
 	}, [chats]);
 
 	return (
