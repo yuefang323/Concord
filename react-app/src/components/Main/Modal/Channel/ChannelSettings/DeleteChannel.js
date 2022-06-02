@@ -23,18 +23,14 @@ const DeleteChannel = ({ channel, onClose }) => {
             server_id: channel.server_id,
         };
 
-        // Thunks to delete a channel
-        // const res = await dispatch(
-        //     channelsActions.deleteThisChannel(channelToDelete)
-        // );
         dispatch(channelsActions.deleteThisChannel(channelToDelete))
         .then((res) => {
                 // dispatch action to update server
                 dispatch(serversActions.addEditServer(res.server))
                 // dispatch action to update chats
                 res.chat.forEach((id) => dispatch(chatsActions.deleteChat(id)))
-                history.push(`/channels/${channel.server_id}`);
                 onClose();
+                history.push(`/channels/${channel.server_id}`);
                 // socket emit leave channels
                 socket.emit("leave_channels", res.channels);
 

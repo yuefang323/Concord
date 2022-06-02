@@ -20,27 +20,22 @@ const ChannelBar = () => {
 	const currServerChannels = servers?.byId[serverId]?.channels;
 	const channels = useSelector((state) => state.channels);
 
-	const dispatchChannel = async () => {
-		dispatch(channelsActions.getChannel(channelId))
-			.then((res) => dispatch(chatsActions.getChats(res.chats)))
-			.catch((err) => console.log(err));
-	};
-
-	// useEffect(() => {
-	// if (channelParam) {
-	// 	// Thunks to get channel and chats
-	// 	dispatch(channelsActions.getChannel(channelId))
-	// 		.then((res) => dispatch(chatsActions.getChats(res.chats)))
-	// 		.catch((err) => console.log(err));
-	// }
-
-	// 	if (serverParam) {
-	// 		// Thunks to get server and channels
-	// 		dispatch(serversActions.getServer(serverId))
-	// 			.then((res) => dispatch(channelsActions.getChannels(res.channels)))
-	// 			.catch((err) => console.log(err));
-	// 	}
-	// }, [serverParam, channelParam]);
+	useEffect(() => {
+		if (serverParam) {
+			// Thunks to get server and channels
+			dispatch(serversActions.getServer(serverId))
+				.then((res) => dispatch(channelsActions.getChannels(res.channels)))
+				.catch((err) => console.log(err));
+		}
+		if (channelParam) {
+			// Thunks to get channel and chats
+			dispatch(channelsActions.getChannel(channelId))
+				.then((res) => {dispatch(chatsActions.getChats(res.chats))
+                console.log("resxxxxxxx", res)
+                })
+				.catch((err) => console.log(err));
+		}
+	}, [serverParam, channelParam]);
 
 	return (
 		<>
