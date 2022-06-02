@@ -35,6 +35,11 @@ def seed_private_channels():
       user_id=4,
       friend_id=5,
     )
+    
+    DM8 = PrivateChannel(
+      user_id=5,
+      friend_id=1,
+    )
 
     db.session.add(DM1)
     db.session.add(DM2)
@@ -43,6 +48,7 @@ def seed_private_channels():
     db.session.add(DM5)
     db.session.add(DM6)
     db.session.add(DM7)
+    db.session.add(DM8)
 
     db.session.commit()
 
