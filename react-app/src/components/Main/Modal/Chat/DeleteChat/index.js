@@ -1,14 +1,11 @@
 import { useEffect } from "react";
 import { useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
-import { io } from "socket.io-client";
 
 import Avatar from "../../../Chat/Inputs/Avatar";
 import CreatedAt from "../../../Chat/Inputs/CreatedAt";
 
-let socket;
-
-const DeleteChat = ({ chatId, onClose }) => {
+const DeleteChat = ({ chatId, onClose, socket }) => {
 	const channelId = parseInt(useParams().channelId);
 	const chat = useSelector((state) => state.chats.byId)[chatId];
 	const user = useSelector((state) => state.users.byId)[chat?.user_id];
@@ -18,10 +15,6 @@ const DeleteChat = ({ chatId, onClose }) => {
 		socket.emit("delete_chat", payload);
 		onClose();
 	};
-
-	useEffect(() => {
-		socket = io();
-	}, []);
 
 	return (
 		<div className="form-ctrl form-sm">

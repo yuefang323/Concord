@@ -48,6 +48,11 @@ const Chat = () => {
 			dispatch(chatsActions.addEditChat(data.chat));
 		});
 
+		socket.on("edit_chat", (data) => {
+			// dispatch edit chat
+			dispatch(chatsActions.addEditChat(data.chat));
+		});
+
 		socket.on("delete_chat", (data) => {
 			// dispatch delete chat
 			dispatch(chatsActions.deleteChat(data.chat_id));
@@ -64,7 +69,7 @@ const Chat = () => {
 	if (serverId) {
 		return (
 			<div className="chat-ctrl">
-				<Chats />
+				<Chats socket={socket} />
 				<InputChat chat={chat} setChat={setChat} handleSubmit={handleSubmit} />
 			</div>
 		);

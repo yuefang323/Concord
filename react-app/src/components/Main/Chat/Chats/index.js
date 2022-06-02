@@ -4,7 +4,7 @@ import { useParams } from "react-router-dom";
 
 import ChatDivs from "../Inputs/ChatDivs";
 
-const Chats = () => {
+const Chats = ({ socket }) => {
 	const channelId = parseInt(useParams().channelId);
 
 	const channels = useSelector((state) => state.channels.byId);
@@ -23,7 +23,7 @@ const Chats = () => {
 	return (
 		<div className="chat-div-wrap" ref={focusRef}>
 			{channels[channelId]?.chats.map((chatId) => {
-				return <ChatDivs chatId={chatId} key={chatId} />;
+				return <ChatDivs chatId={chatId} key={chatId} socket={socket} />;
 			})}
 		</div>
 	);
