@@ -27,7 +27,7 @@ const EditUser = ({ modal }) => {
         if (data.errors) {
             setErrors(data.errors)
         }
-   
+
     }
 
     return (
