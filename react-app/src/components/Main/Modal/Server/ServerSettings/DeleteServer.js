@@ -26,7 +26,7 @@ const DeleteServer = ({ server, onClose }) => {
 		if (!res.errors) {
 			history.push("/channels/@me");
 			onClose();
-			console.log(res);
+
 			// dispatch action to update join server
 			dispatch(joinServersActions.leaveServer(server.id));
 

@@ -6,7 +6,6 @@ import AddChannelModal from "./AddChannel";
 import EditChannel from "./EditChannel";
 import UserProfile from "./UserProfile";
 
-import * as serversActions from "../../../store/servers";
 import * as channelsActions from "../../../store/channels";
 import * as chatsActions from "../../../store/chats";
 
@@ -21,20 +20,27 @@ const ChannelBar = () => {
 	const currServerChannels = servers?.byId[serverId]?.channels;
 	const channels = useSelector((state) => state.channels);
 
-	useEffect(() => {
-		if (serverParam) {
-			// Thunks to get server and channels
-			dispatch(serversActions.getServer(serverId))
-				.then((res) => dispatch(channelsActions.getChannels(res.channels)))
-				.catch((err) => console.log(err));
-		}
-		if (channelParam) {
-			// Thunks to get channel and chats
-			dispatch(channelsActions.getChannel(channelId))
-				.then((res) => dispatch(chatsActions.getChats(res.chats)))
-				.catch((err) => console.log(err));
-		}
-	}, [serverParam, channelParam]);
+	const dispatchChannel = async () => {
+		dispatch(channelsActions.getChannel(channelId))
+			.then((res) => dispatch(chatsActions.getChats(res.chats)))
+			.catch((err) => console.log(err));
+	};
+
+	// useEffect(() => {
+	// if (channelParam) {
+	// 	// Thunks to get channel and chats
+	// 	dispatch(channelsActions.getChannel(channelId))
+	// 		.then((res) => dispatch(chatsActions.getChats(res.chats)))
+	// 		.catch((err) => console.log(err));
+	// }
+
+	// 	if (serverParam) {
+	// 		// Thunks to get server and channels
+	// 		dispatch(serversActions.getServer(serverId))
+	// 			.then((res) => dispatch(channelsActions.getChannels(res.channels)))
+	// 			.catch((err) => console.log(err));
+	// 	}
+	// }, [serverParam, channelParam]);
 
 	return (
 		<>
@@ -48,6 +54,7 @@ const ChannelBar = () => {
 									<Link
 										to={`/channels/${serverId}/${id}`}
 										className="channel-info-wrapper"
+										onClick={dispatchChannel}
 									>
 										<div className="channel-name">
 											<i className="fa-solid fa-hashtag"></i>

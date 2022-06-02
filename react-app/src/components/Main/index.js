@@ -8,7 +8,7 @@ import ChannelBar from "./ChannelBar";
 import Chat from "./Chat";
 import Users from "./Users";
 
-import ExplorePage from "./Explore";
+// import ExplorePage from "./Explore";
 
 import * as serversActions from "../../store/servers";
 import * as channelsActions from "../../store/channels";
@@ -18,13 +18,8 @@ import * as prvChatsActions from "../../store/prvChats";
 import * as joinServersActions from "../../store/joinServers";
 import * as usersActions from "../../store/users";
 
-import { socket } from "../../context/Socket";
-
 const MainPage = () => {
 	const dispatch = useDispatch();
-	// const user = useSelector((state) => state.session.user);
-	const channels = useSelector((state) => state.channels);
-	const channelArr = channels.allIds;
 
 	useEffect(() => {
 		fetch("/api/users/all")
@@ -40,25 +35,8 @@ const MainPage = () => {
 			})
 			.catch((err) => console.log(err));
 
-		socket.on("receive_message", (data) => {
-			// dispatch chat with id to our redux store
-			dispatch(channelsActions.addEditChannel(data.channel));
-			// dispatch(chatActions.addChat(data));
-			dispatch(chatsActions.addEditChat(data.chat));
-		});
-
-		// Disconnect socket when leave page
-		return () => {
-			// socket.emit("leave_channels", channelArr);
-			socket.disconnect();
-		};
+		return () => {};
 	}, [dispatch]);
-
-	useEffect(() => {
-		setTimeout(() => {
-			socket.emit("join_channels", channelArr);
-		}, 5000);
-	}, [channelArr]);
 
 	return (
 		<div className="main-ctrl">
@@ -86,9 +64,9 @@ const MainPage = () => {
 						</div>
 					</div>
 				</Route>
-				<Route path="/guild-discovery" exact>
+				{/* <Route path="/guild-discovery" exact>
 					<ExplorePage />
-				</Route>
+				</Route> */}
 			</Switch>
 		</div>
 	);
