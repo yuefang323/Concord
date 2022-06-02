@@ -38,7 +38,7 @@ const ChannelOverview = ({ channel, onClose }) => {
             name,
             server_id: channel.server_id,
         };
-        console.log("......", channelToUpdate);
+
         const res = await dispatch(
             channelsActions.editChannel(channelToUpdate)
         );

@@ -1,4 +1,4 @@
-from flask import Blueprint, jsonify, session, request
+from flask import Blueprint, jsonify, session, request, json
 from flask_login import current_user, login_required
 from app.models import db, Channel, Server
 from app.forms import NewChannelForm, EditChannelForm
@@ -40,13 +40,10 @@ def new_channel(serverId):
 
     return {'errors': validation_errors_to_error_messages(form.errors)}, 401
 
+# Update a channel
 @channel_routes.route("/<int:serverId>/<int:channelId>", methods=["GET", "PUT"])
 @login_required
-
 def edit_channel(serverId, channelId):
-    
-    print("serverId", serverId)
-    print("channelId", channelId)
 
     form = EditChannelForm()
     form['csrf_token'].data = request.cookies['csrf_token']
@@ -59,3 +56,21 @@ def edit_channel(serverId, channelId):
         return {"channel": channel.to_dict()}
 
     return {'errors': validation_errors_to_error_messages(form.errors)}, 401
+
+# Delete a channel
+@channel_routes.route("/<int:serverId>/<int:channelId>", methods=["DELETE"])
+@login_required
+def delete_channel(serverId, channelId):
+    
+    channel = Channel.query.get(channelId)
+    print("channel,,,,", channel)
+    data = json.loads(request.data)
+    name = data["name"]
+    if channel.name == name:
+        db.session.delete(channel)
+        db.session.commit()
+        return {
+            "channelId": channelId,
+        }
+
+    return {'errors': ["Channel name does not match"]}, 401

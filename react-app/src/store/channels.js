@@ -89,6 +89,8 @@ export const deleteThisChannel = (channelToDelete) => async (dispatch) => {
 		},
 		body: JSON.stringify(channelToDelete),
 	});
+    console.log("responseXXXXX", response)
+
 	if (response.ok) {
 		const data = await response.json();
 		dispatch(deleteChannels(data.channelId));
