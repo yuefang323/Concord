@@ -13,6 +13,14 @@
     flex: 1;
     padding: 10px;
     height: 60px;
+    min-width: 0;
+}
+
+.user_profileInfo>p {
+    color: var(--gray1);
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
 }
 
 .user_icons {
@@ -25,8 +33,8 @@
 }
 
 .user_icons:hover {
-  background-color: rgb(100, 100, 100);
-  border: 1px solid rgb(100, 100, 100);
+  background-color: rgb(125, 125, 125);
+  border: 1px solid rgb(125, 125, 125);
   border-radius: 3px;
 }
 
@@ -38,7 +46,7 @@
 
 .form-edit-user {
     width: 600px;
-    height: 360px;
+    height: 420px;
     background-color: var(--gray3);
     padding: 10px;
     border-radius: 5px;
@@ -75,4 +83,8 @@
 .user-avatar.logo {
     width: 32px;
     height: 32px;
+}
+
+.close-edit {
+    cursor: pointer;
 }

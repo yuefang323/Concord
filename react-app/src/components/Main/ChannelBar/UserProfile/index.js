@@ -7,9 +7,10 @@ import EditUser from '../../Modal/Server/EditUser';
 import './UserProfile.css'
 
 const UserProfile = () => {
-    const user = useSelector((state) => state.session.user);
+    const user = useSelector((state) => state?.session.user);
     const [showModal, setShowModal] = useState(false);
     console.log(user)
+
 
     return (
     <>
@@ -18,7 +19,7 @@ const UserProfile = () => {
             {user?.avatar ? (
             <img
                 className='user-avatar logo'
-                src={user.avatar}
+                src={user?.avatar}
                 alt='user avatar'></img>
             ) : (
                 <div className='avatar-bkg'>
@@ -47,6 +48,7 @@ const UserProfile = () => {
                 >
                     <div className="edit-modal-title">
                         <h1>My Account</h1>
+                        <div className="close-edit" onClick={() => setShowModal(false)}>X</div>
                     </div>
                     <div className='form-edit-user'>
                         <EditUser modal={setShowModal} />

@@ -103,23 +103,42 @@ export const signUp = (username, email, password) => async (dispatch) => {
   }
 }
 
-const updateUser = (user) => async (dispatch) => {
-	const response = await fetch('', {
+export const updateUser = (user, userId) => async (dispatch) => {
+	const response = await fetch(`/api/users/${userId}`, {
 		method: "PUT",
 		headers: { 'Content-Type': 'application/json' },
 		body: JSON.stringify(user)
 	})
+
+	if (response.ok) {
+		const data = await response.json();
+		dispatch(editUser(data))
+		return data
+	} else if (response.status < 500) {
+		const data = await response.json();
+		if (data.errors) {
+			return data
+		}
+	} else {
+		return { errors: ['An error occured. Please Try again.'] }
+	}
 }
 
 // -------------Reducer-------------
 const initialState = { user: null };
 
 export default function reducer(state = initialState, action) {
+	let newState
   switch (action.type) {
 	case SET_USER:
 	  return { user: action.payload }
 	case REMOVE_USER:
 	  return { user: null }
+	case EDIT_USER:
+		newState = { ...state }
+		newState = action.payload
+
+		return newState
 	default:
 	  return state;
   }
