@@ -17,11 +17,21 @@ else:
 socketio = SocketIO(cors_allowed_origins=origins, logger=True, engineio_logger=True)
 
 
+
+@socketio.on("join_channel")
+def join_channels(channel_id):
+    join_room(channel_id)
+
+
 # User join room as soons as they click on the channel tab
-@socketio.on("join_channels")
-def join_channels(channel_id_list):
-    for channel_id in channel_id_list:
-        join_room(channel_id)
+# @socketio.on("join_channels")
+# def join_channels(channel_id_list):
+#     for channel_id in channel_id_list:
+#         join_room(channel_id)
+
+@socketio.on("leave_channel")
+def leave_channels(channel_id):
+    leave_room(channel_id)
 
 @socketio.on("leave_channels")
 def leave_channels(channel_id_list):
@@ -49,6 +59,7 @@ def send_chat(data):
          "chat": chat.to_dict(), "channel": channel.to_dict()},
          room=data["channel_id"],
          to=data["channel_id"],
+         broadcast=True
          )
 
 
