@@ -4,6 +4,7 @@ import { useParams, Link } from "react-router-dom";
 
 import AddChannelModal from "./AddChannel";
 import EditChannel from "./EditChannel";
+import UserProfile from "./UserProfile";
 
 import * as serversActions from "../../../store/servers";
 import * as channelsActions from "../../../store/channels";
@@ -59,6 +60,7 @@ const ChannelBar = () => {
 						))}
 					</div>
 				</div>
+				<UserProfile />
 			</div>
 		</>
 	);

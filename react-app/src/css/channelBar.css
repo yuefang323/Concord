@@ -1,47 +1,47 @@
 .channel-bar-friend-btn {
-    display: inline-flex;
-    flex-direction: row;
-    justify-content: space-evenly;
-    align-items: center;
-    width: 90%;
-    margin: 5px; 
-    background-color: var(--gray2);
-    box-sizing: border-box;
+	display: inline-flex;
+	flex-direction: row;
+	justify-content: space-evenly;
+	align-items: center;
+	width: 90%;
+	margin: 5px;
+	background-color: var(--gray2);
+	box-sizing: border-box;
 }
 
 .channel-bar-friend-btn:hover {
-    background-color: var(--gray3);
-    color: white; 
-    border-radius: 15px;
+	background-color: var(--gray3);
+	color: white;
+	border-radius: 15px;
 }
 
 .add-channel-modal {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    border-radius: 10px;
-    background-color: var(--gray3);
-    box-shadow: 0 0 5px rgb(0 0 0 / 30%);
-    transition: all 0.5s;
-    box-sizing: border-box;
-    width: 120%;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	border-radius: 10px;
+	background-color: var(--gray3);
+	box-shadow: 0 0 5px rgb(0 0 0 / 30%);
+	transition: all 0.5s;
+	box-sizing: border-box;
+	width: 120%;
 }
 .add-channel-form {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    width: 120%;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	width: 120%;
 }
 .new-channel-form {
-    margin: 10px;
-    margin-top: 0; 
-    padding: 10px;
-    width: 60%;
+	margin: 10px;
+	margin-top: 0;
+	padding: 10px;
+	width: 60%;
 }
 .add-channel-input {
-    display: flex;
+	display: flex;
 	flex-direction: column;
 	gap: 10px;
 	margin-top: 20px;
@@ -50,96 +50,95 @@
 }
 
 .add-channel-input label {
-    color: var(--gray4);
-    font-size: 15px;
+	color: var(--gray4);
+	font-size: 15px;
 	font-family: var(--title-font);
 }
 
 .add-channel-input input {
-    background-color: var(--gray4);
+	background-color: var(--gray4);
 	height: 40px;
 	padding: 0 10px 0 10px;
 	caret-color: #fff;
 	color: #fff;
 	border: none;
-    width: 87%;
-    border-top-right-radius: 5px;
-    border-bottom-right-radius: 5px;
+	width: 87%;
+	border-top-right-radius: 5px;
+	border-bottom-right-radius: 5px;
 }
 
 .input-hash-sign {
-    background-color: var(--gray4);
+	background-color: var(--gray4);
 	height: 40px;
 	padding: 9px 0px 0px 10px;
 	caret-color: #fff;
 	color: #fff;
 	border: none;
-    box-sizing: border-box;
-    width: 15%;
-    border-top-left-radius: 5px;
-    border-bottom-left-radius: 5px; 
+	box-sizing: border-box;
+	width: 15%;
+	border-top-left-radius: 5px;
+	border-bottom-left-radius: 5px;
 }
 
 .fa-solid.fa-hashtag {
-    display: inline-block;
-    margin-right: 0.3em;
+	display: inline-block;
+	margin-right: 0.3em;
 }
 
 .channel-list {
-    display: flex;
-    flex-direction: column;
-    gap: 5px; 
-    overflow-x: hidden;
-    white-space: nowrap;
-    height: calc(100vh - 180px);
-    margin-left: 10px;
-    
+	display: flex;
+	flex-direction: column;
+	gap: 5px;
+	overflow-x: hidden;
+	white-space: nowrap;
+	height: calc(100vh - 155px);
+	margin-left: 10px;
 }
 
 .input-field {
-    display: flex;
-    flex-direction: row;
-    color: black;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
-    box-sizing: border-box;
+	display: flex;
+	flex-direction: row;
+	color: black;
+	justify-content: center;
+	align-items: center;
+	width: 100%;
+	box-sizing: border-box;
 }
 
 .add-new-channel-wrapper {
-    display: inline-flex;
-    flex-direction: row;
-    justify-content: space-around;
-    align-items: center;
-    margin: 0 0 0 10px;
+	display: inline-flex;
+	flex-direction: row;
+	justify-content: space-around;
+	align-items: center;
+	margin: 0 0 0 10px;
+	width: 100%;
 }
 
 .add-new-channel-wrapper button {
-    background-color: var(--gray2);
-    margin-left: 10%;
-    /* margin-right: 50px; */
+	background-color: var(--gray2);
+	margin-left: 10%;
+	/* margin-right: 50px; */
 }
 
 .add-new-channel-wrapper button:hover {
-    background-color: var(--red1);
+	background-color: var(--red1);
 	color: white;
-    border-radius: 15px;
+	border-radius: 15px;
 }
 
 .channel-info-wrapper {
-    display: inline-flex;
-    flex-direction: row;
-    justify-content: space-between;
-    gap: 10px; 
-    align-items: flex-end;
-    width: 100%;
-    padding-right: 10px;
+	display: inline-flex;
+	flex-direction: row;
+	justify-content: space-between;
+	gap: 10px;
+	align-items: flex-end;
+	width: 100%;
+	padding-right: 10px;
 }
 
 .channel-name {
-    overflow: hidden;
-    width: 170px;
-    white-space: nowrap;
-    text-overflow: ellipsis;
-
+	overflow: hidden;
+	width: 170px;
+	white-space: nowrap;
+	text-overflow: ellipsis;
 }
