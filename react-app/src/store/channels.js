@@ -43,7 +43,7 @@ export const addNewChannel = (newChannel) => async (dispatch) => {
 	if (response.ok) {
 		const data = await response.json();
 		dispatch(addEditChannel(data.channel));
-		return data.server;
+		return data;
 	} else if (response.status < 500) {
 		const data = await response.json();
 		if (data.errors) {
@@ -51,6 +51,57 @@ export const addNewChannel = (newChannel) => async (dispatch) => {
 		}
 	} else {
 		return ["An error occurred. Please try again."];
+	}
+};
+
+
+export const editChannel = (channel) => async (dispatch) => {
+    console.log("Thunk serverId", channel.server_id)
+
+	const response = await fetch(`/api/channels/${channel.server_id}/${channel.id}`, {
+        method: "PUT",
+		headers: {
+			"Content-Type": "application/json",
+		},
+		body: JSON.stringify(channel),
+	});
+    console.log("response", response)
+
+	if (response.ok) {
+		const data = await response.json();
+		dispatch(addEditChannel(data.channel));
+		return data;
+	} else if (response.status < 500) {
+		const data = await response.json();
+		if (data.errors) {
+			return data.errors;
+		}
+	} else {
+		return ["An error occurred. Please try again."];
+	}
+};
+
+export const deleteThisChannel = (channelToDelete) => async (dispatch) => {
+	const response = await fetch(`/api/channels/${channelToDelete.server_id}/${channelToDelete.id}`, {
+		method: "DELETE",
+		headers: {
+			"Content-Type": "application/json",
+		},
+		body: JSON.stringify(channelToDelete),
+	});
+    console.log("responseXXXXX", response)
+
+	if (response.ok) {
+		const data = await response.json();
+		dispatch(deleteChannels(data.channelId));
+		return data;
+	} else if (response.status < 500) {
+		const data = await response.json();
+		if (data.errors) {
+			return data;
+		}
+	} else {
+		return { errors: ["An error occurred. Please try again."] };
 	}
 };
 
