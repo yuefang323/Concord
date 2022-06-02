@@ -91,16 +91,13 @@ export const editChannel = (channel) => async (dispatch) => {
 };
 
 export const deleteThisChannel = (channelToDelete) => async (dispatch) => {
-	const response = await fetch(
-		`/api/channels/${channelToDelete.server_id}/${channelToDelete.id}`,
-		{
-			method: "DELETE",
-			headers: {
-				"Content-Type": "application/json",
-			},
-			body: JSON.stringify(channelToDelete),
-		}
-	);
+	const response = await fetch(`/api/channels/${channelToDelete.server_id}/${channelToDelete.id}`, {
+		method: "DELETE",
+		headers: {
+			"Content-Type": "application/json",
+		},
+		body: JSON.stringify(channelToDelete),
+	});
 
 	if (response.ok) {
 		const data = await response.json();
