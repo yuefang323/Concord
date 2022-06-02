@@ -46,11 +46,9 @@
 .chat-ctrl {
 	width: 100%;
 	height: 100%;
-	display: flex;
-	flex-direction: column;
+	display: grid;
+	grid-template-rows: calc(100vh - 100px) 60px;
 	background-color: var(--gray1);
-	overflow-x: hidden;
-	white-space: nowrap;
 }
 
 .users-ctrl {

@@ -1,0 +1,102 @@
+/* Chat input */
+
+.chat-input-ctrl {
+	width: 100%;
+	height: 100%;
+	padding: 10px;
+}
+
+.chat-input {
+	border: none;
+	padding: 10px;
+	width: 100%;
+	border-radius: 5px;
+	transition: all 0.25s;
+}
+
+.chat-input:focus::placeholder {
+	color: transparent;
+}
+
+/* Chat divs */
+.chat-div-wrap {
+	display: flex;
+	flex-direction: column;
+	overflow-x: hidden;
+	white-space: nowrap;
+	height: calc(100vh - 100px);
+}
+
+.chat-div-ctrl {
+	display: grid;
+	grid-template-columns: 50px auto;
+	padding: 10px;
+	gap: 5px;
+	width: 100%;
+	transition: all 0.25s;
+	position: relative;
+}
+.chat-div-ctrl:hover {
+	background-color: var(--gray2);
+}
+
+.chat-avatar {
+	width: 42px;
+	height: 42px;
+	border-radius: 42px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.chat-message-ctrl {
+	display: flex;
+	flex-direction: column;
+}
+
+.chat-user-wrap {
+	display: flex;
+	flex-direction: row;
+	gap: 5px;
+	align-items: center;
+}
+
+.chat-username {
+	font-size: 14px;
+	font-weight: bold;
+}
+
+.chat-created-at {
+	font-size: 10px;
+	color: var(--gray3);
+}
+
+.chat-edit-delete {
+	visibility: hidden;
+	position: absolute;
+	display: flex;
+	flex-direction: row;
+	right: 10px;
+	top: -10px;
+	border: 1px solid lightgray;
+	border-radius: 5px;
+}
+
+.chat-div-ctrl:hover .chat-edit-delete {
+	visibility: visible;
+}
+
+.chat-edit-delete-btn {
+	width: 30px;
+	height: 30px;
+	background-color: var(--gray2);
+	padding: 5px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.chat-edit-delete-btn:hover {
+	filter: brightness(95%);
+	cursor: pointer;
+}
