@@ -1,9 +1,11 @@
 // Actions
 const GET_CHANNELS = "channels/GET_CHANNELS";
 const GET_CHANNEL = "channels/GET_CHANNEL";
+
 const ADD_EDIT_CHANNEL = "channels/ADD_EDIT_CHANNEL";
+
 const DELETE_CHANNEL = "channels/DELETE_CHANNEL";
-const CLEAR_CHANNELS = "channels/CLEAR_CHANNELS"
+const CLEAR_CHANNELS = "channels/CLEAR_CHANNELS";
 
 // Action Creator
 export const getChannels = (channels) => {
@@ -27,10 +29,18 @@ export const deleteChannels = (channelId) => {
 	};
 };
 export const clearChannels = () => ({
-	type: CLEAR_CHANNELS, 
-}); 
+	type: CLEAR_CHANNELS,
+});
 
-// Thunks 
+// Thunks
+export const getChannel = (channelId) => async (dispatch) => {
+	const response = await fetch(`/channels/${channelId}`);
+	if (response.ok) {
+		const data = await response.json();
+		dispatch(addEditChannel(data.channel));
+		return data;
+	}
+};
 
 export const addNewChannel = (newChannel) => async (dispatch) => {
 	const response = await fetch(`/api/channels/${newChannel.serverIdnum}/new`, {
@@ -54,18 +64,17 @@ export const addNewChannel = (newChannel) => async (dispatch) => {
 	}
 };
 
-
 export const editChannel = (channel) => async (dispatch) => {
-    console.log("Thunk serverId", channel.server_id)
-
-	const response = await fetch(`/api/channels/${channel.server_id}/${channel.id}`, {
-        method: "PUT",
-		headers: {
-			"Content-Type": "application/json",
-		},
-		body: JSON.stringify(channel),
-	});
-    console.log("response", response)
+	const response = await fetch(
+		`/api/channels/${channel.server_id}/${channel.id}`,
+		{
+			method: "PUT",
+			headers: {
+				"Content-Type": "application/json",
+			},
+			body: JSON.stringify(channel),
+		}
+	);
 
 	if (response.ok) {
 		const data = await response.json();
@@ -82,14 +91,16 @@ export const editChannel = (channel) => async (dispatch) => {
 };
 
 export const deleteThisChannel = (channelToDelete) => async (dispatch) => {
-	const response = await fetch(`/api/channels/${channelToDelete.server_id}/${channelToDelete.id}`, {
-		method: "DELETE",
-		headers: {
-			"Content-Type": "application/json",
-		},
-		body: JSON.stringify(channelToDelete),
-	});
-    console.log("responseXXXXX", response)
+	const response = await fetch(
+		`/api/channels/${channelToDelete.server_id}/${channelToDelete.id}`,
+		{
+			method: "DELETE",
+			headers: {
+				"Content-Type": "application/json",
+			},
+			body: JSON.stringify(channelToDelete),
+		}
+	);
 
 	if (response.ok) {
 		const data = await response.json();
@@ -141,14 +152,14 @@ export default function reducer(state = initialState, action) {
 
 			newState.allIds = Array.from(set);
 			return newState;
-        case ADD_EDIT_CHANNEL:
-            newState = { ...state };
-            set = new Set(state.allIds);
-            newState.byId[action.channel.id] = action.channel;
-            newState.allIds = Array.from(set);
-            return newState; 
+		case ADD_EDIT_CHANNEL:
+			newState = { ...state };
+			set = new Set(state.allIds);
+			newState.byId[action.channel.id] = action.channel;
+			newState.allIds = Array.from(set);
+			return newState;
 		case CLEAR_CHANNELS:
-			return { byId: {}, allIds: [] }; 
+			return { byId: {}, allIds: [] };
 		default:
 			return state;
 	}
