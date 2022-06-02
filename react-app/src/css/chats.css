@@ -34,6 +34,7 @@
 	gap: 5px;
 	width: 100%;
 	transition: all 0.25s;
+	position: relative;
 }
 .chat-div-ctrl:hover {
 	background-color: var(--gray2);
@@ -68,4 +69,34 @@
 .chat-created-at {
 	font-size: 10px;
 	color: var(--gray3);
+}
+
+.chat-edit-delete {
+	visibility: hidden;
+	position: absolute;
+	display: flex;
+	flex-direction: row;
+	right: 10px;
+	top: -10px;
+	border: 1px solid lightgray;
+	border-radius: 5px;
+}
+
+.chat-div-ctrl:hover .chat-edit-delete {
+	visibility: visible;
+}
+
+.chat-edit-delete-btn {
+	width: 30px;
+	height: 30px;
+	background-color: var(--gray2);
+	padding: 5px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.chat-edit-delete-btn:hover {
+	filter: brightness(95%);
+	cursor: pointer;
 }

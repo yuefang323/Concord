@@ -4,10 +4,15 @@ import { useSelector } from "react-redux";
 import Avatar from "./Avatar";
 import CreatedAt from "./CreatedAt";
 
+import EditDelete from "./EditDelete";
+
 const ChatDivs = ({ chatId }) => {
+	const userId = useSelector((state) => state.session.user).id;
 	const users = useSelector((state) => state.users.byId);
 	const chats = useSelector((state) => state.chats.byId);
 	const [user, setUser] = useState();
+
+	const owner = userId === chats[chatId].user_id;
 
 	useEffect(() => {
 		setUser(users[chats[chatId].user_id]);
@@ -25,6 +30,7 @@ const ChatDivs = ({ chatId }) => {
 				</div>
 				<div>{chats[chatId]?.message}</div>
 			</div>
+			{owner && <EditDelete />}
 		</div>
 	);
 };
