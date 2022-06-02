@@ -25,6 +25,7 @@ export default function reducer(state = initialState, action) {
 	switch (action.type) {
 		case GET_PRV_CHANNELS:
 			newState = { ...state };
+			newState.byId = JSON.parse(JSON.stringify(newState.byId));
 			set = new Set(newState.allIds);
 			action.prv_channels.forEach((prv_channel) => {
 				newState.byId[prv_channel.id] = prv_channel;

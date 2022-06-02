@@ -124,7 +124,8 @@ export default function reducer(state = initialState, action) {
 	let set;
 	switch (action.type) {
 		case GET_CHANNELS:
-			newState = { ...state };
+			newState = Object.assign({}, state);
+			newState.byId = JSON.parse(JSON.stringify(newState.byId));
 			set = new Set(state.allIds);
 
 			action.channels.forEach((channel) => {
@@ -135,7 +136,8 @@ export default function reducer(state = initialState, action) {
 			newState.allIds = Array.from(set);
 			return newState;
 		case GET_CHANNEL:
-			newState = { ...state };
+			newState = Object.assign({}, state);
+			newState.byId = JSON.parse(JSON.stringify(newState.byId));
 			set = new Set(newState.allIds);
 
 			newState.byId[action.channel.id] = action.channel;
@@ -144,8 +146,9 @@ export default function reducer(state = initialState, action) {
 			newState.allIds = Array.from(set);
 			return newState;
 		case DELETE_CHANNEL:
-			newState = { ...state };
+			newState = Object.assign({}, state);
 			set = new Set(newState.allIds);
+			newState.byId = JSON.parse(JSON.stringify(newState.byId));
 
 			delete newState.byId[action.channelId];
 			set.delete(action.channelId);
@@ -153,8 +156,10 @@ export default function reducer(state = initialState, action) {
 			newState.allIds = Array.from(set);
 			return newState;
 		case ADD_EDIT_CHANNEL:
-			newState = { ...state };
+			newState = Object.assign({}, state);
+			newState.byId = JSON.parse(JSON.stringify(newState.byId));
 			set = new Set(newState.allIds);
+
 			newState.byId[action.channel.id] = action.channel;
 			newState.allIds = Array.from(set);
 			return newState;

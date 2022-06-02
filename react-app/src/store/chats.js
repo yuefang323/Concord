@@ -39,7 +39,8 @@ export default function reducer(state = initialState, action) {
 	let set;
 	switch (action.type) {
 		case GET_CHATS:
-			newState = { ...state };
+			newState = Object.assign({}, state);
+			newState.byId = JSON.parse(JSON.stringify(newState.byId));
 			set = new Set(newState.allIds);
 			// Do the thing
 			action.chats.forEach((chat) => {
@@ -50,7 +51,8 @@ export default function reducer(state = initialState, action) {
 			newState.allIds = Array.from(set);
 			return newState;
 		case ADD_EDIT_CHAT:
-			newState = { ...state };
+			newState = Object.assign({}, state);
+			newState.byId = JSON.parse(JSON.stringify(newState.byId));
 			set = new Set(newState.allIds);
 			// Do the thing
 			newState.byId[action.chat.id] = action.chat;
@@ -59,7 +61,8 @@ export default function reducer(state = initialState, action) {
 			newState.allIds = Array.from(set);
 			return newState;
 		case DELETE_CHAT:
-			newState = { ...state };
+			newState = Object.assign({}, state);
+			newState.byId = JSON.parse(JSON.stringify(newState.byId));
 			set = new Set(newState.allIds);
 
 			delete newState.byId[action.chatId];

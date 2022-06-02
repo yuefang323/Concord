@@ -84,6 +84,7 @@ export default function reducer(state = initialState, action) {
 		case GET_JOIN_SERVERS:
 			newState = { ...state };
 			// Change all ids to set to prevent duplicate
+			newState.byId = JSON.parse(JSON.stringify(newState.byId));
 			set = new Set(newState.allIds);
 			// Add to new state
 			action.joinServers.forEach((join) => {
@@ -96,6 +97,7 @@ export default function reducer(state = initialState, action) {
 		case JOIN_SERVER:
 			newState = { ...state };
 			// Change all ids to set to prevent duplicate
+			newState.byId = JSON.parse(JSON.stringify(newState.byId));
 			set = new Set(newState.allIds);
 			// Add to new state
 			newState.byId[action.joinServer.server_id] = action.joinServer;
@@ -106,6 +108,7 @@ export default function reducer(state = initialState, action) {
 		case LEAVE_SERVER:
 			newState = { ...state };
 			// Change all ids to set to prevent duplicate
+			newState.byId = JSON.parse(JSON.stringify(newState.byId));
 			set = new Set(newState.allIds);
 			// Remove from new state
 			delete newState.byId[action.serverId];
