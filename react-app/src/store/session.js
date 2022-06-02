@@ -1,6 +1,7 @@
 // ------------Constants------------
 const SET_USER = 'session/SET_USER';
 const REMOVE_USER = 'session/REMOVE_USER';
+const EDIT_USER = 'session/EDIT_USER'
 
 // -------------Actions-------------
 const setUser = (user) => ({
@@ -10,6 +11,11 @@ const setUser = (user) => ({
 
 const removeUser = () => ({
   type: REMOVE_USER,
+})
+
+const editUser = (user) => ({
+	type: EDIT_USER,
+	payload: user
 })
 
 // -------------Thunks-------------
@@ -24,7 +30,7 @@ export const authenticate = () => async (dispatch) => {
 	if (data.errors) {
 	  return;
 	}
-  
+
 	dispatch(setUser(data));
   }
 }
@@ -40,8 +46,8 @@ export const login = (email, password) => async (dispatch) => {
 	  password
 	})
   });
-  
-  
+
+
   if (response.ok) {
 	const data = await response.json();
 	dispatch(setUser(data))
@@ -82,7 +88,7 @@ export const signUp = (username, email, password) => async (dispatch) => {
 	  password,
 	}),
   });
-  
+
   if (response.ok) {
 	const data = await response.json();
 	dispatch(setUser(data))
@@ -97,15 +103,42 @@ export const signUp = (username, email, password) => async (dispatch) => {
   }
 }
 
+export const updateUser = (user, userId) => async (dispatch) => {
+	const response = await fetch(`/api/users/${userId}`, {
+		method: "PUT",
+		headers: { 'Content-Type': 'application/json' },
+		body: JSON.stringify(user)
+	})
+
+	if (response.ok) {
+		const data = await response.json();
+		dispatch(editUser(data))
+		return data
+	} else if (response.status < 500) {
+		const data = await response.json();
+		if (data.errors) {
+			return data
+		}
+	} else {
+		return { errors: ['An error occured. Please Try again.'] }
+	}
+}
+
 // -------------Reducer-------------
 const initialState = { user: null };
 
 export default function reducer(state = initialState, action) {
+	let newState
   switch (action.type) {
 	case SET_USER:
 	  return { user: action.payload }
 	case REMOVE_USER:
 	  return { user: null }
+	case EDIT_USER:
+		newState = { ...state }
+		newState = action.payload
+
+		return newState
 	default:
 	  return state;
   }

@@ -1,0 +1,90 @@
+.user_profile {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 5px;
+    /* border-top: 1px solid gray; */
+    min-width: 200px;
+    background-color: var(--gray3);
+    height: 60px;
+}
+
+.user_profileInfo {
+    flex: 1;
+    padding: 10px;
+    height: 60px;
+    min-width: 0;
+}
+
+.user_profileInfo>p {
+    color: var(--gray1);
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+.user_icons {
+    display: flex;
+    justify-content: center;
+    padding: 7px;
+    height: 32px;
+    width: 32px;
+    margin-left: 5px;
+}
+
+.user_icons:hover {
+  background-color: rgb(125, 125, 125);
+  border: 1px solid rgb(125, 125, 125);
+  border-radius: 3px;
+}
+
+.text {
+    font-size: 10pt;
+    color: black;
+    margin: 0px;
+}
+
+.form-edit-user {
+    width: 600px;
+    height: 420px;
+    background-color: var(--gray3);
+    padding: 10px;
+    border-radius: 5px;
+}
+
+.edit-modal-title {
+    display: flex;
+    justify-content: space-between;
+    height: 44px;
+}
+
+.edit-modal-title>h1 {
+    font-size: 20px;
+    line-height: 24px;
+}
+
+.avatar-bkg {
+    width: 32px;
+    height: 32px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 32px;
+    background-color: var(--gray1);
+}
+
+.user-avatar.channel {
+    width: 20px;
+    height: 20px;
+    border-radius: 0px;
+    object-fit: revert;
+}
+
+.user-avatar.logo {
+    width: 32px;
+    height: 32px;
+}
+
+.close-edit {
+    cursor: pointer;
+}

@@ -1,10 +1,19 @@
-from flask import Blueprint, jsonify
+from flask import Blueprint, jsonify, request
 from flask_login import login_required, current_user
-from app.models import User, Server, JoinServerUser
+from app.models import User, Server, JoinServerUser, db
+from app.forms import EditUserForm
 
 user_routes = Blueprint('users', __name__)
 
-
+def validation_errors_to_error_messages(validation_errors):
+    """
+    Simple function that turns the WTForms validation errors into a simple list
+    """
+    errorMessages = []
+    for field in validation_errors:
+        for error in validation_errors[field]:
+            errorMessages.append(f'{field} : {error}')
+    return errorMessages
 
 # Get current login user's all servers, channels and chats and private chats
 @user_routes.route('/all')
@@ -38,3 +47,21 @@ def get_user_all_info():
         "joinServers": join_server_user,
         "users": joined_server_memebers
         }
+
+# edit user
+@user_routes.route('/<int:user_id>', methods=["PUT"])
+@login_required
+def edit_user_info(user_id):
+    form = EditUserForm()
+
+    form['csrf_token'].data = request.cookies['csrf_token']
+    if form.validate_on_submit():
+        user = User.query.get(user_id)
+        user.username = form.data["username"]
+        user.email = form.data["email"]
+        user.avatar = form.data["avatar"]
+        db.session.commit()
+
+        return { "user": user.to_dict() }
+
+    return {'errors': validation_errors_to_error_messages(form.errors)}, 401
