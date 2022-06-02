@@ -66,9 +66,14 @@
 	font-weight: bold;
 }
 
-.chat-created-at {
+.chat-created-at,
+.chat-created-at-short {
 	font-size: 10px;
 	color: var(--gray3);
+}
+
+.chat-created-at-short {
+	padding-top: 5px;
 }
 
 .chat-edit-delete {

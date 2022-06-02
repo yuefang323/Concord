@@ -23,11 +23,8 @@ const Chats = () => {
 
 	return (
 		<div className="chat-div-wrap" ref={focusRef}>
-			{channel?.chats?.map((chatId, i, arr) => {
-				const prvId = arr[i - 1];
-				if (chats[chatId]?.user_id === chats[prvId]?.user_id) {
-					return <ChatDivs chatId={chatId} key={chatId} />;
-				} else return <ChatDivsSame chatId={chatId} key={chatId} />;
+			{channel?.chats?.map((chatId) => {
+				return <ChatDivs chatId={chatId} key={chatId} />;
 			})}
 		</div>
 	);

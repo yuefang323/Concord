@@ -40,13 +40,6 @@ const MainPage = () => {
 			})
 			.catch((err) => console.log(err));
 
-		socket.on("receive_message", (data) => {
-			// dispatch chat with id to our redux store
-			dispatch(channelsActions.addEditChannel(data.channel));
-			// dispatch(chatActions.addChat(data));
-			dispatch(chatsActions.addEditChat(data.chat));
-		});
-
 		// Disconnect socket when leave page
 		return () => {
 			socket.emit("leave_channels", channelArr);
@@ -55,8 +48,17 @@ const MainPage = () => {
 	}, [dispatch]);
 
 	useEffect(() => {
-		socket.emit("join_channels", channelArr);
-	}, [user, channels, channelArr]);
+		socket.on("receive_message", (data) => {
+			// dispatch chat with id to our redux store
+			dispatch(channelsActions.addEditChannel(data.channel));
+			// dispatch(chatActions.addChat(data));
+			dispatch(chatsActions.addEditChat(data.chat));
+		});
+
+		setTimeout(() => {
+			socket.emit("join_channels", channelArr);
+		}, 500);
+	}, [channelArr]);
 
 	return (
 		<div className="main-ctrl">
