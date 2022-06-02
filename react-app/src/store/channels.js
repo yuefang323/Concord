@@ -81,6 +81,28 @@ export const editChannel = (channel) => async (dispatch) => {
 	}
 };
 
+export const deleteThisChannel = (channelToDelete) => async (dispatch) => {
+	const response = await fetch(`/api/channels/${channelToDelete.server_id}/${channelToDelete.id}`, {
+		method: "DELETE",
+		headers: {
+			"Content-Type": "application/json",
+		},
+		body: JSON.stringify(channelToDelete),
+	});
+	if (response.ok) {
+		const data = await response.json();
+		dispatch(deleteChannels(data.channelId));
+		return data;
+	} else if (response.status < 500) {
+		const data = await response.json();
+		if (data.errors) {
+			return data;
+		}
+	} else {
+		return { errors: ["An error occurred. Please try again."] };
+	}
+};
+
 // Reducer
 const initialState = { byId: {}, allIds: [] };
 
