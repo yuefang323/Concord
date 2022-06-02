@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 
@@ -20,7 +20,6 @@ const InputChat = () => {
 				channel_id: channelId,
 				chat,
 			};
-			// console.log(chatData);
 
 			socket.emit("send_chat", chatData);
 

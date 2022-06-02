@@ -3,12 +3,11 @@ import { useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 
 import ChatDivs from "../Inputs/ChatDivs";
-import ChatDivsSame from "../Inputs/ChatDivsSame";
+// import ChatDivsSame from "../Inputs/ChatDivsSame";
 
 const Chats = () => {
 	const channelId = parseInt(useParams().channelId);
 	const channel = useSelector((state) => state.channels.byId)[channelId];
-	const chats = useSelector((state) => state.chats.byId);
 
 	const focusRef = useRef();
 

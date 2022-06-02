@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from "react";
+import { useState, useRef } from "react";
 import { useDispatch } from "react-redux";
 
 import upload_photo from "../../../../../../assets/upload_photo.svg";
@@ -7,7 +7,7 @@ import * as serversActions from "../../../../../../store/servers";
 const Logo = ({ server, errors, setErrors }) => {
 	const dispatch = useDispatch();
 
-	const [logo, setLogo] = useState("");
+	// const [logo, setLogo] = useState("");
 	const uploadLogoRef = useRef();
 
 	const uploadLogoClick = (e) => {

@@ -1,3 +1,4 @@
+from flask import request
 from flask_socketio import SocketIO, emit, join_room, leave_room
 from app.models import db, Chat, Channel
 from flask_login import current_user
@@ -13,7 +14,7 @@ else:
     origins = "*"
 
 # initialize your socket instance
-socketio = SocketIO(cors_allowed_origins=origins)
+socketio = SocketIO(cors_allowed_origins=origins, logger=True, engineio_logger=True)
 
 
 # User join room as soons as they click on the channel tab
@@ -21,19 +22,16 @@ socketio = SocketIO(cors_allowed_origins=origins)
 def join_channels(channel_id_list):
     for channel_id in channel_id_list:
         join_room(channel_id)
-        print("*************joined channel", channel_id)
 
 @socketio.on("leave_channels")
 def leave_channels(channel_id_list):
     for channel_id in channel_id_list:
         leave_room(channel_id)
-        print("*************left channel", channel_id)
 
 
 # receive any message with event "send_chat"
 @socketio.on("send_chat")
 def send_chat(data):
-    # print("*************send")
     user_id = current_user.id
     # create "created_at" and create class instance "chat"
     chat = Chat(user_id=user_id, channel_id=data["channel_id"],
@@ -52,3 +50,10 @@ def send_chat(data):
          room=data["channel_id"],
          to=data["channel_id"],
          )
+
+
+# Error handler
+@socketio.on_error_default
+def default_error_handler(e):
+    print(request.even["message"])
+    print(request.event["args"])

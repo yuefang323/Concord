@@ -16,7 +16,7 @@ const ChatDivs = ({ chatId }) => {
 
 	useEffect(() => {
 		setUser(users[chats[chatId]?.user_id]);
-	}, [chats]);
+	}, [chats, chatId]);
 
 	return (
 		<div className="chat-div-ctrl" id={chatId}>
