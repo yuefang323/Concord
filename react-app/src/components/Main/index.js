@@ -24,6 +24,7 @@ const MainPage = () => {
 	const dispatch = useDispatch();
 	const user = useSelector((state) => state.session.user);
 	const channels = useSelector((state) => state.channels);
+	const channelArr = channels.allIds;
 
 	useEffect(() => {
 		fetch("/api/users/all")
@@ -48,14 +49,14 @@ const MainPage = () => {
 
 		// Disconnect socket when leave page
 		return () => {
+			socket.emit("leave_channels", channelArr);
 			socket.disconnect();
 		};
 	}, [dispatch]);
 
 	useEffect(() => {
-		const channelArr = channels.allIds;
 		socket.emit("join_channels", channelArr);
-	}, [user, channels]);
+	}, [user, channels, channelArr]);
 
 	return (
 		<div className="main-ctrl">
