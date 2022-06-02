@@ -22,6 +22,7 @@ const initialState = { byId: {}, allIds: [] };
 export default function reducer(state = initialState, action) {
 	let newState;
 	let set;
+
 	switch (action.type) {
 		case GET_USERS:
 			newState = { ...state };
