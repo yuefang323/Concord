@@ -5,6 +5,7 @@ import { useHistory } from "react-router-dom";
 import { socket } from "../../../../../context/Socket";
 
 import * as channelsActions from "../../../../../store/channels";
+import * as serversActions from "../../../../../store/servers";
 
 const DeleteChannel = ({ channel, onClose }) => {
     const dispatch = useDispatch();
@@ -21,10 +22,11 @@ const DeleteChannel = ({ channel, onClose }) => {
             server_id: channel.server_id,
         };
 
-        // Thunks to delete server
+        // Thunks to delete a channel
         const res = await dispatch(
             channelsActions.deleteThisChannel(channelToDelete)
         );
+        dispatch(serversActions.addEditServer(res.server));
         console.log("res....", res);
         if (!res.errors) {
             console.log("validators///////");

@@ -77,14 +77,16 @@ def edit_channel(serverId, channelId):
 def delete_channel(serverId, channelId):
 
     channel = Channel.query.get(channelId)
-
+    
     data = json.loads(request.data)
     name = data["name"]
     if channel.name == name:
+        server = Server.query.get(serverId)
         db.session.delete(channel)
         db.session.commit()
         return {
             "channelId": channelId,
+            "server": server.to_dict()
         }
 
     return {'errors': ["Channel name does not match"]}, 401
