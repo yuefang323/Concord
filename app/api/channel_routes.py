@@ -50,7 +50,7 @@ def get_channel(channelId):
 
     return {
         "channel": channel.to_dict(),
-        "chats" : [chat.to_dict() for chat in chats]
+        "chats" : [chat.to_dict() for chat in chats],
     }
 
 

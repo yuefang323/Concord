@@ -43,9 +43,9 @@ const Chat = () => {
 		socket.emit("join_channel", channelId);
 
 		socket.on("receive_message", (data) => {
+			console.log("received message");
 			// dispatch chat with id to our redux store
 			dispatch(channelsActions.addEditChannel(data.channel));
-			// dispatch(chatActions.addChat(data));
 			dispatch(chatsActions.addEditChat(data.chat));
 		});
 
@@ -53,7 +53,7 @@ const Chat = () => {
 			socket.emit("leave_channel", channelId);
 			socket.disconnect();
 		};
-	}, [channelId]);
+	}, [channelId, dispatch]);
 
 	if (serverId) {
 		return (

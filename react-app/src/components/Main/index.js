@@ -1,7 +1,6 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Switch, Route } from "react-router-dom";
-// import { io } from "socket.io-client";
 
 import SideBar from "./SideBar";
 import TopBar from "./TopBar";
@@ -19,14 +18,8 @@ import * as prvChatsActions from "../../store/prvChats";
 import * as joinServersActions from "../../store/joinServers";
 import * as usersActions from "../../store/users";
 
-// import { socket } from "../../context/Socket";
-let socket;
-
 const MainPage = () => {
 	const dispatch = useDispatch();
-	// const user = useSelector((state) => state.session.user);
-	const channels = useSelector((state) => state.channels);
-	const channelArr = channels.allIds;
 
 	useEffect(() => {
 		fetch("/api/users/all")
@@ -42,26 +35,8 @@ const MainPage = () => {
 			})
 			.catch((err) => console.log(err));
 
-		// socket = io();
-
-		// socket.on("receive_message", (data) => {
-		// 	// dispatch chat with id to our redux store
-		// 	dispatch(channelsActions.addEditChannel(data.channel));
-		// 	// dispatch(chatActions.addChat(data));
-		// 	dispatch(chatsActions.addEditChat(data.chat));
-		// });
-
-		// Disconnect socket when leave page
-		return () => {
-			// socket.disconnect();
-		};
+		return () => {};
 	}, [dispatch]);
-
-	// useEffect(() => {
-	// 	setTimeout(() => {
-	// 		socket.emit("join_channels", channelArr);
-	// 	}, 5000);
-	// }, [channelArr]);
 
 	return (
 		<div className="main-ctrl">

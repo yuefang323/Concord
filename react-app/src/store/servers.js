@@ -133,7 +133,7 @@ export default function reducer(state = initialState, action) {
 	switch (action.type) {
 		case GET_SERVERS:
 			newState = { ...state };
-			set = new Set(state.allIds);
+			set = new Set(newState.allIds);
 			// Add
 			action.servers.forEach((server) => {
 				newState.byId[server.id] = server;
@@ -143,7 +143,7 @@ export default function reducer(state = initialState, action) {
 			return newState;
 		case ADD_EDIT_SERVER:
 			newState = { ...state };
-			set = new Set(state.allIds);
+			set = new Set(newState.allIds);
 			// Update
 			newState.byId[action.server.id] = action.server;
 
@@ -151,7 +151,7 @@ export default function reducer(state = initialState, action) {
 			return newState;
 		case DELETE_SERVER:
 			newState = { ...state };
-			set = new Set(state.allIds);
+			set = new Set(newState.allIds);
 			// Delete
 			delete newState.byId[action.serverId];
 			set.delete(action.serverId);

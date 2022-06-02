@@ -1,16 +1,15 @@
-import { useRef, useEffect } from "react";
-import { useSelector } from "react-redux";
+import { useRef, useEffect, useState } from "react";
+import { useSelector, useDispatch } from "react-redux";
 import { useParams } from "react-router-dom";
 
 import ChatDivs from "../Inputs/ChatDivs";
 
 const Chats = () => {
 	const channelId = parseInt(useParams().channelId);
-	const channel = useSelector((state) => state.channels.byId)[channelId];
+
+	const channels = useSelector((state) => state.channels.byId);
 
 	const focusRef = useRef();
-
-	const sendChat = async () => {};
 
 	useEffect(() => {
 		if (focusRef) {
@@ -23,7 +22,7 @@ const Chats = () => {
 
 	return (
 		<div className="chat-div-wrap" ref={focusRef}>
-			{channel?.chats?.map((chatId) => {
+			{channels[channelId]?.chats.map((chatId) => {
 				return <ChatDivs chatId={chatId} key={chatId} />;
 			})}
 		</div>
