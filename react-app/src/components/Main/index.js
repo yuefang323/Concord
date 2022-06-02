@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { Switch, Route } from "react-router-dom";
 
 import SideBar from "./SideBar";

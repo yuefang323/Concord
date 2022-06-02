@@ -55,6 +55,20 @@ def send_chat(data):
          broadcast=True
          )
 
+@socketio.on("delete_chat")
+def delete_chat(data):
+    chat = Chat.query.get(data["chat_id"])
+
+    db.session.delete(chat)
+    db.session.commit()
+
+    channel = Channel.query.get(data["channel_id"])
+
+    emit("delete_chat", {
+        "channel": channel.to_dict(),
+        "chat_id": data["chat_id"],
+    }, to=data["channel_id"],
+         broadcast=True)
 
 # Error handler
 @socketio.on_error_default

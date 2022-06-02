@@ -16,8 +16,6 @@ const LeaveServerModal = ({ server, onClose }) => {
 
 	const leaveServer = async () => {
 		const channelArr = server.channels;
-		// socket leave all channels
-		socket.emit("leave_channels", channelArr);
 
 		// thunks to delete join server user
 		const res = await dispatch(

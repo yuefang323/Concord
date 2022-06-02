@@ -43,10 +43,16 @@ const Chat = () => {
 		socket.emit("join_channel", channelId);
 
 		socket.on("receive_message", (data) => {
-			console.log("received message");
 			// dispatch chat with id to our redux store
 			dispatch(channelsActions.addEditChannel(data.channel));
 			dispatch(chatsActions.addEditChat(data.chat));
+		});
+
+		socket.on("delete_chat", (data) => {
+			// dispatch delete chat
+			dispatch(chatsActions.deleteChat(data.chat_id));
+			// dispatch update channel
+			dispatch(channelsActions.addEditChannel(data.channel));
 		});
 
 		return () => {

@@ -16,7 +16,7 @@ const ChatDivs = ({ chatId }) => {
 
 	useEffect(() => {
 		setUser(users[chats[chatId]?.user_id]);
-	}, [chats, chatId]);
+	}, [chats, chatId, users]);
 
 	return (
 		<div className="chat-div-ctrl" id={chatId}>
@@ -30,7 +30,7 @@ const ChatDivs = ({ chatId }) => {
 				</div>
 				<div>{chats[chatId]?.message}</div>
 			</div>
-			{owner && <EditDelete />}
+			{owner && <EditDelete chatId={chatId} />}
 		</div>
 	);
 };
