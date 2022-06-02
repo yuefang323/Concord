@@ -9,8 +9,6 @@ import './UserProfile.css'
 const UserProfile = () => {
     const user = useSelector((state) => state?.session.user);
     const [showModal, setShowModal] = useState(false);
-    console.log(user)
-
 
     return (
     <>
