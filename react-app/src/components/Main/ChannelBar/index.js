@@ -1,7 +1,7 @@
 import { useSelector } from "react-redux";
 import { useParams, Link } from "react-router-dom";
 
-import AddChannelModal from "./ServerChannel";
+import AddChannelModal from "./AddChannel";
 import EditChannel from "./EditChannel";
 
 const ChannelBar = () => {

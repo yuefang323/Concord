@@ -55,14 +55,18 @@ export const addNewChannel = (newChannel) => async (dispatch) => {
 };
 
 
-export const editChannel = (serverId, channel) => async (dispatch) => {
-	const response = await fetch(`/api/channels/${serverId}/${channel.id}`, {
-		method: "PUT",
+export const editChannel = (channel) => async (dispatch) => {
+    console.log("Thunk serverId", channel.server_id)
+
+	const response = await fetch(`/api/channels/${channel.server_id}/${channel.id}`, {
+        method: "PUT",
 		headers: {
 			"Content-Type": "application/json",
 		},
 		body: JSON.stringify(channel),
 	});
+    console.log("response", response)
+
 	if (response.ok) {
 		const data = await response.json();
 		dispatch(addEditChannel(data.channel));

@@ -1,7 +1,7 @@
 from flask import Blueprint, jsonify, session, request
 from flask_login import current_user, login_required
 from app.models import db, Channel, Server
-from app.forms import NewChannelForm
+from app.forms import NewChannelForm, EditChannelForm
 
 channel_routes = Blueprint("channels", __name__)
 
@@ -37,5 +37,29 @@ def new_channel(serverId):
             "channel": new_channel.to_dict(), 
             "server": updatedServer.to_dict()
             };
+
+    return {'errors': validation_errors_to_error_messages(form.errors)}, 401
+
+@channel_routes.route("/<int:serverId>/<int:channelId>", methods=["GET", "POST"])
+@login_required
+
+def edit_channel(serverId, channelId):
+    
+    print("serverId", serverId)
+    print("channelId", channelId)
+
+    form = EditChannelForm()
+    form['csrf_token'].data = request.cookies['csrf_token']
+    if form.validate_on_submit():
+        server = Server.query.get(serverId)
+        channel = Channel.query.get(channelId)
+        channel.name = form.data["name"]
+        
+        print("......", server)
+        print("xxxxxx", channel)
+
+        db.session.commit()
+
+        return {"channel": server.to_dict()}
 
     return {'errors': validation_errors_to_error_messages(form.errors)}, 401
