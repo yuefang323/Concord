@@ -1,5 +1,6 @@
 from flask_socketio import SocketIO, emit, join_room, leave_room
-from app.models import db
+from app.models import db, Chat, Channel
+from flask_login import current_user
 import os
 
 
@@ -34,25 +35,25 @@ def leave_channels(channel_id_list):
         print("*************left channel", channel_id)
 
 
-# receive any message with event "send_message"
-@socketio.on("send_message")
-def send_message(data):
-    pass
-    # create "updated" and create class instance "chat"
-    # updated = datetime.now()
-    # chat = Chat(user_id=data["user_id"], channel_id=data["channel_id"],
-    #             message=data["message"], updated=updated)
+# receive any message with event "send_chat"
+@socketio.on("send_chat")
+def send_chat(data):
+    user_id = current_user.id
+    print("***************************", data["channel_id"])
+    # create "created_at" and create class instance "chat"
+    chat = Chat(user_id=user_id, channel_id=data["channel_id"],
+                message=data["chat"])
 
-    # add to database
-    # db.session.add(chat)
-    # db.session.commit()
+    # # add to database
+    db.session.add(chat)
+    db.session.commit()
+
+    channel = Channel.query.get(data["channel_id"])
 
     # transfer chat object back to frontend,
     # so frontent will have the new id and can add to redux store
-    # emit("receive_message", {
-    #      "message": data["message"],
-    #      "user_id": data["user_id"],
-    #      "channel_id": data["channel_id"],
-    #      "id": chat.id,
-         # python date object cannot be transfered through JSON. Translate to isoformat
-        #  "updated": updated.isoformat()}, to=data["channel_id"])
+    emit("receive_message", {
+         "chat": chat.to_dict(), "channel": channel.to_dict()},
+         room=data["channel_id"],
+         to=data["channel_id"],
+         )
