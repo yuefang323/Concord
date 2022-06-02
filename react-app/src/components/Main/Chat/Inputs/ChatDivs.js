@@ -13,7 +13,7 @@ const ChatDivs = ({ chatId, socket }) => {
 	const users = useSelector((state) => state.users.byId);
 	const chats = useSelector((state) => state.chats.byId);
 	const [user, setUser] = useState();
-	const [showInput, setShowInput] = useState(false);
+	const [disabled, setDisabled] = useState(true);
 	const [message, setMessage] = useState("");
 
 	const owner = userId === chats[chatId]?.user_id;
@@ -22,7 +22,7 @@ const ChatDivs = ({ chatId, socket }) => {
 		e.preventDefault();
 		const chatData = { chat_id: chatId, message, channel_id: channelId };
 		socket.emit("edit_chat", chatData);
-		setShowInput(false);
+		setDisabled(true);
 	};
 
 	useEffect(() => {
@@ -31,7 +31,7 @@ const ChatDivs = ({ chatId, socket }) => {
 
 	useEffect(() => {
 		setMessage(chats[chatId]?.message);
-	}, [chats]);
+	}, [chats, chatId]);
 
 	return (
 		<div className="chat-div-ctrl" id={chatId}>
@@ -44,24 +44,21 @@ const ChatDivs = ({ chatId, socket }) => {
 					<CreatedAt created_at={chats[chatId]?.created_at} />
 				</div>
 
-				{showInput ? (
-					<form onSubmit={editChat}>
-						<input
-							className="input"
-							type="text"
-							value={message}
-							onChange={(e) => setMessage(e.target.value)}
-						/>
-					</form>
-				) : (
-					<div>{message}</div>
-				)}
+				<form onSubmit={editChat}>
+					<input
+						className="chat-div-input"
+						type="text"
+						value={message}
+						onChange={(e) => setMessage(e.target.value)}
+						disabled={disabled}
+					/>
+				</form>
 			</div>
 			{owner && (
 				<EditDelete
 					chatId={chatId}
-					showInput={showInput}
-					setShowInput={setShowInput}
+					disabled={disabled}
+					setDisabled={setDisabled}
 					socket={socket}
 				/>
 			)}

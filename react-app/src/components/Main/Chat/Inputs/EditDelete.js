@@ -5,7 +5,7 @@ import ReactTooltip from "react-tooltip";
 import { Modal } from "../../../../context/Modal";
 import DeleteChat from "../../Modal/Chat/DeleteChat";
 
-const EditDelete = ({ chatId, setShowInput, showInput }) => {
+const EditDelete = ({ chatId, disabled, setDisabled }) => {
 	const [showModal, setShowModal] = useState(false);
 
 	const onClose = () => {
@@ -17,7 +17,7 @@ const EditDelete = ({ chatId, setShowInput, showInput }) => {
 			<div
 				className="chat-edit-delete-btn"
 				data-tip="Edit"
-				onClick={() => setShowInput(!showInput)}
+				onClick={() => setDisabled(false)}
 			>
 				<i className="fa-solid fa-pen"></i>
 			</div>
