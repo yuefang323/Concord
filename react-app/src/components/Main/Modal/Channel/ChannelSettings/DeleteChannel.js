@@ -2,6 +2,8 @@ import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom";
 
+import { socket } from "../../../../../context/Socket";
+
 import * as channelsActions from "../../../../../store/channels";
 
 const DeleteChannel = ({ channel, onClose }) => {
@@ -18,7 +20,7 @@ const DeleteChannel = ({ channel, onClose }) => {
             name,
             server_id: channel.server_id,
         };
-        console.log("channelToDelete....", channelToDelete);
+
         // Thunks to delete server
         const res = await dispatch(
             channelsActions.deleteThisChannel(channelToDelete)
@@ -26,14 +28,12 @@ const DeleteChannel = ({ channel, onClose }) => {
         console.log("res....", res);
         if (!res.errors) {
             console.log("validators///////");
-            history.push("/channels/@me");
+            history.push(`/channels/${channel.server_id}`);
             onClose();
             console.log(res);
-            // dispatch action to update join server
-            // dispatch(joinServersActions.leaveServer(server.id));
 
             // socket emit leave channels
-            // socket.emit("leave_channels", res.channels);
+            socket.emit("leave_channels", res.channels);
 
             // dispatch action to update channels
             // res.channels.forEach((channelId) => {

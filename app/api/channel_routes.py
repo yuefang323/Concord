@@ -63,7 +63,7 @@ def edit_channel(serverId, channelId):
 def delete_channel(serverId, channelId):
     
     channel = Channel.query.get(channelId)
-    print("channel,,,,", channel)
+
     data = json.loads(request.data)
     name = data["name"]
     if channel.name == name:
