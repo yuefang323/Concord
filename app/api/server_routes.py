@@ -54,23 +54,31 @@ def new_server():
     return {'errors': validation_errors_to_error_messages(form.errors)}, 401
 
 # Edit server
-@server_routes.route("/<int:server_id>", methods=["PUT"])
+@server_routes.route("/<int:server_id>", methods=["GET", "PUT"])
 @login_required
 def edit_server(server_id):
-
-    # with app.app_context():
-    #     g.server_id = server_id
-    form = EditServerForm()
-    form['csrf_token'].data = request.cookies['csrf_token']
-    if form.validate_on_submit():
+    if request.method == "GET":
         server = Server.query.get(server_id)
-        server.name = form.data["name"]
-        server.description = form.data["description"]
-        db.session.commit()
+        channels = Channel.query.filter(Channel.server_id == server_id).all()
 
-        return {"server": server.to_dict()}
+        return {
+            "server": server.to_dict(),
+            "channels": [channel.to_dict() for channel in channels],
+        }
 
-    return {'errors': validation_errors_to_error_messages(form.errors)}, 401
+
+    if request.method == "POST":
+        form = EditServerForm()
+        form['csrf_token'].data = request.cookies['csrf_token']
+        if form.validate_on_submit():
+            server = Server.query.get(server_id)
+            server.name = form.data["name"]
+            server.description = form.data["description"]
+            db.session.commit()
+
+            return {"server": server.to_dict()}
+
+        return {'errors': validation_errors_to_error_messages(form.errors)}, 401
 
 
 # Delete server logo

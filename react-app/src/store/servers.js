@@ -31,6 +31,15 @@ export const clearServers = () => ({
 });
 
 // Thunks
+export const getServer = (serverId) => async (dispatch) => {
+	const response = await fetch(`/api/servers/${serverId}`);
+	if (response.ok) {
+		const data = await response.json();
+		dispatch(addEditServer(data.server));
+		return data;
+	}
+};
+
 export const addNewServer = (newServer) => async (dispatch) => {
 	const response = await fetch("/api/servers/new", {
 		method: "POST",

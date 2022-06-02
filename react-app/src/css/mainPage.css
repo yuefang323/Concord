@@ -39,8 +39,6 @@
 	display: flex;
 	flex-direction: column;
 	background-color: var(--gray2);
-	overflow-x: hidden;
-	white-space: nowrap;
 }
 
 .chat-ctrl {

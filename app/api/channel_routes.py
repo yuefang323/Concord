@@ -1,6 +1,6 @@
 from flask import Blueprint, jsonify, session, request, json
 from flask_login import current_user, login_required
-from app.models import db, Channel, Server
+from app.models import db, Channel, Server, Chat
 from app.forms import NewChannelForm, EditChannelForm
 
 channel_routes = Blueprint("channels", __name__)
@@ -23,7 +23,7 @@ def new_channel(serverId):
     Create new channel
     # """
     form = NewChannelForm()
- 
+
     form['csrf_token'].data = request.cookies['csrf_token']
     if form.validate_on_submit():
         user_id = current_user.id
@@ -32,13 +32,27 @@ def new_channel(serverId):
         db.session.add(new_channel)
         db.session.commit()
         updatedServer = Server.query.get(serverId)
-        
+
         return {
-            "channel": new_channel.to_dict(), 
+            "channel": new_channel.to_dict(),
             "server": updatedServer.to_dict()
             };
 
     return {'errors': validation_errors_to_error_messages(form.errors)}, 401
+
+# Get channel
+@channel_routes.route("/<int:channelId>", methods=["GET"])
+@login_required
+def get_channel(channelId):
+
+    channel = Channel.query.get(channelId)
+    chats = Chat.query.filter(Chat.channel_id == channelId).all()
+
+    return {
+        "channel": channel.to_dict(),
+        "chats" : [chat.to_dict() for chat in chats]
+    }
+
 
 # Update a channel
 @channel_routes.route("/<int:serverId>/<int:channelId>", methods=["GET", "PUT"])
@@ -61,7 +75,7 @@ def edit_channel(serverId, channelId):
 @channel_routes.route("/<int:serverId>/<int:channelId>", methods=["DELETE"])
 @login_required
 def delete_channel(serverId, channelId):
-    
+
     channel = Channel.query.get(channelId)
 
     data = json.loads(request.data)

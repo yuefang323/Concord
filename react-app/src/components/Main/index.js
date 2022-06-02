@@ -22,7 +22,7 @@ import { socket } from "../../context/Socket";
 
 const MainPage = () => {
 	const dispatch = useDispatch();
-	const user = useSelector((state) => state.session.user);
+	// const user = useSelector((state) => state.session.user);
 	const channels = useSelector((state) => state.channels);
 	const channelArr = channels.allIds;
 
@@ -40,14 +40,6 @@ const MainPage = () => {
 			})
 			.catch((err) => console.log(err));
 
-		// Disconnect socket when leave page
-		return () => {
-			socket.emit("leave_channels", channelArr);
-			socket.disconnect();
-		};
-	}, [dispatch]);
-
-	useEffect(() => {
 		socket.on("receive_message", (data) => {
 			// dispatch chat with id to our redux store
 			dispatch(channelsActions.addEditChannel(data.channel));
@@ -55,9 +47,17 @@ const MainPage = () => {
 			dispatch(chatsActions.addEditChat(data.chat));
 		});
 
+		// Disconnect socket when leave page
+		return () => {
+			// socket.emit("leave_channels", channelArr);
+			socket.disconnect();
+		};
+	}, [dispatch]);
+
+	useEffect(() => {
 		setTimeout(() => {
 			socket.emit("join_channels", channelArr);
-		}, 500);
+		}, 5000);
 	}, [channelArr]);
 
 	return (

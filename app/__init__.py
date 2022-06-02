@@ -17,6 +17,9 @@ from .seeds import seed_commands
 
 from .config import Config
 
+import eventlet
+eventlet.monkey_patch(socket=True)
+
 app = Flask(__name__)
 
 # Setup login manager
@@ -83,4 +86,4 @@ def react_root(path):
 
 
 if __name__ == '__main__':
-    socketio.run(app, debug = True, server_side = True)
+    socketio.run(app)

@@ -1,4 +1,4 @@
-import { formatDistanceToNow, formatRelative, parseISO } from "date-fns";
+import { formatRelative, parseISO } from "date-fns";
 
 const CreatedAt = ({ created_at }) => {
 	if (created_at) {
