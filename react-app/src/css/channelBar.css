@@ -126,16 +126,20 @@
     border-radius: 15px;
 }
 
-.channel-info-wrapper a {
+.channel-info-wrapper {
     display: inline-flex;
     flex-direction: row;
     justify-content: space-between;
     gap: 10px; 
     align-items: flex-end;
     width: 100%;
+    padding-right: 10px;
 }
 
-.fa-solid.fa-gear.edit-channel-icon { 
-    margin-right: 20px;
-    padding-right: 20px;
+.channel-name {
+    overflow: hidden;
+    width: 170px;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+
 }

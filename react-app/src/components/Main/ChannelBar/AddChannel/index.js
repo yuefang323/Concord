@@ -1,4 +1,5 @@
 import { useState } from "react";
+import ReactTooltip from "react-tooltip";
 
 import { Modal } from "../../../../context/Modal";
 import AddChannel from "../../Modal/Channel/AddChannel";
@@ -21,6 +22,7 @@ const AddChannelModal = () => {
           </div>
         </Modal>
       )}
+      <ReactTooltip place="bottom" type="dark" effect="solid" />
     </>
   );
 };

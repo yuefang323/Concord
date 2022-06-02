@@ -17,9 +17,9 @@ const ChannelBar = () => {
                     {<AddChannelModal />}
                     <div className="channel-list">
                         {currServerChannels?.map((id) => (
-                            <li key={id} className="channel-info-wrapper">
+                            <li key={id}>
                                 {
-                                    <Link to={`/channels/${serverId}/${id}`}>
+                                    <Link to={`/channels/${serverId}/${id}`} className="channel-info-wrapper">
                                         <div className="channel-name">
                                             <i className="fa-solid fa-hashtag"></i>
                                             {channels?.byId[id]?.name}

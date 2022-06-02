@@ -40,7 +40,7 @@ def new_channel(serverId):
 
     return {'errors': validation_errors_to_error_messages(form.errors)}, 401
 
-@channel_routes.route("/<int:serverId>/<int:channelId>", methods=["GET", "POST"])
+@channel_routes.route("/<int:serverId>/<int:channelId>", methods=["GET", "PUT"])
 @login_required
 
 def edit_channel(serverId, channelId):
@@ -51,15 +51,11 @@ def edit_channel(serverId, channelId):
     form = EditChannelForm()
     form['csrf_token'].data = request.cookies['csrf_token']
     if form.validate_on_submit():
-        server = Server.query.get(serverId)
         channel = Channel.query.get(channelId)
         channel.name = form.data["name"]
-        
-        print("......", server)
-        print("xxxxxx", channel)
 
         db.session.commit()
 
-        return {"channel": server.to_dict()}
+        return {"channel": channel.to_dict()}
 
     return {'errors': validation_errors_to_error_messages(form.errors)}, 401
