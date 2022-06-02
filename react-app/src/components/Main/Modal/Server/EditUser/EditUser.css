@@ -50,6 +50,7 @@
     font-size: 20px;
     margin-left: 5px;
     margin-top: 10px;
+    color: var(--gray1);
 }
 
 .edit-info {
@@ -77,6 +78,11 @@
     width: 100%;
     height: 35px;
     background-color: var(--gray3);
+    color: var(--gray1);
+}
+
+.edit-input::placeholder {
+    color: var(--gray1);
 }
 
 .errors {

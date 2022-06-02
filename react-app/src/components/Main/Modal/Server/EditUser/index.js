@@ -1,11 +1,13 @@
-import { useEffect, useState } from "react";
-import { useSelector } from "react-redux";
+import { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import logo from "../../../../../assets/logo-red.svg";
-import { Modal } from "../../../../../context/Modal";
-import UserProfile from "../../../ChannelBar/UserProfile";
+import { updateUser } from "../../../../../store/session";
+// import { Modal } from "../../../../../context/Modal";
+// import UserProfile from "../../../ChannelBar/UserProfile";
 import "./EditUser.css";
 
 const EditUser = ({ modal }) => {
+    const dispatch = useDispatch();
     const user = useSelector((state) => state.session.user);
 
     const [username, setUsername] = useState(user?.username);
@@ -13,18 +15,25 @@ const EditUser = ({ modal }) => {
     const [avatar, setAvatar] = useState(user?.avatar);
     const [errors, setErrors] = useState([]);
 
-    useEffect(() => {
-        const validationErrs = [];
-        if (!username.length) validationErrs.push("Name must have length");
-    }, [username, email, avatar]);
+    const handleSubmit = async (e) => {
+        e.preventDefault()
+        const updatedUser = {
+            username: username,
+            email: email,
+            avatar: avatar,
+        };
+
+        const data = await dispatch(updateUser(updatedUser, user?.id))
+        if (data.errors) {
+            setErrors(data.errors)
+        }
+        
+    }
 
     return (
-        <form>
-            <ul className="errors">
-                {errors.map((error) => (
-                    <li key={error}>{error}</li>
-                ))}
-            </ul>
+        <form
+            onSubmit={handleSubmit}
+        >
             <div className="edit-modal-body">
                 {user?.avatar ? (
                     <img
@@ -81,6 +90,11 @@ const EditUser = ({ modal }) => {
                         </div>
                     </div>
                 </div>
+            <ul className="errors">
+                {errors.map((error) => (
+                    <li key={error}>{error}</li>
+                ))}
+            </ul>
             </div>
             <div className="edit-user-btns-container">
                 <button
@@ -93,7 +107,6 @@ const EditUser = ({ modal }) => {
                 <button
                     className="edit-user-btns"
                     type="submit"
-                    disabled={errors.length > 0}
                 >
                     Save
                 </button>
