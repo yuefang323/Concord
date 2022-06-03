@@ -9,6 +9,7 @@ import os
 if os.environ.get('FLASK_ENV') == 'production':
     origins = [
         'http://go-concord.herokuapp.com',
+        'https://go-concord.herokuapp.com',
     ]
 else:
     origins = "*"
