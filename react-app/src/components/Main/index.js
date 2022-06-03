@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import { useDispatch } from "react-redux";
-import { Switch, Route } from "react-router-dom";
+import { Switch, Route, useParams, Redirect } from "react-router-dom";
 
 import SideBar from "./SideBar";
 import TopBar from "./TopBar";
@@ -8,7 +8,7 @@ import ChannelBar from "./ChannelBar";
 import Chat from "./Chat";
 import Users from "./Users";
 
-// import ExplorePage from "./Explore";
+import ExplorePage from "./Explore";
 
 import * as serversActions from "../../store/servers";
 import * as channelsActions from "../../store/channels";
@@ -20,6 +20,7 @@ import * as usersActions from "../../store/users";
 
 const MainPage = () => {
 	const dispatch = useDispatch();
+	const serverParam = useParams().serverId;
 
 	useEffect(() => {
 		fetch("/api/users/all")
@@ -42,7 +43,10 @@ const MainPage = () => {
 		<div className="main-ctrl">
 			<SideBar />
 			<Switch>
-				<Route path={["/channels/@me", "/channels/@me/:channelId"]} exact>
+				<Route path="/guild-discovery">
+					<ExplorePage />
+				</Route>
+				<Route path={["/", "/channels/@me", "/channels/@me/:channelId"]} exact>
 					<div className="channel-chat-top-wrap">
 						<TopBar />
 						<div className="channel-chat-wrap">
@@ -52,7 +56,7 @@ const MainPage = () => {
 					</div>
 				</Route>
 				<Route
-					path={["/", "/channels/:serverId", "/channels/:serverId/:channelId"]}
+					path={["/channels/:serverId", "/channels/:serverId/:channelId"]}
 					exact
 				>
 					<div className="channel-chat-top-wrap">
@@ -64,9 +68,6 @@ const MainPage = () => {
 						</div>
 					</div>
 				</Route>
-				{/* <Route path="/guild-discovery" exact>
-					<ExplorePage />
-				</Route> */}
 			</Switch>
 		</div>
 	);

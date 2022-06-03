@@ -1,18 +1,27 @@
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import { useParams } from "react-router-dom";
 
 import Avatar from "../../../Chat/Inputs/Avatar";
 import CreatedAt from "../../../Chat/Inputs/CreatedAt";
 
+import * as chatsActions from "../../../../../store/chats";
+import * as channelsActions from "../../../../../store/channels";
+
 const DeleteChat = ({ chatId, onClose, socket }) => {
+	const dispatch = useDispatch();
+
 	const channelId = parseInt(useParams().channelId);
 	const chat = useSelector((state) => state.chats.byId)[chatId];
 	const user = useSelector((state) => state.users.byId)[chat?.user_id];
 
 	const deleteMessage = async () => {
-		const payload = { chat_id: chatId, channel_id: channelId };
-		socket.emit("delete_chat", payload);
-		onClose();
+		// const payload = { chat_id: chatId, channel_id: channelId };
+		// socket.emit("delete_chat", payload);
+		const res = await dispatch(chatsActions.deleteThisChat(chatId));
+		if (res.id) {
+			await dispatch(channelsActions.addEditChannel(res));
+			// socket.emit
+		}
 	};
 
 	return (

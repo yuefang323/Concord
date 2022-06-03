@@ -59,11 +59,8 @@ const SplashPage = () => {
 						<div className="splash-title">IMAGINE A PLACE...</div>
 						<div className="splash-desc">
 							...where you can belong to a school club, a gaming group, or a
-							<br />
 							worldwide art community. Where just you and a handful of friends
-							<br />
 							can spend time together. A place that makes it easy to talk every
-							<br />
 							day and hang out more often.
 						</div>
 						<button className="btn btn-yellow" onClick={demoLogin}>
@@ -75,18 +72,11 @@ const SplashPage = () => {
 					<img src={sample} alt="sample" />
 					<div className="splash-sample-title-wrap">
 						<div className="splash-sample-title">
-							Create an invite- <br />
-							only place where
-							<br /> you belong
+							Create an invite-only place where you belong
 						</div>
 						<p className="splash-sample-desc">
-							Discord servers are organized into
-							<br />
-							topic-based channels where you
-							<br />
-							can collaborate, share, and just <br />
-							talk about your day without
-							<br />
+							Discord servers are organized into topic-based channels where you
+							can collaborate, share, and just talk about your day without
 							clogging up a group chat.
 						</p>
 					</div>

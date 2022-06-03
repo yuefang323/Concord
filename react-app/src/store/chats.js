@@ -29,7 +29,47 @@ export const deleteChat = (chatId) => {
 export const clearChats = () => ({
 	type: CLEAR_CHATS,
 });
+
 // Thunks
+export const editChat = (chat) => async (dispatch) => {
+	const response = await fetch(`/api/chats/${chat.id}`, {
+		method: "PUT",
+		headers: {
+			"Content-Type": "application/json",
+		},
+		body: JSON.stringify(chat),
+	});
+	if (response.ok) {
+		const data = await response.json();
+		dispatch(addEditChat(data.chat));
+		return data.chat;
+	} else if (response.status < 500) {
+		const data = await response.json();
+		if (data.errors) {
+			return data.errors;
+		}
+	} else {
+		return ["An error occurred. Please try again."];
+	}
+};
+
+export const deleteThisChat = (chatId) => async (dispatch) => {
+	const response = await fetch(`/api/chats/${chatId}`, {
+		method: "DELETE",
+	});
+	if (response.ok) {
+		const data = await response.json();
+		dispatch(deleteChat(chatId));
+		return data.channel;
+	} else if (response.status < 500) {
+		const data = await response.json();
+		if (data.errors) {
+			return data.errors;
+		}
+	} else {
+		return ["An error occurred. Please try again."];
+	}
+};
 
 // Reducer
 const initialState = { byId: {}, allIds: [] };

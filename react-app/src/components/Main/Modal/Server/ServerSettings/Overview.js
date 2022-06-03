@@ -3,6 +3,8 @@ import { useDispatch } from "react-redux";
 
 import upload_photo from "../../../../../assets/upload_photo.svg";
 import Logo from "./Inputs/Logo";
+import { Modal } from "../../../../../context/Modal";
+import LogoLink from "./LogoLink";
 
 import * as serversActions from "../../../../../store/servers";
 
@@ -12,8 +14,7 @@ const Overview = ({ server, onClose }) => {
 	const [name, setName] = useState("");
 	const [description, setDescription] = useState("");
 	const [errors, setErrors] = useState([]);
-
-	// const uploadBgRef = useRef();
+	const [showModal, setShowModal] = useState(false);
 
 	const handleSubmit = async (e) => {
 		e.preventDefault();
@@ -32,6 +33,14 @@ const Overview = ({ server, onClose }) => {
 		setErrors([]);
 	};
 
+	const onOpenLogo = () => {
+		setShowModal(true);
+	};
+
+	const onCloseLogo = () => {
+		setShowModal(false);
+	};
+
 	useEffect(() => {
 		setName(server?.name);
 		setDescription(server?.description);
@@ -46,6 +55,7 @@ const Overview = ({ server, onClose }) => {
 						<div
 							className="setting-server-overview-background"
 							style={{ backgroundImage: `url(${server.background})` }}
+							onClick={onOpenLogo}
 						>
 							<div>CHANGE IMAGE</div>
 							<div className="setting-server-logo-upload">
@@ -53,7 +63,10 @@ const Overview = ({ server, onClose }) => {
 							</div>
 						</div>
 					) : (
-						<div className="setting-server-overview-no-background">
+						<div
+							className="setting-server-overview-no-background"
+							onClick={onOpenLogo}
+						>
 							<div>UPLOAD BACKGROUND</div>
 							<div className="setting-server-logo-upload">
 								<img src={upload_photo} alt="Upload" />
@@ -62,7 +75,12 @@ const Overview = ({ server, onClose }) => {
 					)}
 
 					<div className="setting-server-overview-logo-name">
-						<Logo server={server} errors={errors} setErrors={setErrors} />
+						<Logo
+							server={server}
+							errors={errors}
+							setErrors={setErrors}
+							onOpenLogo={onOpenLogo}
+						/>
 						<div className="setting-server-logo-desc">
 							We recommend an image of at least 512x512 for the server.
 						</div>
@@ -107,6 +125,11 @@ const Overview = ({ server, onClose }) => {
 				<button className="form-create-btm-btn" type="submit">
 					Update
 				</button>
+				{showModal && (
+					<Modal onClose={onCloseLogo}>
+						<LogoLink server={server} onClose={onCloseLogo} />
+					</Modal>
+				)}
 			</div>
 		</form>
 	);

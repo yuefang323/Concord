@@ -18,6 +18,7 @@
 @import url("./css/channelBar.css");
 @import url("./css/chats.css");
 @import url("./css/about.css");
+@import url("./css/explore.css");
 
 :root {
 	--yellow1: #ffca3a;
@@ -63,6 +64,10 @@ h1 {
 ul,
 li {
 	list-style-type: none;
+}
+
+a {
+	color: black;
 }
 
 a,

@@ -59,16 +59,16 @@ def send_chat(data):
 
 @socketio.on("edit_chat")
 def edit_chat(data):
-    user_id = current_user.id
+    # user_id = current_user.id
 
     chat = Chat.query.get(data["chat_id"])
 
-    if chat.user_id == user_id:
-        chat.message = data["message"]
-        db.session.commit()
+    # if chat.user_id == user_id:
+    #     chat.message = data["message"]
+    #     db.session.commit()
 
-        emit("edit_chat", {"chat": chat.to_dict()}, to=data["channel_id"],
-         broadcast=True)
+    emit("edit_chat", {"chat": chat.to_dict()}, to=data["channel_id"],
+        broadcast=True)
 
 
 @socketio.on("delete_chat")
