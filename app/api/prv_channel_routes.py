@@ -1,7 +1,7 @@
-from flask import Blueprint, jsonify, session, request, json
+from flask import Blueprint, jsonify, session, request
 from flask_login import current_user, login_required
-from app.models import db, Channel, Server, PrivateChannel
-from app.forms import NewChannelForm, EditChannelForm
+from app.models import db, PrivateChannel
+from app.forms import NewChannelForm
 
 prv_channel_routes = Blueprint("prv_channels", __name__)
 
@@ -16,7 +16,7 @@ def validation_errors_to_error_messages(validation_errors):
     return errorMessages
 
 # Add new channel
-@prv_channel_routes.route("/<int:prvChannelId>/new", methods=["GET", "POST"])
+@prv_channel_routes.route("/new", methods=["GET", "POST"])
 @login_required
 def new_channel(friendId):
     """
