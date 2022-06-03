@@ -66,6 +66,10 @@ li {
 	list-style-type: none;
 }
 
+a {
+	color: black;
+}
+
 a,
 a:hover {
 	text-decoration: none;

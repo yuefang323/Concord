@@ -43,6 +43,7 @@ const About = () => {
 					</NavLink>
 				</div>
 			</nav>
+			<div className="team-members">Team Members</div>
 			<main className="about-ctrl">
 				<div className="about-cards">
 					<div className="about-photo">Photo Here</div>

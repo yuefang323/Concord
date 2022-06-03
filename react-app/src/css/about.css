@@ -1,3 +1,9 @@
+.team-members {
+	text-align: center;
+	font-family: "Open Sans", sans-serif;
+	font-size: 30px;
+}
+
 .about-ctrl {
 	padding: 40px;
 	min-height: 300px;

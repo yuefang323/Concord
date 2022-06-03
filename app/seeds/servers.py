@@ -3,47 +3,47 @@ from app.models import db, Server
 def seed_servers():
     demo_server = Server(
         user_id=1,
-        name='Demo',
+        name='Goofy\'s House',
         logo='https://go-concord.s3.amazonaws.com/ava-127-1274078_mickey-mouse-friends-dog-from-mickey-mouse.png',
         background='https://go-concord.s3.amazonaws.com/bg-1920x1200DisneyJr-Pattern-wallpaper-613x383.webp',
-        description='server demo.',
+        description='The official Goofy\'s server! Get the latest Goofy\'s update, find others to play with, report bugs, and hangout with others in the community. All in one place!',
     )
 
     anon_server = Server(
         user_id=1,
-        name='Anonymous Server.',
+        name='Mickey\'s Big Family',
         logo='https://go-concord.s3.amazonaws.com/ava-a65b7be0b806d5e94dc6b4e146c11802.jpeg',
         background='https://go-concord.s3.amazonaws.com/bg-5bd38fa17dd68-wallpaper-preview.jpeg',
-        description='server for anonymous',
+        description='This is the Concor for Mickey\'s family and everyone who would like to meet them!',
     )
 
     guest_server = Server(
         user_id=1,
-        name='Guest Server',
+        name='Mickitar\'s Dating Tips',
         logo='https://go-concord.s3.amazonaws.com/ava-il_570xN.1648035069_sce1.webp',
         background='https://go-concord.s3.amazonaws.com/bg-751589-mickey-mouse-800x450.jpeg',
-        description='server for guests.',
+        description='Essential rules for dating!',
     )
 
     marnie_server = Server(
         user_id=2,
-        name='Marnie Server',
+        name='Magical Kingdom',
         logo='https://go-concord.s3.amazonaws.com/ava-image.jpeg',
         background='https://go-concord.s3.amazonaws.com/bg-Crop-for-Feature.jpeg',
-        description="marnie's 1st server.",
+        description="Come join the happiest place on earth!",
     )
 
     marnie_server2 = Server(
         user_id=2,
-        name='Marnie Server 2',
+        name='Lofi Disney',
         logo='https://go-concord.s3.amazonaws.com/ava-onward-poster-today-200222-square-03.jpeg',
         background='https://go-concord.s3.amazonaws.com/bg-da2ffe3d-5817-4610-a3f0-90f9c2c90b83_1.0c142c5d562947bf53413cd85d2192c9.jpeg',
-        description="marnie's 2nd server.",
+        description="The friendliest community on Discord🍑 Join now to meet amazing people from all around the world🌎",
     )
 
     bobbie_server = Server(
         user_id=3,
-        name='Bobbie Server',
+        name='Party at Bobbie\'s',
         logo='https://go-concord.s3.amazonaws.com/ava-Screen+Shot+2022-06-03+at+3.38.54+PM.png',
         background='https://go-concord.s3.amazonaws.com/bg-s-l640.jpeg',
         description="bobbie's 1st server.",
