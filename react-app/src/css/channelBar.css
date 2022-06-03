@@ -136,9 +136,43 @@
 	padding-right: 10px;
 }
 
+.channel-friend-wrapper {
+	display: inline-flex;
+	flex-direction: row;
+	justify-content: flex-start;
+	gap: 15px;
+	align-items: flex-end;
+	width: 100%;
+	padding-right: 10px;
+    margin: 10px; 
+}
+
 .channel-name {
 	overflow: hidden;
 	width: 170px;
 	white-space: nowrap;
 	text-overflow: ellipsis;
+}
+
+.friend-list {
+	display: flex;
+	flex-direction: column;
+	gap: 5px;
+	overflow-x: hidden;
+	white-space: nowrap;
+	height: calc(100vh - 220px);
+	margin-left: 5px;
+}
+
+.friend-name {
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.channel-bar-wrapper p {
+   margin-left: 10%;
+}
+
+.channel-friend-wrapper img {
+    size: 50px;
 }

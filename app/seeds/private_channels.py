@@ -6,10 +6,10 @@ def seed_private_channels():
       friend_id=2,
     )
 
-    DM2 = PrivateChannel(
-      user_id=1,
-      friend_id=3,
-    )
+    # DM2 = PrivateChannel(
+    #   user_id=1,
+    #   friend_id=3,
+    # )
     
     DM3 = PrivateChannel(
       user_id=1,
@@ -42,7 +42,7 @@ def seed_private_channels():
     )
 
     db.session.add(DM1)
-    db.session.add(DM2)
+    # db.session.add(DM2)
     db.session.add(DM3)
     db.session.add(DM4)
     db.session.add(DM5)

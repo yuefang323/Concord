@@ -1,40 +1,70 @@
-import { useState } from "react";
-import { useHistory, useParams } from "react-router";
-import { useSelector, useDispatch } from "react-redux";
-
-import * as channelsActions from "../../../../store/channels";
-import * as serversActions from "../../../../store/servers";
-import * as prvChannelsActions from "../../../../store/prvChannels";
+import { useSelector } from "react-redux";
+import { Link } from "react-router-dom";
 
 import { socket } from "../../../../context/Socket";
+import logo from "../../../../assets/logo-red.svg";
+import NoAvatar from "./NoAvatar"
 
 const HomeChannel = () => {
-    const dispatch = useDispatch();
     const user = useSelector((state) => state.session.user);
-    const users = useSelector((state) => state.session.users)
-    const prvChannels = useSelector((state) => state.prvChannels)
-    console.log(prvChannels.byId)
-    console.log("users", users)
+    const users = useSelector((state) => state.users.byId);
+    const prvChannels = useSelector((state) => state.prvChannels);
 
-    // const currUserPrvChannels = (prvChannels.byId).map((id) => {
-    //     prvChannels.byId[id]
-    // })
-
-    // console.log("currUserPrvChannels", currUserPrvChannels)
-
-    console.log("prvChannels", prvChannels)
-    console.log("user", user)
+    const friendsList = Object.values(prvChannels.byId);
 
     return (
         <>
             <div>
                 <button className="channel-bar-friend-btn">
-                    <i className="fa-solid fa-user-group"></i>
+                    {/* <i className="fa-solid fa-user-group"></i> */}
                     <p>Friends</p>
                 </button>
-                <div className="channel-bar-dm-title">
-                    <h4>Direct Messages</h4>
+                <div className="channel-bar-wrapper">
+                    <p>Direct Messages</p>
                     {/* <i className="fa-solid fa-plus"></i> */}
+                    <div className="friend-list">
+                        {friendsList?.map((friend, indx) => (
+                            <div key={"friend" + indx}>
+                                <Link to={`/channels/@me/${friend?.id}`} className="channel-friend-wrapper">
+                                    {users[
+                                        friend.user_id === user.id
+                                            ? friend.friend_id
+                                            : friend.user_id
+                                    ]?.avatar ? (
+                                        <img
+                                            className="sidebar-btn"
+                                            src={
+                                                users[
+                                                    friend.user_id === user.id
+                                                        ? friend.friend_id
+                                                        : friend.user_id
+                                                ]?.avatar
+                                            }
+                                            alt="user avatar"
+                                        ></img>
+                                    ) : (
+                                        // <div className="avatar-bkg">
+                                        //     <img
+                                        //         className="user-avatar channel"
+                                        //         src={logo}
+                                        //         alt="user avatar"
+                                        //     />
+                                        // </div>
+                                        <NoAvatar friend={friend} />
+                                    )}
+                                    <div  className="friend-name">
+                                        {
+                                            users[
+                                                friend.user_id === user.id
+                                                    ? friend.friend_id
+                                                    : friend.user_id
+                                            ]?.username
+                                        }
+                                    </div>
+                                </Link>
+                            </div>
+                        ))}
+                    </div>
                 </div>
             </div>
         </>
