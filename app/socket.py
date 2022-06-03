@@ -47,6 +47,7 @@ def send_chat(data):
 
     channel = Channel.query.get(data["channel_id"])
 
+    print(channel.to_dict())
     # transfer chat object back to frontend,
     # so frontent will have the new id and can add to redux store
     emit("receive_message", {

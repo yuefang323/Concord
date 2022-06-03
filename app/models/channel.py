@@ -1,4 +1,5 @@
 from .db import db
+from .chat import Chat
 
 class Channel(db.Model):
     __tablename__ = 'channels'
@@ -16,7 +17,11 @@ class Channel(db.Model):
     user = db.relationship("User", back_populates="channels")
 
     def to_dict(self):
-        chat_ids = [chat.id for chat in self.chats]
+        chats = Chat.query.filter(Chat.channel_id == self.id).order_by("id").all()
+        chat_ids = [chat.id for chat in chats]
+
+        # chat_ids = [chat.id for chat in self.chats]
+
         return {
             'id': self.id,
             'server_id': self.server_id,

@@ -19,12 +19,19 @@
 }
 
 /* Chat divs */
-.chat-div-wrap {
+.chat-div-wrap,
+.chat-div-wrap-empty {
 	display: flex;
 	flex-direction: column;
 	overflow-x: hidden;
 	white-space: nowrap;
 	height: calc(100vh - 100px);
+}
+
+.chat-div-wrap-empty {
+	justify-content: flex-end;
+	padding: 10px;
+	gap: 10px;
 }
 
 .chat-div-ctrl {
@@ -104,4 +111,43 @@
 .chat-edit-delete-btn:hover {
 	filter: brightness(95%);
 	cursor: pointer;
+}
+
+/* Empty chat */
+
+.chat-big-hash-div {
+	width: 60px;
+	height: 60px;
+	border-radius: 60px;
+	padding-left: 7px;
+	background-color: white;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	font-size: 30px;
+}
+
+.chat-empty-title {
+	font-size: 24px;
+	font-family: "Open Sans", sans-serif;
+}
+
+.chat-empty-desc {
+	font-size: 14px;
+}
+
+.chat-empty-edit {
+	font-size: 14px;
+	display: flex;
+	gap: 10px;
+	align-items: center;
+	color: var(--gray3);
+	width: fit-content;
+	padding: 5px;
+	border-radius: 5px;
+	cursor: pointer;
+}
+
+.chat-empty-edit:hover {
+	background-color: var(--gray2);
 }
