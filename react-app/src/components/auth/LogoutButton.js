@@ -8,20 +8,20 @@ import { clearPrvChannels } from "../../store/prvChannels";
 import { clearPrvChats } from "../../store/prvChats";
 import { clearServers } from "../../store/servers";
 import { logout } from "../../store/session";
-import { clearUsers } from "../../store/users"
+import { clearUsers } from "../../store/users";
 import ReactTooltip from "react-tooltip";
 
 const LogoutButton = () => {
 	const dispatch = useDispatch();
 	const history = useHistory();
 	const onLogout = async (e) => {
-        dispatch(clearChannels());
-        dispatch(clearChats());
-        dispatch(clearJoinServers());
-        dispatch(clearPrvChannels());
-        dispatch(clearPrvChats());
-        dispatch(clearServers());
-        dispatch(clearUsers());
+		dispatch(clearChannels());
+		dispatch(clearChats());
+		dispatch(clearJoinServers());
+		dispatch(clearPrvChannels());
+		dispatch(clearPrvChats());
+		dispatch(clearServers());
+		dispatch(clearUsers());
 		await dispatch(logout());
 		history.push("/");
 	};

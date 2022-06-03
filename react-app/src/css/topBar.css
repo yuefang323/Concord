@@ -76,3 +76,10 @@
 .top-dd-wrap:hover {
 	background-color: var(--gray1);
 }
+
+.top-me-wrap {
+	display: flex;
+	align-items: center;
+	padding: 10px;
+	background-color: rgb(199, 199, 199);
+}

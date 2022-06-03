@@ -9,6 +9,7 @@ import ToolsProvider from "./context/Tools";
 
 import { authenticate } from "./store/session";
 import SplashPage from "./components/Splash";
+import About from "./components/Splash/About";
 import MainPage from "./components/Main";
 
 function App() {
@@ -38,6 +39,9 @@ function App() {
 					) : (
 						<SplashPage />
 					)}
+				</Route>
+				<Route path="/about" exact={true}>
+					<About />
 				</Route>
 				<Route path="/login" exact={true}>
 					<LoginForm />

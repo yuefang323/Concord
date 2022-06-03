@@ -5,8 +5,6 @@ import { useSelector, useDispatch } from "react-redux";
 import * as channelsActions from "../../../../../store/channels";
 import * as serversActions from "../../../../../store/servers";
 
-import { socket } from "../../../../../context/Socket";
-
 const AddChannel = ({ setShowModal, onClose }) => {
 	const dispatch = useDispatch();
 	const history = useHistory();
@@ -37,15 +35,10 @@ const AddChannel = ({ setShowModal, onClose }) => {
 		const newChannel = { name, serverIdnum };
 		const res = await dispatch(channelsActions.addNewChannel(newChannel));
 		dispatch(serversActions.addEditServer(res.server));
-		if (setShowModal) setShowModal(false);
-		if (onClose) onClose();
 		setName("");
 
-		// Socket join channels
-		const channelArr = [res.channel.id];
-		socket.emit("join_channels", channelArr);
-
 		history.push(`/channels/${serverIdnum}`);
+		if (setShowModal) setShowModal(false);
 	};
 
 	const cancelButton = async (e) => {

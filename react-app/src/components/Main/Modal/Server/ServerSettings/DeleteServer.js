@@ -2,8 +2,6 @@ import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom";
 
-import { socket } from "../../../../../context/Socket";
-
 import * as serversActions from "../../../../../store/servers";
 import * as joinServersActions from "../../../../../store/joinServers";
 import * as channelsActions from "../../../../../store/channels";
@@ -29,9 +27,6 @@ const DeleteServer = ({ server, onClose }) => {
 
 			// dispatch action to update join server
 			dispatch(joinServersActions.leaveServer(server.id));
-
-			// socket emit leave channels
-			socket.emit("leave_channels", res.channels);
 
 			// dispatch action to update channels
 			res.channels.forEach((channelId) => {

@@ -47,6 +47,7 @@ def send_chat(data):
 
     channel = Channel.query.get(data["channel_id"])
 
+    print(channel.to_dict())
     # transfer chat object back to frontend,
     # so frontent will have the new id and can add to redux store
     emit("receive_message", {
@@ -55,6 +56,34 @@ def send_chat(data):
          broadcast=True
          )
 
+@socketio.on("edit_chat")
+def edit_chat(data):
+    user_id = current_user.id
+
+    chat = Chat.query.get(data["chat_id"])
+
+    if chat.user_id == user_id:
+        chat.message = data["message"]
+        db.session.commit()
+
+        emit("edit_chat", {"chat": chat.to_dict()}, to=data["channel_id"],
+         broadcast=True)
+
+
+@socketio.on("delete_chat")
+def delete_chat(data):
+    chat = Chat.query.get(data["chat_id"])
+
+    db.session.delete(chat)
+    db.session.commit()
+
+    channel = Channel.query.get(data["channel_id"])
+
+    emit("delete_chat", {
+        "channel": channel.to_dict(),
+        "chat_id": data["chat_id"],
+    }, to=data["channel_id"],
+         broadcast=True)
 
 # Error handler
 @socketio.on_error_default

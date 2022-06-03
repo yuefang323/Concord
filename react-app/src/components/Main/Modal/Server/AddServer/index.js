@@ -6,8 +6,6 @@ import * as serversActions from "../../../../../store/servers";
 import * as joinServersActions from "../../../../../store/joinServers";
 import * as channelsActions from "../../../../../store/channels";
 
-import { socket } from "../../../../../context/Socket";
-
 const AddServer = ({ setChoose, setShowModal }) => {
 	const dispatch = useDispatch();
 	const history = useHistory();
@@ -27,10 +25,6 @@ const AddServer = ({ setChoose, setShowModal }) => {
 
 			// dispatch action to add channel to redux store
 			dispatch(channelsActions.addEditChannel(data.channel));
-
-			// Web socket join channel
-			const channelArr = data.server.channels;
-			socket.emit("join_channels", channelArr);
 
 			history.push(`/channels/${data.server.id}`);
 		} else {
