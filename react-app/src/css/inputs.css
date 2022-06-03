@@ -31,3 +31,17 @@
 	font-weight: normal;
 	color: var(--gray3);
 }
+
+.chat-div-input {
+	border: 1px solid var(--gray2);
+	width: 100%;
+	border-radius: 5px;
+	padding: 10px;
+	color: black;
+	background-color: white;
+}
+
+.chat-div-input:disabled {
+	border: transparent;
+	background: transparent;
+}

@@ -1,4 +1,4 @@
-import { useState, useRef } from "react";
+import { useRef } from "react";
 import { useDispatch } from "react-redux";
 
 import upload_photo from "../../../../../../assets/upload_photo.svg";
