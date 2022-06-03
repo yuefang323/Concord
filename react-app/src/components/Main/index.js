@@ -8,7 +8,7 @@ import ChannelBar from "./ChannelBar";
 import Chat from "./Chat";
 import Users from "./Users";
 
-// import ExplorePage from "./Explore";
+import ExplorePage from "./Explore";
 
 import * as serversActions from "../../store/servers";
 import * as channelsActions from "../../store/channels";
@@ -64,9 +64,9 @@ const MainPage = () => {
 						</div>
 					</div>
 				</Route>
-				{/* <Route path="/guild-discovery" exact>
+				<Route path="/guild-discovery" exact>
 					<ExplorePage />
-				</Route> */}
+				</Route>
 			</Switch>
 		</div>
 	);
