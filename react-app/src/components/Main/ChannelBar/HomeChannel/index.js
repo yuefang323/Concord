@@ -25,7 +25,7 @@ const HomeChannel = () => {
                     <div className="friend-list">
                         {friendsList?.map((friend, indx) => (
                             <div key={"friend" + indx}>
-                                <Link to={`/@me/${friend?.id}`} className="channel-friend-wrapper">
+                                <Link to={`/channels/@me/${friend?.id}`} className="channel-friend-wrapper">
                                     {users[
                                         friend.user_id === user.id
                                             ? friend.friend_id
