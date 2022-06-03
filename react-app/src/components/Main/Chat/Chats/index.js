@@ -20,21 +20,13 @@ const Chats = ({ socket }) => {
 		}
 	}, []);
 
-	if (channels[channelId]?.chats.length) {
-		return (
-			<div className="chat-div-wrap" ref={focusRef}>
-				{channels[channelId]?.chats.map((chatId) => {
-					return <ChatDivs chatId={chatId} key={chatId} socket={socket} />;
-				})}
-			</div>
-		);
-	} else {
-		return (
-			<div className="chat-div-wrap">
-				<div>Say something</div>
-			</div>
-		);
-	}
+	return (
+		<div className="chat-div-wrap" ref={focusRef}>
+			{channels[channelId]?.chats.map((chatId) => {
+				return <ChatDivs chatId={chatId} key={chatId} socket={socket} />;
+			})}
+		</div>
+	);
 };
 
 export default Chats;

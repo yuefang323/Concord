@@ -5,7 +5,7 @@ import ReactTooltip from "react-tooltip";
 import { Modal } from "../../../../context/Modal";
 import DeleteChat from "../../Modal/Chat/DeleteChat";
 
-const EditDelete = ({ chatId, disabled, setDisabled, socket = { socket } }) => {
+const EditDelete = ({ chatId, disabled, setDisabled, socket }) => {
 	const [showModal, setShowModal] = useState(false);
 
 	const onClose = () => {

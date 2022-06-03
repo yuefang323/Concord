@@ -26,7 +26,7 @@ const ChannelBar = () => {
 			.catch((err) => console.log(err));
 	};
 
-	if (!channelParam)
+	if (!channelParam && currServerChannels)
 		return <Redirect to={`/channels/${serverId}/${currServerChannels[0]}`} />;
 
 	return (
