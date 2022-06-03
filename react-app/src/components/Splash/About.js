@@ -8,8 +8,10 @@ import Footer from "./Footer";
 import logo from "../../assets/logo-long.svg";
 import frances from "../../assets/Frances_500_500.png";
 
+import git from "../../assets/git-logo.png";
+import linkedin from "../../assets/linkedin-logo.png";
+
 const About = () => {
-	const [errors, setErrors] = useState([]);
 	const user = useSelector((state) => state.session.user);
 	const dispatch = useDispatch();
 
@@ -17,7 +19,6 @@ const About = () => {
 		e.preventDefault();
 		return dispatch(login("demo@aa.io", "password")).catch(async (res) => {
 			const data = await res.json();
-			if (data && data.errors) setErrors(data.errors);
 		});
 	};
 
@@ -48,7 +49,14 @@ const About = () => {
 					<div className="about-photo">Photo Here</div>
 					<div>Fang Yue</div>
 					<div className="about-slogan">Slogan</div>
-					<div>Git & LinkedIn</div>
+					<div className="about-icon-wrap">
+						<a href="#" target="_blank">
+							<img src={git} alt="GitHub" className="about-icon" />
+						</a>
+						<a href="#" target="_blank">
+							<img src={linkedin} alt="Linked In" className="about-icon" />
+						</a>
+					</div>
 				</div>
 				<div className="about-cards">
 					<div className="about-photo">
@@ -56,13 +64,30 @@ const About = () => {
 					</div>
 					<div className="about-name">Frances (Huang) Lau</div>
 					<div className="about-slogan">Love crafting from scratch</div>
-					<div>Git & LinkedIn</div>
+					<div className="about-icon-wrap">
+						<a href="https://github.com/frances-y-h" target="_blank">
+							<img src={git} alt="GitHub" className="about-icon" />
+						</a>
+						<a
+							href="https://www.linkedin.com/in/frances-huang-660607156/"
+							target="_blank"
+						>
+							<img src={linkedin} alt="Linked In" className="about-icon" />
+						</a>
+					</div>
 				</div>
 				<div className="about-cards">
 					<div className="about-photo">Photo Here</div>
-					<div>Lincoln Her</div>
-					<div>Slogan</div>
-					<div>Git & LinkedIn</div>
+					<div className="about-name">Lincoln Her</div>
+					<div className="about-slogan">Slogan</div>
+					<div className="about-icon-wrap">
+						<a href="#" target="_blank">
+							<img src={git} alt="GitHub" className="about-icon" />
+						</a>
+						<a href="#" target="_blank">
+							<img src={linkedin} alt="Linked In" className="about-icon" />
+						</a>
+					</div>
 				</div>
 			</main>
 			<Footer />
