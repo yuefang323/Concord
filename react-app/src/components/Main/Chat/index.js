@@ -101,7 +101,7 @@ const Chat = () => {
 		return (
 			<div className="chat-ctrl">
 				<PrivateChats socket={socket} />
-				<PrvInputChat prvChat={prvChat} setChat={setPrvChat} handleSubmit={handleSubmitPrv}/>
+				<PrvInputChat prvChat={prvChat} setPrvChat={setPrvChat} handleSubmit={handleSubmitPrv}/>
 			</div>
 		);
 	}

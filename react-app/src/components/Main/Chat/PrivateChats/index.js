@@ -3,22 +3,36 @@ import { useSelector } from "react-redux";
 import { useParams } from "react-router-dom"
 import PrvAvatar from "../PrivateInputs/PrvAvatar";
 
+import PrvChatDivs from "../PrivateInputs/PrvChatDivs"
 
 
-const PrivateChats = () => {
+const PrivateChats = ({ socket }) => {
 	const prvChannelId = parseInt(useParams().channelId)
 
-	const prvChannels = useSelector((state) => state.prvChannels?.byId)[prvChannelId];
+	const prvChannels = useSelector((state) => state.prvChannels?.byId)
+
+	const prvChannel = useSelector((state) => state.prvChannels?.byId)[prvChannelId];
 
 	const users = useSelector((state) => state.users?.byId)
 
     const usersArr = Object.values(users)
 
-    const friendName = usersArr.find(user => user.id === prvChannels?.friend_id)
+    const friendName = usersArr.find(user => user.id === prvChannel?.friend_id)
 
-    const friendOfOther = usersArr.find(user => user.id === prvChannels?.user_id)
+    const friendOfOther = usersArr.find(user => user.id === prvChannel?.user_id)
 
 	const [friend, setFriend] = useState()
+
+	const focusRef = useRef();
+
+	// useEffect(() => {
+	// 	if (focusRef) {
+	// 		focusRef.current.addEventListener("DOMNodeInserted", (e) => {
+	// 			const { currentTarget: target } = e;
+	// 			target.scroll({ top: target.scrollHeight, behavior: "smooth" });
+	// 		});
+	// 	}
+	// }, []);
 
 	useEffect(() => {
 		if (friendName) {
@@ -28,25 +42,17 @@ const PrivateChats = () => {
 		}
 	}, [prvChannelId])
 
-	// const focusRef = useRef();
-
-	// useEffect(() => {
-	// 	if (focusRef) {
-	// 		focusRef.current.addEventListener("DOMNodeInserted")
-	// 	}
-
-	// }, []);
 
 	// My Change
-	// if (prvChannels[prvChannelId] && prvChannels[prvChannelId].prvChats.length) {
-	// 	return (
-	// 		<div className="chat-div-wrap" ref={focusRef}>
-	// 				{prvChannels[prvChannelId]?.prvChats.map((prvChatId) => {
-	// 				return <PrvChatDivs PrvChatId={prvChatId} key={prvChatId} socket={socket} />;
-	// 			})}
-	// 		</div>
-	// 	)
-	// }
+	if (prvChannels[prvChannelId] && prvChannels[prvChannelId].prvChats.length) {
+		return (
+			<div className="chat-div-wrap" ref={focusRef}>
+					{prvChannels[prvChannelId]?.prvChats.map((prvChatId) => {
+					return <PrvChatDivs PrvChatId={prvChatId} key={prvChatId} socket={socket} />;
+				})}
+			</div>
+		)
+	} else {
 		return (
 			<div className="chat-div-wrap-empty" >
 				<div className="chat-big-hash-div prv">
@@ -59,7 +65,7 @@ const PrivateChats = () => {
 				</div>
 			</div>
 		);
-	// }
+	}
 };
 
 export default PrivateChats;
