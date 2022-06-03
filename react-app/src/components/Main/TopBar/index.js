@@ -9,6 +9,14 @@ const TopBar = () => {
 	const serverId = parseInt(serverParam, 10);
 	const servers = useSelector((state) => state.servers);
 	const server = servers.byId[serverId];
+	const user = useSelector((state) => state.session.user);
+
+	const greeting = (function () {
+		const now = new Date().getHours();
+		if (now < 12) return "Good morning,";
+		else if (now < 18) return "Good afternoon,";
+		else return "Good evening";
+	})();
 
 	if (serverParam) {
 		return (
@@ -18,7 +26,11 @@ const TopBar = () => {
 			</div>
 		);
 	} else {
-		return <div className="top-ctrl">Me</div>;
+		return (
+			<div className="top-me-wrap">
+				{greeting} {user?.username}!
+			</div>
+		);
 	}
 };
 
