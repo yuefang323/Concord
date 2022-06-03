@@ -9,7 +9,6 @@ import NoAvatar from "./NoAvatar";
 
 const HomeChannel = () => {
     const [showModal, setShowModal] = useState(false);
-    const [choose, setChoose] = useState("create-join");
 
     const user = useSelector((state) => state.session.user);
     const users = useSelector((state) => state.users.byId);
@@ -25,7 +24,7 @@ const HomeChannel = () => {
                     onClick={() => setShowModal(true)}
                     data-tip="Add a Friend"
                 >
-                    {/* <i className="fa-solid fa-user-group"></i> */}
+                    <i className="fa-solid fa-user-group"></i>
                     <p>Friends</p>
                     {showModal && (
                         <Modal
@@ -33,13 +32,11 @@ const HomeChannel = () => {
                                 setTimeout(() => {
                                     setShowModal(false);
                                 }, 1);
-                                
                             }}
                         >
-                            <AddFriend
-                                // setChoose={setChoose}
-                                setShowModal={setShowModal}
-                            />
+                            <div className="form-ctrl form-sm">
+                                <AddFriend setShowModal={setShowModal} />
+                            </div>
                         </Modal>
                     )}
                 </button>
