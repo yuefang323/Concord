@@ -47,7 +47,7 @@ const About = () => {
 				<div className="about-cards">
 					<div className="about-photo">Photo Here</div>
 					<div>Fang Yue</div>
-					<div>Slogan</div>
+					<div className="about-slogan">Slogan</div>
 					<div>Git & LinkedIn</div>
 				</div>
 				<div className="about-cards">
