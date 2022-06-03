@@ -1,5 +1,5 @@
 import { useSelector, useDispatch } from "react-redux";
-import { useParams, Link } from "react-router-dom";
+import { useParams, Link, Redirect } from "react-router-dom";
 
 import AddChannelModal from "./AddChannel";
 import EditChannel from "./EditChannel";
@@ -15,7 +15,7 @@ const ChannelBar = () => {
 	const serverParam = useParams().serverId;
 	const serverId = parseInt(serverParam, 10);
 	const channelParam = useParams().channelId;
-	const channelId = parseInt(channelParam);
+	const channelId = parseInt(channelParam, 10);
 	const servers = useSelector((state) => state.servers);
 	const currServerChannels = servers?.byId[serverId]?.channels;
 	const channels = useSelector((state) => state.channels);
@@ -25,6 +25,9 @@ const ChannelBar = () => {
 			.then((res) => dispatch(chatsActions.getChats(res.chats)))
 			.catch((err) => console.log(err));
 	};
+
+	if (!channelParam)
+		return <Redirect to={`/channels/${serverId}/${currServerChannels[0]}`} />;
 
 	return (
 		<>

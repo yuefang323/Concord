@@ -132,7 +132,7 @@ export default function reducer(state = initialState, action) {
 	let set;
 	switch (action.type) {
 		case GET_SERVERS:
-			newState = { ...state };
+			newState = Object.assign({}, state);
 			newState.byId = JSON.parse(JSON.stringify(newState.byId));
 			set = new Set(newState.allIds);
 			// Add
@@ -143,7 +143,7 @@ export default function reducer(state = initialState, action) {
 			newState.allIds = Array.from(set);
 			return newState;
 		case ADD_EDIT_SERVER:
-			newState = { ...state };
+			newState = Object.assign({}, state);
 			newState.byId = JSON.parse(JSON.stringify(newState.byId));
 			set = new Set(newState.allIds);
 			// Update
@@ -152,7 +152,7 @@ export default function reducer(state = initialState, action) {
 			newState.allIds = Array.from(set);
 			return newState;
 		case DELETE_SERVER:
-			newState = { ...state };
+			newState = Object.assign({}, state);
 			newState.byId = JSON.parse(JSON.stringify(newState.byId));
 			set = new Set(newState.allIds);
 			// Delete

@@ -19,7 +19,7 @@ const Chat = () => {
 	const serverParam = useParams().serverId;
 	const serverId = parseInt(serverParam, 10);
 
-	const [chat, setChat] = useState();
+	const [chat, setChat] = useState("");
 
 	const handleSubmit = async (e) => {
 		e.preventDefault();

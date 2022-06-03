@@ -82,8 +82,7 @@ export default function reducer(state = initialState, action) {
 	let set;
 	switch (action.type) {
 		case GET_JOIN_SERVERS:
-			newState = { ...state };
-			// Change all ids to set to prevent duplicate
+			newState = Object.assign({}, state);
 			newState.byId = JSON.parse(JSON.stringify(newState.byId));
 			set = new Set(newState.allIds);
 			// Add to new state
@@ -96,7 +95,7 @@ export default function reducer(state = initialState, action) {
 			return newState;
 		case JOIN_SERVER:
 			newState = { ...state };
-			// Change all ids to set to prevent duplicate
+			newState = Object.assign({}, state);
 			newState.byId = JSON.parse(JSON.stringify(newState.byId));
 			set = new Set(newState.allIds);
 			// Add to new state
@@ -106,8 +105,7 @@ export default function reducer(state = initialState, action) {
 			newState.allIds = Array.from(set);
 			return newState;
 		case LEAVE_SERVER:
-			newState = { ...state };
-			// Change all ids to set to prevent duplicate
+			newState = Object.assign({}, state);
 			newState.byId = JSON.parse(JSON.stringify(newState.byId));
 			set = new Set(newState.allIds);
 			// Remove from new state
