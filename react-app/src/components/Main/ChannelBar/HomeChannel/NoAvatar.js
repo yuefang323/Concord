@@ -7,9 +7,8 @@ const NoAvatar = ({ friend }) => {
     const user = useSelector((state) => state.session.user);
 
     useEffect(() => {
-        const id = friend?.friend_id === user.id ? friend?.user_id : friend?.friend_id
-        console.log(typeof(id))
-        console.log(id)
+        const id =
+            friend?.friend_id === user.id ? friend?.user_id : friend?.friend_id;
         if (id % 5 === 0) {
             divRef.current.classList.add("color-blue");
         } else if (id % 5 === 1) {
@@ -21,7 +20,6 @@ const NoAvatar = ({ friend }) => {
         } else if (id % 5 === 4) {
             divRef.current.classList.add("color-purple");
         }
-
     }, [friend?.user_id]);
 
     return (

@@ -1,11 +1,16 @@
+import { useState } from "react";
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
+import ReactTooltip from "react-tooltip";
 
-import { socket } from "../../../../context/Socket";
-import logo from "../../../../assets/logo-red.svg";
-import NoAvatar from "./NoAvatar"
+import { Modal } from "../../../../context/Modal";
+import AddFriend from "../../Modal/Channel/AddFriend";
+import NoAvatar from "./NoAvatar";
 
 const HomeChannel = () => {
+    const [showModal, setShowModal] = useState(false);
+    const [choose, setChoose] = useState("create-join");
+
     const user = useSelector((state) => state.session.user);
     const users = useSelector((state) => state.users.byId);
     const prvChannels = useSelector((state) => state.prvChannels);
@@ -15,9 +20,28 @@ const HomeChannel = () => {
     return (
         <>
             <div>
-                <button className="channel-bar-friend-btn">
+                <button
+                    className="channel-bar-friend-btn"
+                    onClick={() => setShowModal(true)}
+                    data-tip="Add a Friend"
+                >
                     {/* <i className="fa-solid fa-user-group"></i> */}
                     <p>Friends</p>
+                    {showModal && (
+                        <Modal
+                            onClose={() => {
+                                setTimeout(() => {
+                                    setShowModal(false);
+                                }, 1);
+                                
+                            }}
+                        >
+                            <AddFriend
+                                // setChoose={setChoose}
+                                setShowModal={setShowModal}
+                            />
+                        </Modal>
+                    )}
                 </button>
                 <div className="channel-bar-wrapper">
                     <p>Direct Messages</p>
@@ -25,7 +49,10 @@ const HomeChannel = () => {
                     <div className="friend-list">
                         {friendsList?.map((friend, indx) => (
                             <div key={"friend" + indx}>
-                                <Link to={`/channels/@me/${friend?.id}`} className="channel-friend-wrapper">
+                                <Link
+                                    to={`/channels/@me/${friend?.id}`}
+                                    className="channel-friend-wrapper"
+                                >
                                     {users[
                                         friend.user_id === user.id
                                             ? friend.friend_id
@@ -52,7 +79,7 @@ const HomeChannel = () => {
                                         // </div>
                                         <NoAvatar friend={friend} />
                                     )}
-                                    <div  className="friend-name">
+                                    <div className="friend-name">
                                         {
                                             users[
                                                 friend.user_id === user.id
@@ -67,6 +94,7 @@ const HomeChannel = () => {
                     </div>
                 </div>
             </div>
+            <ReactTooltip place="right" type="dark" effect="solid" />
         </>
     );
 };
