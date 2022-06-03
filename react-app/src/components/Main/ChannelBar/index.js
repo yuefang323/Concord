@@ -4,6 +4,7 @@ import { useParams, Link } from "react-router-dom";
 import AddChannelModal from "./AddChannel";
 import EditChannel from "./EditChannel";
 import UserProfile from "./UserProfile";
+import HomeChannel from "./HomeChannel";
 
 import * as channelsActions from "../../../store/channels";
 import * as chatsActions from "../../../store/chats";

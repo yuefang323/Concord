@@ -5,6 +5,8 @@ import { useHistory } from "react-router-dom";
 import { socket } from "../../../../../context/Socket";
 
 import * as channelsActions from "../../../../../store/channels";
+import * as serversActions from "../../../../../store/servers";
+import * as chatsActions from "../../../../../store/chats";
 
 const DeleteChannel = ({ channel, onClose }) => {
     const dispatch = useDispatch();
@@ -21,32 +23,19 @@ const DeleteChannel = ({ channel, onClose }) => {
             server_id: channel.server_id,
         };
 
-        // Thunks to delete server
-        const res = await dispatch(
-            channelsActions.deleteThisChannel(channelToDelete)
-        );
-        console.log("res....", res);
-        if (!res.errors) {
-            console.log("validators///////");
-            history.push(`/channels/${channel.server_id}`);
-            onClose();
-            console.log(res);
+        dispatch(channelsActions.deleteThisChannel(channelToDelete))
+        .then((res) => {
+                // dispatch action to update server
+                dispatch(serversActions.addEditServer(res.server))
+                // dispatch action to update chats
+                res.chat.forEach((id) => dispatch(chatsActions.deleteChat(id)))
+                onClose();
+                history.push(`/channels/${channel.server_id}`);
+                // socket emit leave channels
+                socket.emit("leave_channels", res.channels);
 
-            // socket emit leave channels
-            socket.emit("leave_channels", res.channels);
-
-            // dispatch action to update channels
-            // res.channels.forEach((channelId) => {
-            // 	dispatch(channelsActions.deleteChannels(channelId));
-            // });
-
-            // dispatch action to update chats
-            // res.chats.forEach((chatId) => {
-            // 	dispatch(chatsActions.deleteChat(chatId));
-            // });
-        } else {
-            setErrors(res.errors);
-        }
+            })
+            .catch((err) => console.log(err));
     };
 
     return (

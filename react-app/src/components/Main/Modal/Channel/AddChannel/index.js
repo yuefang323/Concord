@@ -37,8 +37,6 @@ const AddChannel = ({ setShowModal, onClose }) => {
 		const newChannel = { name, serverIdnum };
 		const res = await dispatch(channelsActions.addNewChannel(newChannel));
 		dispatch(serversActions.addEditServer(res.server));
-		if (setShowModal) setShowModal(false);
-		if (onClose) onClose();
 		setName("");
 
 		// Socket join channels
@@ -46,6 +44,7 @@ const AddChannel = ({ setShowModal, onClose }) => {
 		socket.emit("join_channels", channelArr);
 
 		history.push(`/channels/${serverIdnum}`);
+        if (setShowModal) setShowModal(false);
 	};
 
 	const cancelButton = async (e) => {
