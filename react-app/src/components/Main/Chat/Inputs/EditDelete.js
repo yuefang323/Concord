@@ -5,7 +5,7 @@ import ReactTooltip from "react-tooltip";
 import { Modal } from "../../../../context/Modal";
 import DeleteChat from "../../Modal/Chat/DeleteChat";
 
-const EditDelete = ({ chatId, disabled, setDisabled }) => {
+const EditDelete = ({ chatId, disabled, setDisabled, socket = { socket } }) => {
 	const [showModal, setShowModal] = useState(false);
 
 	const onClose = () => {
@@ -31,7 +31,7 @@ const EditDelete = ({ chatId, disabled, setDisabled }) => {
 			<ReactTooltip place="bottom" type="dark" effect="solid" />
 			{showModal && (
 				<Modal onClose={onClose}>
-					<DeleteChat chatId={chatId} onClose={onClose} />
+					<DeleteChat chatId={chatId} onClose={onClose} socket={socket} />
 				</Modal>
 			)}
 		</div>

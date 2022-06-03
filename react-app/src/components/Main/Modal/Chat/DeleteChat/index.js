@@ -46,7 +46,7 @@ const DeleteChat = ({ chatId, onClose, socket }) => {
 					type="submit"
 					onClick={deleteMessage}
 				>
-					Leave Server
+					Delete
 				</button>
 			</div>
 		</div>
