@@ -2,16 +2,25 @@ import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 
-const PrvChatDivs = ({ chatId, socket }) => {
-	// const userId = useSelector((state) => state.session.user).id;
-	// const channelId = parseInt(useParams().channelId);
-	// const users = useSelector((state) => state.users.byId);
-	// const chats = useSelector((state) => state.chats.byId);
-	// const [user, setUser] = useState();
-	// const [disabled, setDisabled] = useState(true);
-	// const [message, setMessage] = useState("");
+import PrvAvatar from "./PrvAvatar";
+import CreatedAt from "../Inputs/CreatedAt"
 
-	// const owner = userId === chats[chatId]?.user_id;
+import EditDelete from "../Inputs/EditDelete";
+
+const PrvChatDivs = ({ prvChatId, socket }) => {
+	const userId = useSelector((state) => state.session.user).id;
+    const prvChannelId = parseInt(useParams().channelId)
+    console.log(prvChannelId)
+	const users = useSelector((state) => state.users.byId);
+    const prvChats = useSelector((state) => state.prvChats.byId)
+	const [user, setUser] = useState();
+	const [disabled, setDisabled] = useState(true);
+	const [prvMessage, setPrvMessage] = useState("");
+
+	const owner = userId === prvChats[prvChatId]?.user_id;
+
+    // const name = users[prvChats[prvChatId]?.user_id]?.username
+    // console.log(name)
 
 	// const editChat = async (e) => {
 	// 	e.preventDefault();
@@ -20,24 +29,24 @@ const PrvChatDivs = ({ chatId, socket }) => {
 	// 	setDisabled(true);
 	// };
 
-	// useEffect(() => {
-	// 	setUser(users[chats[chatId]?.user_id]);
-	// }, [chats, chatId, users]);
+	useEffect(() => {
+		setUser(users[prvChats[prvChatId]?.user_id]);
+	}, [prvChats, prvChatId, users]);
 
-	// useEffect(() => {
-	// 	setMessage(chats[chatId]?.message);
-	// }, [chats, chatId]);
+	useEffect(() => {
+		setPrvMessage(prvChats[prvChatId]?.prvMessage);
+	}, [prvChats, prvChatId]);
 
 	return (
         <h2>PrivateDivChats</h2>
-		// <div className="chat-div-ctrl" id={chatId}>
-		// 	<Avatar user={user} />
+		// <div className="chat-div-ctrl" id={prvChatId}>
+		// 	<PrvAvatar user={user} />
 		// 	<div className="chat-message-ctrl">
 		// 		<div className="chat-user-wrap">
 		// 			<div className="chat-username">
-		// 				{users[chats[chatId]?.user_id]?.username}
+		// 				{users[prvChats[prvChatId]?.user_id]?.username}
 		// 			</div>
-		// 			<CreatedAt created_at={chats[chatId]?.created_at} />
+		// 			<CreatedAt created_at={prvChats[prvChatId]?.created_at} />
 		// 		</div>
 
 		// 		<form onSubmit={editChat}>
