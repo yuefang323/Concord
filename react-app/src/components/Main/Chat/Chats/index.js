@@ -42,10 +42,10 @@ const Chats = ({ socket }) => {
 					<i className="fa-solid fa-hashtag"></i>
 				</div>
 				<div className="chat-empty-title">
-					Welcome to #{channels[channelId].name}!
+					Welcome to #{channels[channelId]?.name}!
 				</div>
 				<div className="chat-empty-desc">
-					This is the start of the #{channels[channelId].name} channel.
+					This is the start of the #{channels[channelId]?.name} channel.
 				</div>
 				<div className="chat-empty-edit" onClick={() => setShowModal(true)}>
 					<i className="fa-solid fa-pen"></i>
