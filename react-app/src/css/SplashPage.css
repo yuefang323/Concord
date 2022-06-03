@@ -73,6 +73,7 @@
 .splash-desc {
 	text-align: center;
 	text-shadow: 0px 0px 3px var(--gray1);
+	white-space: normal;
 }
 
 .splash-sample-wrap {
@@ -94,14 +95,13 @@
 	font-weight: bold;
 	width: 100%;
 	display: flex;
-	flex-wrap: wrap;
-	word-wrap: break-word;
-	overflow-wrap: break-word;
+	white-space: normal;
 }
 
 .splash-sample-desc {
 	word-wrap: break-word;
 	overflow-wrap: break-word;
+	white-space: normal;
 }
 
 .splash-footer-wrap {

@@ -1,3 +1,9 @@
+.team-members {
+	text-align: center;
+	font-family: "Open Sans", sans-serif;
+	font-size: 30px;
+}
+
 .about-ctrl {
 	padding: 40px;
 	min-height: 300px;
@@ -9,7 +15,7 @@
 
 .about-cards {
 	width: 250px;
-	height: 300px;
+	height: 325px;
 	border-radius: 5px;
 	display: flex;
 	flex-direction: column;
@@ -38,4 +44,17 @@
 
 .about-slogan {
 	font-size: 13px;
+}
+
+.about-icon-wrap {
+	display: flex;
+	flex-direction: row;
+	gap: 10px;
+}
+
+.about-icon {
+	width: 30px;
+	height: 30px;
+	border-radius: 30px;
+	object-fit: cover;
 }

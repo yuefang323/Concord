@@ -3,7 +3,7 @@ import { useSelector } from "react-redux";
 import Home from "./Home";
 import Server from "./Server";
 import Add from "./Add";
-// import Explore from "./Explore";
+import Explore from "./Explore";
 
 import LogoutButton from "../../auth/LogoutButton";
 
@@ -23,7 +23,7 @@ const SideBar = () => {
 				))}
 
 				<Add />
-				{/* <Explore /> */}
+				<Explore />
 			</div>
 			<div className="sidebar-btm-ctrl">
 				<LogoutButton />

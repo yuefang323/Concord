@@ -53,3 +53,8 @@ button:hover {
 	background-color: var(--red1);
 	color: white;
 }
+
+.btn-gray {
+	background-color: var(--gray2);
+	color: black;
+}
