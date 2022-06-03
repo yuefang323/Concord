@@ -55,6 +55,7 @@ const Overview = ({ server, onClose }) => {
 						<div
 							className="setting-server-overview-background"
 							style={{ backgroundImage: `url(${server.background})` }}
+							onClick={onOpenLogo}
 						>
 							<div>CHANGE IMAGE</div>
 							<div className="setting-server-logo-upload">
