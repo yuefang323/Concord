@@ -1,18 +1,11 @@
-import { useRef } from "react";
+import { useRef, useState, useEffect } from "react";
 import { useDispatch } from "react-redux";
 
 import upload_photo from "../../../../../../assets/upload_photo.svg";
 import * as serversActions from "../../../../../../store/servers";
 
-const Logo = ({ server, errors, setErrors }) => {
+const Logo = ({ server, errors, setErrors, onOpenLogo }) => {
 	const dispatch = useDispatch();
-
-	// const [logo, setLogo] = useState("");
-	const uploadLogoRef = useRef();
-
-	const uploadLogoClick = (e) => {
-		uploadLogoRef.current.click();
-	};
 
 	const removeLogo = async (e) => {
 		e.preventDefault();
@@ -24,11 +17,10 @@ const Logo = ({ server, errors, setErrors }) => {
 
 	if (server?.logo) {
 		return (
-			<div className="setting-server-overview-logo-wrap">
+			<div className="setting-server-overview-logo-wrap" onClick={onOpenLogo}>
 				<div
 					style={{ backgroundImage: `url(${server?.logo})` }}
 					className="setting-server-logo"
-					onClick={uploadLogoClick}
 				>
 					<div>CHANGE</div>
 					<div>ICON</div>
@@ -43,19 +35,13 @@ const Logo = ({ server, errors, setErrors }) => {
 				<div className="setting-server-logo-upload">
 					<img src={upload_photo} alt="Upload" />
 				</div>
-				<input
-					type="file"
-					id="file"
-					ref={uploadLogoRef}
-					style={{ display: "none" }}
-				/>
 			</div>
 		);
 	} else {
 		return (
 			<div className="setting-server-overview-logo-wrap">
-				<div className="setting-server-no-logo" onClick={uploadLogoClick}>
-					<div>UPLOAD</div>
+				<div className="setting-server-no-logo" onClick={onOpenLogo}>
+					<div>LINK</div>
 					<div>LOGO</div>
 				</div>
 				<button
@@ -68,12 +54,6 @@ const Logo = ({ server, errors, setErrors }) => {
 				<div className="setting-server-logo-upload">
 					<img src={upload_photo} alt="Upload" />
 				</div>
-				<input
-					type="file"
-					id="file"
-					ref={uploadLogoRef}
-					style={{ display: "none" }}
-				/>
 			</div>
 		);
 	}
