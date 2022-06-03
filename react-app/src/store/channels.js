@@ -34,7 +34,7 @@ export const clearChannels = () => ({
 
 // Thunks
 export const getChannel = (channelId) => async (dispatch) => {
-	const response = await fetch(`/api/channels/${channelId}`);
+	const response = await fetch(`/channels/${channelId}`);
 	if (response.ok) {
 		const data = await response.json();
 		dispatch(addEditChannel(data.channel));
@@ -126,7 +126,7 @@ export default function reducer(state = initialState, action) {
 		case GET_CHANNELS:
 			newState = Object.assign({}, state);
 			newState.byId = JSON.parse(JSON.stringify(newState.byId));
-			set = new Set(state.allIds);
+			set = new Set(newState.allIds);
 
 			action.channels.forEach((channel) => {
 				newState.byId[channel.id] = channel;
@@ -147,8 +147,8 @@ export default function reducer(state = initialState, action) {
 			return newState;
 		case DELETE_CHANNEL:
 			newState = Object.assign({}, state);
-			set = new Set(newState.allIds);
 			newState.byId = JSON.parse(JSON.stringify(newState.byId));
+			set = new Set(newState.allIds);
 
 			delete newState.byId[action.channelId];
 			set.delete(action.channelId);

@@ -1,8 +1,6 @@
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
 
-import { socket } from "../../../../../context/Socket";
-
 import * as joinServersActions from "../../../../../store/joinServers";
 import * as serversActions from "../../../../../store/servers";
 import * as channelsActions from "../../../../../store/channels";

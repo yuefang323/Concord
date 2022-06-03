@@ -24,9 +24,10 @@ export default function reducer(state = initialState, action) {
 
 	switch (action.type) {
 		case GET_PRV_CHATS:
-			newState = { ...state };
+			newState = Object.assign({}, state);
 			newState.byId = JSON.parse(JSON.stringify(newState.byId));
 			set = new Set(newState.allIds);
+
 			action.prv_chats.forEach((prv_chat) => {
 				newState.byId[prv_chat.id] = prv_chat;
 				set.add(prv_chat.id);

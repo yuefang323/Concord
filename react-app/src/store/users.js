@@ -25,7 +25,7 @@ export default function reducer(state = initialState, action) {
 
 	switch (action.type) {
 		case GET_USERS:
-			newState = { ...state };
+			newState = Object.assign({}, state);
 			newState.byId = JSON.parse(JSON.stringify(newState.byId));
 			set = new Set(newState.allIds);
 
