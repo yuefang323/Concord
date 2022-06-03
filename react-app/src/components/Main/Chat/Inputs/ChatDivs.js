@@ -30,7 +30,7 @@ const ChatDivs = ({ chatId, socket }) => {
 			const chatData = { id: chatId, message, channel_id: channelId };
 			const res = await dispatch(chatsActions.editChat(chatData));
 			if (res.id) {
-				// socket.emit
+				// socket.emit("edit_chat", chatData);
 			}
 		}
 
