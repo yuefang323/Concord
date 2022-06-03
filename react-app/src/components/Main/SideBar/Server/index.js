@@ -16,11 +16,9 @@ const Server = ({ server }) => {
 		serverParam === "@me" ? serverParam : parseInt(serverParam, 10);
 
 	const dispatchServer = () => {
-		if (serverId !== "@me") {
-			dispatch(serversActions.getServer(serverId))
-				.then((res) => dispatch(channelsActions.getChannels(res.channels)))
-				.catch((err) => console.log(err));
-		}
+		dispatch(serversActions.getServer(server.id))
+			.then((res) => dispatch(channelsActions.getChannels(res.channels)))
+			.catch((err) => console.log(err));
 	};
 
 	return (

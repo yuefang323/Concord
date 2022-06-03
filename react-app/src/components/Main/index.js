@@ -42,6 +42,9 @@ const MainPage = () => {
 		<div className="main-ctrl">
 			<SideBar />
 			<Switch>
+				<Route path="/guild-discovery">
+					<ExplorePage />
+				</Route>
 				<Route path={["/channels/@me", "/channels/@me/:channelId"]} exact>
 					<div className="channel-chat-top-wrap">
 						<TopBar />
@@ -63,9 +66,6 @@ const MainPage = () => {
 							<Users />
 						</div>
 					</div>
-				</Route>
-				<Route path="/guild-discovery" exact>
-					<ExplorePage />
 				</Route>
 			</Switch>
 		</div>

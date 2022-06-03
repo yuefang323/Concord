@@ -67,18 +67,24 @@ def edit_server(server_id):
         }
 
 
-    if request.method == "POST":
+    if request.method == "PUT":
         form = EditServerForm()
         form['csrf_token'].data = request.cookies['csrf_token']
         if form.validate_on_submit():
             server = Server.query.get(server_id)
             server.name = form.data["name"]
             server.description = form.data["description"]
+            if form.data["logo"]:
+                server.logo = form.data["logo"]
+            if form.data["background"]:
+                server.background = form.data["background"]
             db.session.commit()
 
             return {"server": server.to_dict()}
 
         return {'errors': validation_errors_to_error_messages(form.errors)}, 401
+
+    return {"errors": "invlaid method"}
 
 
 # Delete server logo

@@ -12,7 +12,6 @@ const ServerCards = ({ server }) => {
 		const joinServer = { server_id: server.id };
 		// thunks to backend adding join_servers_user
 		const data = await dispatch(joinServersActions.joinNewServer(joinServer));
-		console.log(data);
 		// Dispatch channels
 		await dispatch(channelsActions.getChannels(data.channels));
 		// Dispatch chats
@@ -32,14 +31,14 @@ const ServerCards = ({ server }) => {
 					></div>
 				</div>
 				<div className="server-card-btm">
-					<div className="server-name">{server.name}</div>
-					<div className="server-desc">{server.description}</div>
+					<div className="server-name">{server?.name}</div>
+					<div className="server-desc">{server?.description}</div>
 					<div className="server-card-members-join">
 						<div className="server-members">
 							<i className="fa-solid fa-circle"></i>
 							{server?.users?.length} Member(s)
 						</div>
-						{joinedServers.includes(server?.id) ? (
+						{joinedServers?.includes(server?.id) ? (
 							<div className="btn btn-gray">Joined</div>
 						) : (
 							<button

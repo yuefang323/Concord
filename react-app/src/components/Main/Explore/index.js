@@ -17,7 +17,7 @@ const ExplorePage = () => {
 			</div>
 			<div className="explore-discover">Discover</div>
 			<div className="explore-servers">
-				{Object.values(servers)?.map((server) => (
+				{Object.values(servers).map((server) => (
 					<ServerCards key={server.id} server={server} />
 				))}
 			</div>
