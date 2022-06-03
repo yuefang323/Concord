@@ -29,35 +29,51 @@ const ChannelBar = () => {
 	if (!channelParam && currServerChannels)
 		return <Redirect to={`/channels/${serverId}/${currServerChannels[0]}`} />;
 
-	return (
-		<>
-			<div className="channel-ctrl">
-				<div>
-					{<AddChannelModal />}
-					<div className="channel-list">
-						{currServerChannels?.map((id) => (
-							<li key={id}>
-								{
-									<Link
-										to={`/channels/${serverId}/${id}`}
-										className="channel-info-wrapper"
-										onClick={dispatchChannel}
-									>
-										<div className="channel-name">
-											<i className="fa-solid fa-hashtag"></i>
-											{channels?.byId[id]?.name}
-										</div>
-										<EditChannel channel={channels?.byId[id]} />
-									</Link>
-								}
-							</li>
-						))}
-					</div>
-				</div>
-				<UserProfile />
-			</div>
-		</>
-	);
+    // 	if (serverParam) {
+    // 		// Thunks to get server and channels
+    // 		dispatch(serversActions.getServer(serverId))
+    // 			.then((res) => dispatch(channelsActions.getChannels(res.channels)))
+    // 			.catch((err) => console.log(err));
+    // 	}
+    // }, [serverParam, channelParam]);
+
+    return (
+        <>
+            <div className="channel-ctrl">
+                {serverParam ? (
+                    <div>
+                        {<AddChannelModal />}
+                        <div className="channel-list">
+                            {currServerChannels?.map((id) => (
+                                <li key={id}>
+                                    {
+                                        <Link
+                                            to={`/channels/${serverId}/${id}`}
+                                            className="channel-info-wrapper"
+                                            onClick={dispatchChannel}
+                                        >
+                                            <div className="channel-name">
+                                                <i className="fa-solid fa-hashtag"></i>
+                                                {channels?.byId[id]?.name}
+                                            </div>
+                                            <EditChannel
+                                                channel={channels?.byId[id]}
+                                            />
+                                        </Link>
+                                    }
+                                </li>
+                            ))}
+                        </div>
+                    </div>
+                ) : (
+                    <>
+                    <HomeChannel />
+                    </>
+                )}
+                <UserProfile />
+            </div>
+        </>
+    );
 };
 
 export default ChannelBar;
