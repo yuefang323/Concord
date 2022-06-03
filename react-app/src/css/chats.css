@@ -56,6 +56,15 @@
 	align-items: center;
 }
 
+.chat-avatar.prv {
+	width: 60px;
+	height: 60px;
+	border-radius: 42px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
 .chat-message-ctrl {
 	display: flex;
 	flex-direction: column;
@@ -120,6 +129,18 @@
 	height: 60px;
 	border-radius: 60px;
 	padding-left: 7px;
+	background-color: white;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	font-size: 30px;
+}
+
+.chat-big-hash-div.prv{
+	width: 60px;
+	height: 60px;
+	border-radius: 60px;
+	padding-left: 0px;
 	background-color: white;
 	display: flex;
 	justify-content: center;

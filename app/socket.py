@@ -86,6 +86,8 @@ def delete_chat(data):
     }, to=data["channel_id"],
          broadcast=True)
 
+@socketio.on("receive_prv_message")
+
 # Error handler
 @socketio.on_error_default
 def default_error_handler(e):

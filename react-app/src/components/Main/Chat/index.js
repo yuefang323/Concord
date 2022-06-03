@@ -6,9 +6,12 @@ import { io } from "socket.io-client";
 import Chats from "./Chats";
 import PrivateChats from "./PrivateChats";
 import InputChat from "./Inputs/InputChat";
+import PrvInputChat from "./PrivateInputs/PrvInputChat";
 
 import * as channelsActions from "../../../store/channels";
 import * as chatsActions from "../../../store/chats";
+import * as prvChannelsActions from "../../../store/prvChannels"
+import * as prvChatsActions from "../../../store/prvChats";
 
 let socket;
 
@@ -20,6 +23,7 @@ const Chat = () => {
 	const serverId = parseInt(serverParam, 10);
 
 	const [chat, setChat] = useState("");
+	const [prvChat, setPrvChat] = useState("")
 
 	const handleSubmit = async (e) => {
 		e.preventDefault();
@@ -34,6 +38,22 @@ const Chat = () => {
 
 			// clear chat field
 			setChat("");
+		}
+	};
+
+	const handleSubmitPrv = async (e) => {
+		e.preventDefault();
+		// only send when there is private chat input
+		if (prvChat) {
+			const prvChatData = {
+				channel_id: channelId,
+				prvChat,
+			};
+
+			socket.emit("send_prv_chat", prvChatData);
+
+			// clear private chat field
+			setPrvChat("");
 		}
 	};
 
@@ -60,6 +80,10 @@ const Chat = () => {
 			dispatch(channelsActions.addEditChannel(data.channel));
 		});
 
+		socket.on("receive_prv_message", (data) => {
+			dispatch(prvChatsActions.addEditPrvChat(data.prv_chat))
+		})
+
 		return () => {
 			socket.emit("leave_channel", channelId);
 			socket.disconnect();
@@ -76,8 +100,8 @@ const Chat = () => {
 	} else {
 		return (
 			<div className="chat-ctrl">
-				<PrivateChats />
-				{/* <InputChat /> */}
+				<PrivateChats socket={socket} />
+				<PrvInputChat prvChat={prvChat} setChat={setPrvChat} handleSubmit={handleSubmitPrv}/>
 			</div>
 		);
 	}
