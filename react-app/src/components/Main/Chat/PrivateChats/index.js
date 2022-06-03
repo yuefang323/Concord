@@ -25,6 +25,8 @@ const PrivateChats = ({ socket }) => {
 
 	const focusRef = useRef();
 
+	// console.log(prvChannelId)
+
 	// useEffect(() => {
 	// 	if (focusRef) {
 	// 		focusRef.current.addEventListener("DOMNodeInserted", (e) => {
@@ -48,7 +50,7 @@ const PrivateChats = ({ socket }) => {
 		return (
 			<div className="chat-div-wrap" ref={focusRef}>
 					{prvChannels[prvChannelId]?.prvChats.map((prvChatId) => {
-					return <PrvChatDivs PrvChatId={prvChatId} key={prvChatId} socket={socket} />;
+					return <PrvChatDivs prvChatId={prvChatId} key={prvChatId} socket={socket} />;
 				})}
 			</div>
 		)
@@ -60,8 +62,11 @@ const PrivateChats = ({ socket }) => {
 						<PrvAvatar friend={friend} />
 					)}
 				</div>
+				<div className="chat-empty-title">
+					<h2 style={{ margin: "0px"}}>{!friendName ? friendOfOther?.username : friendName?.username}</h2>
+				</div>
 				<div className="chat-empty-desc">
-					This is the start of your direct message history with #{!friendName ? friendOfOther?.username : friendName?.username}.
+					This is the start of your direct message history with @{!friendName ? friendOfOther?.username : friendName?.username}.
 				</div>
 			</div>
 		);

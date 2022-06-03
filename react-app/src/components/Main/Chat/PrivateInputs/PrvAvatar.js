@@ -40,11 +40,22 @@ const PrvAvatar = ({ friend }) => {
 		}
 	}, [friend]);
 
+    if (friend?.avatar) {
 		return (
-			<div className="chat-avatar prv" ref={divRef}>
-				<img src={logo} alt="Avatar" className="user-logo prv" />
-			</div>
+			<img
+				src={friend?.avatar}
+				alt="avatar"
+				className="chat-avatar"
+				ref={divRef}
+			/>
 		);
+	} else {
+        return (
+            <div className="chat-avatar prv" ref={divRef}>
+                <img src={logo} alt="Avatar" className="user-logo prv" />
+            </div>
+        );
+    }
 };
 
 export default PrvAvatar;
