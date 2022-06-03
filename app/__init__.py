@@ -13,6 +13,7 @@ from .api.server_routes import server_routes
 from .api.join_server_routes import join_server_routes
 from .api.channel_routes import channel_routes
 from .api.chat_routes import chat_routes
+from .api.prv_channel_routes import prv_channel_routes
 
 from .seeds import seed_commands
 
@@ -44,6 +45,7 @@ app.register_blueprint(server_routes, url_prefix='/api/servers')
 app.register_blueprint(join_server_routes, url_prefix='/api/join_servers')
 app.register_blueprint(channel_routes, url_prefix='/api/channels')
 app.register_blueprint(chat_routes, url_prefix='/api/chats')
+app.register_blueprint(prv_channel_routes, url_prefix='/api/channels/@me')
 
 db.init_app(app)
 Migrate(app, db)

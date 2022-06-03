@@ -20,7 +20,7 @@ const NoAvatar = ({ friend }) => {
         } else if (id % 5 === 4) {
             divRef.current.classList.add("color-purple");
         }
-    }, [friend?.user_id]);
+    }, [friend?.friend_id, user.id, friend?.user_id]);
 
     return (
         <div className="sidebar-btn" ref={divRef}>
