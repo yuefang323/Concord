@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import { useParams } from "react-router-dom";
 
 import Avatar from "./Avatar";
@@ -7,7 +7,11 @@ import CreatedAt from "./CreatedAt";
 
 import EditDelete from "./EditDelete";
 
+import * as chatsActions from "../../../../store/chats";
+
 const ChatDivs = ({ chatId, socket }) => {
+	const dispatch = useDispatch();
+
 	const userId = useSelector((state) => state.session.user).id;
 	const channelId = parseInt(useParams().channelId);
 	const users = useSelector((state) => state.users.byId);
@@ -20,8 +24,16 @@ const ChatDivs = ({ chatId, socket }) => {
 
 	const editChat = async (e) => {
 		e.preventDefault();
-		const chatData = { chat_id: chatId, message, channel_id: channelId };
-		socket.emit("edit_chat", chatData);
+		// const chatData = { chat_id: chatId, message, channel_id: channelId };
+		// socket.emit("edit_chat", chatData);
+		if (message) {
+			const chatData = { id: chatId, message, channel_id: channelId };
+			const res = await dispatch(chatsActions.editChat(chatData));
+			if (res.id) {
+				// socket.emit
+			}
+		}
+
 		setDisabled(true);
 	};
 

@@ -1,4 +1,3 @@
-import React, { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { NavLink, Redirect } from "react-router-dom";
 import { login } from "../../store/session";
@@ -50,10 +49,10 @@ const About = () => {
 					<div>Fang Yue</div>
 					<div className="about-slogan">Slogan</div>
 					<div className="about-icon-wrap">
-						<a href="#" target="_blank">
+						<a href="#" target="_blank" rel="noreferrer">
 							<img src={git} alt="GitHub" className="about-icon" />
 						</a>
-						<a href="#" target="_blank">
+						<a href="#" target="_blank" rel="noreferrer">
 							<img src={linkedin} alt="Linked In" className="about-icon" />
 						</a>
 					</div>
@@ -65,12 +64,17 @@ const About = () => {
 					<div className="about-name">Frances (Huang) Lau</div>
 					<div className="about-slogan">Love crafting from scratch</div>
 					<div className="about-icon-wrap">
-						<a href="https://github.com/frances-y-h" target="_blank">
+						<a
+							href="https://github.com/frances-y-h"
+							target="_blank"
+							rel="noreferrer"
+						>
 							<img src={git} alt="GitHub" className="about-icon" />
 						</a>
 						<a
 							href="https://www.linkedin.com/in/frances-huang-660607156/"
 							target="_blank"
+							rel="noreferrer"
 						>
 							<img src={linkedin} alt="Linked In" className="about-icon" />
 						</a>
@@ -81,10 +85,10 @@ const About = () => {
 					<div className="about-name">Lincoln Her</div>
 					<div className="about-slogan">Slogan</div>
 					<div className="about-icon-wrap">
-						<a href="#" target="_blank">
+						<a href="#" target="_blank" rel="noreferrer">
 							<img src={git} alt="GitHub" className="about-icon" />
 						</a>
-						<a href="#" target="_blank">
+						<a href="#" target="_blank" rel="noreferrer">
 							<img src={linkedin} alt="Linked In" className="about-icon" />
 						</a>
 					</div>

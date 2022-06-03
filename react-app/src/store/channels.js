@@ -34,7 +34,7 @@ export const clearChannels = () => ({
 
 // Thunks
 export const getChannel = (channelId) => async (dispatch) => {
-	const response = await fetch(`/channels/${channelId}`);
+	const response = await fetch(`/api/channels/${channelId}`);
 	if (response.ok) {
 		const data = await response.json();
 		dispatch(addEditChannel(data.channel));
