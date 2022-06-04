@@ -21,16 +21,35 @@ const DeleteChannel = ({ channel, onClose }) => {
 			server_id: channel.server_id,
 		};
 
-		dispatch(channelsActions.deleteThisChannel(channelToDelete))
-			.then((res) => {
-				// dispatch action to update server
-				dispatch(serversActions.addEditServer(res.server));
-				// dispatch action to update chats
-				res.chat.forEach((id) => dispatch(chatsActions.deleteChat(id)));
-				onClose();
-				history.push(`/channels/${channel.server_id}`);
-			})
-			.catch((err) => console.log(err));
+		// dispatch(channelsActions.deleteThisChannel(channelToDelete))
+		// 	.then((res) => {
+		// 		// dispatch action to update server
+		// 		dispatch(serversActions.addEditServer(res.server));
+		// 		// dispatch action to update chats
+		// 		res.chat.forEach((id) => dispatch(chatsActions.deleteChat(id)));
+		// 		onClose();
+		// 		history.push(`/channels/${channel.server_id}`);
+		// 	})
+		// 	.catch((err) => console.log(err));
+        
+        const res = await dispatch(channelsActions.deleteThisChannel(channelToDelete))
+        
+        if (!res.errors) {
+            history.push(`/channels/${channel.server_id}`);
+			onClose();
+
+			// dispatch action to update server
+			dispatch(serversActions.addEditServer(res.server));
+
+			// dispatch action to update chats
+			res.chat.forEach((chatId) => {
+				dispatch(chatsActions.deleteChat(chatId));
+			});
+		} else {
+			setErrors(res.errors);
+		}
+        
+        
 	};
 
 	return (
