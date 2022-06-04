@@ -88,14 +88,17 @@ a:hover {
 /* Background colors */
 .color-red {
 	background-image: linear-gradient(to bottom right, var(--red1), orange);
+	background-color: var(--red1);
 }
 
 .color-yellow {
 	background-image: linear-gradient(to bottom right, var(--yellow1), yellow);
+	background-color: var(--yellow1);
 }
 
 .color-green {
 	background-image: linear-gradient(to bottom right, var(--green), turquoise);
+	background-color: var(--green);
 }
 
 .color-blue {
@@ -104,6 +107,7 @@ a:hover {
 		var(--blue),
 		rgb(36, 55, 137)
 	);
+	background-color: var(--blue);
 }
 
 .color-purple {
@@ -112,4 +116,5 @@ a:hover {
 		var(--purple),
 		rgb(95, 116, 237)
 	);
+	background-color: var(--purple);
 }

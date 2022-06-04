@@ -36,7 +36,7 @@ const ServerCards = ({ server }) => {
 		} else if (lastNum === "3" || lastNum === "8") {
 			divRef.current.classList.add("color-blue");
 			logoRef.current.classList.add("color-red");
-		} else if (lastNum === "4" || lastNum === "9") {
+		} else {
 			divRef.current.classList.add("color-purple");
 			logoRef.current.classList.add("color-green");
 		}
@@ -61,8 +61,13 @@ const ServerCards = ({ server }) => {
 					<div className="server-desc">{server?.description}</div>
 					<div className="server-card-members-join">
 						<div className="server-members">
-							<i className="fa-solid fa-circle"></i>
-							{server?.users?.length} Member(s)
+							<i className="fa-solid fa-user-group"></i>
+							{server.users.length}
+							{server?.users?.length > 1 ? (
+								<span>Members</span>
+							) : (
+								<span>Member</span>
+							)}
 						</div>
 						{joinedServers?.includes(server?.id) ? (
 							<div className="btn btn-gray">Joined</div>
