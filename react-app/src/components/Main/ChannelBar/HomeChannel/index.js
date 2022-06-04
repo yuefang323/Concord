@@ -8,6 +8,7 @@ import AddFriend from "../../Modal/Channel/AddFriend";
 import NoAvatar from "./NoAvatar";
 
 import * as prvChannelsActions from "../../../../store/prvChannels";
+import * as prvChatsActions from "../../../../store/prvChats"
 
 const HomeChannel = () => {
     const [showModal, setShowModal] = useState(false);
@@ -24,9 +25,9 @@ const HomeChannel = () => {
 
     const dispatchPrvChannel = async () => {
 		dispatch(prvChannelsActions.getPrvChannel(prvChannelId))
-			// .then((res) => {
-			// 	dispatch(chatsActions.getChats(res.chats));
-			// })
+			.then((res) => {
+				dispatch(prvChatsActions.getPrvChats(res.prv_chats));
+			})
 			.catch((err) => console.log(err));
 	};
 
