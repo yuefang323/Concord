@@ -35,3 +35,16 @@ def new_channel():
     return {
         "prv_channel": new_prv_channel.to_dict(),
         }; 
+
+# Get private channel
+@prv_channel_routes.route("/<int:prvChannelId>", methods=["GET"])
+@login_required
+def get_channel(prvChannelId):
+
+    prv_channel = PrivateChannel.query.get(prvChannelId)
+    # chats = Chat.query.filter(Chat.channel_id == channelId).all()
+
+    return {
+        "prv_channel": prv_channel.to_dict(),
+        # "chats" : [chat.to_dict() for chat in chats],
+    }
