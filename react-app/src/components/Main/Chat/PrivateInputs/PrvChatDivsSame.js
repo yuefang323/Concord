@@ -20,7 +20,7 @@ const ChatDivsSame = ({ prvChatId }) => {
 	return (
 		<div className="chat-div-ctrl" id={prvChatId}>
 			<div>
-				{/* <CreatedAtShort created_at={chats[chatId]?.created_at} /> */}
+				{/* <CreatedAtShort created_at={prvChats[prvChatId]?.created_at} /> */}
 			</div>
 			<div className="chat-message-ctrl">
 				<div>{prvChats[prvChatId]?.message}</div>

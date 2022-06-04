@@ -24,5 +24,3 @@ class PrivateChat(db.Model):
             "message": self.message,
             "created_at": self.created_at.isoformat()
         }
-
-

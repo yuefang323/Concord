@@ -43,16 +43,15 @@ const Chat = () => {
 
 	const handleSubmitPrv = async (e) => {
 		e.preventDefault();
-		// only send when there is private chat input
+
 		if (prvChat) {
 			const prvChatData = {
-				channel_id: channelId,
+				pc_id: channelId,
 				prvChat,
 			};
 
 			socket.emit("send_prv_chat", prvChatData);
 
-			// clear private chat field
 			setPrvChat("");
 		}
 	};
@@ -81,6 +80,7 @@ const Chat = () => {
 		});
 
 		socket.on("receive_prv_message", (data) => {
+			// dispatch for channel
 			dispatch(prvChatsActions.addEditPrvChat(data.prv_chat))
 		})
 

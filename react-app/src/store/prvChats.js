@@ -18,7 +18,7 @@ export const addEditPrvChat = (prv_chat) => {
 	}
 }
 
-export const deleteChat = (prvChatId) => {
+export const deletePrvChat = (prvChatId) => {
 	return {
 		type: DELETE_PRV_CHAT,
 		prvChatId,
@@ -30,6 +30,46 @@ export const clearPrvChats = () => ({
 });
 
 // Thunks
+
+export const editPrvChat = (prvChat) => async (dispatch) => {
+	// console.log(prvChat)
+	const res = await fetch(`/api/prv_chats/${prvChat.id}`, {
+		method: "PUT",
+		headers: { "Content-Type": "application/json" },
+		body: JSON.stringify(prvChat)
+	});
+	if (res.ok) {
+		const data = await res.json();
+		dispatch(addEditPrvChat(data.prvChat));
+		return data.prvChat
+	} else if (res.status < 500) {
+		const data = await res.json();
+		if (data.errors) {
+			return data.errors;
+		}
+	} else {
+		return ["An error occured. Please try again."]
+	}
+}
+
+export const removePrvChat = (prvChatId) => async (dispatch) => {
+	const res = await fetch(`/api/prv_chats/${prvChatId}`, {
+		method: "DELETE"
+	});
+	if (res.ok) {
+		const data = await res.json();
+		dispatch(deletePrvChat(prvChatId));
+		return data.prv_channel
+	} else if (res.status < 500) {
+		const data = await res.json();
+		if (data.errors) {
+			return data.errors;
+		}
+	} else {
+		return ["An error occured. Please try again."]
+	}
+}
+
 
 // Reducer
 const initialState = { byId: {}, allIds: [] };

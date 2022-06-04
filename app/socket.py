@@ -1,6 +1,6 @@
 from flask import request
 from flask_socketio import SocketIO, emit, join_room, leave_room
-from app.models import db, Chat, Channel
+from app.models import db, Chat, Channel, PrivateChat, PrivateChannel
 from flask_login import current_user
 import os
 
@@ -86,7 +86,23 @@ def delete_chat(data):
     }, to=data["channel_id"],
          broadcast=True)
 
-@socketio.on("receive_prv_message")
+@socketio.on("send_prv_chat")
+def send_prv_chat(data):
+    user_id = current_user.id
+    prv_chat = PrivateChat(user_id=user_id, pc_id=data["pc_id"], message=data["prvChat"])
+
+    db.session.add(prv_chat)
+    db.session.commit()
+
+    prv_channel = PrivateChannel.query.get(data["pc_id"])
+
+    print(prv_channel.to_dict())
+    emit("receive_prv_message", {
+        "prv_chat": prv_chat.to_dict(), "prv_channel": prv_channel.to_dict()},
+        to=data["pc_id"],
+        broadcast=True,
+        )
+
 
 # Error handler
 @socketio.on_error_default

@@ -1,18 +1,23 @@
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 
 import Avatar from "../../../Chat/Inputs/Avatar";
 import CreatedAt from "../../../Chat/Inputs/CreatedAt";
 
+import * as prvChatActions from "../../../../../store/prvChats"
+
 const DeletePrvChat = ({ prvChatId, onClose, socket }) => {
+	const dispatch = useDispatch()
 	const prvChannelId = parseInt(useParams().channelId);
 	const prvChat = useSelector((state) => state.prvChats.byId)[prvChatId];
 	const user = useSelector((state) => state.users.byId)[prvChat?.user_id];
 
 	const deletePrvMessage = async () => {
-		const payload = { prv_chat_id: prvChatId, pc_id: prvChannelId };
-		socket.emit("delete_prv_chat", payload);
-		onClose();
+		// const payload = { prv_chat_id: prvChatId, pc_id: prvChannelId };
+		// socket.emit("delete_prv_chat", payload);
+		const data = await dispatch(prvChatActions.removePrvChat(prvChatId))
+
+		// onClose();
 	};
 
 	return (
