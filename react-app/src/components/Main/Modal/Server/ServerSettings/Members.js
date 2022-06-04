@@ -4,7 +4,7 @@ import { useSelector } from "react-redux";
 import Search from "./Inputs/Search";
 import Member from "./Member";
 
-const Members = ({ server }) => {
+const Members = ({ server, onClose }) => {
 	const users = useSelector((state) => state.users.byId);
 	const member_ids = useSelector((state) => state.servers.byId)[server.id]
 		.users;
@@ -33,7 +33,7 @@ const Members = ({ server }) => {
 			</div>
 			<div className="members-list">
 				{members?.map((id) => (
-					<Member user={users[id]} server={server} />
+					<Member user={users[id]} server={server} onClose={onClose} />
 				))}
 			</div>
 		</form>

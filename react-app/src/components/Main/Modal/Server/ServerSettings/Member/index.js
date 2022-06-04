@@ -5,7 +5,7 @@ import Actions from "./Actions";
 
 import logo from "../../../../../../assets/logo-white.svg";
 
-const Member = ({ user, server }) => {
+const Member = ({ user, server, onClose }) => {
 	const divRef = useRef();
 
 	const owner = user?.id === server?.user_id;
@@ -50,7 +50,7 @@ const Member = ({ user, server }) => {
 					<ReactTooltip type="dark" effect="solid" />
 				</div>
 			</div>
-			<Actions user={user} owner={owner} server={server} />
+			<Actions user={user} owner={owner} server={server} onClose={onClose} />
 		</div>
 	);
 };

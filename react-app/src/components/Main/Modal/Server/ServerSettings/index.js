@@ -32,7 +32,7 @@ const ServerSettings = ({ server, onClose }) => {
 			</div>
 			<div className="setting-modal-center">
 				{show === "overview" && <Overview server={server} onClose={onClose} />}
-				{show === "members" && <Members server={server} />}
+				{show === "members" && <Members server={server} onClose={onClose} />}
 				{show === "delete" && (
 					<DeleteServer server={server} onClose={onClose} />
 				)}
