@@ -9,7 +9,6 @@ const AddFriend = ({ setShowModal }) => {
     const history = useHistory();
 
     const [friendId, setFriendId] = useState("");
-    // const [prvChannelId, setPrvChannelId] = useState();
     const curUser = useSelector((state) => state.session.user);
     const users = useSelector((state) => state.users.byId);
     const prvChannels = useSelector((state) => state.prvChannels);
@@ -24,18 +23,6 @@ const AddFriend = ({ setShowModal }) => {
         friendIdList.push(id);
     });
 
-    // console.log("friendsList", friendsList);
-    // console.log("friendIdList", friendIdList);
-    // console.log("user", user)
-    // console.log("users", Object.values(users));
-    // console.log("friendsListId", friendsList?.id);
-    // console.log(
-    //     "prvChannels",
-    //     Object.values(users).filter(
-    //         (user) => friendIdList.indexOf(user?.id) === -1
-    //     )
-    // );
-
     const join = async (e) => {
         e.preventDefault();
         setErrors([]);
@@ -46,7 +33,7 @@ const AddFriend = ({ setShowModal }) => {
             const res = await dispatch(prvChannelsActions.addNewPrvChannel(newPrvChannel));
             dispatch(prvChannelsActions.getPrvChannel(res.prv_channel));
             setFriendId("")
-            history.push(`/channels/@me/${newPrvChannel.id}`);
+            history.push(`/channels/@me/${newPrvChannel?.id}`);
             setShowModal(false);
         } else {
             setErrors(["Please select a friend"]);
