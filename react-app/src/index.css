@@ -19,6 +19,7 @@
 @import url("./css/chats.css");
 @import url("./css/about.css");
 @import url("./css/explore.css");
+@import url("./css/upload.css");
 
 :root {
 	--yellow1: #ffca3a;

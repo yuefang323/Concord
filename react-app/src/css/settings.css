@@ -69,6 +69,7 @@
 	flex-direction: column;
 	align-items: center;
 	cursor: pointer;
+	height: fit-content;
 }
 
 .setting-modal-right-wrap i {
