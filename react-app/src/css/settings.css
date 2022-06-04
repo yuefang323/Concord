@@ -69,6 +69,7 @@
 	flex-direction: column;
 	align-items: center;
 	cursor: pointer;
+	height: fit-content;
 }
 
 .setting-modal-right-wrap i {
@@ -227,4 +228,62 @@
 	background-color: var(--yellow1);
 	border-radius: 10px;
 	font-size: 13px;
+}
+
+/* Server Memebers */
+.members-header-wrap {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	height: 50px;
+	border-bottom: 1px solid var(--gray2);
+	font-size: 13px;
+}
+
+.members-list {
+	display: flex;
+	flex-direction: column;
+	gap: 5px;
+}
+
+.member-wrap {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	padding: 5px;
+}
+.member-wrap:not(:last-child) {
+	border-bottom: 1px solid var(--gray1);
+}
+
+.member-actions {
+	visibility: hidden;
+	display: flex;
+	font-size: 12px;
+	gap: 10px;
+}
+
+.member-wrap:hover .member-actions {
+	visibility: visible;
+}
+
+.member-action {
+	display: flex;
+	gap: 5px;
+	align-items: center;
+	cursor: pointer;
+	padding: 5px;
+	border-radius: 3px;
+	transition: all 0.25s;
+}
+
+.member-action:hover {
+	background-color: var(--gray1);
+}
+
+.member-action .fa-ban {
+	color: var(--red1);
+}
+.member-action .fa-arrow-right-arrow-left {
+	color: var(--green);
 }

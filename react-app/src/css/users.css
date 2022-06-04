@@ -12,12 +12,11 @@
 	border-radius: 5px;
 	transition: all 0.25s;
 	background-color: var(--gray2);
-	/* cursor: pointer; */
 }
 
-/* .user-wrap:hover {
-	filter: brightness(95%);
-} */
+.user-wrap-tran {
+	background-color: transparent;
+}
 
 .user-avatar {
 	width: 36px;
