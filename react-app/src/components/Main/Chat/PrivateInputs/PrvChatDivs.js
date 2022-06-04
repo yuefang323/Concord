@@ -18,8 +18,6 @@ const PrvChatDivs = ({ prvChatId, socket }) => {
 
 	const owner = userId === prvChats[prvChatId]?.user_id;
 
-    // console.log(prvChannelId)
-
 	const editPrvChat = async (e) => {
 		e.preventDefault();
 		const prvChatData = { prv_chat_id: prvChatId, prvMessage, pc_id: prvChannelId };

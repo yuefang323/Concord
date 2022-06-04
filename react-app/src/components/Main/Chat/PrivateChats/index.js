@@ -15,17 +15,17 @@ const PrivateChats = ({ socket }) => {
 
 	const users = useSelector((state) => state.users?.byId)
 
+	const user = useSelector((state) => state.session.user)
+
     const usersArr = Object.values(users)
 
     const friendName = usersArr.find(user => user.id === prvChannel?.friend_id)
 
-    const friendOfOther = usersArr.find(user => user.id === prvChannel?.user_id)
+    const owner = usersArr.find(user => user.id === prvChannel?.user_id)
 
 	const [friend, setFriend] = useState()
 
 	const focusRef = useRef();
-
-	// console.log(prvChannelId)
 
 	// useEffect(() => {
 	// 	if (focusRef) {
@@ -37,15 +37,14 @@ const PrivateChats = ({ socket }) => {
 	// }, []);
 
 	useEffect(() => {
-		if (friendName) {
+		if (owner?.id === user?.id) {
 			setFriend(friendName)
 		} else {
-			setFriend(friendOfOther)
+			setFriend(owner)
 		}
+
 	}, [prvChannelId])
 
-
-	// My Change
 	if (prvChannels[prvChannelId] && prvChannels[prvChannelId].prvChats.length) {
 		return (
 			<div className="chat-div-wrap" ref={focusRef}>
@@ -58,15 +57,15 @@ const PrivateChats = ({ socket }) => {
 		return (
 			<div className="chat-div-wrap-empty" >
 				<div className="chat-big-hash-div prv">
-					{friendName?.avatar ? (<img src={friendName?.avatar} alt='friend avatar' className="chat-big-hash-div prv" />) : (
+					{friend?.avatar ? (<img src={friend?.avatar} alt='friend avatar' className="chat-big-hash-div prv" />) : (
 						<PrvAvatar friend={friend} />
 					)}
 				</div>
 				<div className="chat-empty-title">
-					<h2 style={{ margin: "0px"}}>{!friendName ? friendOfOther?.username : friendName?.username}</h2>
+					<h2 style={{ margin: "0px"}}>{ friend?.username}</h2>
 				</div>
 				<div className="chat-empty-desc">
-					This is the start of your direct message history with @{!friendName ? friendOfOther?.username : friendName?.username}.
+					This is the start of your direct message history with @{ friend?.username }.
 				</div>
 			</div>
 		);
