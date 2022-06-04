@@ -4,7 +4,6 @@ from wtforms.fields.core import Label
 from app.models import db, Server, JoinServerUser, Channel, Chat
 from app.forms import NewServerForm, EditServerForm
 
-
 server_routes = Blueprint("servers", __name__)
 
 def validation_errors_to_error_messages(validation_errors):
@@ -74,6 +73,8 @@ def edit_server(server_id):
             server = Server.query.get(server_id)
             server.name = form.data["name"]
             server.description = form.data["description"]
+            if form.data["user_id"]:
+                server.user_id = form.data["user_id"]
             if form.data["logo"]:
                 server.logo = form.data["logo"]
             if form.data["background"]:
@@ -84,7 +85,7 @@ def edit_server(server_id):
 
         return {'errors': validation_errors_to_error_messages(form.errors)}, 401
 
-    return {"errors": "invlaid method"}
+    return {"errors": "invalid method"}
 
 
 # Delete server logo

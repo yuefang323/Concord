@@ -84,6 +84,7 @@ Concord is built on React and Redux frontend with Python Flask backend, using Po
 
 ### Techonologies Used
 
+- [Docker](https://www.docker.com/)
 - [React.js](https://reactjs.org/)
 - [Redux](https://redux.js.org/)
 - [Javascript](https://www.javascript.com/)

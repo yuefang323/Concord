@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { useDispatch } from "react-redux";
 
 import * as serversActions from "../../../../../../store/servers";
@@ -5,11 +6,19 @@ import * as joinServersActions from "../../../../../../store/joinServers";
 
 const Actions = ({ user, owner, server, onClose }) => {
 	const dispatch = useDispatch();
+	const [errors, setErrors] = useState([]);
 
 	const kickOut = async () => {
-		// dispatch to join server
-		const kick = { server_id: server.id, user_id: user.id };
-		console.log(kick);
+		// Member to kick out
+		const kick = { serverId: server.id, userId: user.id };
+		// dispatch to join server to force member leave this server
+		const res = await dispatch(joinServersActions.kickOut(kick));
+		// Update server.users in redux store
+		if (!res.errors) {
+			await dispatch(serversActions.addEditServer(res.server));
+		} else {
+			setErrors(res.errors);
+		}
 	};
 
 	const transferOwnership = async () => {
@@ -23,7 +32,7 @@ const Actions = ({ user, owner, server, onClose }) => {
 	} else {
 		return (
 			<div className="member-actions">
-				<div className="member-action">
+				<div className="member-action" onClick={kickOut}>
 					<i className="fa-solid fa-ban"></i>
 					Kick Out
 				</div>

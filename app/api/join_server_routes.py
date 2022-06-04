@@ -67,3 +67,21 @@ def leave_server(server_id):
     return {
         "server": server.to_dict(),
     }
+
+# Kick Member out of server
+@join_server_routes.route("/<int:server_id>/users/<int:user_id>", methods=["DELETE"])
+@login_required
+def kickout_server(server_id, user_id):
+    server = Server.query.get(server_id)
+
+    # checking if server owner is the one performing kick out
+    if server.user_id == current_user.id:
+        join = JoinServerUser.query.filter(JoinServerUser.server_id == server_id, JoinServerUser.user_id == user_id).one()
+        db.session.delete(join)
+        db.session.commit()
+
+        return {
+            "server": server.to_dict(),
+        }
+
+    return {"errors": ["Unauthorized"]}

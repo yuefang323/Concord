@@ -17,7 +17,7 @@ const Members = ({ server, onClose }) => {
 				return users[id].username.toUpperCase().includes(search.toUpperCase());
 			})
 		);
-	}, [search]);
+	}, [search, server]);
 
 	return (
 		<form className="setting-server-overview-wrap">
@@ -33,7 +33,7 @@ const Members = ({ server, onClose }) => {
 			</div>
 			<div className="members-list">
 				{members?.map((id) => (
-					<Member user={users[id]} server={server} onClose={onClose} />
+					<Member key={id} user={users[id]} server={server} onClose={onClose} />
 				))}
 			</div>
 		</form>

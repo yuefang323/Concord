@@ -74,6 +74,28 @@ export const leaveThisServer =
 		}
 	};
 
+export const kickOut =
+	({ serverId, userId }) =>
+	async (dispatch) => {
+		const response = await fetch(
+			`/api/join_servers/${serverId}/users/${userId}`,
+			{
+				method: "DELETE",
+			}
+		);
+		if (response.ok) {
+			const data = await response.json();
+			return data;
+		} else if (response.status < 500) {
+			const data = await response.json();
+			if (data.errors) {
+				return data;
+			}
+		} else {
+			return { errors: ["An error occurred. Please try again."] };
+		}
+	};
+
 // Reducer
 const initialState = { byId: {}, allIds: [] };
 
