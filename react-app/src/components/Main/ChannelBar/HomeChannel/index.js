@@ -19,8 +19,6 @@ const HomeChannel = () => {
     const prvChannels = useSelector((state) => state.prvChannels);
     const prvChannelParam = useParams().channelId;
 	const prvChannelId = parseInt(prvChannelParam, 10);
-    console.log("prvChannelParam", prvChannelParam)
-    console.log("prvChannelId", prvChannelId)
     const friendsList = Object.values(prvChannels.byId);
 
     const dispatchPrvChannel = async () => {

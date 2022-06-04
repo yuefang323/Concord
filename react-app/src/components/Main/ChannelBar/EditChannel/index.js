@@ -9,21 +9,10 @@ import ChannelSettings from "../../Modal/Channel/ChannelSettings";
 const EditChannel = ({ channel }) => {
     const [showModal, setShowModal] = useState(false);
     const user = useSelector((state) => state.session.user);
-    // const servers = useSelector((state) => state.servers);
     const { serverId } = useParams();
     const serverIdNum = parseInt(serverId);
 
-    
-    // console.log(",,,,,,", user.id);
-    // console.log("sssssss", currServer);
-    // console.log("xxxxxxxxx", parseInt(serverId));
-    // console.log("////////////", channel?.user_id);
-
-    // console.log(channel?.user_id === user.id);
-    // console.log(serverIdNum === user.id);
-
     const onClose = () => {
-        // console.log("click,...........");
         setTimeout(() => {
             setShowModal(false);
         }, 1);

@@ -33,8 +33,8 @@ const DeleteChannel = ({ channel, onClose }) => {
             res.chat.forEach((chatId) => {
                 dispatch(chatsActions.deleteChat(chatId));
             });
-            onClose();
             history.push(`/channels/${channel.server_id}`);
+            onClose();
         } else {
             setErrors(res.errors);
         }

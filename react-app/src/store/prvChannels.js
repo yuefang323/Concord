@@ -25,12 +25,12 @@ export const clearPrvChannels = () => ({
 
 // Thunks
 export const getPrvChannel = (prvChannelId) => async (dispatch) => {
-	const response = await fetch(`/api/channels/@me/${prvChannelId}`);
-	if (response.ok) {
-		const data = await response.json();
-		dispatch(addEditPrvChannel(data.prv_channel));
-		return data;
-	}
+    const response = await fetch(`/api/channels/@me/${prvChannelId}`);
+    if (response.ok) {
+        const data = await response.json();
+        dispatch(addEditPrvChannel(data.prv_channel));
+        return data;
+    }
 };
 
 export const addNewPrvChannel = (newPrvChannel) => async (dispatch) => {
@@ -75,18 +75,18 @@ export default function reducer(state = initialState, action) {
             });
             newState.allIds = Array.from(set);
             return newState;
-        
+
         case GET_PRV_CHANNEL:
-			newState = Object.assign({}, state);
-			newState.byId = JSON.parse(JSON.stringify(newState.byId));
-			set = new Set(newState.allIds);
+            newState = Object.assign({}, state);
+            newState.byId = JSON.parse(JSON.stringify(newState.byId));
+            set = new Set(newState.allIds);
 
-			newState.byId[action.prv_channel.id] = action.prv_channel;
-			set.add(action.prv_channel.id);
+            newState.byId[action.prv_channel.id] = action.prv_channel;
+            set.add(action.prv_channel.id);
 
-			newState.allIds = Array.from(set);
-            set.add(action.prv_channel.id)
-			return newState;
+            newState.allIds = Array.from(set);
+            set.add(action.prv_channel.id);
+            return newState;
 
         case ADD_EDIT_PRV_CHANNEL:
             newState = Object.assign({}, state);
@@ -94,7 +94,7 @@ export default function reducer(state = initialState, action) {
             set = new Set(newState.allIds);
 
             newState.byId[action.prv_channel.id] = action.prv_channel;
-            set.add(action.prv_channel.id)
+            set.add(action.prv_channel.id);
             newState.allIds = Array.from(set);
             return newState;
 
