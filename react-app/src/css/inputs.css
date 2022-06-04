@@ -45,3 +45,19 @@
 	border: transparent;
 	background: transparent;
 }
+
+.label-search {
+	background-color: var(--gray1);
+	padding: 5px 10px;
+	border-radius: 5px;
+}
+
+.input-search {
+	background-color: transparent;
+	border: none;
+	transition: all 0.25s;
+}
+
+.input-search:focus::placeholder {
+	color: transparent;
+}
