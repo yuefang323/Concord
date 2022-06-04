@@ -28,12 +28,12 @@ const AddFriend = ({ setShowModal }) => {
         setErrors([]);
         if (friendId) {
             setErrors([]);
-            // Dispatch private channels
             const newPrvChannel = { user_id: curUser.id, friend_id: friendId };
             const res = await dispatch(prvChannelsActions.addNewPrvChannel(newPrvChannel));
-            dispatch(prvChannelsActions.getPrvChannel(res.prv_channel));
+            // Dispatch private channel
+            const data = await dispatch(prvChannelsActions.getPrvChannel(res.prv_channel.id));
             setFriendId("")
-            history.push(`/channels/@me/${newPrvChannel?.id}`);
+            history.push(`/channels/@me/${data.prv_channel.id}`);
             setShowModal(false);
         } else {
             setErrors(["Please select a friend"]);

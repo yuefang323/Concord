@@ -17,8 +17,6 @@ const ChannelOverview = ({ channel, onClose }) => {
     const channelNames = currServerChannels?.map((id) =>
         channels?.byId[id]?.name.toLowerCase()
     );
-    // console.log(".......", channel.name)
-    // console.log("xxxxxxx", typeof(channel.server_id))
 
     const handleSubmit = async (e) => {
         e.preventDefault();
