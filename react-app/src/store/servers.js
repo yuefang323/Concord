@@ -148,6 +148,7 @@ export default function reducer(state = initialState, action) {
 			set = new Set(newState.allIds);
 			// Update
 			newState.byId[action.server.id] = action.server;
+			set.add(action.server.id);
 
 			newState.allIds = Array.from(set);
 			return newState;

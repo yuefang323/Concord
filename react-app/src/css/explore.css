@@ -109,7 +109,10 @@
 
 .server-members {
 	display: flex;
-	gap: 5px;
 	font-size: 10px;
 	align-items: center;
+}
+
+.server-members .fa-user-group {
+	padding-right: 5px;
 }

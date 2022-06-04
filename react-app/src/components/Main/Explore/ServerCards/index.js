@@ -61,13 +61,9 @@ const ServerCards = ({ server }) => {
 					<div className="server-desc">{server?.description}</div>
 					<div className="server-card-members-join">
 						<div className="server-members">
-							<i className="fa-solid fa-user-group"></i>
-							{server.users.length}
-							{server?.users?.length > 1 ? (
-								<span>Members</span>
-							) : (
-								<span>Member</span>
-							)}
+							<i className="fa-solid fa-user-group"></i> {server?.users?.length}{" "}
+							Member
+							{server?.users?.length > 1 && <span>s</span>}
 						</div>
 						{joinedServers?.includes(server?.id) ? (
 							<div className="btn btn-gray">Joined</div>
