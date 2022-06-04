@@ -27,14 +27,14 @@ const PrivateChats = ({ socket }) => {
 
 	const focusRef = useRef();
 
-	// useEffect(() => {
-	// 	if (focusRef) {
-	// 		focusRef.current.addEventListener("DOMNodeInserted", (e) => {
-	// 			const { currentTarget: target } = e;
-	// 			target.scroll({ top: target.scrollHeight, behavior: "smooth" });
-	// 		});
-	// 	}
-	// }, []);
+	useEffect(() => {
+		if (focusRef) {
+			focusRef.current.addEventListener("DOMNodeInserted", (e) => {
+				const { currentTarget: target } = e;
+				target.scroll({ top: target.scrollHeight, behavior: "smooth" });
+			});
+		}
+	}, []);
 
 	useEffect(() => {
 		if (owner?.id === user?.id) {
@@ -55,7 +55,7 @@ const PrivateChats = ({ socket }) => {
 		)
 	} else {
 		return (
-			<div className="chat-div-wrap-empty" >
+			<div className="chat-div-wrap-empty" ref={focusRef}>
 				<div className="chat-big-hash-div prv">
 					{friend?.avatar ? (<img src={friend?.avatar} alt='friend avatar' className="chat-big-hash-div prv" />) : (
 						<PrvAvatar friend={friend} />
