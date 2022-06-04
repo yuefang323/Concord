@@ -48,7 +48,7 @@ def join_server():
         return {
             "joinServer": newJoin.to_dict(),
             "channels":[channel.to_dict() for channel in channels],
-            "chats": [chats.to_dict() for chat in chats],
+            "chats": [chat.to_dict() for chat in chats],
             "users": [user.to_dict_limited() for user in users]
         }
     return {'errors': validation_errors_to_error_messages(form.errors)}, 401
