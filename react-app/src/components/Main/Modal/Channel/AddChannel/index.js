@@ -37,8 +37,8 @@ const AddChannel = ({ setShowModal, onClose }) => {
 		dispatch(serversActions.addEditServer(res.server));
 		setName("");
 
-		history.push(`/channels/${serverIdnum}`);
 		if (setShowModal) setShowModal(false);
+		history.push(`/channels/${serverIdnum}/${res.channel.id}`);
 	};
 
 	const cancelButton = async (e) => {

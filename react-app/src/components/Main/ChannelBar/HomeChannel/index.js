@@ -51,17 +51,17 @@ const HomeChannel = () => {
                                     className="channel-friend-wrapper"
                                 >
                                     {users[
-                                        friend.user_id === user.id
+                                        friend?.user_id === user.id
                                             ? friend.friend_id
-                                            : friend.user_id
+                                            : friend?.user_id
                                     ]?.avatar ? (
                                         <img
                                             className="sidebar-btn"
                                             src={
                                                 users[
-                                                    friend.user_id === user.id
+                                                    friend?.user_id === user.id
                                                         ? friend.friend_id
-                                                        : friend.user_id
+                                                        : friend?.user_id
                                                 ]?.avatar
                                             }
                                             alt="user avatar"
@@ -79,9 +79,9 @@ const HomeChannel = () => {
                                     <div className="friend-name">
                                         {
                                             users[
-                                                friend.user_id === user.id
+                                                friend?.user_id === user.id
                                                     ? friend.friend_id
-                                                    : friend.user_id
+                                                    : friend?.user_id
                                             ]?.username
                                         }
                                     </div>

@@ -5,9 +5,10 @@ import { useSelector, useDispatch } from "react-redux";
 import * as prvChannelsActions from "../../../../../store/prvChannels";
 
 const AddFriend = ({ setShowModal }) => {
-    // const dispatch = useDispatch();
+    const dispatch = useDispatch();
     const history = useHistory();
 
+    const [friendId, setFriendId] = useState("");
     const [prvChannelId, setPrvChannelId] = useState();
     const curUser = useSelector((state) => state.session.user);
     const users = useSelector((state) => state.users.byId);
@@ -19,31 +20,34 @@ const AddFriend = ({ setShowModal }) => {
     let friendIdList = [];
     friendsList.forEach((friend) => {
         const id =
-            friend.user_id === curUser.id ? friend.friend_id : friend.user_id;
+            friend?.user_id === curUser.id ? friend.friend_id : friend?.user_id;
         friendIdList.push(id);
     });
 
-    console.log("friendsList", friendsList);
-    console.log("friendIdList", friendIdList);
+    // console.log("friendsList", friendsList);
+    // console.log("friendIdList", friendIdList);
     // console.log("user", user)
-    console.log("users", Object.values(users));
-    console.log("friendsListId", friendsList?.id);
-    console.log(
-        "prvChannels",
-        Object.values(users).filter(
-            (user) => friendIdList.indexOf(user?.id) === -1
-        )
-    );
+    // console.log("users", Object.values(users));
+    // console.log("friendsListId", friendsList?.id);
+    // console.log(
+    //     "prvChannels",
+    //     Object.values(users).filter(
+    //         (user) => friendIdList.indexOf(user?.id) === -1
+    //     )
+    // );
 
     const join = async (e) => {
         e.preventDefault();
         setErrors([]);
-        if (friendsList.id) {
+        if (friendId) {
             setErrors([]);
             // Dispatch private channels
-            // await dispatch(prvChannelsActions.getPrvChannels(prv_channels));
-            setShowModal(false);
+            const newPrvChannel = { user_id: curUser.id, friend_id: friendId };
+            const res = await dispatch(prvChannelsActions.addNewPrvChannel(newPrvChannel));
+            dispatch(prvChannelsActions.getPrvChannels(res.prv_channels));
+            setFriendId("")
             history.push(`/channels/@me/`);
+            setShowModal(false);
         } else {
             setErrors(["Please select a friend"]);
         }
@@ -65,9 +69,9 @@ const AddFriend = ({ setShowModal }) => {
                 )}
                 <select
                     className="select"
-                    value={prvChannelId}
+                    value={friendId}
                     onChange={(e) =>
-                        setPrvChannelId(parseInt(e.target.value, 10))
+                        setFriendId(parseInt(e.target.value, 10))
                     }
                 >
                     <option>Select a Friend</option>
