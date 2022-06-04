@@ -1,20 +1,34 @@
 import { useState } from "react";
-import { useSelector } from "react-redux";
-import { Link } from "react-router-dom";
+import { useSelector, useDispatch } from "react-redux";
+import { useParams, Link } from "react-router-dom";
 import ReactTooltip from "react-tooltip";
 
 import { Modal } from "../../../../context/Modal";
 import AddFriend from "../../Modal/Channel/AddFriend";
 import NoAvatar from "./NoAvatar";
 
+import * as prvChannelsActions from "../../../../store/prvChannels";
+
 const HomeChannel = () => {
     const [showModal, setShowModal] = useState(false);
+    const dispatch = useDispatch();
 
     const user = useSelector((state) => state.session.user);
     const users = useSelector((state) => state.users.byId);
     const prvChannels = useSelector((state) => state.prvChannels);
-
+    const prvChannelParam = useParams().channelId;
+	const prvChannelId = parseInt(prvChannelParam, 10);
+    console.log("prvChannelParam", prvChannelParam)
+    console.log("prvChannelId", prvChannelId)
     const friendsList = Object.values(prvChannels.byId);
+
+    const dispatchPrvChannel = async () => {
+		dispatch(prvChannelsActions.getPrvChannel(prvChannelId))
+			// .then((res) => {
+			// 	dispatch(chatsActions.getChats(res.chats));
+			// })
+			.catch((err) => console.log(err));
+	};
 
     return (
         <>
@@ -42,13 +56,13 @@ const HomeChannel = () => {
                 </button>
                 <div className="channel-bar-wrapper">
                     <p>Direct Messages</p>
-                    {/* <i className="fa-solid fa-plus"></i> */}
                     <div className="friend-list">
                         {friendsList?.map((friend, indx) => (
                             <div key={"friend" + indx}>
                                 <Link
                                     to={`/channels/@me/${friend?.id}`}
                                     className="channel-friend-wrapper"
+                                    onClick={dispatchPrvChannel}
                                 >
                                     {users[
                                         friend?.user_id === user.id
@@ -67,13 +81,6 @@ const HomeChannel = () => {
                                             alt="user avatar"
                                         ></img>
                                     ) : (
-                                        // <div className="avatar-bkg">
-                                        //     <img
-                                        //         className="user-avatar channel"
-                                        //         src={logo}
-                                        //         alt="user avatar"
-                                        //     />
-                                        // </div>
                                         <NoAvatar friend={friend} />
                                     )}
                                     <div className="friend-name">

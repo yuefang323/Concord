@@ -9,7 +9,7 @@ const AddFriend = ({ setShowModal }) => {
     const history = useHistory();
 
     const [friendId, setFriendId] = useState("");
-    const [prvChannelId, setPrvChannelId] = useState();
+    // const [prvChannelId, setPrvChannelId] = useState();
     const curUser = useSelector((state) => state.session.user);
     const users = useSelector((state) => state.users.byId);
     const prvChannels = useSelector((state) => state.prvChannels);
@@ -44,9 +44,9 @@ const AddFriend = ({ setShowModal }) => {
             // Dispatch private channels
             const newPrvChannel = { user_id: curUser.id, friend_id: friendId };
             const res = await dispatch(prvChannelsActions.addNewPrvChannel(newPrvChannel));
-            dispatch(prvChannelsActions.getPrvChannels(res.prv_channels));
+            dispatch(prvChannelsActions.getPrvChannel(res.prv_channel));
             setFriendId("")
-            history.push(`/channels/@me/`);
+            history.push(`/channels/@me/${newPrvChannel.id}`);
             setShowModal(false);
         } else {
             setErrors(["Please select a friend"]);

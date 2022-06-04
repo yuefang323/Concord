@@ -1,7 +1,9 @@
 // Actions
 const GET_PRV_CHANNELS = "prv_channels/GET_PRV_CHANNELS";
+const GET_PRV_CHANNEL = "prv_channels/GET_PRV_CHANNEL";
 const ADD_EDIT_PRV_CHANNEL = "prv_channels/ADD_EDIT_PRV_CHANNEL";
 const CLEAR_PRV_CHANNELS = "prv_channels/CLEAR_PRV_CHANNELS";
+
 // Action Creator
 export const getPrvChannels = (prv_channels) => {
     return {
@@ -22,6 +24,14 @@ export const clearPrvChannels = () => ({
 });
 
 // Thunks
+export const getPrvChannel = (prvChannelId) => async (dispatch) => {
+	const response = await fetch(`/api/channels/@me/${prvChannelId}`);
+	if (response.ok) {
+		const data = await response.json();
+		dispatch(addEditPrvChannel(data.prv_channel));
+		return data;
+	}
+};
 
 export const addNewPrvChannel = (newPrvChannel) => async (dispatch) => {
     const response = await fetch(`/api/channels/@me/new`, {
@@ -65,13 +75,26 @@ export default function reducer(state = initialState, action) {
             });
             newState.allIds = Array.from(set);
             return newState;
+        
+        case GET_PRV_CHANNEL:
+			newState = Object.assign({}, state);
+			newState.byId = JSON.parse(JSON.stringify(newState.byId));
+			set = new Set(newState.allIds);
+
+			newState.byId[action.prv_channel.id] = action.prv_channel;
+			set.add(action.prv_channel.id);
+
+			newState.allIds = Array.from(set);
+            set.add(action.prv_channel.id)
+			return newState;
 
         case ADD_EDIT_PRV_CHANNEL:
             newState = Object.assign({}, state);
             newState.byId = JSON.parse(JSON.stringify(newState.byId));
             set = new Set(newState.allIds);
 
-            newState.byId[action.prv_channel.id] = action.channel;
+            newState.byId[action.prv_channel.id] = action.prv_channel;
+            set.add(action.prv_channel.id)
             newState.allIds = Array.from(set);
             return newState;
 
