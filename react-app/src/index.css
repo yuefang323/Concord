@@ -87,21 +87,29 @@ a:hover {
 
 /* Background colors */
 .color-red {
-	background-color: var(--red1);
+	background-image: linear-gradient(to bottom right, var(--red1), orange);
 }
 
 .color-yellow {
-	background-color: var(--yellow1);
+	background-image: linear-gradient(to bottom right, var(--yellow1), yellow);
 }
 
 .color-green {
-	background-color: var(--green);
+	background-image: linear-gradient(to bottom right, var(--green), turquoise);
 }
 
 .color-blue {
-	background-color: var(--blue);
+	background-image: linear-gradient(
+		to bottom right,
+		var(--blue),
+		rgb(36, 55, 137)
+	);
 }
 
 .color-purple {
-	background-color: var(--purple);
+	background-image: linear-gradient(
+		to bottom right,
+		var(--purple),
+		rgb(95, 116, 237)
+	);
 }

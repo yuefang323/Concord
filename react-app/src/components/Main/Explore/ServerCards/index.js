@@ -1,3 +1,4 @@
+import { useRef, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 
 import * as joinServersActions from "../../../../store/joinServers";
@@ -7,6 +8,9 @@ import * as chatsActions from "../../../../store/chats";
 const ServerCards = ({ server }) => {
 	const dispatch = useDispatch();
 	const joinedServers = useSelector((state) => state.joinServers.allIds);
+
+	const divRef = useRef();
+	const logoRef = useRef();
 
 	const joinServer = async () => {
 		const joinServer = { server_id: server.id };
@@ -18,16 +22,38 @@ const ServerCards = ({ server }) => {
 		await dispatch(chatsActions.getChats(data.chats));
 	};
 
+	useEffect(() => {
+		const lastNum = server?.id.toString()[server?.id.toString().length - 1];
+		if (lastNum === "0" || lastNum === "5") {
+			divRef.current.classList.add("color-red");
+			logoRef.current.classList.add("color-green");
+		} else if (lastNum === "1" || lastNum === "6") {
+			divRef.current.classList.add("color-yellow");
+			logoRef.current.classList.add("color-purple");
+		} else if (lastNum === "2" || lastNum === "7") {
+			divRef.current.classList.add("color-green");
+			logoRef.current.classList.add("color-orange");
+		} else if (lastNum === "3" || lastNum === "8") {
+			divRef.current.classList.add("color-blue");
+			logoRef.current.classList.add("color-red");
+		} else if (lastNum === "4" || lastNum === "9") {
+			divRef.current.classList.add("color-purple");
+			logoRef.current.classList.add("color-green");
+		}
+	}, [server]);
+
 	return (
 		<div className="server-card-outer">
 			<div className="server-card-wrap">
 				<div
 					className="server-card-bg"
 					style={{ backgroundImage: `url("${server.background}")` }}
+					ref={divRef}
 				>
 					<div
 						className="server-card-logo"
 						style={{ backgroundImage: `url("${server.logo}")` }}
+						ref={logoRef}
 					></div>
 				</div>
 				<div className="server-card-btm">
