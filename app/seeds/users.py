@@ -14,7 +14,7 @@ def seed_users():
     fang = User(
         username='fangY', email='fang@aa.io', password='password', avatar='https://whatsondisneyplus.com/wp-content/uploads/2022/03/turning-red-avatar.png')
     lincoln = User(
-        username='lincoln', email='lincoln@aa.io', password='password', avatar='https://cdn1.vectorstock.com/i/1000x1000/10/50/doctor-professional-avatar-character-vector-24991050.jpg')
+        username='lincoln', email='lincoln@aa.io', password='password', avatar='https://go-concord.s3.amazonaws.com/Screen+Shot+2022-06-05+at+3.26.24+PM.png')
 
     db.session.add(demo)
     db.session.add(marnie)
