@@ -26,7 +26,7 @@
 
 ## Concord at a Glance
 
-Concord is a full stack application that allows users to meet new friends, chat, and spend time together. Users are required to sige up for an account to use any of the services. At Concord, users can join servers who share the commen interests, chat instantly, and add other members to their own private chat. Users can also create their own server, manage members, and create channels under the server so they can chat about variouse topics.
+Concord is a full stack application that allows users to meet new friends, chat, and spend time together. Users are required to sign up for an account to use any of the services. At Concord, users can join servers who share the common interests, chat instantly, and add other members to their own private chat. Users can also create their own server, manage members, and create channels under the server so they can chat about variouse topics.
 
 At Concord, you will never be alone.
 
