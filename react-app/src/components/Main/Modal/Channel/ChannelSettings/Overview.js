@@ -25,7 +25,7 @@ const ChannelOverview = ({ channel, onClose }) => {
             validateErrors.push(
                 "Updated name length must be between 1 and 50 characters."
             );
-        if (channelNames.includes(name.toLowerCase()))
+        if (channelNames.includes(name.toLowerCase().trim()))
             validateErrors.push("Channel with same name already exists.");
         if (validateErrors.length > 0) {
             setErrors(validateErrors);
@@ -54,6 +54,7 @@ const ChannelOverview = ({ channel, onClose }) => {
 
     useEffect(() => {
         setName(channel?.name);
+        console.log("wrong name")
     }, [channel]);
 
     return (

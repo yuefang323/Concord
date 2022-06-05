@@ -26,7 +26,7 @@ const AddChannel = ({ setShowModal, onClose }) => {
 		const validateErrors = [];
 		if (name.length < 1 || name.length > 50)
 			validateErrors.push("Name length must be between 1 and 50 characters.");
-		if (channelNames.includes(name.toLowerCase()))
+		if (channelNames.includes(name.toLowerCase().trim()))
 			validateErrors.push("Channel with same name already exists.");
 		if (validateErrors.length > 0) {
 			setErrors(validateErrors);
