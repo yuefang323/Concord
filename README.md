@@ -17,6 +17,8 @@
 
 
 ### Private Messaging
+<img width="827" alt="Screen Shot 2022-06-05 at 8 20 16 AM" src="https://user-images.githubusercontent.com/97005157/172057717-d0188647-6ad1-4367-b637-c9615bd60233.png">
+
 
 ### Discover Guilds
 <img width="1144" alt="Screen Shot 2022-06-04 at 12 41 33 PM" src="https://user-images.githubusercontent.com/97005157/172025213-361c638c-c722-44c5-a95a-b9ae6633c546.png">
