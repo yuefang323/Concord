@@ -37,6 +37,13 @@ export const getServer = (serverId) => async (dispatch) => {
 		const data = await response.json();
 		dispatch(addEditServer(data.server));
 		return data;
+	} else if (response.status < 500) {
+		const data = await response.json();
+		if (data.errors) {
+			return data.errors;
+		}
+	} else {
+		return ["An error occurred. Please try again."];
 	}
 };
 

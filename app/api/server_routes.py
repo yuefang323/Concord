@@ -52,17 +52,19 @@ def new_server():
 
     return {'errors': validation_errors_to_error_messages(form.errors)}, 401
 
-# Edit server
+# Get / Edit server
 @server_routes.route("/<int:server_id>", methods=["GET", "PUT"])
 @login_required
 def edit_server(server_id):
     if request.method == "GET":
         server = Server.query.get(server_id)
         channels = Channel.query.filter(Channel.server_id == server_id).all()
+        join_server_user = [join.to_dict() for join in JoinServerUser.query.filter(JoinServerUser.user_id == current_user.id).order_by(JoinServerUser.joined_date.desc()).all()]
 
         return {
             "server": server.to_dict(),
             "channels": [channel.to_dict() for channel in channels],
+            "joinServers": join_server_user,
         }
 
 

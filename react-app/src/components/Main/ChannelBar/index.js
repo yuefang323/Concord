@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useParams, Link, Redirect } from "react-router-dom";
 
@@ -20,13 +21,15 @@ const ChannelBar = () => {
 	const currServerChannels = servers?.byId[serverId]?.channels;
 	const channels = useSelector((state) => state.channels);
 
-	const dispatchChannel = async () => {
-		dispatch(channelsActions.getChannel(channelId))
-			.then((res) => {
-				dispatch(chatsActions.getChats(res.chats));
-			})
-			.catch((err) => console.log(err));
-	};
+	useEffect(() => {
+		if (channelParam) {
+			dispatch(channelsActions.getChannel(channelId))
+				.then((res) => {
+					dispatch(chatsActions.getChats(res.chats));
+				})
+				.catch((err) => console.log(err));
+		}
+	}, [channelParam]);
 
 	if (!channelParam && currServerChannels)
 		return <Redirect to={`/channels/${serverId}/${currServerChannels[0]}`} />;
@@ -44,7 +47,6 @@ const ChannelBar = () => {
 										<Link
 											to={`/channels/${serverId}/${id}`}
 											className="channel-info-wrapper"
-											onClick={dispatchChannel}
 										>
 											<div className="channel-name">
 												<i className="fa-solid fa-hashtag"></i>
