@@ -10,11 +10,11 @@ def seed_users():
     bobbie = User(
         username='bobbie', email='bobbie@aa.io', password='password', avatar='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR0XNTnjezNRbpXlCmfQG_VzEBWB3brmJ7hyQ&usqp=CAU')
     frances = User(
-        username='frances', email='frances@aa.io', password='password', avatar='')
+        username='frances', email='frances@aa.io', password='password', avatar='https://freepngimg.com/download/minnie_mouse/32433-7-minnie-mouse-hd.png')
     fang = User(
-        username='fangY', email='fang@aa.io', password='password', avatar='')
+        username='fangY', email='fang@aa.io', password='password', avatar='https://whatsondisneyplus.com/wp-content/uploads/2022/03/turning-red-avatar.png')
     lincoln = User(
-        username='lincoln', email='lincoln@aa.io', password='password', avatar='')
+        username='lincoln', email='lincoln@aa.io', password='password', avatar='https://cdn1.vectorstock.com/i/1000x1000/10/50/doctor-professional-avatar-character-vector-24991050.jpg')
 
     db.session.add(demo)
     db.session.add(marnie)
