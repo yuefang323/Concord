@@ -54,7 +54,6 @@ const ChannelOverview = ({ channel, onClose }) => {
 
     useEffect(() => {
         setName(channel?.name);
-        console.log("wrong name")
     }, [channel]);
 
     return (

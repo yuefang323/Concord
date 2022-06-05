@@ -30,7 +30,6 @@ const PrvChatDivs = ({ prvChatId, socket }) => {
 			const prvChatData = { id: prvChatId, message, pc_id: prvChannelId };
 
 			const res = await dispatch(prvChatActions.editPrvChat(prvChatData))
-			console.log('RESPONSE........', res)
 			if (res.id) {
 
 			}

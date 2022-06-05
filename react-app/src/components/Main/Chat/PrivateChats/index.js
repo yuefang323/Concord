@@ -45,7 +45,13 @@ const PrivateChats = ({ socket }) => {
 
 	}, [prvChannelId])
 
-	if (prvChannels[prvChannelId] && prvChannels[prvChannelId].prvChats.length) {
+	if (!prvChannelId) {
+		return (
+			<div ref ={focusRef}>
+				private chat
+			</div>
+		)
+	} else if (prvChannels[prvChannelId] && prvChannels[prvChannelId].prvChats.length) {
 		return (
 			<div className="chat-div-wrap" ref={focusRef}>
 					{prvChannels[prvChannelId]?.prvChats.map((prvChatId) => {

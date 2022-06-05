@@ -5,6 +5,7 @@ import Avatar from "../../../Chat/Inputs/Avatar";
 import CreatedAt from "../../../Chat/Inputs/CreatedAt";
 
 import * as prvChatActions from "../../../../../store/prvChats"
+import * as prvChannelActions from "../../../../../store/prvChannels"
 
 const DeletePrvChat = ({ prvChatId, onClose, socket }) => {
 	const dispatch = useDispatch()
@@ -15,10 +16,10 @@ const DeletePrvChat = ({ prvChatId, onClose, socket }) => {
 	const deletePrvMessage = async () => {
 		// const payload = { prv_chat_id: prvChatId, pc_id: prvChannelId };
 		// socket.emit("delete_prv_chat", payload);
-		const data = await dispatch(prvChatActions.removePrvChat(prvChatId))
-		
-
-		// onClose();
+		const res = await dispatch(prvChatActions.removePrvChat(prvChatId));
+		if (res.id) {
+			await dispatch(prvChannelActions.addEditPrvChannel(res));
+		}
 	};
 
 	return (
