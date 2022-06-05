@@ -30,6 +30,13 @@ export const getAllChannels = () => async (dispatch) => {
 		const data = await response.json();
 		dispatch(getPrvChannels(data.prv_channels));
 		return data;
+	} else if (response.status < 500) {
+		const data = await response.json();
+		if (data.errors) {
+			return data.errors;
+		}
+	} else {
+		return ["An error occurred. Please try again."];
 	}
 };
 
@@ -39,6 +46,13 @@ export const getPrvChannel = (prvChannelId) => async (dispatch) => {
 		const data = await response.json();
 		dispatch(addEditPrvChannel(data.prv_channel));
 		return data;
+	} else if (response.status < 500) {
+		const data = await response.json();
+		if (data.errors) {
+			return data.errors;
+		}
+	} else {
+		return ["An error occurred. Please try again."];
 	}
 };
 
