@@ -8,6 +8,7 @@ import CreatedAt from "../Inputs/CreatedAt"
 import PrvEditDelete from "./PrvEditDelete";
 
 import * as prvChatActions from "../../../../store/prvChats"
+import * as userActions from "../../../../store/users"
 
 const PrvChatDivs = ({ prvChatId, socket }) => {
 	const dispatch = useDispatch();
@@ -45,6 +46,16 @@ const PrvChatDivs = ({ prvChatId, socket }) => {
 	useEffect(() => {
 		setMessage(prvChats[prvChatId]?.message);
 	}, [prvChats, prvChatId]);
+
+	useEffect(() => {
+		fetch("/api/users/all")
+		.then((res) => res.json()).then((data) => {
+			dispatch(userActions.getUsers(data.users))
+		})
+		.catch((err) => console.log(err));
+
+		return () => {};
+	}, [dispatch])
 
 	return (
 		<div className="chat-div-ctrl" id={prvChatId}>
