@@ -109,7 +109,7 @@ Concord is built on React and Redux frontend with Python Flask backend, using Po
 - [PostgresSQL](https://www.postgresql.org/)
 - [CSS](https://developer.mozilla.org/en-US/docs/Web/CSS)
 
-## Concclusion and Next Steps
+## Conclusion and Next Steps
 
 The next step for Concord is to implement user online/offline features, and adding voice chat so users can create voice chat channels.
 
