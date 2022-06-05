@@ -1,13 +1,16 @@
-import { useRef, useEffect } from "react";
+import { useRef, useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 
 import * as joinServersActions from "../../../../store/joinServers";
 import * as channelsActions from "../../../../store/channels";
 import * as chatsActions from "../../../../store/chats";
+import { set } from "date-fns/esm";
 
 const ServerCards = ({ server }) => {
 	const dispatch = useDispatch();
 	const joinedServers = useSelector((state) => state.joinServers.allIds);
+	const [logo, setLogo] = useState("");
+	const [background, setBackground] = useState("");
 
 	const divRef = useRef();
 	const logoRef = useRef();
@@ -40,6 +43,18 @@ const ServerCards = ({ server }) => {
 			divRef.current.classList.add("color-purple");
 			logoRef.current.classList.add("color-green");
 		}
+		if (server.logo) {
+			setLogo(server.logo);
+		} else {
+			setLogo("https://go-concord.s3.amazonaws.com/server-3-logo-logo.png");
+		}
+		if (server.background) {
+			setBackground(server.background);
+		} else {
+			setBackground(
+				"https://go-concord.s3.amazonaws.com/server-3-logo-logo.png"
+			);
+		}
 	}, [server]);
 
 	return (
@@ -47,12 +62,12 @@ const ServerCards = ({ server }) => {
 			<div className="server-card-wrap">
 				<div
 					className="server-card-bg"
-					style={{ backgroundImage: `url("${server.background}")` }}
+					style={{ backgroundImage: `url("${background}")` }}
 					ref={divRef}
 				>
 					<div
 						className="server-card-logo"
-						style={{ backgroundImage: `url("${server.logo}")` }}
+						style={{ backgroundImage: `url("${logo}")` }}
 						ref={logoRef}
 					></div>
 				</div>

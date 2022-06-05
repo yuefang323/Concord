@@ -1,11 +1,17 @@
-import { useSelector } from "react-redux";
+import { useEffect } from "react";
+import { useSelector, useDispatch } from "react-redux";
 
 import background from "../../../assets/explore.jpeg";
-
 import ServerCards from "./ServerCards";
+import * as serversActions from "../../../store/servers";
 
 const ExplorePage = () => {
+	const dispatch = useDispatch();
 	const servers = useSelector((state) => state.servers.byId);
+
+	useEffect(() => {
+		dispatch(serversActions.getAllServers());
+	}, [dispatch]);
 
 	return (
 		<div className="explore-ctrl">

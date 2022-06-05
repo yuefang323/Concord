@@ -31,6 +31,22 @@ export const clearServers = () => ({
 });
 
 // Thunks
+export const getAllServers = () => async (dispatch) => {
+	const response = await fetch("/api/servers/");
+	if (response.ok) {
+		const data = await response.json();
+		dispatch(getServers(data.servers));
+		return data;
+	} else if (response.status < 500) {
+		const data = await response.json();
+		if (data.errors) {
+			return data.errors;
+		}
+	} else {
+		return ["An error occurred. Please try again."];
+	}
+};
+
 export const getServer = (serverId) => async (dispatch) => {
 	const response = await fetch(`/api/servers/${serverId}`);
 	if (response.ok) {

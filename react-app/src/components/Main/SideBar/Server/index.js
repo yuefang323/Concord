@@ -16,7 +16,8 @@ const Server = ({ server }) => {
 	const serverId =
 		serverParam === "@me" ? serverParam : parseInt(serverParam, 10);
 
-	const dispatchServer = () => {
+	const dispatchServer = async () => {
+		dispatch(serversActions.getAllServers());
 		dispatch(serversActions.getServer(server.id))
 			.then((res) => {
 				dispatch(channelsActions.getChannels(res.channels));

@@ -38,12 +38,14 @@ const AddChannel = ({ setShowModal, onClose }) => {
 		setName("");
 
 		if (setShowModal) setShowModal(false);
+		if (onClose) onClose();
 		history.push(`/channels/${serverIdnum}/${res.channel.id}`);
 	};
 
 	const cancelButton = async (e) => {
 		setErrors([]);
-		setShowModal(false);
+		if (setShowModal) setShowModal(false);
+		if (onClose) onClose();
 		setName("");
 	};
 
