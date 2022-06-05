@@ -161,6 +161,7 @@ export default function reducer(state = initialState, action) {
 			set = new Set(newState.allIds);
 
 			newState.byId[action.channel.id] = action.channel;
+            set.add(action.channel.id)
 			newState.allIds = Array.from(set);
 			return newState;
 		case CLEAR_CHANNELS:
