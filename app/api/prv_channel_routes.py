@@ -1,6 +1,6 @@
 from flask import Blueprint, jsonify, session, request
 from flask_login import current_user, login_required
-from app.models import db, PrivateChannel, PrivateChat
+from app.models import db, PrivateChannel, PrivateChat, User
 from app.forms import NewPrvChannelForm
 
 prv_channel_routes = Blueprint("prv_channels", __name__)
@@ -14,6 +14,14 @@ def validation_errors_to_error_messages(validation_errors):
         for error in validation_errors[field]:
             errorMessages.append(f'{field} : {error}')
     return errorMessages
+
+# get all private channels
+@prv_channel_routes.route("/")
+def get_prv_channels():
+    user = User.query.get(current_user.id)
+    return {
+        "prv_channels": [pv_channel.to_dict() for pv_channel in user.private_channels]
+    }
 
 # Add new private channel
 @prv_channel_routes.route("/new", methods=["GET", "POST"])
@@ -34,7 +42,7 @@ def new_channel():
 
     return {
         "prv_channel": new_prv_channel.to_dict(),
-        };
+        }
 
 # Get private channel
 @prv_channel_routes.route("/<int:prvChannelId>", methods=["GET"])

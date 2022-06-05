@@ -25,7 +25,7 @@ export const clearPrvChannels = () => ({
 
 // Thunks
 export const getAllChannels = () => async (dispatch) => {
-	const response = await fetch("/api/channels/@me");
+	const response = await fetch("/api/channels/@me/");
 	if (response.ok) {
 		const data = await response.json();
 		dispatch(getPrvChannels(data.prv_channels));

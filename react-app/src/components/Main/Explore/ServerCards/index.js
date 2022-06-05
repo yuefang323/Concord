@@ -46,14 +46,12 @@ const ServerCards = ({ server }) => {
 		if (server.logo) {
 			setLogo(server.logo);
 		} else {
-			setLogo("https://go-concord.s3.amazonaws.com/server-3-logo-logo.png");
+			setLogo("https://go-concord.s3.amazonaws.com/logo-white-01.svg");
 		}
 		if (server.background) {
 			setBackground(server.background);
 		} else {
-			setBackground(
-				"https://go-concord.s3.amazonaws.com/server-3-logo-logo.png"
-			);
+			setBackground("https://go-concord.s3.amazonaws.com/chat-bg.svg");
 		}
 	}, [server]);
 

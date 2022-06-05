@@ -16,6 +16,15 @@ def validation_errors_to_error_messages(validation_errors):
             errorMessages.append(f'{field} : {error}')
     return errorMessages
 
+# Get all servers
+@server_routes.route("/")
+def get_servers():
+    servers = Server.query.all()
+    return {
+        "servers": [server.to_dict() for server in servers],
+    }
+
+
 # Add new server
 @server_routes.route("/new", methods=["POST"])
 @login_required
