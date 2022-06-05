@@ -5,8 +5,10 @@ import AWS from "aws-sdk";
 
 import * as serversActions from "../../../../../../store/servers";
 
-const S3_BUCKET = "go-concord";
-const REGION = "us-east-1";
+const S3_BUCKET = process.env.S3_BUCKET;
+const REGION = process.env.REGION;
+const ACCESS_KEY = process.env.ACCESS_KEY;
+const SECRET_ACCESS_KEY = process.env.SECRET_ACCESS_KEY;
 
 AWS.config.update({
 	accessKeyId: "AKIASAMA5YUWOUAIHZVQ",
