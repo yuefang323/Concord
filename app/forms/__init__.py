@@ -8,3 +8,4 @@ from .edit_channel_form import EditChannelForm
 from .edit_user_form import EditUserForm
 from .edit_chat_form import EditChatForm
 from .edit_prv_chat_form import EditPrvChatForm
+from .new_prv_channel_form import NewPrvChannelForm
