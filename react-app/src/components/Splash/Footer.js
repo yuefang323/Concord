@@ -24,6 +24,11 @@ const Footer = () => {
 				<div>
 					<div className="footer-list-title">Technologies Used</div>
 					<li>
+						<a href="https://www.docker.com/" target="_blank" rel="noreferrer">
+							Docker
+						</a>
+					</li>
+					<li>
 						<a href="https://www.python.org/" target="_blank" rel="noreferrer">
 							Python
 						</a>
@@ -77,6 +82,15 @@ const Footer = () => {
 					<li>
 						<a href="https://socket.io/" target="_blank" rel="noreferrer">
 							Socket io
+						</a>
+					</li>
+					<li>
+						<a
+							href="https://aws.amazon.com/s3/"
+							target="_blank"
+							rel="noreferrer"
+						>
+							AWS S3
 						</a>
 					</li>
 				</div>

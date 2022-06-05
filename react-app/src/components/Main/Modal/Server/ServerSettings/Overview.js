@@ -43,7 +43,7 @@ const Overview = ({ server, onClose }) => {
 
 	useEffect(() => {
 		setName(server?.name);
-		setDescription(server?.description);
+		if (server.description !== null) setDescription(server?.description);
 	}, [server]);
 
 	return (

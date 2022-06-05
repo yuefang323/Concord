@@ -46,11 +46,8 @@ app.register_blueprint(server_routes, url_prefix='/api/servers')
 app.register_blueprint(join_server_routes, url_prefix='/api/join_servers')
 app.register_blueprint(channel_routes, url_prefix='/api/channels')
 app.register_blueprint(chat_routes, url_prefix='/api/chats')
-<<<<<<< HEAD
 app.register_blueprint(prv_chat_routes, url_prefix='/api/prv_chats')
-=======
 app.register_blueprint(prv_channel_routes, url_prefix='/api/channels/@me')
->>>>>>> c9da87690fa075757f388e751c69107be5b3039c
 
 db.init_app(app)
 Migrate(app, db)

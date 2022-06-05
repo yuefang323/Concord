@@ -1,16 +1,18 @@
-import { useEffect, useState, useRef } from "react";
+import { useState } from "react";
 import { useDispatch } from "react-redux";
 
 import AWS from "aws-sdk";
 
 import * as serversActions from "../../../../../../store/servers";
 
-const S3_BUCKET = "go-concord";
-const REGION = "us-east-1";
+const S3_BUCKET = process.env.REACT_APP_S3_BUCKET;
+const REGION = process.env.REACT_APP_REGION;
+const ACCESS_KEY = process.env.REACT_APP_ACCESS_KEY;
+const SECRET_ACCESS_KEY = process.env.REACT_APP_SECRET_ACCESS_KEY;
 
 AWS.config.update({
-	accessKeyId: "AKIASAMA5YUWOUAIHZVQ",
-	secretAccessKey: "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",
+	accessKeyId: ACCESS_KEY,
+	secretAccessKey: SECRET_ACCESS_KEY,
 });
 
 const myBucket = new AWS.S3({
