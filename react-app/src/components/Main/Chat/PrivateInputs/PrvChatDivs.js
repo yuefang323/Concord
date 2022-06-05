@@ -3,19 +3,19 @@ import { useSelector, useDispatch } from "react-redux";
 import { useParams } from "react-router-dom";
 
 import Avatar from "../Inputs/Avatar";
-import CreatedAt from "../Inputs/CreatedAt"
+import CreatedAt from "../Inputs/CreatedAt";
 
 import PrvEditDelete from "./PrvEditDelete";
 
-import * as prvChatActions from "../../../../store/prvChats"
+import * as prvChatActions from "../../../../store/prvChats";
 
 const PrvChatDivs = ({ prvChatId, socket }) => {
 	const dispatch = useDispatch();
 
 	const userId = useSelector((state) => state.session.user).id;
-    const prvChannelId = parseInt(useParams().channelId)
+	const prvChannelId = parseInt(useParams().channelId);
 	const users = useSelector((state) => state.users.byId);
-    const prvChats = useSelector((state) => state.prvChats.byId)
+	const prvChats = useSelector((state) => state.prvChats.byId);
 	const [user, setUser] = useState();
 	const [disabled, setDisabled] = useState(true);
 	const [message, setMessage] = useState("");
@@ -29,10 +29,9 @@ const PrvChatDivs = ({ prvChatId, socket }) => {
 		if (message) {
 			const prvChatData = { id: prvChatId, message, pc_id: prvChannelId };
 
-			const res = await dispatch(prvChatActions.editPrvChat(prvChatData))
-			console.log('RESPONSE........', res)
-			if (res.id) {
+			const res = await dispatch(prvChatActions.editPrvChat(prvChatData));
 
+			if (res.id) {
 			}
 		}
 

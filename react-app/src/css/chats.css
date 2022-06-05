@@ -175,6 +175,20 @@
 
 .chat-start {
 	display: flex;
-	justify-content: center;
+	justify-content: flex-start;
 	align-items: center;
+	padding: 10px;
+	background-size: cover;
+}
+
+.chat-start-font {
+	font-family: "Calligraffitti", cursive;
+	font-size: 32px;
+	display: flex;
+	align-items: flex-start;
+	gap: 10px;
+}
+
+.chat-arrow {
+	width: 100px;
 }

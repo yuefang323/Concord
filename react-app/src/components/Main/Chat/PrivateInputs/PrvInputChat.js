@@ -27,7 +27,7 @@ const PrvInputChat = ({ prvChat, setPrvChat, handleSubmitPrv }) => {
 		} else {
 			setFriend(owner);
 		}
-	}, [prvChannelId]);
+	}, [prvChannelId, friendName, user?.id, owner]);
 
 	if (friend) {
 		return (

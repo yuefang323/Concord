@@ -32,6 +32,7 @@ const Actions = ({ user, owner, server, onClose }) => {
 	} else {
 		return (
 			<div className="member-actions">
+				{errors && errors.map((err) => <div key={err}>{err}</div>)}
 				<div className="member-action" onClick={kickOut}>
 					<i className="fa-solid fa-ban"></i>
 					Kick Out

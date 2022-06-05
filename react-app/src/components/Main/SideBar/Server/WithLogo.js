@@ -17,7 +17,7 @@ const WithLogo = ({ server }) => {
 	return (
 		<div
 			className="sidebar-btn"
-			style={{ backgroundImage: `url(${server?.logo})` }}
+			style={{ backgroundImage: `url(${server.logo})` }}
 			ref={divRef}
 		></div>
 	);

@@ -44,14 +44,11 @@ const Chat = () => {
 	const handleSubmitPrv = async (e) => {
 		e.preventDefault();
 
-		console.log("PRV CHAT", prvChat);
-
 		if (prvChat) {
 			const prvChatData = {
 				pc_id: channelId,
 				prvChat,
 			};
-			console.log("PRV CHAT DATA", prvChatData);
 
 			socket.emit("send_prv_chat", prvChatData);
 

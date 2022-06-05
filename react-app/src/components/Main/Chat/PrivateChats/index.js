@@ -1,8 +1,11 @@
 import { useRef, useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
-import PrvAvatar from "../PrivateInputs/PrvAvatar";
 
+import arrow from "../../../../assets/arrow.svg";
+import bg from "../../../../assets/chat-bg.svg";
+
+import PrvAvatar from "../PrivateInputs/PrvAvatar";
 import PrvChatDivs from "../PrivateInputs/PrvChatDivs";
 
 const PrivateChats = ({ socket }) => {
@@ -43,7 +46,7 @@ const PrivateChats = ({ socket }) => {
 		} else {
 			setFriend(owner);
 		}
-	}, [prvChannelId]);
+	}, [prvChannelId, friendName, owner, user?.id]);
 
 	if (prvChannels[prvChannelId] && prvChannels[prvChannelId].prvChats.length) {
 		return (
@@ -62,7 +65,10 @@ const PrivateChats = ({ socket }) => {
 	} else if (!friend) {
 		return (
 			<div className="chat-start" ref={focusRef}>
-				Start by joining a server or create one yourself!
+				<div className="chat-start-font">
+					<img src={arrow} alt="arrow" className="chat-arrow" />
+					Start by joining a server or create one yourself!
+				</div>
 			</div>
 		);
 	} else {
