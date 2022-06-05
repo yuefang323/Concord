@@ -31,7 +31,6 @@ export const clearPrvChats = () => ({
 
 // Thunks
 export const editPrvChat = (prvChat) => async (dispatch) => {
-	// console.log(prvChat)
 	const res = await fetch(`/api/prv_chats/${prvChat.id}`, {
 		method: "PUT",
 		headers: { "Content-Type": "application/json" },

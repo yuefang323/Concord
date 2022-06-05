@@ -6,6 +6,7 @@ import Footer from "./Footer";
 
 import logo from "../../assets/logo-long.svg";
 import frances from "../../assets/Frances_500_500.png";
+import lincoln from "../../assets/Lincoln.png"
 
 import git from "../../assets/git-logo.png";
 import linkedin from "../../assets/linkedin-logo.png";
@@ -67,6 +68,13 @@ const About = () => {
                                 className="about-icon"
                             />
                         </a>
+                        <a href="https://www.linkedin.com/in/fang-yue-7b3091241/" target="_blank" rel="noreferrer">
+                            <img
+                                src={linkedin}
+                                alt="Linked In"
+                                className="about-icon"
+                            />
+                        </a>
                         {/* <a href="#" target="_blank" rel="noreferrer">
 							<img src={linkedin} alt="Linked In" className="about-icon" />
 						</a> */}
@@ -110,18 +118,24 @@ const About = () => {
                     </div>
                 </div>
                 <div className="about-cards">
-                    <div className="about-photo">Photo Here</div>
+                    <div className="about-photo">
+                        <img
+                            src={lincoln}
+                            alt='Lincoln'
+                            className="about-icon lincoln"
+                            />
+                    </div>
                     <div className="about-name">Lincoln Her</div>
-                    <div className="about-slogan">Slogan</div>
+                    <div className="about-slogan">Develop success from failures.</div>
                     <div className="about-icon-wrap">
-                        <a href="#" target="_blank" rel="noreferrer">
+                        <a href="https://github.com/LincolnHer" target="_blank" rel="noreferrer">
                             <img
                                 src={git}
                                 alt="GitHub"
                                 className="about-icon"
                             />
                         </a>
-                        <a href="#" target="_blank" rel="noreferrer">
+                        <a href="https://www.linkedin.com/in/lincoln-her/" target="_blank" rel="noreferrer">
                             <img
                                 src={linkedin}
                                 alt="Linked In"
