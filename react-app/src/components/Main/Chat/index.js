@@ -81,6 +81,7 @@ const Chat = () => {
 
 		socket.on("receive_prv_message", (data) => {
 			// dispatch for channel
+			dispatch(prvChannelsActions.addEditPrvChannel(data.prv_channel))
 			dispatch(prvChatsActions.addEditPrvChat(data.prv_chat));
 		});
 
@@ -97,7 +98,7 @@ const Chat = () => {
 				<InputChat chat={chat} setChat={setChat} handleSubmit={handleSubmit} />
 			</div>
 		);
-	} else {
+	} else if (channelId) {
 		return (
 			<div className="chat-ctrl">
 				<PrivateChats socket={socket} />
@@ -108,6 +109,12 @@ const Chat = () => {
 				/>
 			</div>
 		);
+	} else {
+		return (
+			<div className="chat-ctrl">
+				<PrivateChats socket={socket} />
+			</div>
+		)
 	}
 };
 

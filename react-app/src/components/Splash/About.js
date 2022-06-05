@@ -6,6 +6,7 @@ import Footer from "./Footer";
 
 import logo from "../../assets/logo-long.svg";
 import frances from "../../assets/Frances_500_500.png";
+import lincoln from "../../assets/Lincoln.png";
 
 import git from "../../assets/git-logo.png";
 import linkedin from "../../assets/linkedin-logo.png";

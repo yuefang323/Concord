@@ -115,8 +115,9 @@ The next step for Concord is to implement user online/offline features, and addi
 
 ## Contact Team Members
 
-- Fang Yue <a href="https://github.com/yuefang323">Github</a>
+- Fang Yue <a href="https://github.com/yuefang323">Github</a> |
+<a href="https://www.linkedin.com/in/fang-yue-7b3091241/">Linkedin</a>
 - Frances (Huang) Lau <a href="https://www.linkedin.com/in/frances-huang-660607156">Linkedin</a> | <a href="https://github.com/frances-y-h">Github</a>
-- Lincoln Her
+- Lincoln Her <a href=https://www.linkedin.com/in/lincoln-her>Linkedin</a> |
+<a href=https://github.com/LincolnHer>Github</a>
 
-test to deploy
