@@ -136,7 +136,7 @@
 	font-size: 30px;
 }
 
-.chat-big-hash-div.prv{
+.chat-big-hash-div.prv {
 	width: 60px;
 	height: 60px;
 	border-radius: 60px;
@@ -171,4 +171,10 @@
 
 .chat-empty-edit:hover {
 	background-color: var(--gray2);
+}
+
+.chat-start {
+	display: flex;
+	justify-content: center;
+	align-items: center;
 }
