@@ -5,14 +5,22 @@
 <p align="center"><a  href="https://go-concord.herokuapp.com">Concord Live Demo</a></p>
 
 ### Splash page
+<img width="1022" alt="Screen Shot 2022-06-04 at 12 03 37 PM" src="https://user-images.githubusercontent.com/97005157/172025202-a18c54f0-f000-40f6-a663-0dfdc106552d.png">
+
 
 ### Join servers and chat in channels
+<img width="874" alt="Screen Shot 2022-06-04 at 12 40 37 PM" src="https://user-images.githubusercontent.com/97005157/172025207-f9a8b561-f6d1-46d8-9e65-a78430c26358.png">
+
 
 ### Create and manage your own server
+<img width="874" alt="Screen Shot 2022-06-04 at 12 40 58 PM" src="https://user-images.githubusercontent.com/97005157/172025209-e2dc1aa1-ed6e-4377-b9f7-df92e1c0c105.png">
+
 
 ### Private Messaging
 
 ### Discover Guilds
+<img width="1144" alt="Screen Shot 2022-06-04 at 12 41 33 PM" src="https://user-images.githubusercontent.com/97005157/172025213-361c638c-c722-44c5-a95a-b9ae6633c546.png">
+
 
 ## Concord at a Glance
 
