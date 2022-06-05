@@ -48,7 +48,7 @@ const PrivateChats = ({ socket }) => {
 	if (!prvChannelId) {
 		return (
 			<div ref ={focusRef}>
-				private chat
+				<h1>Private Chat</h1>
 			</div>
 		)
 	} else if (prvChannels[prvChannelId] && prvChannels[prvChannelId].prvChats.length) {
