@@ -16,6 +16,7 @@ const DeletePrvChat = ({ prvChatId, onClose, socket }) => {
 		// const payload = { prv_chat_id: prvChatId, pc_id: prvChannelId };
 		// socket.emit("delete_prv_chat", payload);
 		const data = await dispatch(prvChatActions.removePrvChat(prvChatId))
+		
 
 		// onClose();
 	};

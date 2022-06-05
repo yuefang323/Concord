@@ -30,7 +30,6 @@ export const clearPrvChats = () => ({
 });
 
 // Thunks
-
 export const editPrvChat = (prvChat) => async (dispatch) => {
 	// console.log(prvChat)
 	const res = await fetch(`/api/prv_chats/${prvChat.id}`, {
@@ -40,8 +39,8 @@ export const editPrvChat = (prvChat) => async (dispatch) => {
 	});
 	if (res.ok) {
 		const data = await res.json();
-		dispatch(addEditPrvChat(data.prvChat));
-		return data.prvChat
+		dispatch(addEditPrvChat(data.prv_chat));
+		return data.prv_chat
 	} else if (res.status < 500) {
 		const data = await res.json();
 		if (data.errors) {
@@ -96,7 +95,7 @@ export default function reducer(state = initialState, action) {
 			set = new Set(newState.allIds);
 
 			newState.byId[action.prv_chat.id] = action.prv_chat;
-			set.add(action.chat.id);
+			set.add(action.prv_chat.id);
 
 			newState.allIds = Array.from(set);
 			return newState

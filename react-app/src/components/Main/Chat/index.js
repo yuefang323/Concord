@@ -44,11 +44,15 @@ const Chat = () => {
 	const handleSubmitPrv = async (e) => {
 		e.preventDefault();
 
+		console.log('PRV CHAT', prvChat)
+
 		if (prvChat) {
 			const prvChatData = {
 				pc_id: channelId,
 				prvChat,
 			};
+			console.log('PRV CHAT DATA', prvChatData)
+
 
 			socket.emit("send_prv_chat", prvChatData);
 
@@ -101,7 +105,7 @@ const Chat = () => {
 		return (
 			<div className="chat-ctrl">
 				<PrivateChats socket={socket} />
-				<PrvInputChat prvChat={prvChat} setPrvChat={setPrvChat} handleSubmit={handleSubmitPrv}/>
+				<PrvInputChat prvChat={prvChat} setPrvChat={setPrvChat} handleSubmitPrv={handleSubmitPrv}/>
 			</div>
 		);
 	}
