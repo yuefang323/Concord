@@ -22,6 +22,7 @@ const HomeChannel = () => {
 	const friendsList = Object.values(prvChannels.byId);
 
 	const dispatchPrvChannel = async () => {
+		dispatch(prvChannelsActions.getAllChannels());
 		dispatch(prvChannelsActions.getPrvChannel(prvChannelId))
 			.then((res) => {
 				dispatch(prvChatsActions.getPrvChats(res.prv_chats));

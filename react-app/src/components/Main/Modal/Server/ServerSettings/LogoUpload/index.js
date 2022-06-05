@@ -76,10 +76,12 @@ const LogoUpload = ({ server, onClose, onCloseLogo }) => {
 			};
 		}
 
-		// dispatch
-		await dispatch(serversActions.editServer(serverToUpdate));
+		setTimeout(() => {
+			// dispatch
+			dispatch(serversActions.editServer(serverToUpdate));
 
-		onClose();
+			onClose();
+		}, 1000);
 	};
 
 	return (

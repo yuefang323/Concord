@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import { useDispatch } from "react-redux";
-import { Switch, Route, useParams, Redirect } from "react-router-dom";
+import { Switch, Route, useParams } from "react-router-dom";
 
 import SideBar from "./SideBar";
 import TopBar from "./TopBar";
@@ -20,7 +20,6 @@ import * as usersActions from "../../store/users";
 
 const MainPage = () => {
 	const dispatch = useDispatch();
-	const serverParam = useParams().serverId;
 
 	useEffect(() => {
 		fetch("/api/users/all")

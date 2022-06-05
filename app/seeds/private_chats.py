@@ -19,13 +19,13 @@ def seed_private_chats():
     prv_msg3 = PrivateChat(
         pc_id=2,
         user_id=1,
-        message="What is your favorite food bobbie?",
+        message="What is your favorite food Frances?",
     )
 
     # bobbie to demo
     prv_msg4 = PrivateChat(
         pc_id=2,
-        user_id=3,
+        user_id=4,
         message="My favorite food to eat is pasta",
     )
 
@@ -33,7 +33,7 @@ def seed_private_chats():
     db.session.add(prv_msg2)
     db.session.add(prv_msg3)
     db.session.add(prv_msg4)
-    
+
     db.session.commit()
 
 def undo_private_chats():

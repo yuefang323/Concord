@@ -1,7 +1,8 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useHistory } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 
+import * as serversActions from "../../../../../store/servers";
 import * as joinServersActions from "../../../../../store/joinServers";
 import * as channelsActions from "../../../../../store/channels";
 import * as chatsActions from "../../../../../store/chats";
@@ -13,6 +14,7 @@ const JoinServer = ({ setChoose, setShowModal }) => {
 
 	const [serverId, setServerId] = useState();
 	const servers = useSelector((state) => state.servers.byId);
+	const [serverArr, setServerArr] = useState([]);
 	const joinedServers = useSelector((state) => state.joinServers);
 	const joinedSet = new Set(joinedServers.allIds);
 	const [errors, setErrors] = useState([]);
@@ -38,6 +40,16 @@ const JoinServer = ({ setChoose, setShowModal }) => {
 		}
 	};
 
+	useEffect(() => {
+		dispatch(serversActions.getAllServers());
+	}, [dispatch]);
+
+	useEffect(() => {
+		setServerArr(
+			Object.values(servers).filter((server) => !joinedSet.has(server?.id))
+		);
+	}, [servers]);
+
 	return (
 		<form onSubmit={join}>
 			<div className="form-ctrl-wrap">
@@ -58,13 +70,11 @@ const JoinServer = ({ setChoose, setShowModal }) => {
 					onChange={(e) => setServerId(parseInt(e.target.value, 10))}
 				>
 					<option>Select a server</option>
-					{Object.values(servers)
-						.filter((server) => !joinedSet.has(server?.id))
-						.map((server) => (
-							<option key={server?.id} value={server?.id}>
-								{server?.name}
-							</option>
-						))}
+					{serverArr.map((server) => (
+						<option key={server?.id} value={server?.id}>
+							{server?.name}
+						</option>
+					))}
 				</select>
 			</div>
 			<div className="form-create-btm-wrap-row">

@@ -30,7 +30,7 @@ const NoLogo = ({ server }) => {
 	return (
 		<div className="sidebar-btn" ref={divRef}>
 			{server?.name[0].toUpperCase()}
-			{server?.name[2].toUpperCase()}
+			{server?.name.length > 2 && server?.name[2].toUpperCase()}
 		</div>
 	);
 };
