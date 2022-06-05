@@ -49,6 +49,25 @@ def seed_chats():
         message="Wow! What a nice day today!",
     )
 
+    msg9 = Chat(
+        channel_id=2,
+        user_id=1,
+        message="Morning, everyone. Let's talk more about music.",
+    )
+    
+    msg10 = Chat(
+        channel_id=2,
+        user_id=3,
+        message="Morning, my favoriate song is 'This Land is Your Land'. ",
+    )
+    
+    msg11 = Chat(
+        channel_id=2,
+        user_id=5,
+        message="Morning, my favoriate is 'You raised me up'. ",
+    )  
+    
+
     db.session.add(msg1)
     db.session.add(msg2)
     db.session.add(msg3)
@@ -57,6 +76,9 @@ def seed_chats():
     db.session.add(msg6)
     db.session.add(msg7)
     db.session.add(msg8)
+    db.session.add(msg9)
+    db.session.add(msg10)
+    db.session.add(msg11)
     db.session.commit()
 
 def undo_chats():
