@@ -84,7 +84,7 @@ const Footer = () => {
 							Socket io
 						</a>
 					</li>
-					<li>
+					{/* <li>
 						<a
 							href="https://aws.amazon.com/s3/"
 							target="_blank"
@@ -92,7 +92,7 @@ const Footer = () => {
 						>
 							AWS S3
 						</a>
-					</li>
+					</li> */}
 				</div>
 			</div>
 			<div className="splash-footer-bottom">

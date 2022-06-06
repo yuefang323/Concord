@@ -4,7 +4,8 @@ import { useDispatch } from "react-redux";
 import upload_photo from "../../../../../assets/upload_photo.svg";
 import Logo from "./Inputs/Logo";
 import { Modal } from "../../../../../context/Modal";
-import LogoUpload from "./LogoUpload";
+// import LogoUpload from "./LogoUpload";
+import LogoLink from "./LogoLink";
 
 import * as serversActions from "../../../../../store/servers";
 
@@ -127,11 +128,12 @@ const Overview = ({ server, onClose }) => {
 				</button>
 				{showModal && (
 					<Modal onClose={onCloseLogo}>
-						<LogoUpload
+						{/* <LogoUpload
 							server={server}
 							onCloseLogo={onCloseLogo}
 							onClose={onClose}
-						/>
+						/> */}
+						<LogoLink server={server} onClose={onClose} />
 					</Modal>
 				)}
 			</div>
