@@ -8,7 +8,7 @@ class PrivateChat(db.Model):
     pc_id = db.Column(db.Integer, db.ForeignKey('private_channels.id'), nullable=False)
     user_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False)
     message = db.Column(db.String(2000), nullable=False)
-    created_at = db.Column(db.DateTime, default=datetime.now(), nullable=False)
+    created_at = db.Column(db.DateTime, default=datetime.utcnow(), nullable=False)
 
     # many to one Prv chats -> Prv channel
     private_channel = db.relationship("PrivateChannel", back_populates="private_chats")
@@ -22,5 +22,5 @@ class PrivateChat(db.Model):
             "pc_id": self.pc_id,
             "user_id": self.user_id,
             "message": self.message,
-            "created_at": self.created_at.isoformat()
+            "created_at": self.created_at.strftime('%Y-%m-%dT%H:%M:%S.%fZ'),
         }

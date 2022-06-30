@@ -5,87 +5,91 @@
 } */
 
 .user-avatar.form {
-    width: 50px;
-    height: 50px;
-    border: 3px solid black;
+	width: 50px;
+	height: 50px;
+	border: 3px solid black;
 }
 
 .user-avatar.no-logo {
-    width: 30px;
-    height: 30px;
-    border-radius: 0px;
-    object-fit: revert;
-    /* border: 3px solid black; */
+	width: 30px;
+	height: 30px;
+	border-radius: 0px;
+	object-fit: revert;
+	/* border: 3px solid black; */
 }
 
 .avatar-bkg.form {
-    width: 50px;
-    height: 50px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border-radius: 32px;
-    background-color: var(--gray1);
-    border: 3px solid black;
+	width: 50px;
+	height: 50px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	border-radius: 32px;
+	background-color: var(--gray1);
+	border: 3px solid black;
 }
 
-
 .edit-modal-user-info-container {
-    background-color: var(--gray2);
-    margin-top: 8px;
-    padding: 10px;
-    border-radius: 5px;
+	background-color: var(--gray2);
+	margin-top: 8px;
+	padding: 10px;
+	border-radius: 5px;
 }
 
 .edit-modal-user-info {
-    background-color: var(--gray2);
+	background-color: var(--gray2);
 }
 
 .edit-modal-body {
-    display: flex;
-    background-color: var(--gray3);
+	display: flex;
+	background-color: var(--gray3);
 }
 
 .username-body {
-    font-size: 20px;
-    margin-left: 5px;
-    margin-top: 10px;
-    color: var(--gray1);
+	font-size: 20px;
+	margin-left: 5px;
+	margin-top: 10px;
+	color: var(--gray1);
 }
 
 .edit-info {
-    font-size: 16px;
+	font-size: 16px;
 }
 
-.edit-info>h5 {
-    margin-top: 10px;
-    margin-bottom: 0px;
-    font-size: 12px;
+.edit-info > h5 {
+	margin-top: 10px;
+	margin-bottom: 0px;
+	font-size: 12px;
 }
 
 .edit-user-btns-container {
-    margin-top: 10px;
+	margin-top: 10px;
 }
 
 .edit-user-btns {
-    background-color: var(--yellow1);
-    margin: 10px 10px 10px 0px;
-    border-radius: 5px;
-    padding: 5px;
+	background-color: var(--yellow1);
+	margin: 10px 10px 10px 0px;
+	border-radius: 5px;
+	padding: 5px;
 }
 
 .edit-input {
-    width: 100%;
-    height: 35px;
-    background-color: var(--gray3);
-    color: var(--gray1);
+	width: 100%;
+	height: 35px;
+	background-color: var(--gray3);
+	color: var(--gray1);
 }
 
 .edit-input::placeholder {
-    color: var(--gray1);
+	color: var(--gray1);
+}
+
+.edit-input:disabled {
+	color: rgb(175, 175, 175);
+	background-color: rgb(141, 141, 141);
 }
 
 .errors {
-    color: red;
-    font-weight: bold;
-  }
+	color: red;
+	font-weight: bold;
+}
