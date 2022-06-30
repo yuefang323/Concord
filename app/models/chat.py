@@ -7,8 +7,8 @@ class Chat(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     channel_id = db.Column(db.Integer, db.ForeignKey("channels.id"), nullable=False)
     user_id = db.Column(db.Integer, db.ForeignKey("users.id"), nullable=False)
-    message = db.Column(db.Text(2000), nullable=False)
-    created_at = db.Column(db.DateTime, default=datetime.now(), nullable=True)
+    message = db.Column(db.String(2000), nullable=False)
+    created_at = db.Column(db.DateTime, default=datetime.utcnow(), nullable=True)
 
     # Chat-to-Channel: many to one
     channel = db.relationship("Channel", back_populates="chats")
@@ -21,5 +21,5 @@ class Chat(db.Model):
             'channel_id': self.channel_id,
             'user_id': self.user_id,
             'message': self.message,
-            'created_at': self.created_at.isoformat(),
+            'created_at': self.created_at.strftime('%Y-%m-%dT%H:%M:%S.%fZ'),
         }
