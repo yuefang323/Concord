@@ -9,7 +9,7 @@ import * as userActions from "../../../store/users"
 
 const Users = () => {
 	const dispatch = useDispatch()
-	const user = useSelector((state) => state.session.user)
+	// const user = useSelector((state) => state.session.user)
 	const serverId = parseInt(useParams().serverId);
 	const server = useSelector((state) => state.servers.byId)[serverId];
 	const users = useSelector((state) => state.users.byId);

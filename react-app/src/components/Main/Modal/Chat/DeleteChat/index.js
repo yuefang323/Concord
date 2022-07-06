@@ -1,5 +1,4 @@
 import { useSelector, useDispatch } from "react-redux";
-import { useParams } from "react-router-dom";
 
 import Avatar from "../../../Chat/Inputs/Avatar";
 import CreatedAt from "../../../Chat/Inputs/CreatedAt";

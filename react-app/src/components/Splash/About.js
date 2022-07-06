@@ -7,6 +7,7 @@ import Footer from "./Footer";
 import logo from "../../assets/logo-long.svg";
 import frances from "../../assets/Frances_500_500.png";
 import lincoln from "../../assets/Lincoln.png";
+import fang from "../../assets/Fang.png"
 
 import git from "../../assets/git-logo.png";
 import linkedin from "../../assets/linkedin-logo.png";
@@ -49,12 +50,12 @@ const About = () => {
 				<div className="about-cards">
 					<div className="about-photo">
 						<img
-							src="https://t4.ftcdn.net/jpg/02/78/70/99/360_F_278709964_PhS3MsOE9udVYb5VCin1xCQJlm3HFb9V.jpg"
+							src={fang}
 							alt="Fang"
 							className="about-photo"
 						/>
 					</div>
-					<div>Fang Yue</div>
+					<div className="about-name">Fang Yue</div>
 					<div className="about-slogan">
 						Success is the sum of small efforts
 					</div>
@@ -73,9 +74,6 @@ const About = () => {
                                 className="about-icon"
                             />
                         </a>
-						{/* <a href="#" target="_blank" rel="noreferrer">
-							<img src={linkedin} alt="Linked In" className="about-icon" />
-						</a> */}
 					</div>
 				</div>
 				<div className="about-cards">

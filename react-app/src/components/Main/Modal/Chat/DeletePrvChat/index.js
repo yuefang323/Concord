@@ -1,5 +1,5 @@
 import { useDispatch, useSelector } from "react-redux";
-import { useParams } from "react-router-dom";
+// import { useParams } from "react-router-dom";
 
 import Avatar from "../../../Chat/Inputs/Avatar";
 import CreatedAt from "../../../Chat/Inputs/CreatedAt";
@@ -9,7 +9,7 @@ import * as prvChannelActions from "../../../../../store/prvChannels"
 
 const DeletePrvChat = ({ prvChatId, onClose, socket }) => {
 	const dispatch = useDispatch()
-	const prvChannelId = parseInt(useParams().channelId);
+	// const prvChannelId = parseInt(useParams().channelId);
 	const prvChat = useSelector((state) => state.prvChats.byId)[prvChatId];
 	const user = useSelector((state) => state.users.byId)[prvChat?.user_id];
 

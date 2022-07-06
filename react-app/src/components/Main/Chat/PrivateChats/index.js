@@ -3,7 +3,6 @@ import { useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 
 import arrow from "../../../../assets/arrow.svg";
-import bg from "../../../../assets/chat-bg.svg";
 
 import PrvAvatar from "../PrivateInputs/PrvAvatar";
 import PrvChatDivs from "../PrivateInputs/PrvChatDivs";
