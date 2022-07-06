@@ -3,12 +3,17 @@ import { useSelector } from "react-redux";
 import ReactTooltip from "react-tooltip";
 import logo from "../../../../assets/logo-red.svg";
 import { Modal } from "../../../../context/Modal";
-import EditUser from "../../Modal/Server/EditUser";
+import EditUserSettings from "../../Modal/Server/EditUser";
 import "./UserProfile.css";
 
 const UserProfile = () => {
 	const user = useSelector((state) => state?.session.user);
 	const [showModal, setShowModal] = useState(false);
+	console.log("MODAL.........", showModal)
+
+	const onClose = () => {
+		setShowModal(false);
+	};
 
 	return (
 		<>
@@ -40,21 +45,14 @@ const UserProfile = () => {
 				</div>
 				{showModal && (
 					<Modal
-						onClose={() => {
-							setTimeout(() => {
-								setShowModal(false);
-							}, 1);
-						}}
+						// onClose={() => {
+						// 	setTimeout(() => {
+						// 		setShowModal(false);
+						// 	}, 1);
+						// }}
+						onClose={setShowModal}
 					>
-						<div className="edit-modal-title">
-							<h1>My Account</h1>
-							<div className="close-edit" onClick={() => setShowModal(false)}>
-								X
-							</div>
-						</div>
-						<div className="form-edit-user">
-							<EditUser modal={setShowModal} />
-						</div>
+						<EditUserSettings onClose={onClose} />
 					</Modal>
 				)}
 				<ReactTooltip id="editUser" place="top" effect="solid">

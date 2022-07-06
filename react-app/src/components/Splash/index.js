@@ -23,7 +23,7 @@ const SplashPage = () => {
 			if (data && data.errors) setErrors(data.errors);
 		});
 	};
-
+;
 	if (user) return <Redirect to="/main" />;
 
 	return (

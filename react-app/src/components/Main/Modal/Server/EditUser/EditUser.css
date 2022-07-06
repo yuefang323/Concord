@@ -4,6 +4,11 @@
     height: 30px;
 } */
 
+.edit-user-form {
+	margin-left: 40px;
+	width: 500px;
+}
+
 .user-avatar.form {
 	width: 50px;
 	height: 50px;
