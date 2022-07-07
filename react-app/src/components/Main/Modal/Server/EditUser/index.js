@@ -8,7 +8,6 @@ import EditUser from "./EditUserForm";
 import "./EditUser.css";
 
 const EditUserSettings = ({ onClose }) => {
-	console.log("MODAL.......", onClose)
 	const [show, setShow] = useState("My Account");
 
 	return (
