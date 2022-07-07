@@ -4,7 +4,6 @@ import { useSelector, useDispatch } from "react-redux";
 import * as joinServersActions from "../../../../store/joinServers";
 import * as channelsActions from "../../../../store/channels";
 import * as chatsActions from "../../../../store/chats";
-import { set } from "date-fns/esm";
 
 const ServerCards = ({ server }) => {
 	const dispatch = useDispatch();

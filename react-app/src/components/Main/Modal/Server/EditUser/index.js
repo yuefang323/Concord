@@ -1,7 +1,7 @@
 import { useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import logo from "../../../../../assets/logo-red.svg";
-import { updateUser } from "../../../../../store/session";
+// import { useDispatch, useSelector } from "react-redux";
+// import logo from "../../../../../assets/logo-red.svg";
+// import { updateUser } from "../../../../../store/session";
 // import { Modal } from "../../../../../context/Modal";
 // import UserProfile from "../../../ChannelBar/UserProfile";
 import EditUser from "./EditUserForm";
