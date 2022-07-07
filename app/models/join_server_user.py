@@ -13,5 +13,5 @@ class JoinServerUser(db.Model):
         return {
             'server_id': self.server_id,
             'user_id': self.user_id,
-            'joined_date': self.joined_date.isoformat(),
+            'joined_date': self.joined_date.strftime('%Y-%m-%dT%H:%M:%S.%fZ'),
         }

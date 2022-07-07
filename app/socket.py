@@ -107,5 +107,5 @@ def send_prv_chat(data):
 # Error handler
 @socketio.on_error_default
 def default_error_handler(e):
-    print(request.even["message"])
+    print(request.event["message"])
     print(request.event["args"])
