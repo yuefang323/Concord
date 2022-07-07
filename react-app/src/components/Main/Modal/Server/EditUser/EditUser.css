@@ -4,36 +4,47 @@
     height: 30px;
 } */
 
+.edit-user-form {
+	margin-left: 40px;
+	width: 600px;
+}
+
 .user-avatar.form {
-	width: 50px;
-	height: 50px;
-	border: 3px solid black;
+	width: 100px;
+	height: 100px;
+	border: 5px solid var(--gray2);
+	position: absolute;
+	border-radius: 100px;
+	top: 170px;
 }
 
 .user-avatar.no-logo {
-	width: 30px;
-	height: 30px;
+	width: 60px;
+	height: 60px;
 	border-radius: 0px;
 	object-fit: revert;
 	/* border: 3px solid black; */
 }
 
 .avatar-bkg.form {
-	width: 50px;
-	height: 50px;
+	width: 100px;
+	height: 100px;
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	border-radius: 32px;
+	border-radius: 100px;
 	background-color: var(--gray1);
-	border: 3px solid black;
+	border: 5px solid var(--gray2);
+	position: absolute;
+	top: 170px;
 }
 
 .edit-modal-user-info-container {
 	background-color: var(--gray2);
-	margin-top: 8px;
+	/* margin-top: 8px; */
 	padding: 10px;
-	border-radius: 5px;
+	border-radius: 0px 0px 5px 5px;
+	size-adjust: 600px;
 }
 
 .edit-modal-user-info {
@@ -42,14 +53,22 @@
 
 .edit-modal-body {
 	display: flex;
+	border-radius: 5px 5px 0px 0px;
 	background-color: var(--gray3);
+	height: 100px;
+}
+
+.edit-body-container {
+	padding: 16px 16px 0px 16px;
+	background-color: var(--gray2);
 }
 
 .username-body {
 	font-size: 20px;
 	margin-left: 5px;
 	margin-top: 10px;
-	color: var(--gray1);
+	color: black;
+	padding-left: 120px;
 }
 
 .edit-info {
@@ -63,14 +82,18 @@
 }
 
 .edit-user-btns-container {
+	display: flex;
+	justify-content: flex-end;
 	margin-top: 10px;
 }
 
 .edit-user-btns {
 	background-color: var(--yellow1);
-	margin: 10px 10px 10px 0px;
+	margin: 0px 0px 0px 10px;
 	border-radius: 5px;
-	padding: 5px;
+	padding: 0px 15px 0px 15px;
+	height: 40px;
+	width: fit-content;
 }
 
 .edit-input {
