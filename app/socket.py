@@ -2,6 +2,7 @@ from flask import request
 from flask_socketio import SocketIO, emit, join_room, leave_room
 from app.models import db, Chat, Channel, PrivateChat, PrivateChannel
 from flask_login import current_user
+from datetime import datetime
 import os
 
 
@@ -40,7 +41,7 @@ def send_chat(data):
     user_id = current_user.id
     # create "created_at" and create class instance "chat"
     chat = Chat(user_id=user_id, channel_id=data["channel_id"],
-                message=data["chat"])
+                message=data["chat"], created_at=datetime.utcnow())
 
     # add to database
     db.session.add(chat)
@@ -89,7 +90,7 @@ def delete_chat(data):
 @socketio.on("send_prv_chat")
 def send_prv_chat(data):
     user_id = current_user.id
-    prv_chat = PrivateChat(user_id=user_id, pc_id=data["pc_id"], message=data["prvChat"])
+    prv_chat = PrivateChat(user_id=user_id, pc_id=data["pc_id"], message=data["prvChat"], created_at=datetime.utcnow())
 
     db.session.add(prv_chat)
     db.session.commit()
