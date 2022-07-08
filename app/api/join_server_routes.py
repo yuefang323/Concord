@@ -2,6 +2,7 @@ from flask import Blueprint, jsonify, session, request
 from flask_login import current_user, login_required
 from app.models import db, JoinServerUser, Channel, Chat, Server, User
 from app.forms import JoinServerForm
+from datetime import datetime
 
 join_server_routes = Blueprint("join_servers", __name__)
 
@@ -29,8 +30,9 @@ def join_server():
     if form.validate_on_submit():
         user_id = current_user.id
         server_id = form.data["server_id"]
+        joined_date = datetime.utcnow()
 
-        newJoin = JoinServerUser(user_id=user_id, server_id=server_id)
+        newJoin = JoinServerUser(user_id=user_id, server_id=server_id, joined_date=joined_date)
         db.session.add(newJoin)
         db.session.commit()
 
